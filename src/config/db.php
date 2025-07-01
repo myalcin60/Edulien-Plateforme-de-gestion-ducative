@@ -2,7 +2,7 @@
 
 const MYSQL = [
     "username" => "root",
-    "password" => "",
+    "password" => "admin",
     'dbname' => 'edu',
     'port' => 3306,
     'host' => 'localhost'

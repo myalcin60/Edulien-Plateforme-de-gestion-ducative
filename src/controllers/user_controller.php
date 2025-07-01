@@ -4,11 +4,17 @@ include __DIR__ . '/../repositories/user_repository.php';
 include __DIR__ . '/../services/service.php';
 
 $id = '';
-
-if (str_contains($_SERVER['HTTP_REFERER'], "main") and $_SERVER['REQUEST_METHOD'] == 'POST') {
+ // Signup 
+//  if (str_contains($_SERVER['HTTP_REFERER'], 'main') and $_SERVER['REQUEST_METHOD'] === 'POST')
+if (
+    $_SERVER['REQUEST_METHOD'] === 'POST' &&
+    isset($_POST['source']) &&
+    $_POST['source'] === 'main'
+) {
 
    $role = $_POST['role'];
    $id = create_id($role);
+
 
    $firstname = $_POST['firstname'];
    $lastname = $_POST['lastname'];
@@ -16,12 +22,13 @@ if (str_contains($_SERVER['HTTP_REFERER'], "main") and $_SERVER['REQUEST_METHOD'
    $password = $_POST['password'];
 
    signup_user($id, $firstname, $lastname, $email, $password, $role);
+
    header("location: ../../views/pages/main.php");
    die();
 }
 
-
-if (str_contains($_SERVER['HTTP_REFERER'], "main") and $_SERVER['REQUEST_METHOD'] == 'GET') {
+//login
+if ( isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "main") and $_SERVER['REQUEST_METHOD'] === 'GET') {
    $email = $_GET['email'];
    $password = $_GET['password'];
 
@@ -42,14 +49,15 @@ if (str_contains($_SERVER['HTTP_REFERER'], "main") and $_SERVER['REQUEST_METHOD'
       die();
    }
 }
-
-if (str_contains($_SERVER['HTTP_REFERER'], "teacher_dashboard") and $_SERVER['REQUEST_METHOD'] == 'POST') {
+// apres logout teacher
+if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "teacher_dashboard") and $_SERVER['REQUEST_METHOD'] == 'POST') {
    session_unset();
    session_destroy();
    header("location: ../../views/pages/main.php?form=login");
    die();
 }
-if (str_contains($_SERVER['HTTP_REFERER'],  "student_dashboard") and $_SERVER['REQUEST_METHOD'] == 'POST') {
+// apres logout studnet
+if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'],  "student_dashboard") and $_SERVER['REQUEST_METHOD'] == 'POST') {
    session_unset();
    session_destroy();
    header("location: ../../views/pages/main.php?form=login");

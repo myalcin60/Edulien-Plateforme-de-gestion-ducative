@@ -40,7 +40,10 @@ function get_student($email)
         where emeil = :emeil';
         $query = $pdo->prepare($sql);
         $query->bindValue('emeil', $email);
+          var_dump($query->fetch());
         return $query->fetch();
+
+      
 
     } catch (Exception $ex) {
         echo "\nErreur : problème de connexion avec la BD: " . $ex->getMessage();

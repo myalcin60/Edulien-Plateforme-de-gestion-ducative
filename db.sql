@@ -39,7 +39,7 @@ CREATE Table classes (
     className VARCHAR(100) NOT NULL,
     teacherId VARCHAR(20) NOT NULL,
     createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (teacherId) REFERENCES user (id) ON DELETE CASCADE
+    FOREIGN KEY (teacherId) REFERENCES users (id) ON DELETE CASCADE
 );
 
 SELECT * FROM classes;
@@ -54,8 +54,8 @@ CREATE TABLE students (
       studentName VARCHAR(100),
       studentEmail VARCHAR(100),
       addedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-      FOREIGN KEY (classId) REFERENCES class(classId) ON DELETE CASCADE,
-      FOREIGN KEY (studentId) REFERENCES user(id) ON DELETE CASCADE
+      FOREIGN KEY (classId) REFERENCES classes(classId) ON DELETE CASCADE,
+      FOREIGN KEY (studentId) REFERENCES users(id) ON DELETE CASCADE
 );
 
 SELECT * FROM students;

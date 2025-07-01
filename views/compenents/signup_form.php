@@ -28,15 +28,17 @@
         </div>
         <div class="mb-3">
             <label for="role" class="form-label" name="role">Role</label>
-            <select class="form-select" aria-label="Student" name="role">  
+            <select class="form-select" aria-label="Student" name="role">
                 <option value="student">Student</option>
                 <option value="Teacher">Teacher</option>
-                
+
             </select>
         </div>
 
+        <!-- Gizli input burada -->
+        <input type="hidden" name="source" value="main">
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Register</button>
     </form>
 </body>
 
