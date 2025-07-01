@@ -1,0 +1,76 @@
+<?php
+session_start();
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header</title>
+    <?php include '../partiel/dependencies.php' ?>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/header.css" />
+
+</head>
+
+<body>
+    <nav class=" d-flex navbar navbar-expand-lg  ">
+        <div class="container-fluid" id="navbar">
+            <div class="d-flex gap-3 align-items-center">
+                <img className="logo-img" src="\edu_php\views\assets\logo.jpg" alt="">
+
+                <?php if (isset($_SESSION['id'])): ?>
+                    <form class="navbar-brand" action="../../src/controllers/user_controller.php" method="post">
+                        <button
+                            style="background-color: var(--primary);
+                                    box-shadow: none;">
+                            <h3>EDULIEN</h3>
+                        </button>
+                    </form>
+                <?php else: ?>
+                    <a class="navbar-brand" href="#">EDULIEN</a>
+                <?php endif; ?>
+
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse gap-3" id="navbarSupportedContent">
+                <div class="d-flex gap-3">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" href="#">About</a>
+                    <a class="nav-link active" aria-current="page" href="#">Contact</a>
+                </div>
+
+                <div class="d-flex gap-3">
+                    <div class="d-flex me-2 gap-3">
+
+                        <?php if (isset($_SESSION['id'])): ?>
+                            <form class="d-flex gap-3 align-items-end content-items-end" action="../../src/controllers/user_controller.php" method="post">
+                                <div>
+                                    <i class="fa-solid fa-user"></i>
+                                    <?php echo $_SESSION['first_name']; ?>
+                                </div>
+
+                                <button>Logout</button>
+                            </form>
+
+                        <?php else: ?>
+                            <a style="text-decoration: none;" href="./main.php?form=login"> Login</a>
+                            <a style="text-decoration: none;" href="./main.php?form=signup"> SignUp</a>
+
+                        <?php endif; ?>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </nav>
+</body>
+
+</html>

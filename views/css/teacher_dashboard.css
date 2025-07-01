@@ -1,0 +1,21 @@
+.left-menu {
+    padding: 0 2% 0 2%;
+    min-height: 100vh;
+    padding-top: 3%;
+    width: 20%;
+    border: 1px solid var(--gray);
+    background-color: var(--light);
+    box-shadow: #f8f9fa;
+    border-radius: 5px;
+    color: var(--light);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.right-menu {
+    width: 80%;
+    border: 1px solid var(--gray);
+    background-color: var(--light);
+    border-radius: 5px;
+    font-weight: bold;
+}

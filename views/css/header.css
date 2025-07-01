@@ -1,0 +1,16 @@
+
+#navbarSupportedContent{ 
+    justify-content: space-between;
+}
+#navbar{
+    background-color: var(--primary);
+    color: var(--light);
+    >div>a{
+        color: var(--light);
+    }
+ >div>img {
+    border-radius: 5px;
+    background-color: white;
+    width: 100px;
+}
+}
