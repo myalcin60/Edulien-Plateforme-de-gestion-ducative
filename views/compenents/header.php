@@ -57,6 +57,7 @@ session_start();
 
                                 <button>Logout</button>
                             </form>
+                          
 
                         <?php else: ?>
                             <a style="text-decoration: none;" href="./main.php?form=login"> Login</a>

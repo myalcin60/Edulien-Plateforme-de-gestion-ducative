@@ -33,6 +33,7 @@ function get_user($email,$password){
     $query = $pdo->prepare($sql);
     $query->bindValue(":email", $email);
      $query->bindValue(":password", $password);
+     
     $query->execute();
 
     return $query->fetch();

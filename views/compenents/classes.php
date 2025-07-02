@@ -1,7 +1,9 @@
 <?php
 include __DIR__ . '/../../src/services/class_services.php';
-
 $classes = show_classes();
+$student_classes = show_class_student();
+
+
 ?>
 
 <!DOCTYPE html>
@@ -15,22 +17,29 @@ $classes = show_classes();
 
 <body>
     <h2>Classes </h2>
-    <form action="../../src/controllers/class_controller.php" method="post">
-        <div class="d-flex gap-3 mb-3">
-            <label for="text" class="form-label">Class Name</label>
-            <input type="text" class="form-control" id="text" name="class_name">
-            <button type="submit" class="btn btn-primary">Save</button>
+    <?php if ($_SESSION['role'] == 'Teacher') : ?>
+        <form action="../../src/controllers/class_controller.php" method="post">
+            <div class="d-flex gap-3 mb-3">
+                <label for="text" class="form-label">Class Name</label>
+                <input type="text" class="form-control" name="class_name">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+        <div>
+            <form action="../../src/controllers/class_controller.php" method="get">
+                <h2> Clasess</h2>
+                <div class="d-flex">
+                    <?= $classes ?>
+                </div>
+            </form>
         </div>
-    </form>
-    <div>
-        <h2> Clasess</h2>
-        <div class="d-flex">
-            <a href="../pages/class_page.php">
-                <?= $classes ?>
-            </a>
+    <?php else: ?>     
+            <div class="d-flex">
+                <?= $student_classes ?>
+            </div>
 
-        </div>
-    </div>
+    <?php endif; ?>
+
 </body>
 
 </html>

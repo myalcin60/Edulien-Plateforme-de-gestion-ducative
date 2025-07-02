@@ -28,14 +28,14 @@ $homework = 'Homework';
     </header>
     <h2> STUDENT</h2>
         <main class="flex">     
-            <div class="left-menu box-shadow">
-                <a style="text-decoration: none;" href="./teacher_dashboard.php?form=profile">
+            <div class="left-menu box-shadow">          
+                <a style="text-decoration: none;" href="./student_dashboard.php?form=profile">
                     <button> <?= $profile ?></button>
-                </a>
-                <a style="text-decoration: none;" href="./teacher_dashboard.php?form=classes">
+                </a>                 
+                <a style="text-decoration: none;" href="./student_dashboard.php?form=classes">
                     <button> <?= $classes ?></button>
                 </a>
-                <a style="text-decoration: none;" href="./teacher_dashboard.php?form=homework">
+                <a style="text-decoration: none;" href="./student_dashboard.php?form=homework">
                     <button> <?= $homework ?></button>
                 </a>
             </div>

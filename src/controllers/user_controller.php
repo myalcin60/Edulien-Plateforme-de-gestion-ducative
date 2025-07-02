@@ -3,6 +3,7 @@ session_start();
 include __DIR__ . '/../repositories/user_repository.php';
 include __DIR__ . '/../services/service.php';
 
+
 $id = '';
  // Signup 
 //  if (str_contains($_SERVER['HTTP_REFERER'], 'main') and $_SERVER['REQUEST_METHOD'] === 'POST')

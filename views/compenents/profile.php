@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <form action="" method="get">
+    <form action="../pages/teacher_dashboard.php" method="get">
         <h2>Profile</h2>
         <?php if (isset($_SESSION['first_name'])): ?>
             <p>ID : <?php echo $_SESSION['id']; ?> </p>
@@ -27,7 +27,6 @@
         <?php endif; ?>
 
     </form>
-
 </body>
 
 </html>

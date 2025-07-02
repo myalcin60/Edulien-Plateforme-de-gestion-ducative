@@ -14,41 +14,25 @@ CREATE Table users (
 
 SELECT * FROM users;
 
-INSERT INTO
-    users (
-        id,
-        first_name,
-        last_name,
-        email,
-        password,
-        role
-    )
-VALUES (
-        'id',
-        'first_name',
-        'last_name',
-        'email',
-        'password',
-        'role'
-    );
-
-DELETE from users WHERE id = 'S_55147';
+SELECT * FROM users  WHERE email='student@gmail.com';
 
 CREATE Table classes (
     classId INT AUTO_INCREMENT PRIMARY KEY,
     className VARCHAR(100) NOT NULL,
-    teacherId VARCHAR(20) NOT NULL,
+    teacherId VARCHAR(20) NOT NULL,   
     createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (teacherId) REFERENCES users (id) ON DELETE CASCADE
 );
 
 SELECT * FROM classes;
 
-DELETE FROM classes where classId in ( 4,5,6,7,8,9,10);
+SELECT * FROM classes
+WHERE classId = 1;
+
 
 
 CREATE TABLE students (
- id INT AUTO_INCREMENT PRIMARY KEY,
+     id INT AUTO_INCREMENT PRIMARY KEY,
       classId INT NOT NULL,
       studentId VARCHAR(20) NOT NULL,
       studentName VARCHAR(100),
@@ -59,3 +43,11 @@ CREATE TABLE students (
 );
 
 SELECT * FROM students;
+
+SELECT cl.classId, className FROM classes as cl
+JOIN students as st on  cl.`classId`=st.`classId`
+where st.`studentId` = 'S_16382';
+
+SELECT * FROM classes as cl
+JOIN students as st on  cl.`classId`=st.`classId`
+where st.`studentId` = 'S_16382';

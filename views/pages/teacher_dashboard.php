@@ -2,7 +2,6 @@
 include __DIR__ . '/../../src/services/service.php';
 $menu = isset($_GET['form']) ? $_GET['form'] : null;
 
-
 $profile = 'Profile';
 $classes = 'Classes';
 $homework = 'Homework';
