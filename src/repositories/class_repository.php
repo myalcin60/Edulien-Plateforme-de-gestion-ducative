@@ -57,12 +57,14 @@ function get_student__from_users($email)
         $query = $pdo->prepare($sql);
         $query->bindValue('email', $email);
         $query->execute();
-
-        return $query->fetch();
+        $list= $query->fetch(PDO::FETCH_ASSOC);
+     
+        return $list;
     } catch (Exception $ex) {
         echo "\nErreur : problème de connexion avec la BD: " . $ex->getMessage();
     }
 }
+ 
 
 function get_student__from_students($email)
 {
@@ -74,7 +76,7 @@ function get_student__from_students($email)
         $query->bindValue('email', $email);
         $query->execute();
 
-        return $query->fetch();
+        return $query->fetch(PDO::FETCH_ASSOC);
     } catch (Exception $ex) {
         echo "\nErreur : problème de connexion avec la BD: " . $ex->getMessage();
     }

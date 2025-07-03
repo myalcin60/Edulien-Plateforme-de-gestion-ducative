@@ -27,7 +27,7 @@ $_SESSION['classId']= $classId;
         <form action="../../src/controllers/class_controller.php" method="post">
             <h2> Class Name : <?= $class[0][1] ?> </h2>
             <h2 for="classId" > Class ID : <?= $classId  ?> </h2>
-            <input type="hidden" name="classId" value="<?= $classId ?>">
+            <input type="hidden" name="classId" value="<?= $classId ?> ">
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
                 <input type="email" class="form-control" id="email" name="email">

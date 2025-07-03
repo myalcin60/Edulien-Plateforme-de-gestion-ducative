@@ -1,3 +1,4 @@
+-- Active: 1751571723856@@127.0.0.1@3306@edu
 CREATE DATABASE edu;
 
 use edu;
@@ -14,7 +15,7 @@ CREATE Table users (
 
 SELECT * FROM users;
 
-SELECT * FROM users  WHERE email='student@gmail.com';
+SELECT * FROM users  WHERE email='s_2@gmail.com';
 
 CREATE Table classes (
     classId INT AUTO_INCREMENT PRIMARY KEY,
@@ -46,8 +47,10 @@ SELECT * FROM students;
 
 SELECT cl.classId, className FROM classes as cl
 JOIN students as st on  cl.`classId`=st.`classId`
-where st.`studentId` = 'S_16382';
+where st.`studentId` = 'S_90744';
 
 SELECT * FROM classes as cl
 JOIN students as st on  cl.`classId`=st.`classId`
-where st.`studentId` = 'S_16382';
+where st.`studentId` = 'S_46929';
+
+INSERT INTO students ( classId, studentId, studentName, studentEmail ) values ( 4, 'S_46929', 's_2', 's_2@gmail.com');
