@@ -42,14 +42,19 @@ if ( isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "
    $_SESSION['id'] = $user['id'];
 
    $id = $user['id'];
-   if ($id[0] == 'T') {
+   if($id){
+ if ($id[0] == 'T') {
       header("location: ../../views/pages/teacher_dashboard.php");
       die();
    } else {
       header("location: ../../views/pages/student_dashboard.php");
       die();
    }
+}else{
+   header("location: ../../views/pages/main.php?form=login");
 }
+   }
+  
 // apres logout teacher
 if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "teacher_dashboard") and $_SERVER['REQUEST_METHOD'] == 'POST') {
    session_unset();

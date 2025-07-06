@@ -16,7 +16,7 @@ $homework = 'Homework';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teacher Dashboard</title>
     <link rel="stylesheet" href="../css/main.css" />
-    <link rel="stylesheet" href="../css/teacher_dashborad.css" />
+    <link rel="stylesheet" href="../css/teacher_dashboard.css" />
 
 </head>
 
@@ -39,7 +39,7 @@ $homework = 'Homework';
                     <button> <?= $homework ?></button>
                 </a>
             </div>
-            <div class="right-menu box-shadow" style="width: 800px;">
+            <div class="right-menu box-shadow" >
                 <?php
                 select_menu($menu);
                 ?>

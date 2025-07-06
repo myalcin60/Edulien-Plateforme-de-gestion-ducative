@@ -9,10 +9,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
+    <link rel="stylesheet" href="../css/main.css" />
 </head>
 
 <body>
-    <form action="../pages/teacher_dashboard.php" method="get">
+    <form  action="../pages/teacher_dashboard.php" method="get">
         <h2>Profile</h2>
         <?php if (isset($_SESSION['first_name'])): ?>
             <p>ID : <?php echo $_SESSION['id']; ?> </p>
