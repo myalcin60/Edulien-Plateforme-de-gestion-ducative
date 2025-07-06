@@ -11,7 +11,6 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Header</title>
     <?php include '../partiel/dependencies.php' ?>
-    <link rel="stylesheet" href="../css/main.css" />
     <link rel="stylesheet" href="../css/header.css" />
 
 </head>
@@ -20,7 +19,7 @@ session_start();
     <nav class=" d-flex navbar navbar-expand-lg  ">
         <div class="container-fluid" id="navbar">
             <div class="d-flex gap-3 align-items-center">
-                <img className="logo-img" src="\edu_php\views\assets\logo.jpg" alt="">
+                <img class="d-md-block d-none logo-img" src="\edu_php\views\assets\logo.jpg" alt="">
 
                 <?php if (isset($_SESSION['id'])): ?>
                     <form class="navbar-brand" action="../../src/controllers/user_controller.php" method="post">

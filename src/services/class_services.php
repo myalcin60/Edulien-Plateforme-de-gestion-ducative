@@ -7,7 +7,7 @@ function show_classes()
     $liste = "<ul class='list-group'>";
 
     foreach ($classes as $class) {
-        // Sınıf detayına tıklanabilir liste elemanı (tüm <li> alanı tıklanabilir)
+
         $class_id = htmlspecialchars($class[0]);
         $class_name = htmlspecialchars($class[1]);
 
@@ -18,28 +18,29 @@ function show_classes()
                                 border-radius:5px;
                                 margin-right: 5px;
                                 border: none;
-                                color: white;'>
+                                color: white;
+                                width:100px;'>
                     Supprimer
                 </button>
             </a>";
 
         $a_mod = "
             <a href='../../views/pages/update_class.php?id=$class_id' style='text-decoration: none;'>
-                <button style='background: var(--primary);
+                <button  style='background:var(--primary);
                                 border-radius:5px;
                                 border: none;
-                                color: white;'>
+                                color: white;
+                                width:100px;'>
                     Update
                 </button>
             </a>";
 
-        // Her <li> tıklanabilir alanla sarılıyor
         $liste .= "
             <li class='list-group-item d-flex justify-content-between align-items-center'>
                 <a href='$class_link' style='text-decoration: none; color: inherit; flex-grow: 1;'>
                     $class_id - $class_name
                 </a>
-                <div>
+                <div class='d-flex gap-3 mb-1'>
                     $a_sup
                     $a_mod
                 </div>
@@ -57,13 +58,13 @@ function show_class_student()
         $liste = "<ul class='list-group'>";
 
         foreach ($classes as $class) {
-            // Sınıf detayına tıklanabilir liste elemanı (tüm <li> alanı tıklanabilir)
+          
             $class_id = htmlspecialchars($class['classId']);
             $class_name = htmlspecialchars($class['className']);
 
-            $class_link = "../../views/pages/class_page.php?id=$class_id"; // detay sayfası örnek
+            $class_link = "../../views/pages/class_page.php?id=$class_id"; 
 
-            // Her <li> tıklanabilir alanla sarılıyor
+       
             $liste .= "
             <li class='list-group-item d-flex justify-content-between align-items-center'>
                 <a href='$class_link' style='text-decoration: none; color: inherit; flex-grow: 1;'>

@@ -15,7 +15,7 @@ $homework = 'Homework';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teacher Dashboard</title>
     <link rel="stylesheet" href="../css/main.css" />
-    <link rel="stylesheet" href="../css/teacher_dashborad.css" />
+    <link rel="stylesheet" href="../css/teacher_dashboard.css" />
 
 </head>
 
@@ -25,10 +25,10 @@ $homework = 'Homework';
         include '../compenents/header.php';
         ?>
     </header>
-    <h2> TEACHER</h2>
+   
         <main class="flex">     
             <div class="left-menu box-shadow">
-                <a style="text-decoration: none;" href="./teacher_dashboard.php?form=profile">
+                <a class="menu" style="text-decoration: none;" href="./teacher_dashboard.php?form=profile">
                     <button> <?= $profile ?></button>
                 </a>
                 <a style="text-decoration: none;" href="./teacher_dashboard.php?form=classes">
@@ -38,7 +38,7 @@ $homework = 'Homework';
                     <button> <?= $homework ?></button>
                 </a>
             </div>
-            <div class="right-menu box-shadow" style="width: 800px;">
+            <div class="right-menu box-shadow" >
                 <?php
                 select_menu($menu);
                 ?>

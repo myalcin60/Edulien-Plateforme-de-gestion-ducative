@@ -8,7 +8,7 @@ $url = (isset($_GET['form']) && $_GET['form'] === 'login') ? 'login' : 'signup';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main</title>
-    <link rel="stylesheet" href="../css/main.css" />
+
 
 </head>
 
@@ -19,12 +19,14 @@ $url = (isset($_GET['form']) && $_GET['form'] === 'login') ? 'login' : 'signup';
         ?>
     </header>
     <main >
-        <h2 >Welcome to our education platform</h2>
+        
+        <h2 class=" text-center text-primary my-5">Welcome to our education platform</h2>
         <div class="d-flex gap-3 container-sm">
-            <div id="image">
-                <img src="../assets/home_page.png" alt="">
+            <div class=" d-md-block d-none rounded-2" id="image">
+                <img  class="img-fluid d-md-block d-none mx-auto rounded-2" src="../assets/home_page.png" alt="image_main">
             </div>
-            <div class="form container-sm">
+
+            <div style="max-width:350px;" class="bg-white box-shadow rounded-2 form container-sm border ">
                 <?php
                 if ($url === 'signup') {
                     include '../compenents/signup_form.php';
