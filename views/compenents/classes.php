@@ -13,21 +13,27 @@ $student_classes = show_class_student();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Classes</title>
-     <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/main.css" />
 </head>
 
 <body>
 
     <?php if ($_SESSION['role'] == 'Teacher'): ?>
-        <form action="../../src/controllers/class_controller.php" method="post">
-            <h2 class="p-3">Classes </h2>
-            <div class="d-flex gap-3 mb-3 p-3">
-                
-                <label for="text" class="form-label">Class Name</label>
-                <input type="text" class="form-control" name="class_name">
-                <button type="submit" class="">Save</button>
+     <form action="../../src/controllers/class_controller.php" method="post">
+    <h2 class="p-3">Classes</h2>
+
+    <div class="container mb-4">
+        <div class="row align-items-end">
+            <div class="col-md-9 ">
+                <label for="class_name" class="form-label">ClassName</label>
+                <input type="text" id="class_name" name="class_name" class="form-control" placeholder="Enter class name">
             </div>
-        </form>
+            <div class="col-md-3 d-flex w-25 ">
+                <button type="submit" class="btn btn-primary ms-3 ">Save</button>
+            </div>
+        </div>
+    </div>
+</form>
         <div>
             <form action="../../src/controllers/class_controller.php" method="get">
 

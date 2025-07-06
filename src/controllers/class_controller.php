@@ -2,6 +2,7 @@
 session_start();
 include __DIR__ . '/../repositories/class_repository.php';
 include __DIR__ . '/../services/service.php';
+include __DIR__. '/../repositories/student_repository.php';
 
 // creat class
 if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "form=classes") and $_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -42,3 +43,12 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "c
    header("location: ../../views/pages/main.php?form=login");
    die();
 }
+
+// delete class
+if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "teacher_dashboard.php?form=classes") and $_SERVER['REQUEST_METHOD'] == 'GET') {
+   delete_class($_GET['id']);
+   header("location: ../../views/pages/teacher_dashboard.php?form=classes");
+   die();
+}
+
+

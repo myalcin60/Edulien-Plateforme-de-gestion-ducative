@@ -11,28 +11,15 @@ function show_classes()
         $class_id = htmlspecialchars($class[0]);
         $class_name = htmlspecialchars($class[1]);
 
-        $class_link = "../../views/pages/class_page.php?id=$class_id"; // detay sayfası örnek
+        $class_link = "../../views/pages/class_page.php?id=$class_id"; 
         $a_sup = "
-            <a href='../../controllers/delete_class.php?id=$class_id' style='text-decoration: none;'>
-                <button style='background: var(--primary);
-                                border-radius:5px;
-                                margin-right: 5px;
-                                border: none;
-                                color: white;
-                                width:100px;'>
-                    Supprimer
-                </button>
+            <a href='../../src/controllers/class_controller.php?id=$class_id' class='btn btn-danger btn-sm me-2'>
+                Supprimer
             </a>";
 
-        $a_mod = "
-            <a href='../../views/pages/update_class.php?id=$class_id' style='text-decoration: none;'>
-                <button  style='background:var(--primary);
-                                border-radius:5px;
-                                border: none;
-                                color: white;
-                                width:100px;'>
-                    Update
-                </button>
+       $a_mod = "
+            <a href='#?id=$class_id' class='btn btn-warning btn-sm'>
+                Update
             </a>";
 
         $liste .= "

@@ -21,20 +21,18 @@ session_start();
             <div class="d-flex gap-3 align-items-center">
                 <img class="d-md-block d-none logo-img" src="\edu_php\views\assets\logo.jpg" alt="">
 
-                <?php if (isset($_SESSION['id'])): ?>
-                    <form class="navbar-brand" action="../../src/controllers/user_controller.php" method="post">
-                        <button
-                            style="background-color: var(--primary);
-                                    box-shadow: none;">
-                            <h3>EDULIEN</h3>
-                        </button>
-                    </form>
+                <?php if (isset($_SESSION['id'][0]) == 'T'): ?>
+                    <a class="navbar-brand" href="../pages/teacher_dashboard.php">EDULIEN</a>
+                <?php elseif (isset($_SESSION['id'][0]) == 'S'): ?>
+                    <a class="navbar-brand" href="../pages/student_dashboard.php">EDULIEN</a>
                 <?php else: ?>
-                    <a class="navbar-brand" href="#">EDULIEN</a>
+                    <a class="navbar-brand" href="../pages/main.php?form=login">EDULIEN</a>
                 <?php endif; ?>
 
             </div>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse gap-3" id="navbarSupportedContent">
@@ -48,7 +46,8 @@ session_start();
                     <div class="d-flex me-2 gap-3">
 
                         <?php if (isset($_SESSION['id'])): ?>
-                            <form class="d-flex gap-3 align-items-end content-items-end" action="../../src/controllers/user_controller.php" method="post">
+                            <form class="d-flex gap-3 align-items-end content-items-end"
+                                action="../../src/controllers/user_controller.php" method="post">
                                 <div>
                                     <i class="fa-solid fa-user"></i>
                                     <?php echo $_SESSION['first_name']; ?>
@@ -56,7 +55,7 @@ session_start();
 
                                 <button>Logout</button>
                             </form>
-                          
+
 
                         <?php else: ?>
                             <a style="text-decoration: none;" href="./main.php?form=login"> Login</a>
