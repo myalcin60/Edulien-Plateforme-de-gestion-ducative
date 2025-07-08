@@ -90,3 +90,19 @@ a:hover {
   }
  
 }
+
+.toast-message {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    color: white;
+    border-radius: 5px;
+    z-index: 9999;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    font-size: 16px;
+}
+
+.toast-message.success { background-color: #28a745; }
+.toast-message.error   { background-color: #dc3545; }
+.toast-message.info    { background-color: #17a2b8; }

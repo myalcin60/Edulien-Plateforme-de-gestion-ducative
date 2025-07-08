@@ -49,8 +49,19 @@ session_start();
                             <form class="d-flex gap-3 align-items-end content-items-end"
                                 action="../../src/controllers/user_controller.php" method="post">
                                 <div>
-                                    <i class="fa-solid fa-user"></i>
-                                    <?php echo $_SESSION['first_name']; ?>
+                                     <?php if ($_SESSION['id'][0] == 'T'): ?>
+                                     <a class="navbar-brand" href="../pages/teacher_dashboard.php">
+                                         <i class="fa-solid fa-user"></i>
+                                         <?php echo $_SESSION['first_name']; ?>
+                                        </a>
+                                     <?php elseif (($_SESSION['id'][0]) == 'S'): ?>
+                                     <a class="navbar-brand" href="../pages/student_dashboard.php">
+                                        <i class="fa-solid fa-user"></i>
+                                         <?php echo $_SESSION['first_name']; ?>
+                                    </a>
+                                    <?php else: ?>
+                                    <?php endif;?>
+                                    
                                 </div>
 
                                 <button>Logout</button>

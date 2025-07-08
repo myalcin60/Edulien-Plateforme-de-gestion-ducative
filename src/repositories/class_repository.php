@@ -87,7 +87,9 @@ function get_student__from_students($email)
 //add student in class
 function add_student($classId, $studentId, $studentName, $studentEmail)
 {
-    
+    if(empty($studentId) || $studentId[0]=='T'){
+        echo 'invalid email';
+    }else{
 
         try {
             $pdo = db_connection();
@@ -101,6 +103,7 @@ function add_student($classId, $studentId, $studentName, $studentEmail)
         } catch (Exception $ex) {
             echo "\nErreur : problème de connexion avec la BD: " . $ex->getMessage();
         }
+    }
     
 }
 //get classes for student
