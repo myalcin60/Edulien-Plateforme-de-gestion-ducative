@@ -1,6 +1,7 @@
 <?php
 include __DIR__ . '/../config/connection.php';
 
+// creaat class for teacher
 function create_class($user_id,  $className)
 {
     try {
@@ -15,6 +16,7 @@ function create_class($user_id,  $className)
     }
 }
 
+//get class with teacher id
 function get_classes($teacher_id)
 {
     try {
@@ -31,7 +33,7 @@ function get_classes($teacher_id)
     }
 }
 
-
+//get class with class id 
 function get_class_by_classId($classId)
 {
     try {
@@ -82,9 +84,12 @@ function get_student__from_students($email)
     }
 }
 
+//add student in class
 function add_student($classId, $studentId, $studentName, $studentEmail)
 {
-    
+    if(empty($studentId) || $studentId[0]=='T'){
+        echo 'invalid email';
+    }else{
 
         try {
             $pdo = db_connection();
@@ -98,9 +103,10 @@ function add_student($classId, $studentId, $studentName, $studentEmail)
         } catch (Exception $ex) {
             echo "\nErreur : problème de connexion avec la BD: " . $ex->getMessage();
         }
+    }
     
 }
-
+//get classes for student
 function get_classes_for_student($studentId)
 {
     try {
@@ -117,4 +123,18 @@ function get_classes_for_student($studentId)
     } catch (Exception $ex) {
         echo "\nErreur : problème de connexion avec la BD: " . $ex->getMessage();
     }
+}
+
+//delete class
+function delete_class($classId){
+    try{
+        $pdo = db_connection();
+        $sql = "Delete from classes
+        where classId= :classId";
+        $query = $pdo->prepare($sql);
+        $query->bindValue("classId", $classId);
+        $query->execute();
+         }catch (Exception $ex) {
+            echo "Class deletion failed". $ex->getMessage();
+         }
 }

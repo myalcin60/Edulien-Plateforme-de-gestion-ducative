@@ -53,4 +53,17 @@ SELECT * FROM classes as cl
 JOIN students as st on  cl.`classId`=st.`classId`
 where st.`studentId` = 'S_46929';
 
-INSERT INTO students ( classId, studentId, studentName, studentEmail ) values ( 4, 'S_46929', 's_2', 's_2@gmail.com');
+INSERT INTO students ( classId, studentId, studentName, studentEmail ) values ( 4, 'S_46930', 's_3', 's_3@gmail.com');
+
+SELECT studentId, studentName, studentEmail FROM classes as cl
+JOIN students as st on  cl.`classId`=st.`classId`
+where cl.`className` = 'DWWB';
+
+SELECT studentId, studentName, studentEmail FROM students as st, classes as cl
+WHERE cl.`classId`=st.`classId` AND cl.`className` = 'DWWB' ;
+
+SELECT studentId, studentName, studentEmail FROM students as st, classes as cl
+WHERE cl.`classId`=1 AND st.`classId`=1  ;
+
+Delete from students
+        where classId= 1 and studentId= 'S_46929';

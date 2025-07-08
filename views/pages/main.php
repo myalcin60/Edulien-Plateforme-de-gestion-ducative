@@ -1,5 +1,7 @@
 <?php
 $url = (isset($_GET['form']) && $_GET['form'] === 'login') ? 'login' : 'signup';
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,10 +11,11 @@ $url = (isset($_GET['form']) && $_GET['form'] === 'login') ? 'login' : 'signup';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main</title>
 
-
 </head>
 
 <body>
+ <?php include_once __DIR__ . '/../partiel/toast.php'; ?>
+ 
     <header>
         <?php
         include '../compenents/header.php';
