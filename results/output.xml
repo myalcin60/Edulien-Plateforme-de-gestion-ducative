@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0 (Python 3.12.4 on win32)" generated="2025-07-11T20:36:57.796362" rpa="false" schemaversion="5">
+<suite id="s1" name="Edu Php" source="C:\xampp\htdocs\edu_php">
+<suite id="s1-s1" name="Test" source="C:\xampp\htdocs\edu_php\test">
+<suite id="s1-s1-s1" name="Login Test" source="C:\xampp\htdocs\edu_php\test\login_test.robot">
+<test id="s1-s1-s1-t1" name="Login" line="42">
+<kw name="go to Edulien home page">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-07-11T20:36:58.357362" level="INFO">Opening browser 'chrome' to base url 'http://localhost/edu_php/views/pages/main.php'.</msg>
+<arg>${url}</arg>
+<arg>${Browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-07-11T20:36:58.355367" elapsed="3.178312"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-07-11T20:37:01.534677" elapsed="0.068844"/>
+</kw>
+<status status="PASS" start="2025-07-11T20:36:58.340908" elapsed="3.262613"/>
+</kw>
+<kw name="clicks login button">
+<kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2025-07-11T20:37:01.611511" level="INFO">Clicking link 'xpath=//*[@id="navbarSupportedContent"]/div[2]/div/a[1]'.</msg>
+<arg>${login}</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-11T20:37:01.608511" elapsed="0.399498"/>
+</kw>
+<status status="PASS" start="2025-07-11T20:37:01.604520" elapsed="0.403489"/>
+</kw>
+<kw name="enters valide email and password">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-07-11T20:37:02.014061" level="INFO">Typing text 'student@gmail.com' into text field 'id=email'.</msg>
+<arg>${email_lct}</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-11T20:37:02.012005" elapsed="0.197042"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2025-07-11T20:37:02.209047" level="INFO">Typing password into text field 'id=password'.</msg>
+<msg time="2025-07-11T20:37:02.270836" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>${password_lct}</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-11T20:37:02.209047" elapsed="0.147532"/>
+</kw>
+<status status="PASS" start="2025-07-11T20:37:02.011009" elapsed="0.346585"/>
+</kw>
+<kw name="clicks submit button">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-07-11T20:37:02.359633" level="INFO">Clicking button 'xpath = //button[@type='submit']'.</msg>
+<arg>${submit_btn}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-11T20:37:02.358620" elapsed="0.300546"/>
+</kw>
+<status status="PASS" start="2025-07-11T20:37:02.357594" elapsed="0.302574"/>
+</kw>
+<kw name="confirms that the login was succesful">
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-07-11T20:37:02.716442" level="INFO">Element 'xpath = /html/body/main/div[2]/form/h2' is displayed.</msg>
+<arg>${profile_text}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2025-07-11T20:37:02.662664" elapsed="0.053778"/>
+</kw>
+<status status="PASS" start="2025-07-11T20:37:02.662664" elapsed="0.054777"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-07-11T20:37:02.718439" elapsed="3.825284"/>
+</kw>
+<status status="PASS" start="2025-07-11T20:36:58.340908" elapsed="8.202815"/>
+</test>
+<status status="PASS" start="2025-07-11T20:36:57.878381" elapsed="8.665342"/>
+</suite>
+<status status="PASS" start="2025-07-11T20:36:57.860918" elapsed="8.682805"/>
+</suite>
+<status status="PASS" start="2025-07-11T20:36:57.809614" elapsed="8.749258"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Edu Php">Edu Php</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="Test">Edu Php.Test</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1-s1" name="Login Test">Edu Php.Test.Login Test</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
