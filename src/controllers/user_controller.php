@@ -52,7 +52,7 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "m
 
       $_SESSION['toast'] = [
          'type' => 'success',
-         'message' => 'Giriş başarılı. Hoş geldiniz ' . $user['first_name']
+         'message' => 'Login successful ! ' . $user['first_name']
       ];
 
       if ($id) {
@@ -67,7 +67,7 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "m
    } else {
       $_SESSION['toast'] = [
          'type' => 'error',
-         'message' => 'Hatalı e-posta veya şifre!'
+         'message' => 'Error email or password!'
       ];
       var_dump($_SESSION['toast']);
      
@@ -83,7 +83,7 @@ if (isset($_SERVER['HTTP_REFERER']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 
    $_SESSION['toast'] = [
       'type' => 'info',
-      'message' => 'Oturum kapatıldı.'
+      'message' => 'Log out'
    ];
    header("location: ../../views/pages/main.php?form=login");
    die();
