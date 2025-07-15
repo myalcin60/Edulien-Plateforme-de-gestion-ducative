@@ -1,0 +1,4 @@
+ robot --include Pozitif test/                      ---> Pour exécuter les tests avec un tag commun
+ robot test/TC_02_Logo.robot                        ---> Pour exécuterdes tests dans le terminal
+ robot --outputdir results test/contact_us.robot    ---> Pour prendre les rapports dans le dossier de résultat
+ robot --outputdir results --include Pozitif test/  ---> Pour prendre les rapports dans le dossier de résultat avec exécuter les tests un tag commun

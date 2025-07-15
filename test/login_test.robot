@@ -1,10 +1,10 @@
 *** Settings ***
 Library  SeleniumLibrary
+Resource  ./resources/AuthKeywords.resource
 
 *** Variables ***
 
-${url}        http://localhost/edu_php/views/pages/main.php
-${Browser}    chrome
+
 ${login}      xpath=//*[@id="navbarSupportedContent"]/div[2]/div/a[1]
 ${email}      student@gmail.com
 ${email_lct}   id=email
@@ -24,9 +24,7 @@ ${profile_text}  xpath = /html/body/main/div[2]/form/h2
 
 
 *** Keywords ***
-go to Edulien home page
-  Open Browser  ${url}  ${Browser}      
-  Maximize Browser Window 
+ 
 clicks login button 
     Click Link  ${login}   
 enters valide email and password
@@ -38,7 +36,7 @@ confirms that the login was succesful
    Element Should Be Visible  ${profile_text}
 
 *** Test Cases ***
-Login 
+Login  [Tags]  smoke
     go to Edulien home page
     clicks login button
     enters valide email and password

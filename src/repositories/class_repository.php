@@ -50,62 +50,6 @@ function get_class_by_classId($classId)
 }
 
 
-function get_student__from_users($email)
-{
-    try {
-        $pdo = db_connection();
-        $sql = 'SELECT * from users
-        where email = :email';
-        $query = $pdo->prepare($sql);
-        $query->bindValue('email', $email);
-        $query->execute();
-        $list= $query->fetch(PDO::FETCH_ASSOC);
-     
-        return $list;
-    } catch (Exception $ex) {
-        echo "\nErreur : problème de connexion avec la BD: " . $ex->getMessage();
-    }
-}
- 
-
-function get_student__from_students($email)
-{
-    try {
-        $pdo = db_connection();
-        $sql = 'SELECT * from students
-        where studentEmail = :email';
-        $query = $pdo->prepare($sql);
-        $query->bindValue('email', $email);
-        $query->execute();
-
-        return $query->fetch(PDO::FETCH_ASSOC);
-    } catch (Exception $ex) {
-        echo "\nErreur : problème de connexion avec la BD: " . $ex->getMessage();
-    }
-}
-
-//add student in class
-function add_student($classId, $studentId, $studentName, $studentEmail)
-{
-    if(empty($studentId) || $studentId[0]=='T'){
-        echo 'invalid email';
-    }else{
-
-        try {
-            $pdo = db_connection();
-            $sql = 'INSERT INTO students ( classId, studentId, studentName, studentEmail ) values ( :classId, :studentId, :studentName, :studentEmail)';
-            $query = $pdo->prepare($sql);
-            $query->bindValue("classId", $classId);
-            $query->bindValue("studentId", $studentId);
-            $query->bindValue("studentName", $studentName);
-            $query->bindValue("studentEmail", $studentEmail);
-            $query->execute();
-        } catch (Exception $ex) {
-            echo "\nErreur : problème de connexion avec la BD: " . $ex->getMessage();
-        }
-    }
-    
-}
 //get classes for student
 function get_classes_for_student($studentId)
 {
@@ -138,3 +82,4 @@ function delete_class($classId){
             echo "Class deletion failed". $ex->getMessage();
          }
 }
+

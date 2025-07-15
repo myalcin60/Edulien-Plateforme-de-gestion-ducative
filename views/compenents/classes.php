@@ -18,7 +18,7 @@ $student_classes = show_class_student();
 
 <body>
 
-    <?php if ($_SESSION['role'] == 'Teacher'): ?>
+    <?php if ($_SESSION['role'] == 'teacher'): ?>
      <form action="../../src/controllers/class_controller.php" method="post">
     <h2 class="p-3">Classes</h2>
 
