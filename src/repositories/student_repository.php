@@ -89,5 +89,6 @@ function add_student($classId, $studentId, $studentName, $studentEmail)
             echo "\nErreur : problème de connexion avec la BD: " . $ex->getMessage();
         }
     }
+   
     
 }
