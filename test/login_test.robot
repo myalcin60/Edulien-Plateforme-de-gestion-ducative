@@ -37,9 +37,6 @@ clicks submit button
 confirms that the login was succesful
    Element Should Be Visible  ${profile_text}
 
-*** Tasks ***
-
-
 *** Test Cases ***
 Login 
     go to Edulien home page
