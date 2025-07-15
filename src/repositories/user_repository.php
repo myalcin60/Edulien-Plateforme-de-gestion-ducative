@@ -1,6 +1,7 @@
 <?php
 include __DIR__ . '/../config/connection.php';
 
+//sign up
 function signup_user($id, $firstname, $lastname, $email, $password, $role)
 {
     try {
@@ -25,14 +26,14 @@ function signup_user($id, $firstname, $lastname, $email, $password, $role)
     }
 }
 
-
+// login
 function get_user($email,$password){
     try{
     $pdo = db_connection();
     $sql = "SELECT * from users  WHERE email= :email and password= :password";
     $query = $pdo->prepare($sql);
     $query->bindValue(":email", $email);
-     $query->bindValue(":password", $password);
+    $query->bindValue(":password", $password);
      
     $query->execute();
 

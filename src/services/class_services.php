@@ -49,7 +49,7 @@ function show_class_student()
             $class_id = htmlspecialchars($class['classId']);
             $class_name = htmlspecialchars($class['className']);
 
-            $class_link = "../../views/pages/class_page.php?id=$class_id"; 
+            $class_link = "#"; 
 
        
             $liste .= "

@@ -4,8 +4,8 @@ include __DIR__ . '/../../src/services/student_service.php';
 $classId = $_GET['id'];
 $class = get_class_by_classId($classId);
 $_SESSION['classId'] = $classId;
-
 $students = show_students($classId);
+
 
 ?>
 
@@ -26,7 +26,8 @@ $students = show_students($classId);
         ?>
     </header>
     <div>
-        <form class="form-sm" action="../../src/controllers/class_controller.php" method="post">
+ 
+        <form class="form-sm" action="../../src/controllers/student_controller.php" method="post">
             <div class="container-md gap-3 p-3">
                 <h2> Class Name : <?= $class[0][1] ?> </h2>
 
@@ -46,6 +47,7 @@ $students = show_students($classId);
 
 
         </form>
+      
 
     </div>
     <div class="container-md mb-3">

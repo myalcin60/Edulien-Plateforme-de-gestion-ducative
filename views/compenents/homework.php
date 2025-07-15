@@ -8,5 +8,9 @@
 </head>
 <body>
     <h2>Homevork</h2>
+    <div>
+        <label for="homework">Homework</label>
+        <textarea name="homework" id="homework"></textarea>
+    </div>
 </body>
 </html>
