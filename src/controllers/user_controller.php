@@ -23,15 +23,20 @@ if (
    $email = $_POST['email'];
    $password = $_POST['password'];
 
-   signup_user($id, $firstname, $lastname, $email, $password, $role);
-   $_SESSION['toast'] = [
-      'type' => 'success',
-      'message' => 'Registration successful! You can log in.'
-   ];
+   $user = get_user_by_email($email);
 
+   if ($user) {
+       $_SESSION['error'] = 'This email already exists';
+      header("location: ../../views/pages/main.php");
+      die();
+   } else {
+      signup_user($id, $firstname, $lastname, $email, $password, $role);
+       $_SESSION['success'] = 'Registration successful! You can log in.';
 
-   header("location: ../../views/pages/main.php");
-   die();
+      header("location: ../../views/pages/main.php?form=login");
+      die();
+   }
+
 }
 
 //login
@@ -70,7 +75,7 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "m
          'message' => 'Error email or password!'
       ];
       var_dump($_SESSION['toast']);
-     
+
 
       header("location: ../../views/pages/main.php?form=login");
    }

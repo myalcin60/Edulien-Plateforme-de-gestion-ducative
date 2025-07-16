@@ -55,8 +55,9 @@ function get_classes_for_student($studentId)
 {
     try {
         $pdo = db_connection();
-        $sql = 'SELECT cl.classId, className FROM classes as cl
+        $sql = 'SELECT cl.classId, className, us.first_name, us.last_name  FROM classes as cl
         JOIN students as st on  cl.classId=st.classId
+        Join users as us on  cl.teacherId=us.id
         where st.studentId = :studentId';
 
         $query = $pdo->prepare($sql);

@@ -42,3 +42,20 @@ function get_user($email,$password){
         echo "\nErreur : problème de connexion avec la BD: " . $ex->getMessage();
     }
 }
+
+// get user with by email
+function get_user_by_email($email){
+      try{
+    $pdo = db_connection();
+    $sql = "SELECT * from users  WHERE email= :email";
+    $query = $pdo->prepare($sql);
+    $query->bindValue(":email", $email);
+     
+    $query->execute();
+    return $query->fetch();
+    
+}catch (Exception $ex) {
+        echo "\nErreur : problème de connexion avec la BD: " . $ex->getMessage();
+    }
+}
+

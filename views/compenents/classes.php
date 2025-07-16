@@ -44,7 +44,7 @@ $student_classes = show_class_student();
             </form>
         </div>
     <?php else: ?>
-        <div class="d-flex">
+        <div class="d-flex flex-wrap justify-content-start">
             <?= $student_classes ?>
         </div>
 
