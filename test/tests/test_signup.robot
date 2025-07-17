@@ -1,6 +1,7 @@
 *** Settings ***
 Library  SeleniumLibrary
-Resource  ./resources/AuthKeywords.resource
+Resource    ../keywords/auth_keywords.resource
+Resource    ../resources/common.resource
 
 
     
@@ -11,7 +12,6 @@ Resource  ./resources/AuthKeywords.resource
 
 *** Test Cases ***
 signup  [Tags]  smoke
-    go to Edulien home page
-    user enters fileds valid
-   
-    Close Browser Session
+    Open Edulien
+    SignUp As Teacher
+    Close Session
