@@ -24,8 +24,9 @@ function show_classes()
 
         $liste .= "
             <li class='list-group-item d-flex justify-content-between align-items-center'>
+                 <input type='hidden' value='$class_id'>
                 <a href='$class_link' style='text-decoration: none; color: inherit; flex-grow: 1;'>
-                    $class_id - $class_name
+                  $class_name
                 </a>
                 <div class='d-flex gap-3 mb-1'>
                     $a_sup

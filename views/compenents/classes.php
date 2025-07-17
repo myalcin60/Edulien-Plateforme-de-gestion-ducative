@@ -17,23 +17,37 @@ $student_classes = show_class_student();
 </head>
 
 <body>
-
-    <?php if ($_SESSION['role'] == 'teacher'): ?>
-     <form action="../../src/controllers/class_controller.php" method="post">
-    <h2 class="p-3">Classes</h2>
-
-    <div class="container mb-4">
-        <div class="row align-items-end">
-            <div class="col-md-9 ">
-                <label for="class_name" class="form-label">ClassName</label>
-                <input type="text" id="class_name" name="class_name" class="form-control" placeholder="Enter class name">
+    <div class="container-sm">
+        <?php if (isset($_SESSION['error'])): ?>
+            <div class="alert alert-danger">
+                <?= $_SESSION['error'];
+                unset($_SESSION['error']); ?>
             </div>
-            <div class="col-md-3 d-flex w-25 ">
-                <button type="submit" class="btn btn-primary ms-3 ">Save</button>
+        <?php endif; ?>
+
+        <?php if (isset($_SESSION['success'])): ?>
+            <div class="alert alert-success">
+                <?= $_SESSION['success'];
+                unset($_SESSION['success']); ?>
             </div>
-        </div>
+        <?php endif; ?>
     </div>
-</form>
+    <?php if ($_SESSION['role'] == 'teacher'): ?>
+        <form action="../../src/controllers/class_controller.php" method="post">
+            <h2 class="p-3">Classes</h2>
+
+            <div class="container mb-4">
+                <div class="row align-items-end">
+                    <div class="col-md-9 ">
+                        <label for="class_name" class="form-label">ClassName</label>
+                        <input type="text" id="class_name" name="class_name" class="form-control" placeholder="Enter class name">
+                    </div>
+                    <div class="col-md-3 d-flex w-25 ">
+                        <button type="submit" class="btn btn-primary ms-3 ">Save</button>
+                    </div>
+                </div>
+            </div>
+        </form>
         <div>
             <form action="../../src/controllers/class_controller.php" method="get">
 

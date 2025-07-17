@@ -5,10 +5,26 @@ include __DIR__ . '/../repositories/class_repository.php';
 // creat class
 if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "form=classes") and $_SERVER['REQUEST_METHOD'] === 'POST') {
    $className = $_POST['class_name'];
-   create_class($_SESSION['id'], $className);
-   header("location: ../../views/pages/teacher_dashboard.php?form=classes");
-   die();
+   $userid = $_SESSION['id'];
 
+   $classes = get_classes($userid);
+   
+   $list=[];
+   foreach ($classes as $class) {
+      $list[]=$class[1];
+   
+   }
+    var_dump($list);
+   if (in_array(strtolower($className), array_map('strtolower', $list))) {
+      $_SESSION['error'] = 'This class already exists !!';
+      header("location: ../../views/pages/teacher_dashboard.php?form=classes");
+      die();
+   } else {
+      create_class($userid, $className);
+      $_SESSION['success'] = 'Class created successfully.';
+      header("location: ../../views/pages/teacher_dashboard.php?form=classes");
+      die();
+   }
 }
 //get class
 if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "class_page") and $_SERVER['REQUEST_METHOD'] === 'GET') {
@@ -33,5 +49,3 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "t
    header("location: ../../views/pages/teacher_dashboard.php?form=classes");
    die();
 }
-
-

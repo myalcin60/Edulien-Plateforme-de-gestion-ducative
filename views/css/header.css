@@ -3,6 +3,7 @@
     justify-content: space-between;
 }
 #navbar{
+    
     background-color: var(--primary);
     color: var(--light);
     >div>a{
@@ -13,4 +14,15 @@
     background-color: white;
     width: 100px;
 }
+}
+.header{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    background-color: white; /* şeffaflık sorununu önlemek için */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* isteğe bağlı görsel */
+}
+body {
+    padding-top: 100px; /* header yüksekliğine göre ayarla */
 }

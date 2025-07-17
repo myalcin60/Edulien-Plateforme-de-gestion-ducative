@@ -14,9 +14,8 @@ $url = (isset($_GET['form']) && $_GET['form'] === 'login') ? 'login' : 'signup';
 </head>
 
 <body>
- <?php include_once __DIR__ . '/../partiel/toast.php'; ?>
- 
-    <header>
+ <div>
+  <header>
         <?php
         include '../compenents/header.php';
         ?>
@@ -45,6 +44,9 @@ $url = (isset($_GET['form']) && $_GET['form'] === 'login') ? 'login' : 'signup';
     <footer>
         <?php include '../compenents/footer.php'  ?>
     </footer>
+ </div>
+ 
+  
 </body>
 
 </html>

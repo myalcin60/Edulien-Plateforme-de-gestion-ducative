@@ -20,51 +20,73 @@ $students = show_students($classId);
 </head>
 
 <body>
-    <header>
-        <?php
-        include '../compenents/header.php';
-        ?>
-    </header>
     <div>
- 
-        <form class="form-sm" action="../../src/controllers/student_controller.php" method="post">
-            <div class="container-md gap-3 p-3">
-                <h2> Class Name : <?= $class[0][1] ?> </h2>
+        <header>
+            <?php
+            include '../compenents/header.php';
+            ?>
+        </header>
+        <div>
+            <div class="container-sm">
+                <?php if (isset($_SESSION['error'])): ?>
+                    <div class="alert alert-danger">
+                        <?= $_SESSION['error'];
+                        unset($_SESSION['error']); ?>
+                    </div>
+                <?php endif; ?>
 
-                <input type="hidden" name="classId" value="<?= $classId ?> ">
+                <?php if (isset($_SESSION['success'])): ?>
+                    <div class="alert alert-success">
+                        <?= $_SESSION['success'];
+                        unset($_SESSION['success']); ?>
+                    </div>
+                <?php endif; ?>
             </div>
 
-            <div class="container-md d-flex  ">
-                <div class="container-sm mb-3 gap-3 d-flex">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" name="email">
-                </div>
-                <div class="mx-3 w-25">
-                    <button type="submit" class="btn btn-primary">Save</button>
+            <form class="form-sm" action="../../src/controllers/student_controller.php" method="post">
+                <div class="container-md gap-3 p-3">
+
+                    <h2> Class Name : <?= $class[0][1] ?> </h2>
+
+                    <input type="hidden" name="classId" value="<?= $classId ?> ">
                 </div>
 
+                <div class="container-md d-flex  ">
+                    <div class="container-sm mb-3 gap-3 d-flex">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email">
+                    </div>
+                    <div class="mx-3 w-25">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+
+                </div>
+
+
+            </form>
+
+
+        </div>
+
+        <div class="container-md mb-3">
+            <div class="d-flex gap-3 p-3 justify-content-between">
+                <h2>Students List</h2> <a style="text-decoration: none;" href="./teacher_dashboard.php?form=classes">
+                    <h2 style="color:black"> Classes</h2>
+                </a>
+            </div>
+
+            <div class="gap-3 p-3">
+                <?= $students ?>
             </div>
 
 
-        </form>
-      
 
-    </div>
-    <div class="container-md mb-3">
-        <div class="gap-3 p-3">
-            <h2>Students List</h2>
         </div>
-
-        <div class="gap-3 p-3">
-            <?= $students ?>
-        </div>
-
-
-
+        <footer>
+            <?php include '../compenents/footer.php' ?>
+        </footer>
     </div>
-    <footer>
-        <?php include '../compenents/footer.php' ?>
-    </footer>
+
 
 </body>
 

@@ -5,7 +5,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta content="Robot Framework 7.0 (Python 3.12.4 on win32)" name="Generator">
+<meta content="Robot Framework 7.3.2 (Python 3.11.9 on win32)" name="Generator">
 <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKcAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAAqAAAAAAAAAAAAAAAAAAAALIAAAD/AAAA4AAAANwAAADcAAAA3AAAANwAAADcAAAA3AAAANwAAADcAAAA4AAAAP8AAACxAAAAAAAAAKYAAAD/AAAAuwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC/AAAA/wAAAKkAAAD6AAAAzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN8AAAD/AAAA+gAAAMMAAAAAAAAAAgAAAGsAAABrAAAAawAAAGsAAABrAAAAawAAAGsAAABrAAAADAAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAAIsAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAANEAAAAAAAAA2gAAAP8AAAD6AAAAwwAAAAAAAAAAAAAAMgAAADIAAAAyAAAAMgAAADIAAAAyAAAAMgAAADIAAAAFAAAAAAAAANoAAAD/AAAA+gAAAMMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAADwAAAB8AAAAAAAAAGAAAABcAAAAAAAAAH8AAABKAAAAAAAAAAAAAAAAAAAA2gAAAP8AAAD6AAAAwwAAAAAAAADCAAAA/wAAACkAAADqAAAA4QAAAAAAAAD7AAAA/wAAALAAAAAGAAAAAAAAANoAAAD/AAAA+gAAAMMAAAAAAAAAIwAAAP4AAAD/AAAA/wAAAGAAAAAAAAAAAAAAAMkAAAD/AAAAigAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAAAAAAAAIAAAAcAAAABkAAAAAAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAAAAAAA2gAAAP8AAAD7AAAAywAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN4AAAD/AAAAqwAAAP8AAACvAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALIAAAD/AAAAsgAAAAAAAAC5AAAA/wAAAMoAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMkAAAD/AAAAvAAAAAAAAAAAAAAAAAAAAKwAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAArQAAAAAAAAAAwAMAAIABAAAf+AAAP/wAAD/8AAAgBAAAP/wAAD/8AAA//AAAJIwAADHEAAA//AAAP/wAAB/4AACAAQAAwAMAAA==">
 <style media="all">
 :root {
@@ -1068,58 +1068,48 @@ window.stats = (function () {
             });
     }
     function calculatePercents(total, passed, failed, skipped) {
-        if (total == 0) {
+        if (total == 0)
             return [0.0, 0.0, 0.0];
-        }
         var pass = 100.0 * passed / total;
         var skip = 100.0 * skipped / total;
         var fail = 100.0 * failed / total;
         if (pass > 0 && pass < 0.1)
-            pass = 0.1
+            pass = 0.1;
         if (fail > 0 && fail < 0.1)
-            fail = 0.1
+            fail = 0.1;
         if (skip > 0 && skip < 0.1)
-            skip = 0.1
+            skip = 0.1;
         if (pass > 99.95 && pass < 100)
-            pass = 99.9
+            pass = 99.9;
         if (fail > 99.95 && fail < 100)
-            fail = 99.9
+            fail = 99.9;
         if (skip > 99.95 && skip < 100)
-            skip = 99.9
-        return [Math.round(pass*10)/10, Math.round(skip*10)/10, Math.round(fail*10)/10];
+            skip = 99.9;
+        return [round1(pass), round1(skip), round1(fail)];
     }
     function calculateWidths(num1, num2, num3) {
         if (num1 + num2 + num3 === 0)
             return [0.0, 0.0, 0.0];
         // Make small percentages better visible
         if (num1 > 0 && num1 < 1)
-            num1 = 1
+            num1 = 1.0;
         if (num2 > 0 && num2 < 1)
-            num2 = 1
+            num2 = 1.0;
         if (num3 > 0 && num3 < 1)
-            num3 = 1
+            num3 = 1.0;
         // Handle situation where some are rounded up
         while (num1 + num2 + num3 > 100) {
-            if (num1 > num2 && num1 > num3)
-                num1 -= 0.1;
-            else if (num2 > num1 && num2 > num3)
-                num2 -= 0.1;
-            else if (num3 > num1 && num3 > num2)
-                num3 -= 0.1;
-            else if (num1 > num3 && num1 == num2) {
-                num1 -= 0.1;
-                num2 -= 0.1;
-            }
-            else if (num1 > num2 && num1 == num3) {
-                num1 -= 0.1;
-                num3 -= 0.1;
-            }
-            else if (num2 > num1 && num2 == num3) {
-                num2 -= 0.1;
-                num3 -= 0.1;
-            }
+            if (num1 >= num2 && num1 >= num3)
+                num1 = round1(num1 - 0.1);
+            else if (num2 >= num1 && num2 >= num3)
+                num2 = round1(num2 - 0.1);
+            else
+                num3 = round1(num3 - 0.1);
         }
-        return [Math.ceil(num1*10)/10, Math.ceil(num2*10)/10, Math.ceil(num3*10)/10];
+        return [num1, num2, num3];
+    }
+    function round1(num) {
+        return Math.round(num*10) / 10;
     }
     return {
         Statistics: Statistics
@@ -1338,7 +1328,7 @@ window.testdata = function () {
     var STATUSES = ['FAIL', 'PASS', 'SKIP', 'NOT RUN'];
     var KEYWORD_TYPES = ['KEYWORD', 'SETUP', 'TEARDOWN', 'FOR', 'ITERATION', 'IF',
                          'ELSE IF', 'ELSE', 'RETURN', 'VAR', 'TRY', 'EXCEPT', 'FINALLY',
-                         'WHILE', 'CONTINUE', 'BREAK', 'ERROR'];
+                         'WHILE', 'GROUP', 'CONTINUE', 'BREAK', 'ERROR'];
     function addElement(elem) {
         if (!elem.id)
             elem.id = uniqueId();
@@ -1897,22 +1887,22 @@ storage = function () {
 window.output = {};
 </script>
 <script type="text/javascript">
-window.output["suite"] = [1,2,3,0,[],[1,0,22062],[[4,5,6,0,[],[1,353,21696],[[7,8,9,0,[],[1,486,21551],[[10,11,12,0,[],[1,513,21508],[],[[13,0,0,[14],[1,1086,7677],[]],[15,0,0,[14],[1,8769,6744],[]],[13,0,0,[16,17],[1,15519,6492],[]]],[],[3,3,0,0]]],[],[],[3,3,0,0]]],[],[],[3,3,0,0]]],[],[],[3,3,0,0]];
+window.output["suite"] = [1,2,3,0,[],[1,0,12314],[[4,5,6,0,[],[1,30,12278],[[7,8,9,0,[],[1,32,12260],[[10,11,12,0,[],[1,35,12257],[],[[13,0,0,[14],[1,265,4308],[]],[15,0,0,[14],[1,4573,3899],[]],[13,0,0,[16,17],[1,8472,3820],[]]],[],[3,3,0,0]]],[],[],[3,3,0,0]]],[],[],[3,3,0,0]]],[],[],[3,3,0,0]];
 </script>
 <script type="text/javascript">
 window.output["strings"] = [];
 </script>
 <script type="text/javascript">
-window.output["strings"] = window.output["strings"].concat(["*","*Edu Php","*C:\\xampp\\htdocs\\edu_php","*..","*Test","*C:\\xampp\\htdocs\\edu_php\\test","*../test","*Tests","*C:\\xampp\\htdocs\\edu_php\\test\\tests","*../test/tests","*Test Login","*C:\\xampp\\htdocs\\edu_php\\test\\tests\\test_login.robot","*../test/tests/test_login.robot","*Login As Teacher","*smoke pozitif","*Login as Student","*negatif","*smoke"]);
+window.output["strings"] = window.output["strings"].concat(["*","*Edu Php","*C:\\wamp64\\www\\edu_php","*..","*Test","*C:\\wamp64\\www\\edu_php\\test","*../test","*Tests","*C:\\wamp64\\www\\edu_php\\test\\tests","*../test/tests","*Test Login","*C:\\wamp64\\www\\edu_php\\test\\tests\\test_login.robot","*../test/tests/test_login.robot","*Login As Teacher","*smoke pozitif","*Login as Student","*negatif","*smoke"]);
 </script>
 <script type="text/javascript">
-window.output["stats"] = [[{"elapsed":"00:00:21","fail":0,"label":"All Tests","pass":3,"skip":0}],[{"elapsed":"00:00:06","fail":0,"label":"negatif","pass":1,"skip":0},{"elapsed":"00:00:06","fail":0,"label":"smoke","pass":1,"skip":0},{"elapsed":"00:00:14","fail":0,"label":"smoke pozitif","pass":2,"skip":0}],[{"elapsed":"00:00:22","fail":0,"id":"s1","label":"Edu Php","name":"Edu Php","pass":3,"skip":0},{"elapsed":"00:00:22","fail":0,"id":"s1-s1","label":"Edu Php.Test","name":"Test","pass":3,"skip":0},{"elapsed":"00:00:22","fail":0,"id":"s1-s1-s1","label":"Edu Php.Test.Tests","name":"Tests","pass":3,"skip":0},{"elapsed":"00:00:22","fail":0,"id":"s1-s1-s1-s1","label":"Edu Php.Test.Tests.Test Login","name":"Test Login","pass":3,"skip":0}]];
+window.output["stats"] = [[{"elapsed":"00:00:12","fail":0,"label":"All Tests","pass":3,"skip":0}],[{"elapsed":"00:00:04","fail":0,"label":"negatif","pass":1,"skip":0},{"elapsed":"00:00:04","fail":0,"label":"smoke","pass":1,"skip":0},{"elapsed":"00:00:08","fail":0,"label":"smoke pozitif","pass":2,"skip":0}],[{"elapsed":"00:00:12","fail":0,"id":"s1","label":"Edu Php","name":"Edu Php","pass":3,"skip":0},{"elapsed":"00:00:12","fail":0,"id":"s1-s1","label":"Edu Php.Test","name":"Test","pass":3,"skip":0},{"elapsed":"00:00:12","fail":0,"id":"s1-s1-s1","label":"Edu Php.Test.Tests","name":"Tests","pass":3,"skip":0},{"elapsed":"00:00:12","fail":0,"id":"s1-s1-s1-s1","label":"Edu Php.Test.Tests.Test Login","name":"Test Login","pass":3,"skip":0}]];
 </script>
 <script type="text/javascript">
-window.output["baseMillis"] = 1752665401872;
+window.output["baseMillis"] = 1752756401234;
 </script>
 <script type="text/javascript">
-window.output["generated"] = 22116;
+window.output["generated"] = 12333;
 </script>
 <script type="text/javascript">
 window.output["expand_keywords"] = null;
@@ -2364,7 +2354,7 @@ function hideHiddenDetailsColumns(elem) {
 
 <script type="text/x-jquery-tmpl" id="tagStatisticsRowTemplate">
   <tr onclick="tagDetailSelected('${label}')" class="row-${$item.index}">
-    <td class="stats-col-name" title="{{html doc}}">
+    <td class="stats-col-name" title="${doc}">
       <div class="stat-name">
         <a href="#tags?${label}">{{html label}}</a>
         {{if info}}(${info}){{/if}}
