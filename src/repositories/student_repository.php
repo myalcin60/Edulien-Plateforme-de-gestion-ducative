@@ -53,14 +53,15 @@ function get_student__from_users($email)
 }
  
 
-function get_student__from_students($email)
+function get_student__from_students($email, $classId)
 {
     try {
         $pdo = db_connection();
         $sql = 'SELECT * from students
-        where studentEmail = :email';
+        where studentEmail = :email and classId= :classId';
         $query = $pdo->prepare($sql);
         $query->bindValue('email', $email);
+         $query->bindValue('classId', $classId);
         $query->execute();
 
         return $query->fetch(PDO::FETCH_ASSOC);

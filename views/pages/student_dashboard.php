@@ -21,17 +21,18 @@ $homework = 'Homework';
 </head>
 
 <body>
-    <header>
-        <?php
-        include '../compenents/header.php';
-        ?>
-    </header>
-    <h2> STUDENT</h2>
-        <main class="flex">     
-            <div class="left-menu box-shadow">          
+    <div>
+        <header>
+            <?php
+            include '../compenents/header.php';
+            ?>
+        </header>
+
+        <main class="d-flex justify-content-center gap-5 my-5">
+            <div class="left-menu box-shadow">
                 <a style="text-decoration: none;" href="./student_dashboard.php?form=profile">
                     <button> <?= $profile ?></button>
-                </a>                 
+                </a>
                 <a style="text-decoration: none;" href="./student_dashboard.php?form=classes">
                     <button> <?= $classes ?></button>
                 </a>
@@ -39,15 +40,17 @@ $homework = 'Homework';
                     <button> <?= $homework ?></button>
                 </a>
             </div>
-            <div class="right-menu box-shadow" >
+            <div class="right-menu box-shadow">
                 <?php
                 select_menu($menu);
                 ?>
             </div>
         </main>
-    <footer>
-        <?php include '../compenents/footer.php'  ?>
-    </footer>
+        <footer>
+            <?php include '../compenents/footer.php'  ?>
+        </footer>
+    </div>
+
 </body>
 
 </html>

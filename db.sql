@@ -67,3 +67,6 @@ WHERE cl.`classId`=1 AND st.`classId`=1  ;
 
 Delete from students
         where classId= 1 and studentId= 'S_46929';
+
+SELECT * from students
+        where studentEmail = 'student@gmail.com';

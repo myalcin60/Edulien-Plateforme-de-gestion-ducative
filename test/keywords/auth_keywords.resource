@@ -18,14 +18,17 @@ SignUp As Teacher
     
 
 Login As Teacher with valid fields
+    Wait Until Element Is Enabled  ${login}
     Click Link  ${login}  
-    Input Text  ${email_lct}  teacher@gmail.com
+    Input Text  ${email_lct}  teacher@yopmail.com
     Input Password  ${password_lct}  1234
     Click Button   ${submit_btn}
+    Wait Until Element Is Visible  ${profile_text}
     Element Should Be Visible  ${profile_text}
 
 
 Login As Teacher with invalid email
+    Wait Until Element Is Enabled  ${login}
     Click Link  ${login}  
     Input Text  ${email_lct}  wrong@gmail.com
     Input Password  ${password_lct}  1234
@@ -33,8 +36,10 @@ Login As Teacher with invalid email
     Element Should Not Be Visible  ${profile_text}
 
 Login As Student with valid fields
+    Wait Until Element Is Enabled  ${login}
     Click Link  ${login}  
     Input Text   ${email_lct}   ${s_email}
     Input Password   ${password_lct}  ${s_password}
     Click Button   ${submit_btn}
+    Wait Until Element Is Visible  ${profile_text}
     Element Should Be Visible  ${profile_text}

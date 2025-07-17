@@ -5,7 +5,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta content="Robot Framework 7.0 (Python 3.12.4 on win32)" name="Generator">
+<meta content="Robot Framework 7.3.2 (Python 3.11.9 on win32)" name="Generator">
 <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKcAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAAqAAAAAAAAAAAAAAAAAAAALIAAAD/AAAA4AAAANwAAADcAAAA3AAAANwAAADcAAAA3AAAANwAAADcAAAA4AAAAP8AAACxAAAAAAAAAKYAAAD/AAAAuwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC/AAAA/wAAAKkAAAD6AAAAzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN8AAAD/AAAA+gAAAMMAAAAAAAAAAgAAAGsAAABrAAAAawAAAGsAAABrAAAAawAAAGsAAABrAAAADAAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAAIsAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAANEAAAAAAAAA2gAAAP8AAAD6AAAAwwAAAAAAAAAAAAAAMgAAADIAAAAyAAAAMgAAADIAAAAyAAAAMgAAADIAAAAFAAAAAAAAANoAAAD/AAAA+gAAAMMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAADwAAAB8AAAAAAAAAGAAAABcAAAAAAAAAH8AAABKAAAAAAAAAAAAAAAAAAAA2gAAAP8AAAD6AAAAwwAAAAAAAADCAAAA/wAAACkAAADqAAAA4QAAAAAAAAD7AAAA/wAAALAAAAAGAAAAAAAAANoAAAD/AAAA+gAAAMMAAAAAAAAAIwAAAP4AAAD/AAAA/wAAAGAAAAAAAAAAAAAAAMkAAAD/AAAAigAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAAAAAAAAIAAAAcAAAABkAAAAAAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAAAAAAA2gAAAP8AAAD7AAAAywAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN4AAAD/AAAAqwAAAP8AAACvAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALIAAAD/AAAAsgAAAAAAAAC5AAAA/wAAAMoAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMkAAAD/AAAAvAAAAAAAAAAAAAAAAAAAAKwAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAArQAAAAAAAAAAwAMAAIABAAAf+AAAP/wAAD/8AAAgBAAAP/wAAD/8AAA//AAAJIwAADHEAAA//AAAP/wAAB/4AACAAQAAwAMAAA==">
 <style media="all">
 :root {
@@ -724,10 +724,13 @@ function toggleSuite(suiteId) {
     toggleElement(suiteId, ['keyword', 'suite', 'test']);
 }
 function toggleTest(testId) {
-    toggleElement(testId, ['keyword']);
     var test = window.testdata.findLoaded(testId);
-    if (test.status == "FAIL" || test.status == "SKIP")
+    var autoExpand = test.status == "FAIL" || test.status == "SKIP";
+    var closed = $('#' + testId).children('.element-header').hasClass('closed');
+    if (autoExpand && closed)
         expandFailed(test);
+    else
+        toggleElement(testId, ['keyword']);
 }
 function toggleKeyword(kwId) {
     toggleElement(kwId, ['keyword']);
@@ -1252,58 +1255,48 @@ window.stats = (function () {
             });
     }
     function calculatePercents(total, passed, failed, skipped) {
-        if (total == 0) {
+        if (total == 0)
             return [0.0, 0.0, 0.0];
-        }
         var pass = 100.0 * passed / total;
         var skip = 100.0 * skipped / total;
         var fail = 100.0 * failed / total;
         if (pass > 0 && pass < 0.1)
-            pass = 0.1
+            pass = 0.1;
         if (fail > 0 && fail < 0.1)
-            fail = 0.1
+            fail = 0.1;
         if (skip > 0 && skip < 0.1)
-            skip = 0.1
+            skip = 0.1;
         if (pass > 99.95 && pass < 100)
-            pass = 99.9
+            pass = 99.9;
         if (fail > 99.95 && fail < 100)
-            fail = 99.9
+            fail = 99.9;
         if (skip > 99.95 && skip < 100)
-            skip = 99.9
-        return [Math.round(pass*10)/10, Math.round(skip*10)/10, Math.round(fail*10)/10];
+            skip = 99.9;
+        return [round1(pass), round1(skip), round1(fail)];
     }
     function calculateWidths(num1, num2, num3) {
         if (num1 + num2 + num3 === 0)
             return [0.0, 0.0, 0.0];
         // Make small percentages better visible
         if (num1 > 0 && num1 < 1)
-            num1 = 1
+            num1 = 1.0;
         if (num2 > 0 && num2 < 1)
-            num2 = 1
+            num2 = 1.0;
         if (num3 > 0 && num3 < 1)
-            num3 = 1
+            num3 = 1.0;
         // Handle situation where some are rounded up
         while (num1 + num2 + num3 > 100) {
-            if (num1 > num2 && num1 > num3)
-                num1 -= 0.1;
-            else if (num2 > num1 && num2 > num3)
-                num2 -= 0.1;
-            else if (num3 > num1 && num3 > num2)
-                num3 -= 0.1;
-            else if (num1 > num3 && num1 == num2) {
-                num1 -= 0.1;
-                num2 -= 0.1;
-            }
-            else if (num1 > num2 && num1 == num3) {
-                num1 -= 0.1;
-                num3 -= 0.1;
-            }
-            else if (num2 > num1 && num2 == num3) {
-                num2 -= 0.1;
-                num3 -= 0.1;
-            }
+            if (num1 >= num2 && num1 >= num3)
+                num1 = round1(num1 - 0.1);
+            else if (num2 >= num1 && num2 >= num3)
+                num2 = round1(num2 - 0.1);
+            else
+                num3 = round1(num3 - 0.1);
         }
-        return [Math.ceil(num1*10)/10, Math.ceil(num2*10)/10, Math.ceil(num3*10)/10];
+        return [num1, num2, num3];
+    }
+    function round1(num) {
+        return Math.round(num*10) / 10;
     }
     return {
         Statistics: Statistics
@@ -1522,7 +1515,7 @@ window.testdata = function () {
     var STATUSES = ['FAIL', 'PASS', 'SKIP', 'NOT RUN'];
     var KEYWORD_TYPES = ['KEYWORD', 'SETUP', 'TEARDOWN', 'FOR', 'ITERATION', 'IF',
                          'ELSE IF', 'ELSE', 'RETURN', 'VAR', 'TRY', 'EXCEPT', 'FINALLY',
-                         'WHILE', 'CONTINUE', 'BREAK', 'ERROR'];
+                         'WHILE', 'GROUP', 'CONTINUE', 'BREAK', 'ERROR'];
     function addElement(elem) {
         if (!elem.id)
             elem.id = uniqueId();
@@ -2081,25 +2074,25 @@ storage = function () {
 window.output = {};
 </script>
 <script type="text/javascript">
-window.output["suite"] = [1,2,3,0,[],[1,0,22062],[[4,5,6,0,[],[1,353,21696],[[7,8,9,0,[],[1,486,21551],[[10,11,12,0,[],[1,513,21508],[],[[13,0,0,[14],[1,1086,7677],[[0,15,16,0,0,0,0,0,[1,1092,3904],[[0,17,18,0,19,20,0,0,[1,1097,3791],[[1098,2,21]]],[0,22,18,0,23,0,0,0,[1,4888,106],[]]]],[0,24,25,0,0,0,0,0,[1,4998,1222],[[0,26,18,0,27,28,0,0,[1,5000,419],[[5001,2,29]]],[0,30,18,0,31,32,0,0,[1,5419,262],[[5421,2,33]]],[0,34,18,0,35,36,0,0,[1,5682,168],[[5684,2,37],[5753,2,38]]],[0,39,18,0,40,41,0,0,[1,5849,164],[[5850,2,42]]],[0,43,18,0,44,45,0,0,[1,6014,204],[[6219,2,46]]]]],[0,47,18,0,48,0,0,0,[1,6221,2539],[]]]],[49,0,0,[14],[1,8769,6744],[[0,15,16,0,0,0,0,0,[1,8779,3043],[[0,17,18,0,19,20,0,0,[1,8782,2636],[[8785,2,21]]],[0,22,18,0,23,0,0,0,[1,11419,403],[]]]],[0,50,25,0,0,0,0,0,[1,11826,1141],[[0,26,18,0,27,28,0,0,[1,11828,405],[[11830,2,29]]],[0,30,18,0,31,51,0,0,[1,12232,223],[[12233,2,52]]],[0,34,18,0,35,53,0,0,[1,12456,183],[[12457,2,37],[12535,2,38]]],[0,39,18,0,40,41,0,0,[1,12639,284],[[12640,2,42]]],[0,43,18,0,44,45,0,0,[1,12925,41],[[12966,2,46]]]]],[0,47,18,0,48,0,0,0,[1,12968,2543],[]]]],[13,0,0,[54,55],[1,15519,6492],[[0,15,16,0,0,0,0,0,[1,15521,2967],[[0,17,18,0,19,20,0,0,[1,15522,2860],[[15523,2,21]]],[0,22,18,0,23,0,0,0,[1,18384,104],[]]]],[0,56,25,0,0,0,0,0,[1,18489,1064],[[0,26,18,0,27,28,0,0,[1,18491,378],[[18494,2,29]]],[0,30,18,0,31,57,0,0,[1,18871,218],[[18877,2,58]]],[0,34,18,0,35,36,0,0,[1,19089,166],[[19089,2,37],[19156,2,38]]],[0,39,18,0,40,41,0,0,[1,19255,135],[[19256,2,42]]],[0,59,18,0,60,45,0,0,[1,19392,160],[[19551,2,61]]]]],[0,47,18,0,48,0,0,0,[1,19557,2451],[]]]]],[],[3,3,0,0]]],[],[],[3,3,0,0]]],[],[],[3,3,0,0]]],[],[],[3,3,0,0]];
+window.output["suite"] = [1,2,3,0,[],[1,0,12314],[[4,5,6,0,[],[1,30,12278],[[7,8,9,0,[],[1,32,12260],[[10,11,12,0,[],[1,35,12257],[],[[13,0,0,[14],[1,265,4308],[[0,15,16,0,0,0,0,0,[1,266,1515],[[0,17,18,0,19,20,0,0,[1,267,1478],[[267,2,21]]],[0,22,18,0,23,0,0,0,[1,1745,36],[]]]],[0,24,25,0,0,0,0,0,[1,1782,679],[[0,26,18,0,27,28,0,0,[1,1782,25],[]],[0,29,18,0,30,28,0,0,[1,1807,116],[[1807,2,31]]],[0,32,18,0,33,34,0,0,[1,1923,96],[[1923,2,35]]],[0,36,18,0,37,38,0,0,[1,2019,50],[[2019,2,39],[2036,2,40]]],[0,41,18,0,42,43,0,0,[1,2069,67],[[2069,2,44]]],[0,45,18,0,46,47,0,0,[1,2136,310],[]],[0,48,18,0,49,47,0,0,[1,2446,15],[[2460,2,50]]]]],[0,51,18,0,52,0,0,0,[1,2461,2110],[]]]],[53,0,0,[14],[1,4573,3899],[[0,15,16,0,0,0,0,0,[1,4573,1332],[[0,17,18,0,19,20,0,0,[1,4573,1307],[[4573,2,21]]],[0,22,18,0,23,0,0,0,[1,5879,25],[]]]],[0,54,25,0,0,0,0,0,[1,5906,435],[[0,26,18,0,27,28,0,0,[1,5908,28],[]],[0,29,18,0,30,28,0,0,[1,5937,106],[[5937,2,31]]],[0,32,18,0,33,55,0,0,[1,6044,85],[[6044,2,56]]],[0,36,18,0,37,57,0,0,[1,6129,45],[[6130,2,39],[6157,2,40]]],[0,41,18,0,42,43,0,0,[1,6189,120],[[6189,2,44]]],[0,45,18,0,46,47,0,0,[1,6309,17],[]],[0,48,18,0,49,47,0,0,[1,6326,15],[[6341,2,50]]]]],[0,51,18,0,52,0,0,0,[1,6341,2131],[]]]],[13,0,0,[58,59],[1,8472,3820],[[0,15,16,0,0,0,0,0,[1,8472,1301],[[0,17,18,0,19,20,0,0,[1,8472,1273],[[8472,2,21]]],[0,22,18,0,23,0,0,0,[1,9745,28],[]]]],[0,60,25,0,0,0,0,0,[1,9774,403],[[0,26,18,0,27,28,0,0,[1,9774,32],[]],[0,29,18,0,30,28,0,0,[1,9807,108],[[9807,2,31]]],[0,32,18,0,33,61,0,0,[1,9914,86],[[9914,2,62]]],[0,36,18,0,37,38,0,0,[1,10001,61],[[10001,2,39],[10028,2,40]]],[0,41,18,0,42,43,0,0,[1,10062,64],[[10062,2,44]]],[0,63,18,0,64,47,0,0,[1,10126,51],[[10177,2,65]]]]],[0,51,18,0,52,0,0,0,[1,10179,2113],[]]]]],[],[3,3,0,0]]],[],[],[3,3,0,0]]],[],[],[3,3,0,0]]],[],[],[3,3,0,0]];
 </script>
 <script type="text/javascript">
 window.output["strings"] = [];
 </script>
 <script type="text/javascript">
-window.output["strings"] = window.output["strings"].concat(["*","*Edu Php","*C:\\xampp\\htdocs\\edu_php","*..","*Test","*C:\\xampp\\htdocs\\edu_php\\test","*../test","*Tests","*C:\\xampp\\htdocs\\edu_php\\test\\tests","*../test/tests","*Test Login","*C:\\xampp\\htdocs\\edu_php\\test\\tests\\test_login.robot","*../test/tests/test_login.robot","*Login As Teacher","*smoke pozitif","*Open Edulien","*common","*Open Browser","*SeleniumLibrary","*<p>Opens a new browser instance to the optional <code>url\x3c/code>.\x3c/p>","*${url}    ${Browser}","*Opening browser 'chrome' to base url '<a href=\"http://localhost/edu_php/views/pages/main.php\">http://localhost/edu_php/views/pages/main.php\x3c/a>'.","*Maximize Browser Window","*<p>Maximizes current browser window.\x3c/p>","*Login As Teacher with valid fields","*auth_keywords","*Click Link","*<p>Clicks a link identified by <code>locator\x3c/code>.\x3c/p>","*${login}","*Clicking link 'xpath=//*[@id=\"navbarSupportedContent\"]/div[2]/div/a[1]'.","*Input Text","*<p>Types the given <code>text\x3c/code> into the text field identified by <code>locator\x3c/code>.\x3c/p>","*${email_lct}    teacher@gmail.com","*Typing text 'teacher@gmail.com' into text field 'id=email'.","*Input Password","*<p>Types the given password into the text field identified by <code>locator\x3c/code>.\x3c/p>","*${password_lct}    1234","*Typing password into text field 'id=password'.","*Temporally setting log level to: NONE","*Click Button","*<p>Clicks the button identified by <code>locator\x3c/code>.\x3c/p>","*${submit_btn}","*Clicking button 'xpath = //button[@type='submit']'.","*Element Should Be Visible","*<p>Verifies that the element identified by <code>locator\x3c/code> is visible.\x3c/p>","*${profile_text}","*Element 'xpath = /html/body/main/div[2]/form/h2' is displayed.","*Close Browser","*<p>Closes the current browser.\x3c/p>","*Login as Student","*Login As Student with valid fields","*${email_lct}    ${s_email}","*Typing text 'student@gmail.com' into text field 'id=email'.","*${password_lct}    ${s_password}","*negatif","*smoke","*Login As Teacher with invalid email","*${email_lct}    wrong@gmail.com","*Typing text 'wrong@gmail.com' into text field 'id=email'.","*Element Should Not Be Visible","*<p>Verifies that the element identified by <code>locator\x3c/code> is NOT visible.\x3c/p>","*Element 'xpath = /html/body/main/div[2]/form/h2' did not exist.","*Multiple tests with name 'Login As Teacher' executed in suite 'Edu Php.Test.Tests.Test Login'."]);
+window.output["strings"] = window.output["strings"].concat(["*","*Edu Php","*C:\\wamp64\\www\\edu_php","*..","*Test","*C:\\wamp64\\www\\edu_php\\test","*../test","*Tests","*C:\\wamp64\\www\\edu_php\\test\\tests","*../test/tests","*Test Login","*C:\\wamp64\\www\\edu_php\\test\\tests\\test_login.robot","*../test/tests/test_login.robot","*Login As Teacher","*smoke pozitif","*Open Edulien","*common","*Open Browser","*SeleniumLibrary","*<p>Opens a new browser instance to the optional <code>url\x3c/code>.\x3c/p>","*${url}    ${Browser}","*Opening browser 'chrome' to base url '<a href=\"http://localhost/edu_php/views/pages/main.php\">http://localhost/edu_php/views/pages/main.php\x3c/a>'.","*Maximize Browser Window","*<p>Maximizes current browser window.\x3c/p>","*Login As Teacher with valid fields","*auth_keywords","*Wait Until Element Is Enabled","*<p>Waits until the element <code>locator\x3c/code> is enabled.\x3c/p>","*${login}","*Click Link","*<p>Clicks a link identified by <code>locator\x3c/code>.\x3c/p>","*Clicking link 'xpath=//*[@id=\"navbarSupportedContent\"]/div[2]/div/a[1]'.","*Input Text","*<p>Types the given <code>text\x3c/code> into the text field identified by <code>locator\x3c/code>.\x3c/p>","*${email_lct}    teacher@yopmail.com","*Typing text 'teacher@yopmail.com' into text field 'id=email'.","*Input Password","*<p>Types the given password into the text field identified by <code>locator\x3c/code>.\x3c/p>","*${password_lct}    1234","*Typing password into text field 'id=password'.","*Temporally setting log level to: NONE","*Click Button","*<p>Clicks the button identified by <code>locator\x3c/code>.\x3c/p>","*${submit_btn}","*Clicking button 'xpath = //button[@type='submit']'.","*Wait Until Element Is Visible","*<p>Waits until the element <code>locator\x3c/code> is visible.\x3c/p>","*${profile_text}","*Element Should Be Visible","*<p>Verifies that the element identified by <code>locator\x3c/code> is visible.\x3c/p>","*Element 'xpath = /html/body/div/main/div[2]/form/h2' is displayed.","*Close Browser","*<p>Closes the current browser.\x3c/p>","*Login as Student","*Login As Student with valid fields","*${email_lct}    ${s_email}","*Typing text 'student@gmail.com' into text field 'id=email'.","*${password_lct}    ${s_password}","*negatif","*smoke","*Login As Teacher with invalid email","*${email_lct}    wrong@gmail.com","*Typing text 'wrong@gmail.com' into text field 'id=email'.","*Element Should Not Be Visible","*<p>Verifies that the element identified by <code>locator\x3c/code> is NOT visible.\x3c/p>","*Element 'xpath = /html/body/div/main/div[2]/form/h2' did not exist.","*Multiple tests with name 'Login As Teacher' executed in suite 'Edu Php.Test.Tests.Test Login'."]);
 </script>
 <script type="text/javascript">
-window.output["stats"] = [[{"elapsed":"00:00:21","fail":0,"label":"All Tests","pass":3,"skip":0}],[{"elapsed":"00:00:06","fail":0,"label":"negatif","pass":1,"skip":0},{"elapsed":"00:00:06","fail":0,"label":"smoke","pass":1,"skip":0},{"elapsed":"00:00:14","fail":0,"label":"smoke pozitif","pass":2,"skip":0}],[{"elapsed":"00:00:22","fail":0,"id":"s1","label":"Edu Php","name":"Edu Php","pass":3,"skip":0},{"elapsed":"00:00:22","fail":0,"id":"s1-s1","label":"Edu Php.Test","name":"Test","pass":3,"skip":0},{"elapsed":"00:00:22","fail":0,"id":"s1-s1-s1","label":"Edu Php.Test.Tests","name":"Tests","pass":3,"skip":0},{"elapsed":"00:00:22","fail":0,"id":"s1-s1-s1-s1","label":"Edu Php.Test.Tests.Test Login","name":"Test Login","pass":3,"skip":0}]];
+window.output["stats"] = [[{"elapsed":"00:00:12","fail":0,"label":"All Tests","pass":3,"skip":0}],[{"elapsed":"00:00:04","fail":0,"label":"negatif","pass":1,"skip":0},{"elapsed":"00:00:04","fail":0,"label":"smoke","pass":1,"skip":0},{"elapsed":"00:00:08","fail":0,"label":"smoke pozitif","pass":2,"skip":0}],[{"elapsed":"00:00:12","fail":0,"id":"s1","label":"Edu Php","name":"Edu Php","pass":3,"skip":0},{"elapsed":"00:00:12","fail":0,"id":"s1-s1","label":"Edu Php.Test","name":"Test","pass":3,"skip":0},{"elapsed":"00:00:12","fail":0,"id":"s1-s1-s1","label":"Edu Php.Test.Tests","name":"Tests","pass":3,"skip":0},{"elapsed":"00:00:12","fail":0,"id":"s1-s1-s1-s1","label":"Edu Php.Test.Tests.Test Login","name":"Test Login","pass":3,"skip":0}]];
 </script>
 <script type="text/javascript">
-window.output["errors"] = [[15516,3,62]];
+window.output["errors"] = [[8472,3,66]];
 </script>
 <script type="text/javascript">
-window.output["baseMillis"] = 1752665401872;
+window.output["baseMillis"] = 1752756401234;
 </script>
 <script type="text/javascript">
-window.output["generated"] = 22116;
+window.output["generated"] = 12333;
 </script>
 <script type="text/javascript">
 window.output["expand_keywords"] = null;
@@ -2214,7 +2207,7 @@ function addExecutionLog(main) {
 
 <script type="text/x-jquery-tmpl" id="tagStatisticsRowTemplate">
   <tr class="row-${$item.index}">
-    <td class="stats-col-name" title="{{html doc}}">
+    <td class="stats-col-name" title="${doc}">
       <div class="stat-name">
         <span>{{html label}}</span>
         {{if info}}(${info}){{/if}}
