@@ -57,10 +57,10 @@ function show_class_student()
             $bgColor = random_color();
             $class_link = "#";
             $result.= " 
-            <div class='card mb-4 mx-2'  style='width: 18rem; height:10rem; display:inline-block; vertical-align:top;background-color: $bgColor;'>
-                <div class='card-body'>
+            <div class='card mb-4 mx-2'  style='width: 18rem; height:10rem; display:inline-block; vertical-align:top;background-color: $bgColor; color:white;'>
+                <div class='card-body' >
                     <a href='$class_link' class='card-link'> <h5 class='card-title'>$class_name</h5></a>
-                    <h6 class='card-subtitle mb-2 text-body-secondary'>$teacher_name  $teacher_lastName</h6>    
+                    <h6 style='color:white;'>$teacher_name  $teacher_lastName</h6>    
                 </div>
             </div>";           
         }

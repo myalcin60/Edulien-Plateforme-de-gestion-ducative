@@ -28,8 +28,8 @@ $homework = 'Homework';
             ?>
         </header>
 
-        <main class="d-flex justify-content-center gap-5 my-5">
-            <div class="left-menu box-shadow">
+        <main class="d-sm-flex justify-content-center gap-5 my-5">
+            <div class="left-menu box-shadow d-lg-block d-flex flex-column w-auto h-auto align-self-start">
                 <a style="text-decoration: none;" href="./student_dashboard.php?form=profile">
                     <button> <?= $profile ?></button>
                 </a>
@@ -40,7 +40,7 @@ $homework = 'Homework';
                     <button> <?= $homework ?></button>
                 </a>
             </div>
-            <div class="right-menu box-shadow">
+            <div class="right-menu box-shadow ">
                 <?php
                 select_menu($menu);
                 ?>
