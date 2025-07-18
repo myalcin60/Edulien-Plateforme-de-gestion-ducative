@@ -27,8 +27,8 @@ $homework = 'Homework';
             ?>
         </header>
 
-        <main class="d-flex justify-content-center gap-5 my-5">
-            <div class="left-menu box-shadow ">
+        <main class="d-sm-flex justify-content-center gap-5 my-5">
+            <div class="left-menu box-shadow w-auto h-auto align-self-start">
                 <a class="menu" style="text-decoration: none;" href="./teacher_dashboard.php?form=profile">
                     <button> <?= $profile ?></button>
                 </a>
