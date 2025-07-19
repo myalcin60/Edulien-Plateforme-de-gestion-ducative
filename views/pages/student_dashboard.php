@@ -40,7 +40,10 @@ $homework = 'Homework';
                     <button> <?= $homework ?></button>
                 </a>
             </div>
-            <div class="right-menu box-shadow ">
+            <div class="d-sm-flex  gap-5  right-menu box-shadow">
+                <div style="width: 100px; height: 100px; background: gray; border-radius:50%">
+                    
+                </div>
                 <?php
                 select_menu($menu);
                 ?>

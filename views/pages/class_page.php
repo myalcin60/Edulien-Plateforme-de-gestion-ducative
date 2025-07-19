@@ -26,7 +26,7 @@ $students = show_students($classId);
             include '../compenents/header.php';
             ?>
         </header>
-        <div>
+        <div class="box-shadow container-md justify-content-center gap-5 my-5">
             <div class="container-sm">
                 <?php if (isset($_SESSION['error'])): ?>
                     <div class="alert alert-danger">
@@ -68,7 +68,7 @@ $students = show_students($classId);
 
         </div>
 
-        <div class="container-md mb-3">
+        <div class="box-shadow container-md mb-3">
             <div class="d-flex gap-3 p-3 justify-content-between">
                 <h2>Students List</h2> <a style="text-decoration: none;" href="./teacher_dashboard.php?form=classes">
                     <h2 style="color:black"> Classes</h2>

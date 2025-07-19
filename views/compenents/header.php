@@ -65,7 +65,7 @@ session_start();
 
                                     </div>
 
-                                    <button>Logout</button>
+                                    <button style="background:white; color:var(--primary)">Logout</button>
                                 </form>
 
 
