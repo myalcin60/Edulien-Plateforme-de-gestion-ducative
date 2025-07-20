@@ -4,10 +4,10 @@
 }
 #navbar{
     
-    background-color: var(--primary);
-    color: var(--light);
+    background-color: white;
+    color: var(--primary);
     >div>a{
-        color: var(--light);
+        color: var(--primary);
     }
  >div>img {
     border-radius: 5px;
@@ -24,5 +24,5 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* isteğe bağlı görsel */
 }
 body {
-    padding-top: 100px; /* header yüksekliğine göre ayarla */
+    padding-top: 150px; /* header yüksekliğine göre ayarla */
 }
