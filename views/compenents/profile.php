@@ -14,6 +14,9 @@
 
 <body>
     <form  action="../pages/teacher_dashboard.php" method="get">
+         <div style="width: 100px; height: 100px; background: gray; border-radius:50%">
+                    
+                </div>
         <h2>Profile</h2>
         <?php if (isset($_SESSION['first_name'])): ?>
             <p>ID : <?php echo $_SESSION['id']; ?> </p>
