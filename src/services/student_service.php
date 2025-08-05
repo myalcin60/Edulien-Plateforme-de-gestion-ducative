@@ -29,10 +29,10 @@ function show_students($classId)
                 Supprimer
             </a>";
 
-        $a_mod = "
-            <a href='../../views/pages/update_student.php?id=$student_id' class='btn btn-warning btn-sm'>
-                Update
-            </a>";
+        // $a_mod = "
+        //     <a href='../../views/pages/update_student.php?id=$student_id' class='btn btn-warning btn-sm'>
+        //         Update
+        //     </a>";   $a_mod 
 
         $liste .= "
             <tr>
@@ -40,7 +40,7 @@ function show_students($classId)
                 <td>$student_name</td>
                 <td>$student_email</td>
                 <td class='text-end w-25'>
-                    $a_sup $a_mod
+                   $a_sup
                 </td>
             </tr>";
     }

@@ -1,6 +1,13 @@
 <?php
 include __DIR__ . '/../repositories/class_repository.php';
 
+function update_class(){
+ $class=get_class_by_classId(htmlspecialchars($_GET['id']));
+ return $class;
+}
+   
+
+
 function show_classes()
 {
     $classes = get_classes($_SESSION['id']);
@@ -14,11 +21,11 @@ function show_classes()
         $class_link = "../../views/pages/class_page.php?id=$class_id";
         $a_sup = "
             <a href='../../src/controllers/class_controller.php?id=$class_id' class='btn btn-danger btn-sm me-2'>
-                Supprimer
+                Delete
             </a>";
 
         $a_mod = "
-            <a href='#?id=$class_id' class='btn btn-warning btn-sm'>
+            <a href='../../views/pages/update_class_name.php?id=$class_id' class='btn btn-warning btn-sm'>
                 Update
             </a>";
 

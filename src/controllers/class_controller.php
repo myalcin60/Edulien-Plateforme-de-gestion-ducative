@@ -49,3 +49,11 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "t
    header("location: ../../views/pages/teacher_dashboard.php?form=classes");
    die();
 }
+// update class name
+if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "update_class_name.php") and $_SERVER['REQUEST_METHOD'] == 'POST') {
+   // sorun burda veya update_class fonksiyonunda   
+   update_calss($_POST['id'], $_POST['class_name']);
+
+   header("location: ../../views/pages/teacher_dashboard.php?form=classes");
+   die();
+}

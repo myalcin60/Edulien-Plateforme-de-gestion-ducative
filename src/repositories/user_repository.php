@@ -27,14 +27,13 @@ function signup_user($id, $firstname, $lastname, $email, $password, $role)
 }
 
 // login
-function get_user($email,$password){
+function get_user($email){
     try{
     $pdo = db_connection();
-    $sql = "SELECT * from users  WHERE email= :email and password= :password";
+    $sql = "SELECT * from users  WHERE email= :email";
     $query = $pdo->prepare($sql);
     $query->bindValue(":email", $email);
-    $query->bindValue(":password", $password);
-     
+        
     $query->execute();
 
     return $query->fetch();

@@ -22,19 +22,37 @@ if (
    $email = $_POST['email'];
    $classId = $_POST['classId'];
 
-   $student = get_student__from_users($email);
-
-   $result = get_student__from_students($email,$classId);
-
-
-
-   if ($classId == $result['classId']) {
-      $_SESSION['error'] = 'This student already exists !!';
-       header("location: ../../views/pages/class_page.php?id=$classId");
+   if ($email == '') {
+      $_SESSION['error'] = 'Please enter an email address';
+      header("location: ../../views/pages/class_page.php?id=$classId");
       die();
    } else {
-      add_student($classId, $student['id'], $student['first_name'], $student['email']);
-       $_SESSION['success'] = 'Student added successfully.';
+      $student = get_student__from_users($email);
+      if ($student['id'] == null) {
+         $_SESSION['error'] = 'This student is not exists !!';
+         header("location: ../../views/pages/class_page.php?id=$classId");
+         die();
+      } 
+      
+      else {
+         $result = get_student__from_students($email, $classId);
+      }
+   }
+
+
+   if ($student['id'][0] != 'T') {
+      if ($classId == $result['classId']) {
+         $_SESSION['error'] = 'This student already exists !!';
+         header("location: ../../views/pages/class_page.php?id=$classId");
+         die();
+      } else {
+         add_student($classId, $student['id'], $student['first_name'], $student['email']);
+         $_SESSION['success'] = 'Student added successfully.';
+         header("location: ../../views/pages/class_page.php?id=$classId");
+         die();
+      } 
+   } else {
+      $_SESSION['error'] = 'This student is not exists !!';
       header("location: ../../views/pages/class_page.php?id=$classId");
       die();
    }

@@ -71,16 +71,33 @@ function get_classes_for_student($studentId)
 }
 
 //delete class
-function delete_class($classId){
-    try{
+function delete_class($classId)
+{
+    try {
         $pdo = db_connection();
         $sql = "Delete from classes
         where classId= :classId";
         $query = $pdo->prepare($sql);
         $query->bindValue("classId", $classId);
         $query->execute();
-         }catch (Exception $ex) {
-            echo "Class deletion failed". $ex->getMessage();
-         }
+    } catch (Exception $ex) {
+        echo "Class deletion failed" . $ex->getMessage();
+    }
 }
 
+// update class namespace
+function update_calss($classId, $nom)
+{
+    try {
+        $pdo = db_connection();
+        $sql = " Update classes
+                 SET nom = :nom
+                 WHERE classId = :classId ";
+        $query = $pdo->prepare($sql);
+        $query->bindValue("classId", $classId);
+        $query->bindValue("nom", $nom);
+        $query->execute();
+    } catch (Exception $ex) {
+        echo "Class deletion failed" . $ex->getMessage();
+    }
+}
