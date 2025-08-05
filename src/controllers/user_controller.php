@@ -16,12 +16,12 @@ if (
 
    $role = $_POST['role'];
    $id = create_id($role);
-
-
    $firstname = $_POST['firstname'];
-   $lastname = $_POST['lastname'];
+   $lastname =strtoupper( $_POST['lastname']);
    $email = $_POST['email'];
-   $password = $_POST['password'];
+
+   $password = password_hash($_POST['password'],PASSWORD_DEFAULT);
+
 
    $user = get_user_by_email($email);
 
@@ -44,9 +44,9 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "m
    $email = $_GET['email'];
    $password = $_GET['password'];
 
-   $user = get_user($email, $password);
+   $user = get_user($email);
 
-   if ($user) {
+   if ($user && password_verify($password,$user['password'])) {
 
       $_SESSION['first_name'] = $user['first_name'];
       $_SESSION['last_name'] = $user['last_name'];

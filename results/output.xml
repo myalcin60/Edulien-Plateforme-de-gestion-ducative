@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.3.2 (Python 3.11.9 on win32)" generated="2025-07-18T13:21:28.722634" rpa="false" schemaversion="5">
+<robot generator="Robot 7.3.2 (Python 3.11.9 on win32)" generated="2025-08-04T11:31:12.313426" rpa="false" schemaversion="5">
 <suite id="s1" name="Edu Php" source="C:\wamp64\www\edu_php">
 <suite id="s1-s1" name="Test" source="C:\wamp64\www\edu_php\test">
 <suite id="s1-s1-s1" name="Tests" source="C:\wamp64\www\edu_php\test\tests">
@@ -7,228 +7,160 @@
 <test id="s1-s1-s1-s1-t1" name="Login As Teacher" line="31">
 <kw name="Open Edulien" owner="common">
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2025-07-18T13:21:28.967682" level="INFO">Opening browser 'chrome' to base url 'http://localhost/edu_php/views/pages/main.php'.</msg>
+<msg time="2025-08-04T11:31:12.591026" level="INFO">Opening browser 'chrome' to base url 'http://localhost/edu_php/views/pages/main.php'.</msg>
 <arg>${url}</arg>
 <arg>${Browser}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2025-07-18T13:21:28.967682" elapsed="1.566743"/>
+<status status="PASS" start="2025-08-04T11:31:12.591026" elapsed="1.615131"/>
 </kw>
 <kw name="Maximize Browser Window" owner="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" start="2025-07-18T13:21:30.534425" elapsed="0.027744"/>
+<status status="PASS" start="2025-08-04T11:31:14.207155" elapsed="0.037992"/>
 </kw>
-<status status="PASS" start="2025-07-18T13:21:28.967682" elapsed="1.594487"/>
+<status status="PASS" start="2025-08-04T11:31:12.589844" elapsed="1.656265"/>
 </kw>
 <kw name="Login As Teacher with valid fields" owner="auth_keywords">
 <kw name="Wait Until Element Is Enabled" owner="SeleniumLibrary">
 <arg>${login}</arg>
 <doc>Waits until the element ``locator`` is enabled.</doc>
-<status status="PASS" start="2025-07-18T13:21:30.564164" elapsed="0.087745"/>
+<status status="PASS" start="2025-08-04T11:31:14.247107" elapsed="0.026251"/>
 </kw>
 <kw name="Click Link" owner="SeleniumLibrary">
-<msg time="2025-07-18T13:21:30.652838" level="INFO">Clicking link 'xpath=//*[@id="navbarSupportedContent"]/div[2]/div/a[1]'.</msg>
+<msg time="2025-08-04T11:31:14.275362" level="INFO">Clicking link 'xpath=//*[@id="navbarSupportedContent"]/div[2]/div/a[1]'.</msg>
 <arg>${login}</arg>
 <doc>Clicks a link identified by ``locator``.</doc>
-<status status="PASS" start="2025-07-18T13:21:30.652414" elapsed="0.110229"/>
+<status status="PASS" start="2025-08-04T11:31:14.274355" elapsed="0.112031"/>
 </kw>
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-07-18T13:21:30.763639" level="INFO">Typing text 'teacher@yopmail.com' into text field 'id=email'.</msg>
+<msg time="2025-08-04T11:31:14.387383" level="INFO">Typing text 'teacher@yopmail.com' into text field 'id=email'.</msg>
 <arg>${email_lct}</arg>
 <arg>teacher@yopmail.com</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-07-18T13:21:30.762643" elapsed="0.086942"/>
+<status status="PASS" start="2025-08-04T11:31:14.386386" elapsed="0.093354"/>
 </kw>
 <kw name="Input Password" owner="SeleniumLibrary">
-<msg time="2025-07-18T13:21:30.849585" level="INFO">Typing password into text field 'id=password'.</msg>
-<msg time="2025-07-18T13:21:30.881377" level="INFO">Temporally setting log level to: NONE</msg>
+<msg time="2025-08-04T11:31:14.479740" level="INFO">Typing password into text field 'id=password'.</msg>
+<msg time="2025-08-04T11:31:14.507967" level="INFO">Temporally setting log level to: NONE</msg>
 <arg>${password_lct}</arg>
 <arg>1234</arg>
 <doc>Types the given password into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-07-18T13:21:30.849585" elapsed="0.053996"/>
+<status status="PASS" start="2025-08-04T11:31:14.479740" elapsed="0.067373"/>
 </kw>
 <kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2025-07-18T13:21:30.903581" level="INFO">Clicking button 'xpath = //button[@type='submit']'.</msg>
+<msg time="2025-08-04T11:31:14.547113" level="INFO">Clicking button 'xpath = //button[@type='submit']'.</msg>
 <arg>${submit_btn}</arg>
 <doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2025-07-18T13:21:30.903581" elapsed="0.068446"/>
+<status status="PASS" start="2025-08-04T11:31:14.547113" elapsed="0.064190"/>
 </kw>
 <kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
 <arg>${profile_text}</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-07-18T13:21:30.972027" elapsed="0.484039"/>
+<status status="PASS" start="2025-08-04T11:31:14.611303" elapsed="0.073019"/>
 </kw>
 <kw name="Element Should Be Visible" owner="SeleniumLibrary">
-<msg time="2025-07-18T13:21:31.468960" level="INFO">Element 'xpath = /html/body/div/main/div[2]/form/h2' is displayed.</msg>
+<msg time="2025-08-04T11:31:14.696456" level="INFO">Element 'xpath = /html/body/div/main/div[2]/form/h2' is displayed.</msg>
 <arg>${profile_text}</arg>
 <doc>Verifies that the element identified by ``locator`` is visible.</doc>
-<status status="PASS" start="2025-07-18T13:21:31.456066" elapsed="0.012894"/>
+<status status="PASS" start="2025-08-04T11:31:14.684322" elapsed="0.013130"/>
 </kw>
-<status status="PASS" start="2025-07-18T13:21:30.563166" elapsed="0.906794"/>
+<status status="PASS" start="2025-08-04T11:31:14.246109" elapsed="0.451343"/>
 </kw>
 <kw name="Close Browser" owner="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="PASS" start="2025-07-18T13:21:31.469960" elapsed="2.118961"/>
+<status status="PASS" start="2025-08-04T11:31:14.697452" elapsed="2.129810"/>
 </kw>
 <tag>smoke pozitif</tag>
-<status status="PASS" start="2025-07-18T13:21:28.967682" elapsed="4.622128"/>
+<status status="PASS" start="2025-08-04T11:31:12.585974" elapsed="4.243281"/>
 </test>
-<test id="s1-s1-s1-s1-t2" name="Login as Student" line="37">
+<test id="s1-s1-s1-s1-t2" name="Login As Teacher" line="43">
 <kw name="Open Edulien" owner="common">
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2025-07-18T13:21:33.589810" level="INFO">Opening browser 'chrome' to base url 'http://localhost/edu_php/views/pages/main.php'.</msg>
+<msg time="2025-08-04T11:31:16.854502" level="INFO">Opening browser 'chrome' to base url 'http://localhost/edu_php/views/pages/main.php'.</msg>
 <arg>${url}</arg>
 <arg>${Browser}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2025-07-18T13:21:33.589810" elapsed="1.439445"/>
+<status status="PASS" start="2025-08-04T11:31:16.853506" elapsed="1.332570"/>
 </kw>
 <kw name="Maximize Browser Window" owner="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" start="2025-07-18T13:21:35.029255" elapsed="0.038565"/>
+<status status="PASS" start="2025-08-04T11:31:18.186076" elapsed="0.038887"/>
 </kw>
-<status status="PASS" start="2025-07-18T13:21:33.589810" elapsed="1.478010"/>
-</kw>
-<kw name="Login As Student with valid fields" owner="auth_keywords">
-<kw name="Wait Until Element Is Enabled" owner="SeleniumLibrary">
-<arg>${login}</arg>
-<doc>Waits until the element ``locator`` is enabled.</doc>
-<status status="PASS" start="2025-07-18T13:21:35.068817" elapsed="0.027482"/>
-</kw>
-<kw name="Click Link" owner="SeleniumLibrary">
-<msg time="2025-07-18T13:21:35.096299" level="INFO">Clicking link 'xpath=//*[@id="navbarSupportedContent"]/div[2]/div/a[1]'.</msg>
-<arg>${login}</arg>
-<doc>Clicks a link identified by ``locator``.</doc>
-<status status="PASS" start="2025-07-18T13:21:35.096299" elapsed="0.113984"/>
-</kw>
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-07-18T13:21:35.211310" level="INFO">Typing text 'student@gmail.com' into text field 'id=email'.</msg>
-<arg>${email_lct}</arg>
-<arg>${s_email}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-07-18T13:21:35.210283" elapsed="0.099217"/>
-</kw>
-<kw name="Input Password" owner="SeleniumLibrary">
-<msg time="2025-07-18T13:21:35.310240" level="INFO">Typing password into text field 'id=password'.</msg>
-<msg time="2025-07-18T13:21:35.326727" level="INFO">Temporally setting log level to: NONE</msg>
-<arg>${password_lct}</arg>
-<arg>${s_password}</arg>
-<doc>Types the given password into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-07-18T13:21:35.309875" elapsed="0.065989"/>
-</kw>
-<kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2025-07-18T13:21:35.375864" level="INFO">Clicking button 'xpath = //button[@type='submit']'.</msg>
-<arg>${submit_btn}</arg>
-<doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2025-07-18T13:21:35.375864" elapsed="0.065985"/>
-</kw>
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${profile_text}</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-07-18T13:21:35.441849" elapsed="0.304758"/>
-</kw>
-<kw name="Element Should Be Visible" owner="SeleniumLibrary">
-<msg time="2025-07-18T13:21:35.758779" level="INFO">Element 'xpath = /html/body/div/main/div[2]/form/h2' is displayed.</msg>
-<arg>${profile_text}</arg>
-<doc>Verifies that the element identified by ``locator`` is visible.</doc>
-<status status="PASS" start="2025-07-18T13:21:35.746607" elapsed="0.012172"/>
-</kw>
-<status status="PASS" start="2025-07-18T13:21:35.068817" elapsed="0.689962"/>
-</kw>
-<kw name="Close Browser" owner="SeleniumLibrary">
-<doc>Closes the current browser.</doc>
-<status status="PASS" start="2025-07-18T13:21:35.758779" elapsed="2.117846"/>
-</kw>
-<tag>smoke pozitif</tag>
-<status status="PASS" start="2025-07-18T13:21:33.589810" elapsed="4.286815"/>
-</test>
-<test id="s1-s1-s1-s1-t3" name="Login As Teacher" line="43">
-<kw name="Open Edulien" owner="common">
-<kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2025-07-18T13:21:37.876625" level="INFO">Opening browser 'chrome' to base url 'http://localhost/edu_php/views/pages/main.php'.</msg>
-<arg>${url}</arg>
-<arg>${Browser}</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2025-07-18T13:21:37.876625" elapsed="1.314247"/>
-</kw>
-<kw name="Maximize Browser Window" owner="SeleniumLibrary">
-<doc>Maximizes current browser window.</doc>
-<status status="PASS" start="2025-07-18T13:21:39.190872" elapsed="0.025802"/>
-</kw>
-<status status="PASS" start="2025-07-18T13:21:37.876625" elapsed="1.340049"/>
+<status status="PASS" start="2025-08-04T11:31:16.853506" elapsed="1.371457"/>
 </kw>
 <kw name="Login As Teacher with invalid email" owner="auth_keywords">
 <kw name="Wait Until Element Is Enabled" owner="SeleniumLibrary">
 <arg>${login}</arg>
 <doc>Waits until the element ``locator`` is enabled.</doc>
-<status status="PASS" start="2025-07-18T13:21:39.217699" elapsed="0.025687"/>
+<status status="PASS" start="2025-08-04T11:31:18.225961" elapsed="0.027925"/>
 </kw>
 <kw name="Click Link" owner="SeleniumLibrary">
-<msg time="2025-07-18T13:21:39.244383" level="INFO">Clicking link 'xpath=//*[@id="navbarSupportedContent"]/div[2]/div/a[1]'.</msg>
+<msg time="2025-08-04T11:31:18.253886" level="INFO">Clicking link 'xpath=//*[@id="navbarSupportedContent"]/div[2]/div/a[1]'.</msg>
 <arg>${login}</arg>
 <doc>Clicks a link identified by ``locator``.</doc>
-<status status="PASS" start="2025-07-18T13:21:39.243386" elapsed="0.105610"/>
+<status status="PASS" start="2025-08-04T11:31:18.253886" elapsed="0.106841"/>
 </kw>
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-07-18T13:21:39.350016" level="INFO">Typing text 'wrong@gmail.com' into text field 'id=email'.</msg>
+<msg time="2025-08-04T11:31:18.361723" level="INFO">Typing text 'wrong@gmail.com' into text field 'id=email'.</msg>
 <arg>${email_lct}</arg>
 <arg>wrong@gmail.com</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-07-18T13:21:39.350016" elapsed="0.087330"/>
+<status status="PASS" start="2025-08-04T11:31:18.360727" elapsed="0.086935"/>
 </kw>
 <kw name="Input Password" owner="SeleniumLibrary">
-<msg time="2025-07-18T13:21:39.437346" level="INFO">Typing password into text field 'id=password'.</msg>
-<msg time="2025-07-18T13:21:39.462757" level="INFO">Temporally setting log level to: NONE</msg>
+<msg time="2025-08-04T11:31:18.448654" level="INFO">Typing password into text field 'id=password'.</msg>
+<msg time="2025-08-04T11:31:18.474480" level="INFO">Temporally setting log level to: NONE</msg>
 <arg>${password_lct}</arg>
 <arg>1234</arg>
 <doc>Types the given password into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-07-18T13:21:39.437346" elapsed="0.059158"/>
+<status status="PASS" start="2025-08-04T11:31:18.448654" elapsed="0.058136"/>
 </kw>
 <kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2025-07-18T13:21:39.496504" level="INFO">Clicking button 'xpath = //button[@type='submit']'.</msg>
+<msg time="2025-08-04T11:31:18.507789" level="INFO">Clicking button 'xpath = //button[@type='submit']'.</msg>
 <arg>${submit_btn}</arg>
 <doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2025-07-18T13:21:39.496504" elapsed="0.068738"/>
+<status status="PASS" start="2025-08-04T11:31:18.506790" elapsed="0.066009"/>
 </kw>
 <kw name="Element Should Not Be Visible" owner="SeleniumLibrary">
-<msg time="2025-07-18T13:21:39.614680" level="INFO">Element 'xpath = /html/body/div/main/div[2]/form/h2' did not exist.</msg>
+<msg time="2025-08-04T11:31:18.631735" level="INFO">Element 'xpath = /html/body/div/main/div[2]/form/h2' did not exist.</msg>
 <arg>${profile_text}</arg>
 <doc>Verifies that the element identified by ``locator`` is NOT visible.</doc>
-<status status="PASS" start="2025-07-18T13:21:39.565242" elapsed="0.049438"/>
+<status status="PASS" start="2025-08-04T11:31:18.572799" elapsed="0.059936"/>
 </kw>
-<status status="PASS" start="2025-07-18T13:21:39.217699" elapsed="0.396981"/>
+<status status="PASS" start="2025-08-04T11:31:18.224963" elapsed="0.407772"/>
 </kw>
 <kw name="Close Browser" owner="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="PASS" start="2025-07-18T13:21:39.614680" elapsed="2.128393"/>
+<status status="PASS" start="2025-08-04T11:31:18.633729" elapsed="2.168626"/>
 </kw>
 <tag>negatif</tag>
 <tag>smoke</tag>
-<status status="PASS" start="2025-07-18T13:21:37.876625" elapsed="3.866448"/>
+<status status="PASS" start="2025-08-04T11:31:16.842836" elapsed="3.960255"/>
 </test>
-<status status="PASS" start="2025-07-18T13:21:28.757509" elapsed="12.985564"/>
+<status status="PASS" start="2025-08-04T11:31:12.364929" elapsed="8.442122"/>
 </suite>
-<status status="PASS" start="2025-07-18T13:21:28.754903" elapsed="12.988170"/>
+<status status="PASS" start="2025-08-04T11:31:12.361051" elapsed="8.449954"/>
 </suite>
-<status status="PASS" start="2025-07-18T13:21:28.751946" elapsed="13.002173"/>
+<status status="PASS" start="2025-08-04T11:31:12.354068" elapsed="8.460206"/>
 </suite>
-<status status="PASS" start="2025-07-18T13:21:28.726625" elapsed="13.028903"/>
+<status status="PASS" start="2025-08-04T11:31:12.325079" elapsed="8.497431"/>
 </suite>
 <statistics>
 <total>
-<stat pass="3" fail="0" skip="0">All Tests</stat>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 <stat pass="1" fail="0" skip="0">negatif</stat>
 <stat pass="1" fail="0" skip="0">smoke</stat>
-<stat pass="2" fail="0" skip="0">smoke pozitif</stat>
+<stat pass="1" fail="0" skip="0">smoke pozitif</stat>
 </tag>
 <suite>
-<stat name="Edu Php" id="s1" pass="3" fail="0" skip="0">Edu Php</stat>
-<stat name="Test" id="s1-s1" pass="3" fail="0" skip="0">Edu Php.Test</stat>
-<stat name="Tests" id="s1-s1-s1" pass="3" fail="0" skip="0">Edu Php.Test.Tests</stat>
-<stat name="Test Login" id="s1-s1-s1-s1" pass="3" fail="0" skip="0">Edu Php.Test.Tests.Test Login</stat>
+<stat name="Edu Php" id="s1" pass="2" fail="0" skip="0">Edu Php</stat>
+<stat name="Test" id="s1-s1" pass="2" fail="0" skip="0">Edu Php.Test</stat>
+<stat name="Tests" id="s1-s1-s1" pass="2" fail="0" skip="0">Edu Php.Test.Tests</stat>
+<stat name="Test Login" id="s1-s1-s1-s1" pass="2" fail="0" skip="0">Edu Php.Test.Tests.Test Login</stat>
 </suite>
 </statistics>
 <errors>
-<msg time="2025-07-18T13:21:37.876625" level="WARN">Multiple tests with name 'Login As Teacher' executed in suite 'Edu Php.Test.Tests.Test Login'.</msg>
+<msg time="2025-08-04T11:31:16.843832" level="WARN">Multiple tests with name 'Login As Teacher' executed in suite 'Edu Php.Test.Tests.Test Login'.</msg>
 </errors>
 </robot>
