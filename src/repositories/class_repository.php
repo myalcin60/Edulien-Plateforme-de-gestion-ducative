@@ -86,16 +86,16 @@ function delete_class($classId)
 }
 
 // update class namespace
-function update_calss($classId, $nom)
+function update_calss($classId, $className)
 {
     try {
         $pdo = db_connection();
         $sql = " Update classes
-                 SET nom = :nom
+                 SET className = :className
                  WHERE classId = :classId ";
         $query = $pdo->prepare($sql);
         $query->bindValue("classId", $classId);
-        $query->bindValue("nom", $nom);
+        $query->bindValue("className", $className);
         $query->execute();
     } catch (Exception $ex) {
         echo "Class deletion failed" . $ex->getMessage();

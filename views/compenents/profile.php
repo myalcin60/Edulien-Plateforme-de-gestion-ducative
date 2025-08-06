@@ -13,17 +13,23 @@
 </head>
 
 <body>
-    <form  action="../pages/teacher_dashboard.php" method="get">
-         <div style="width: 100px; height: 100px; background: gray; border-radius:50%">
-                    
-                </div>
+    <form action="../pages/teacher_dashboard.php" method="get">
+        <div style="width: 100px; height: 100px; background: gray; border-radius:50%">
+
+        </div>
         <h2>Profile</h2>
         <?php if (isset($_SESSION['first_name'])): ?>
-            <p>ID : <?php echo $_SESSION['id']; ?> </p>
-            <p>First Name : <?php echo $_SESSION['first_name']; ?> </p>
-            <p>Last Name : <?php echo $_SESSION['last_name']; ?> </p>
-            <p>Email : <?php echo $_SESSION['email']; ?> </p>
-            <p>Role : <?php echo $_SESSION['role']; ?> </p>
+            <div>
+                <p>ID : <?php echo $_SESSION['id']; ?> </p>
+                <p>First Name : <?php echo $_SESSION['first_name']; ?> </p>
+                <p>Last Name : <?php echo $_SESSION['last_name']; ?> </p>
+                <p>Email : <?php echo $_SESSION['email']; ?> </p>
+                <p>Role : <?php echo $_SESSION['role']; ?> </p>
+            </div>
+            <div>
+                <button >Update</button>
+            </div>
+
 
 
         <?php else: ?>
