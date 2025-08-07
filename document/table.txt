@@ -1,0 +1,13 @@
+user (id_user , firstName, lastName, email, password, role)
+
+classes (id_class, name, #id_user)
+
+homework (id_hw, title, date, type, #id_class)
+work (id_w, title, date, type, #id_user, #id_class, #id_hw)
+
+annonce (id_anc, title,date, type, #id_user, #id_class)
+
+question (id_qs, title, date, type, #id_user)
+answer (id_ans, title, date, type, #id_user, #id_qs)
+
+

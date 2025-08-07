@@ -6,7 +6,55 @@ function update_class(){
  return $class;
 }
    
+// function show_classes()
+// {
+//     $classes = get_classes($_SESSION['id']);
+//     $liste = "  <div class='table-responsive'>
+//         <table class='table table-striped table-hover align-middle'>
+//             <thead class='table-primary'>
+//                 <tr>
+                  
+//                     <th>Class Name</th>
+//                     <th class='text-end'>Delete</th>
+//                     <th class='text-end'>Update</th>
+//                 </tr>
+//             </thead>
+//             <tbody>";
 
+//     foreach ($classes as $class) {
+
+//         $class_id = htmlspecialchars($class[0]);
+//         $class_name = htmlspecialchars($class[1]);
+
+//         $class_link = "../../views/pages/class_page.php?id=$class_id";
+//         $a_sup = "
+//             <a href='../../src/controllers/class_controller.php?id=$class_id' class='btn btn-danger btn-sm me-2'>
+//                 Delete
+//             </a>";
+
+//         $a_mod = "
+//             <a href='../../views/pages/update_class_name.php?id=$class_id' class='btn btn-warning btn-sm'>
+//                 Update
+//             </a>";
+
+//        $liste .= "
+//             <tr>
+//                 <td> <a href='$class_link' style='text-decoration: none; color: inherit; flex-grow: 1;'>
+//                   $class_name
+//                  </a></td>
+               
+//                 <td class='text-end w-25'>
+//                    $a_mod
+//                 </td>
+//                 <td class='text-end w-25'>
+//                    $a_sup
+//                 </td>
+//             </tr>";
+//     }
+
+//     $liste .= "</ul>";
+//     return $liste;
+// }
 
 function show_classes()
 {

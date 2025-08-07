@@ -43,8 +43,9 @@ $student_classes = show_class_student();
                         <label for="class_name" class="form-label">ClassName</label>
                         <input type="text" id="class_name" name="class_name" class="form-control" placeholder="Enter class name">
                     </div>
-                    <div class="col-md-3 d-flex w-25 ">
-                        <button type="submit" class="btn btn-primary ms-3 ">Save</button>
+                    <div class=" d-flex w-25 ">
+                        <button type="submit">Save</button>
+                        <!-- <button type="submit" style="width: 100px; margin-left: 120px;">Save</button> -->
                     </div>
                 </div>
             </div>
