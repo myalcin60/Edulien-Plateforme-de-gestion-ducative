@@ -14,7 +14,7 @@ $url = (isset($_GET['form']) && $_GET['form'] === 'login') ? 'login' : 'signup';
 </head>
 
 <body>
- <div>
+ <div class="wrapper">
   <header>
         <?php
         include '../compenents/header.php';
