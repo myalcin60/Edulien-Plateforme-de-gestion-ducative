@@ -35,17 +35,16 @@ $student_classes = show_class_student();
     </div>
     <?php if ($_SESSION['role'] == 'teacher'): ?>
         <form action="../../src/controllers/class_controller.php" method="post">
-            <h2 class="p-3">Classes</h2>
+            <h2 class="p-3 title">Classes</h2>
 
             <div class="container mb-4">
-                <div class="row align-items-end">
-                    <div class="col-md-9 ">
+                <div class="item align-items-end">
+                    <div class=" item align-items-end col-md-9 ">
                         <label for="class_name" class="form-label">ClassName</label>
                         <input type="text" id="class_name" name="class_name" class="form-control" placeholder="Enter class name">
                     </div>
                     <div class=" d-flex w-25 ">
                         <button type="submit">Save</button>
-                        <!-- <button type="submit" style="width: 100px; margin-left: 120px;">Save</button> -->
                     </div>
                 </div>
             </div>
