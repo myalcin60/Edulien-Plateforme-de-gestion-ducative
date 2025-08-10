@@ -40,8 +40,11 @@ $student_classes = show_class_student();
             <div class="container mb-4">
                 <div class="item align-items-end">
                     <div class=" item align-items-end col-md-9 ">
-                        <label for="class_name" class="form-label">ClassName</label>
+                        <label for="class_name" class="form-label">Class</label>
                         <input type="text" id="class_name" name="class_name" class="form-control" placeholder="Enter class name">
+                         <!-- <label for="lesson_name" class="form-label">Lesson</label>
+                        <input type="text" id="lesson_name" name="lesson_name" class="form-control" placeholder="Enter lesson name">
+                     -->
                     </div>
                     <div class=" d-flex w-25 ">
                         <button type="submit">Save</button>

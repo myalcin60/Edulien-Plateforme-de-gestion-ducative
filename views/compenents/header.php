@@ -15,10 +15,11 @@ session_start();
 
 </head>
 
-<body >
+<body>
     <div class="header">
         <nav class=" d-flex navbar navbar-expand-lg ">
             <div class="container-fluid" id="navbar">
+               
                 <div class="d-flex gap-3 align-items-center">
                     <img class="d-md-block d-none logo-img" src="\edu_php\views\assets\logo.jpg" alt="">
 
@@ -31,12 +32,13 @@ session_start();
                     <?php endif; ?>
 
                 </div>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
+                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse gap-3" id="navbarSupportedContent">
+
+                <div class="flex collapse navbar-collapse gap-3" id="navbarSupportedContent">
                     <div class="d-flex gap-3">
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
                         <a class="nav-link active" aria-current="page" href="#">About</a>
@@ -65,7 +67,7 @@ session_start();
 
                                     </div>
 
-                                    <button style="background:white; color:var(--primary)">Logout</button>
+                                    <button style="background:white; color:var(--primary)" name="logout">Logout</button>
                                 </form>
 
 

@@ -15,6 +15,22 @@ function create_class($user_id,  $className)
         echo 'Error: problème de create class';
     }
 }
+//craet lesson
+function creat_lesson($lessonName, $teacher_id, $classId){
+   try {
+        $pdo = db_connection();
+        
+        $sql = 'INSERT INTO lessons ( lessonName, teacherId, classId ) values ( :lessonName, :teacherId, :classId)';
+        $query = $pdo->prepare($sql);
+        $query->bindValue("lessonName", $lessonName);
+        $query->bindValue("teacherId", $teacher_id);
+        $query->bindValue("classId", $classId);
+        $query->execute();
+    } catch (Exception $ex) {
+        echo 'Error: problème de create lesson';
+    }
+
+}
 
 //get class with teacher id
 function get_classes($teacher_id)
