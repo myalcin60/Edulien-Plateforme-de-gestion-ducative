@@ -1,9 +1,9 @@
 <?php
 include __DIR__ . '/../repositories/student_repository.php';
 
-function show_students($classId)
+function show_students($lessonId)
 {
-    $students = get_students_in_class($classId);
+    $students = get_students_in_lesson($lessonId);
 
     $liste = "
         <div class='table-responsive'>
@@ -25,7 +25,7 @@ function show_students($classId)
 
      
         $a_sup = "
-            <a href='../../src/controllers/student_controller.php?studentId=$student_id&classId=$classId'' class='btn btn-danger btn-sm me-2'>
+            <a href='../../src/controllers/student_controller.php?studentId=$student_id&lessonId=$lessonId'' class='btn btn-danger btn-sm me-2'>
                 Supprimer
             </a>";
 

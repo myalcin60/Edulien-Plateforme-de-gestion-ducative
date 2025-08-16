@@ -27,8 +27,7 @@ CREATE Table classes (
 
 SELECT * FROM classes;
 
-SELECT * FROM classes
-WHERE classId = 1;
+SELECT * FROM classes WHERE classId = 1;
 
 
 

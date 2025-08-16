@@ -25,15 +25,15 @@
                 <div class="">
                     <p>ID : <?php echo $_SESSION['id']; ?> </p>
                     <!-- <p>Role : <?php echo $_SESSION['role']; ?> </p> -->
-                    <p>Email : <?php echo $_SESSION['email']; ?> </p>
+                    <p>Email  <?php echo $_SESSION['email']; ?> </p>
 
                 </div>
                 <div>
-                    <p>Last Name : <?php echo $_SESSION['last_name']; ?> </p>
+                    <p>Last Name  <?php echo $_SESSION['last_name']; ?> </p>
 
                 </div>
                 <div>
-                    <p>First Name : <?php echo $_SESSION['first_name']; ?> </p>
+                    <p>First Name  <?php echo $_SESSION['first_name']; ?> </p>
                 </div>
                 <div>
                     <button class="profil-updt">Update</button>

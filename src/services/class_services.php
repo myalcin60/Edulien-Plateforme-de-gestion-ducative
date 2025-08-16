@@ -5,6 +5,45 @@ function update_class(){
  $class=get_class_by_classId(htmlspecialchars($_GET['id']));
  return $class;
 }
+
+// show lessons
+function show_lessons()
+{   
+    $lessons = get_lessons_with_classId($_SESSION['classId']);
+    $liste = "<ul class='list-group'>";
+
+    foreach ($lessons as $lesson) {
+
+        $lessonId = htmlspecialchars($lesson['lessonId']);
+        $lessonName = htmlspecialchars($lesson['lessonName']);
+
+        $lessonLink = "../../views/pages/lesson_page.php?id=$lessonId";
+        $a_sup = "
+            <a href='../../src/controllers/class_controller.php?id=$lessonId' class='btn btn-danger btn-sm me-2'>
+                Delete
+            </a>";
+
+        $a_mod = "
+            <a href='../../views/pages/update_lessonName.php?id=$lessonId' class='btn btn-warning btn-sm'>
+                Update
+            </a>";
+
+        $liste .= "
+            <li class='list-group-item d-flex justify-content-between align-items-center'>
+                 <input type='hidden' value='$lessonId'>
+                <a href='$lessonLink' style='text-decoration: none; color: inherit; flex-grow: 1;'>
+                  $lessonName
+                </a>
+                <div class='d-flex gap-3 mb-1'>
+                    $a_sup
+                    $a_mod
+                </div>
+            </li>";
+    }
+
+    $liste .= "</ul>";
+    return $liste;
+}
    
 // function show_classes()
 // {
@@ -66,7 +105,7 @@ function show_classes()
         $class_id = htmlspecialchars($class[0]);
         $class_name = htmlspecialchars($class[1]);
 
-        $class_link = "../../views/pages/class_page.php?id=$class_id";
+        $class_link = "../../views/pages/class_page.php?classId=$class_id";
         $a_sup = "
             <a href='../../src/controllers/class_controller.php?id=$class_id' class='btn btn-danger btn-sm me-2'>
                 Delete
