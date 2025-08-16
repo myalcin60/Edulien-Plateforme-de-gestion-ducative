@@ -14,46 +14,49 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "c
    die();
 }
 // add student
+
 if (
    isset($_SERVER["HTTP_REFERER"]) &&
-   str_contains($_SERVER['HTTP_REFERER'], 'class_page') &&
+   str_contains($_SERVER['HTTP_REFERER'], 'lesson_page.php') &&
    $_SERVER['REQUEST_METHOD'] === 'POST'
 ) {
-   $email = $_POST['email'];
-   $classId = $_POST['classId'];
+  $lessonId = $_POST['lessonId'] ?? null;
+$classId  = $_POST['classId'] ?? null;
+$email    = $_POST['email'] ?? null;
 
    if ($email == '') {
       $_SESSION['error'] = 'Please enter an email address';
-      header("location: ../../views/pages/class_page.php?id=$classId");
+      header("location: ../../views/pages/lesson_page.php?id=$lessonId");
       die();
    } else {
       $student = get_student__from_users($email);
       if ($student['id'] == null) {
          $_SESSION['error'] = 'This student is not exists !!';
-         header("location: ../../views/pages/class_page.php?id=$classId");
+         header("location: ../../views/pages/lesson_page.php?id=$lessonId");
          die();
       } 
       
       else {
-         $result = get_student__from_students($email, $classId);
+         $result = get_student__from_lesson_students($email, $lessonId);
       }
    }
 
 
+
    if ($student['id'][0] != 'T') {
-      if ($classId == $result['classId']) {
+      if ($lessonId == $result['lessonId']) {
          $_SESSION['error'] = 'This student already exists !!';
-         header("location: ../../views/pages/class_page.php?id=$classId");
+         header("location: ../../views/pages/lesson_page.php?id=$lessonId");
          die();
       } else {
-         add_student($classId, $student['id'], $student['first_name'], $student['email']);
+         add_student($lessonId, $student['id'], $student['first_name'], $student['email'], $classId);
          $_SESSION['success'] = 'Student added successfully.';
-         header("location: ../../views/pages/class_page.php?id=$classId");
+         header("location: ../../views/pages/lesson_page.php?id=$lessonId"); 
          die();
       } 
    } else {
       $_SESSION['error'] = 'This student is not exists !!';
-      header("location: ../../views/pages/class_page.php?id=$classId");
+      header("location: ../../views/pages/lesson_page.php?id=$lessonId");
       die();
    }
 }

@@ -1,11 +1,10 @@
 <?php
 include __DIR__ . '/../../src/services/class_services.php';
 include __DIR__ . '/../../src/services/student_service.php';
-$classId = $_GET['classId'];
-$_SESSION['classId'] = $classId;
-$class = get_class_by_classId($classId);
-// echo $class[0]["teacherId"];
-$lessons= show_lessons();
+$lessonId = $_REQUEST['id'] ?? null;
+$lesson =get_lessons_by_lessonId($lessonId);
+$class = get_class_by_classId($lesson[0]['classId'] ?? null);
+$students = show_students($lessonId);
 
 
 include __DIR__ . '/../../src/services/service.php';
@@ -23,7 +22,7 @@ $homework = 'Homework';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Class Page</title>
+    <title>Lesson Page</title>
     <link rel="stylesheet" href="../css/main.css" />
     <link rel="stylesheet" href="../css/teacher_dashboard.css" />
 
@@ -38,7 +37,6 @@ $homework = 'Homework';
         </header>
         <main class="d-sm-flex justify-content-center gap-5 my-5">
             <?php include '../compenents/left-menu.php' ?>
-
             <div class="right-menu box-shadow ">
                 <div class="container-sm ">
                     <?php if (isset($_SESSION['error'])): ?>
@@ -55,40 +53,40 @@ $homework = 'Homework';
                         </div>
                     <?php endif; ?>
                 </div>
-
-
-                <form class="form-sm" action="../../src/controllers/class_controller.php" method="post">
+                <form class="form-sm" action="../../src/controllers/student_controller.php" method="post">
                     <div>
-                        <h2 class="p-3 title"> Class Name : <?= $class[0][1] ?> </h2>
-                        <input type="hidden" name="classId" value="<?= $classId ?> ">
-                        <input type="hidden" name="teacherId" value="<?= $class[0]["teacherId"] ?> ">
-                        <input type="hidden" name="formType" value="create_lesson">
+                        <h2 class="p-3 title"> Class Name : <?= $class[0]['className'] ?? null ?> </h2>
+                        <input type="hidden" name="classId" value="<?=  $class[0]['classId'] ?> ">
                     </div>
-                    <div class="container mb-4  gap-3 d-flex  ">
+                    <div>
+                        <h2 class="p-3 title"> Lesson Name : <?= $lesson[0][1] ?? null ?> </h2>
+                        <input type="hidden" name="lessonId" value="<?= $lessonId ?> ">
+                    </div>
+                    <div class="container mb-4  gap-3 d-flex ">
                         <div class="container-sm  gap-5 d-flex">
-                            <label for="lesson" class="form-label">Lesson</label>
-                            <input type="text" class="form-control" id="lesson" name="lesson" placeholder="Lesson Name">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email">
                         </div>
                         <div class=" d-flex w-25 ">
                             <button type="submit">Save</button>
                         </div>
                     </div>
                 </form>
-                        
+
+
                 <div class="box-shadow container-md mb-3">
                     <div class="d-flex gap-3 p-3 justify-content-between">
-                        <h2>Lesson List</h2> <a style="text-decoration: none;"
-                            href="./teacher_dashboard.php?form=classes">
-                            <h2 style="color:black"> Classes</h2>
+                        <h2>Students List</h2> <a style="text-decoration: none;"
+                        
+                            href="./lesson_page.php?id=<?=$lessonId ?>"> 
+                            <h2 style="color:black"> Lessons</h2>
                         </a>
                     </div>
 
                     <div class="gap-3 p-3">
-                        <?= $lessons ?>
+                        <?= $students ?>
                     </div>
                 </div>
-
-               
             </div>
         </main>
         <footer>

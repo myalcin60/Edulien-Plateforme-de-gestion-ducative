@@ -35,9 +35,8 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "c
    if ($_POST['formType'] === 'create_lesson') {
       echo  $lessonName, $teacherId , $classId;
       creat_lesson($lessonName,  $teacherId, $classId);
-     // header("location: ../../views/pages/class_page.php?id=$classId");
- 
-     // die();
+      header("location: ../../views/pages/class_page.php?id=$classId");
+      die();
    } else {
       session_unset();
       session_destroy();
