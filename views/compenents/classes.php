@@ -1,7 +1,9 @@
 <?php
 include __DIR__ . '/../../src/services/class_services.php';
+include __DIR__ . '/../../src/services/lesson_services.php';
+
 $classes = show_classes();
-$student_classes = show_class_student();
+$student_lessons = show_student_lessons();
 
 
 
@@ -63,7 +65,7 @@ $student_classes = show_class_student();
         </div>
     <?php else: ?>
         <div class="d-flex flex-wrap justify-content-start">
-            <?= $student_classes ?>
+            <?= $student_lessons ?>
         </div>
 
     <?php endif; ?>

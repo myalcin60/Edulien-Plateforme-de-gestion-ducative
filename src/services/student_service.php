@@ -28,12 +28,6 @@ function show_students($lessonId)
             <a href='../../src/controllers/student_controller.php?studentId=$student_id&lessonId=$lessonId'' class='btn btn-danger btn-sm me-2'>
                 Supprimer
             </a>";
-
-        // $a_mod = "
-        //     <a href='../../views/pages/update_student.php?id=$student_id' class='btn btn-warning btn-sm'>
-        //         Update
-        //     </a>";   $a_mod 
-
         $liste .= "
             <tr>
                 <td>$student_id</td>

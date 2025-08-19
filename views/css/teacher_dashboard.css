@@ -36,14 +36,6 @@
         margin-bottom: 5%;
         padding: 2%;
 
-        >div>img {
-            width: 80px;
-            height: 80px;
-            padding: 5%;
-            background-color: yellow;
-            border-radius: 15%;
-        }
-
     }
 }
 
@@ -58,15 +50,14 @@
 
         .profile {
             display: block;
-            >div>img {
-            padding: 1%;
+
         }
 
         }
         .profil-updt {
             width: 200px;
         }
-    }
+    
 
     .left-menu {
         min-height: auto;

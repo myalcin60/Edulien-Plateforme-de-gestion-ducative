@@ -4,7 +4,7 @@ $menu = isset($_GET['form']) ? $_GET['form'] : null;
 
 
 $profile = 'Profile';
-$classes = 'Classes';
+$classes = 'Lessons';
 $homework = 'Homework';
 
 ?>

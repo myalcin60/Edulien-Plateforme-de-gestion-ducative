@@ -25,26 +25,6 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "f
       die();
    }
 }
-// creat lesson
-
-if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "class_page") and $_SERVER['REQUEST_METHOD'] == 'POST') {
-   $lessonName = $_POST['lesson'];
-   $classId = $_POST['classId'];
-   $teacherId = $_POST['teacherId'];
-
-   if ($_POST['formType'] === 'create_lesson') {
-      echo  $lessonName, $teacherId , $classId;
-      creat_lesson($lessonName,  $teacherId, $classId);
-      header("location: ../../views/pages/class_page.php?id=$classId");
-      die();
-   } else {
-      session_unset();
-      session_destroy();
-      header("location: ../../views/pages/main.php?form=login");
-      die();
-   }
-}
-
 
 //get class 
 if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "class_page") and $_SERVER['REQUEST_METHOD'] === 'GET') {
@@ -52,16 +32,6 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "c
    header("location: ../../views/pages/student_dashboard.php?form=classes");
    die();
 }
-
-
-
-//logout
-// if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "class_page") and $_SERVER['REQUEST_METHOD'] == 'POST') {
-//    session_unset();
-//    session_destroy();
-//    header("location: ../../views/pages/main.php?form=login");
-//    die();
-// }
 
 // delete class
 if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "teacher_dashboard.php?form=classes") and $_SERVER['REQUEST_METHOD'] == 'GET') {
