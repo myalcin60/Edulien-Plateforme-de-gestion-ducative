@@ -1,0 +1,27 @@
+.profil-updt {
+        width: 200px;
+       
+    }
+
+    .profile {
+        display: flex;
+        justify-content: flex-start !important;
+        align-items: baseline;
+        gap: 5%;
+       
+        margin-bottom: 5%;
+        padding: 2%;
+    }
+
+    @media(max-width:700px) {
+
+        .profile {
+            display: block;
+
+        }   
+        .profil-updt {
+            width: 200px;
+        }
+    
+    }
+    

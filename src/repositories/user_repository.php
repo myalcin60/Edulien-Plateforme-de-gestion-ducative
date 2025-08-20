@@ -25,19 +25,18 @@ function signup_user($id, $firstname, $lastname, $email, $password, $role)
         echo "\nErreur : problème de connexion avec la BD: " . $ex->getMessage();
     }
 }
-
 // login
-function get_user($email)
+function get_user_by_id($id)
 {
     try {
         $pdo = db_connection();
-        $sql = "SELECT * from users  WHERE email= :email";
+        $sql = "SELECT * from users  WHERE id= :id";
         $query = $pdo->prepare($sql);
-        $query->bindValue(":email", $email);
+        $query->bindValue(":id", $id);
 
         $query->execute();
 
-        return $query->fetch();
+        return $query->fetch(PDO::FETCH_ASSOC);
     } catch (Exception $ex) {
         echo "\nErreur : problème de connexion avec la BD: " . $ex->getMessage();
     }
@@ -60,7 +59,8 @@ function get_user_by_email($email)
     }
 }
 // upload  user photo
-function uplad_user_photo($userId, $fileContent, $fileType) {
+function uplad_user_photo($userId, $fileContent, $fileType)
+{
     try {
         $pdo = db_connection();
         $sql = "UPDATE users 
@@ -70,17 +70,14 @@ function uplad_user_photo($userId, $fileContent, $fileType) {
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
             ':photo' => $fileContent,
-            ':fileType'  => $fileType,
-            ':userId'    => $userId
+            ':fileType' => $fileType,
+            ':userId' => $userId
         ]);
-     } catch (Exception $ex) {
+    } catch (Exception $ex) {
         echo "\nErreur : problème de connexion avec la BD: " . $ex->getMessage();
     }
 }
-
-
 // get user photo
-
 function get_user_photo($userId)
 {
     try {
@@ -103,4 +100,17 @@ function get_user_photo($userId)
         return null;
     }
 
+}
+// update user profile
+function update_user_profile($id,$email, $first_name, $last_name, $gender, )
+{
+    try {
+        $pdo = db_connection();
+        $sql = "UPDATE users SET email = ?, first_name = ?, last_name = ?, gender = ? WHERE id = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$email, $first_name, $last_name, $gender,$id]);
+    } catch (\Throwable $ex) {
+        echo "Erreur : problème de connexion avec la BD: " . $ex->getMessage();
+        return null;
+    }
 }

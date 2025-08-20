@@ -10,9 +10,7 @@
 
 .right-menu {
     width: 70%;
-    
     background-color: var(--light);
-  
     font-weight: bold;
     padding: 2% 2% 0 2%;
 
@@ -22,42 +20,17 @@
         gap: 10%;
     }
 
-    .profil-updt {
-        width: 200px;
-       
-    }
-
-    .profile {
-        display: flex;
-        justify-content: flex-start !important;
-        align-items: baseline;
-        gap: 10%;
-       
-        margin-bottom: 5%;
-        padding: 2%;
-
-    }
+    
 }
 
-@media(max-width:500px) {
+@media(max-width:700px) {
     .right-menu {
         width: auto;
-
         .item {
             display: flex;
             justify-content: space-between;
         }
 
-        .profile {
-            display: block;
-
-        }
-
-        }
-        .profil-updt {
-            width: 200px;
-        }
-    
 
     .left-menu {
         min-height: auto;
@@ -66,4 +39,4 @@
         margin-bottom: 5%;
 
     }
-}
+    }}

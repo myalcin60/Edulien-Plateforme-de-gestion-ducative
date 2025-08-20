@@ -7,7 +7,6 @@ include_once __DIR__ . '/../../views/partiel/toast.php';
 
 $id = '';
 // Signup 
-//  if (str_contains($_SERVER['HTTP_REFERER'], 'main') and $_SERVER['REQUEST_METHOD'] === 'POST')
 if (
    $_SERVER['REQUEST_METHOD'] === 'POST' &&
    isset($_POST['source']) &&
@@ -44,7 +43,7 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "m
    $email = $_GET['email'];
    $password = $_GET['password'];
 
-   $user = get_user($email);
+   $user = get_user_by_email($email);
 
    if ($user && password_verify($password, $user['password'])) {
 
@@ -92,6 +91,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'logout') {
    ];
    header("location: ../../views/pages/main.php?form=login");
    die();
+
 }
 
 // uplaod photo
@@ -105,11 +105,10 @@ if (isset($_FILES['profile_photo']) && $_FILES['profile_photo']['error'] === UPL
    uplad_user_photo($userId, $fileContent, $fileType);
    echo "Photo uploaded successfully!";
 
-   header("location: ../../views/pages/teacher_dashboard.php");
+   header("location: ../../views/pages/teacher_dashboard.php?form=profile");
    die();
 } else {
    echo "Photo could not be uploaded!";
-   header("location: ../../views/pages/teacher_dashboard.php");
+   header("location: ../../views/pages/teacher_dashboard.php?form=profile");
    die();
 }
-

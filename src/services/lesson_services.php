@@ -59,7 +59,7 @@ function show_student_lessons()
             $bgColor = random_color();
             $lesson_link = "#";
             $result.= " 
-            <div class='card mb-4 mx-2'  style='width: 18rem; height:10rem; display:inline-block; vertical-align:top;background-color: $bgColor; color:white;'>
+            <div class='card mb-4 mx-2'  style='width: 18rem; height:10rem; display:inline-block; vertical-align:top;background-color: $bgColor; color:white; padding: 2%;'>
                 <div lesson='card-body' >
                     <a href='$lesson_link' lesson='card-link'> <h5 lesson='card-title'>$lesson_name</h5></a>
                     <h6 style='color:white;'>$teacher_name  $teacher_lastName</h6>    
