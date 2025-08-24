@@ -1,5 +1,5 @@
 <?php
-include __DIR__ . '/../config/connection.php';
+include_once __DIR__ . '/../config/connection.php';
 
 // creaat class for teacher
 function create_class($userId, $className)

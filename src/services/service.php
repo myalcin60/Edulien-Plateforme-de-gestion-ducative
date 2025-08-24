@@ -17,6 +17,7 @@ function select_menu($menu)
         $profile = 'profile';
         $classes = 'classes';
         $homework = 'homework';
+       
 
         switch ($menu) {
             case $profile:
@@ -37,5 +38,22 @@ function select_menu($menu)
     }
 }
 
-
+function select_homework_menu($menu)
+{
+    try {
+               switch ($menu) {
+                case 'homeworks':
+                include '../../views/compenents/homeworks.php';
+                break;
+                case 'create_homework':
+                include '../../views/compenents/create_homework.php';
+                break;
+            default:
+                include '../../views/compenents/homeworks.php';
+                break;
+        }
+    } catch (Exception $ex) {
+        echo 'error' . $ex;
+    }
+}
 

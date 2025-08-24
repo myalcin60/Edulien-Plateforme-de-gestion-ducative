@@ -1,0 +1,43 @@
+<?php
+include_once __DIR__ . '/../repositories/homework_repository.php';
+// creat homwork 
+if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "teacher_dashboard.php") and $_SERVER['REQUEST_METHOD'] == 'POST') {
+    $teacherId = $_POST['userId'];
+    $title = $_POST['hm_title'];
+    $homework = $_POST['homework'];
+    $classId = $_POST['classId'];
+    $lessonId = $_POST['lessonId'];
+    $studentIds = $_POST['studentIds'] ?? [];
+    var_dump($studentIds);
+    $filePath = null;
+    $fileType = null;
+
+    // 1) Dosya yükleme kontrolü
+    if (isset($_FILES['file']) && $_FILES['file']['error'] == 0) {
+        $uploadDir = __DIR__ . "/../uploads/homeworks/";
+        if (!is_dir($uploadDir)) {
+            mkdir($uploadDir, 0777, true);
+        }
+
+        $fileName = time() . "_" . basename($_FILES['file']['name']);
+        $targetPath = $uploadDir . $fileName;
+
+        if (move_uploaded_file($_FILES['file']['tmp_name'], $targetPath)) {
+            $filePath = "uploads/homeworks/" . $fileName;
+
+            $ext = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+            if (in_array($ext, ['jpg', 'jpeg', 'png'])) {
+                $fileType = 'image';
+            } elseif ($ext === 'pdf') {
+                $fileType = 'pdf';
+            } else {
+                $fileType = 'text';
+            }
+        }
+    }
+
+    create_homework($teacherId, $studentIds, $classId, $lessonId, $title, $homework, $filePath, $fileType);
+
+    header("location: ../../views/pages/teacher_dashboard.php?form=homework&classId=$classId&lessonId=$lessonId");
+    die();
+}

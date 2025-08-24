@@ -2,13 +2,14 @@
 include __DIR__ . '/../repositories/class_repository.php';
 
 
-function update_class(){
- $class=get_class_by_classId(htmlspecialchars($_GET['id']));
- return $class;
+function update_class()
+{
+    $class = get_class_by_classId(htmlspecialchars($_GET['id']));
+    return $class;
 }
 
 
-   
+
 // function show_classes()
 // {
 //     $classes = get_classes($_SESSION['id']);
@@ -16,7 +17,7 @@ function update_class(){
 //         <table class='table table-striped table-hover align-middle'>
 //             <thead class='table-primary'>
 //                 <tr>
-                  
+
 //                     <th>Class Name</th>
 //                     <th class='text-end'>Delete</th>
 //                     <th class='text-end'>Update</th>
@@ -45,7 +46,7 @@ function update_class(){
 //                 <td> <a href='$class_link' style='text-decoration: none; color: inherit; flex-grow: 1;'>
 //                   $class_name
 //                  </a></td>
-               
+
 //                 <td class='text-end w-25'>
 //                    $a_mod
 //                 </td>
@@ -94,6 +95,27 @@ function show_classes()
     }
 
     $liste .= "</ul>";
+    return $liste;
+}
+
+function show_classes_in_select($selectedClassId = null)
+{
+    $classes = get_classes($_SESSION['id']);
+
+    // "SELECT CLASS" yalnızca hiçbir class seçilmemişse selected
+    $selectOptionSelected = ($selectedClassId === null) ? "selected" : "";
+
+    $liste = "<select name='classId'>
+                <option value='' disabled $selectOptionSelected>SELECT CLASS</option>";
+
+    foreach ($classes as $class) {
+        $class_id = htmlspecialchars($class[0]);
+        $class_name = htmlspecialchars($class[1]);
+        $selected = ($class_id == $selectedClassId) ? "selected" : "";
+        $liste .= "<option value='$class_id' $selected>$class_name</option>";
+    }
+
+    $liste .= "</select>";
     return $liste;
 }
 
