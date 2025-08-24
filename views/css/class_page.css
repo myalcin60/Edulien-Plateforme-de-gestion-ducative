@@ -1,0 +1,24 @@
+body {
+    padding-top: 150px;
+    /* header yüksekliğine göre ayarla */
+    margin: 0 !important;
+    font-family: Arial, sans-serif !important;
+    background-color: var(--gray) !important;
+    color: var(--text-color);
+    width: 100%;
+    overflow-x: hidden;
+
+
+}
+
+.left-menu-button {
+
+    margin-top: 10px;
+    padding: 5px;
+    transition: 0.3s;
+    font-size: small;
+    font-weight: bold;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+

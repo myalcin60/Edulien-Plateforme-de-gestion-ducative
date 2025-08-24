@@ -4,10 +4,11 @@ include __DIR__ . '/../../src/services/class_services.php';
 include __DIR__ . '/../../src/services/student_service.php';
 include __DIR__ . '/../../src/services/lesson_services.php';
 
-$classId = $_GET['classId'] ;
+$lesson = update_lesson_name();
+
+$classId = $_GET['classId'];
 $class = get_class_by_classId($classId);
-$lessons= show_lessons($classId);
-$menu = isset($_GET['form']) ? $_GET['form'] : null;
+
 
 $profile = 'Profile';
 $classes = 'Classes';
@@ -38,7 +39,7 @@ $homework = 'Homework';
         </header>
         <main class="d-sm-flex justify-content-center gap-5 my-5">
             <?php include '../compenents/left-menu.php'
-            ?>
+                ?>
             <div class="right-menu box-shadow ">
                 <div class="container-sm ">
                     <?php if (isset($_SESSION['error'])): ?>
@@ -59,34 +60,21 @@ $homework = 'Homework';
                     <div>
                         <h2 class="p-3 title"> Class Name : <?= $class[0][1] ?? null ?> </h2>
                         <input type="hidden" name="classId" value="<?= $classId ?> ">
-                        <input type="hidden" name="teacherId" value="<?= $class[0]["teacherId"] ?> ">
+
                         <input type="hidden" name="formType" value="create_lesson">
                     </div>
                     <div class="container mb-4  gap-3 d-flex  ">
                         <div class="container-sm  gap-5 d-flex">
                             <label for="lesson" class="form-label">Lesson</label>
-                            <input type="text" class="form-control" id="lesson" name="lesson" placeholder="Lesson Name">
+                            <input type="hidden" name="lessonId" value="<?= $lesson[0]['lessonId'] ?> ">
+                            <input type="text" class="form-control" id="lesson" name="lesson" placeholder="Lesson Name"
+                                value="<?= $lesson[0]['lessonName'] ?>">
                         </div>
                         <div class=" d-flex w-25 ">
                             <button type="submit">Save</button>
                         </div>
                     </div>
                 </form>
-                        
-                <div class="box-shadow container-md mb-3">
-                    <div class="d-flex gap-3 p-3 justify-content-between">
-                        <h2>Lesson List</h2> <a style="text-decoration: none;"
-                            href="./teacher_dashboard.php?form=classes">
-                            <h2 style="color:black"> Classes</h2>
-                        </a>
-                    </div>
-
-                    <div class="gap-3 p-3">
-                        <?= $lessons ?>
-                    </div>
-                </div>
-
-               
             </div>
         </main>
         <footer>

@@ -82,9 +82,9 @@ a:hover {
   border-radius: 10px;
 }
 
-@media (max-width:769px) {
+@media (max-width:768px) {
   body {
-    padding-top: 70px;
+    padding-top: 90px;
   }
 
   table {

@@ -1,4 +1,9 @@
 <?php
+include __DIR__ . '/../../src/services/user_services.php';
+include_once __DIR__ . '/../../src/repositories/user_repository.php';
+$photo = show_user_photo($_SESSION['id']);
+$user = get_user_by_id($_SESSION['id']);
+
 
 ?>
 
@@ -10,44 +15,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
     <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/profile.css" />
 </head>
 
-<body >
-    <form action="../pages/teacher_dashboard.php" method="get">
-        <div class="profile box-shadow">
-            <div >
-                <img src="../assets/teacher.jpg" alt="">
+<body>
+    <form action="../../src/controllers/user_controller.php" method="post" enctype="multipart/form-data">
+        <div class="profile box-shadow" style="text-align:center">
+            <div>
+                <label for="fileInput" style="cursor:pointer; display:inline-block;">
+                    <?php if ($photo): ?>
+                        <img src="<?php echo $photo; ?>" alt="Profile Photo" width="150" height="150"
+                            style="border-radius:25%">
+                    <?php else: ?>
+                        <img src="../assets/logo.jpg" alt="Avatar Profile" width="150" height="150"
+                            style="border-radius:25%">
+                    <?php endif; ?>
+                </label>
+                <!-- hidden file input -->
+                <input type="file" name="profile_photo" accept="image/*" id="fileInput" style="display:none">
+                <button type="submit">Save</button>
             </div>
-            <h2>PROFILE</h2>
+            <input type="hidden" name="userId" value="<?= $user['id'] ?>">
+             <?php if($user['gender']== 'male') : ?>
+            <h2>Welcome Mr <?php echo $user['first_name'], ' ', $user['last_name']; ?></h2>
+             <?php elseif($user['gender']== 'female'): ?>
+             <h2>Welcome Mss <?php echo $user['first_name'], ' ', $user['last_name']; ?></h2>
+             <?php else: ?>
+            <h2>Welcome  <?php echo $user['first_name'], ' ', $user['last_name']; ?></h2>
+            <?php endif; ?>
         </div>
+    </form>
+    <form action="../../src/controllers/profile_controller.php" method="post">
         <div class="profile  box-shadow ">
-            <?php if (isset($_SESSION['first_name'])): ?>
-                <div class="">
-                    <p>ID : <?php echo $_SESSION['id']; ?> </p>
-                    <!-- <p>Role : <?php echo $_SESSION['role']; ?> </p> -->
-                    <p>Email  <?php echo $_SESSION['email']; ?> </p>
-
+            <?php if (isset($user['id'])): ?>
+                <div>
+                    <input type="hidden" name="id" value="<?= $user['id'] ?>">
+                    <p>ID : <?php echo htmlspecialchars ( $user['id']); ?> </p>
                 </div>
                 <div>
-                    <p>Last Name  <?php echo $_SESSION['last_name']; ?> </p>
-
+                    <label for="email">Email : </label>
+                    <input type="email" name="email" value="<?php echo htmlspecialchars($user['email']);?>">
                 </div>
                 <div>
-                    <p>First Name  <?php echo $_SESSION['first_name']; ?> </p>
+                    <label>Last Name : </label>
+                    <input type="text" name="last_name" value=" <?php echo htmlspecialchars($user['last_name']); ?>">
                 </div>
                 <div>
-                    <button class="profil-updt">Update</button>
+                    <label>First Name : </label>
+                    <input type="text" name="first_name" value=" <?php echo htmlspecialchars($user['first_name']); ?>">
                 </div>
-
-
-
+                <div>
+                    <p>Gender : </p>
+                    <div class="flex gap-1">
+                        <label> Male </label>
+                        <input type="radio" name="gender" value="male"
+                         <?php if ($user['gender'] === 'male') echo 'checked'; ?>>
+                        <label>Female </label>
+                        <input type="radio" name="gender" value="female"
+                         <?php if ($user['gender'] === 'female') echo 'checked'; ?>>
+                    </div>
+                </div>
             <?php else: ?>
                 <p>Not found user.</p>
             <?php endif; ?>
         </div>
-
-
+        <div> 
+            <button class="profil-updt" type="submit">Update</button>
+        </div>
     </form>
+
+
+
 </body>
 
 </html>

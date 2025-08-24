@@ -3,14 +3,14 @@ session_start();
 include __DIR__ . '/../repositories/student_repository.php';
 
 // delete student in a class
-if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "class_page") and $_SERVER['REQUEST_METHOD'] == 'GET') {
-   $classId = $_GET['classId'];
+if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "lesson_page") and $_SERVER['REQUEST_METHOD'] == 'GET') {
+   $lessonId = $_GET['lessonId'];
    $studentId = $_GET['studentId'];
 
 
-   delete_student_in_class($classId, $studentId);
+   delete_student_in_lesson_students($lessonId, $studentId);
 
-   header("location: ../../views/pages/class_page.php?id=$classId");
+   header("location: ../../views/pages/lesson_page.php?id=$lessonId");
    die();
 }
 // add student
@@ -20,9 +20,9 @@ if (
    str_contains($_SERVER['HTTP_REFERER'], 'lesson_page.php') &&
    $_SERVER['REQUEST_METHOD'] === 'POST'
 ) {
-  $lessonId = $_POST['lessonId'] ?? null;
-$classId  = $_POST['classId'] ?? null;
-$email    = $_POST['email'] ?? null;
+   $lessonId = $_POST['lessonId'] ?? null;
+   $classId = $_POST['classId'] ?? null;
+   $email = $_POST['email'] ?? null;
 
    if ($email == '') {
       $_SESSION['error'] = 'Please enter an email address';
@@ -34,9 +34,7 @@ $email    = $_POST['email'] ?? null;
          $_SESSION['error'] = 'This student is not exists !!';
          header("location: ../../views/pages/lesson_page.php?id=$lessonId");
          die();
-      } 
-      
-      else {
+      } else {
          $result = get_student__from_lesson_students($email, $lessonId);
       }
    }
@@ -51,9 +49,9 @@ $email    = $_POST['email'] ?? null;
       } else {
          add_student($lessonId, $student['id'], $student['first_name'], $student['email'], $classId);
          $_SESSION['success'] = 'Student added successfully.';
-         header("location: ../../views/pages/lesson_page.php?id=$lessonId"); 
+         header("location: ../../views/pages/lesson_page.php?id=$lessonId");
          die();
-      } 
+      }
    } else {
       $_SESSION['error'] = 'This student is not exists !!';
       header("location: ../../views/pages/lesson_page.php?id=$lessonId");
