@@ -41,3 +41,13 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "t
     header("location: ../../views/pages/teacher_dashboard.php?form=homework&classId=$classId&lessonId=$lessonId");
     die();
 }
+// delete homework
+if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "action=homeworks") and $_SERVER['REQUEST_METHOD'] == 'GET') {
+     
+    
+    if (!empty($_GET['homeworkIds'])) {
+        delete_homework($_GET['homeworkIds']);
+    }
+  header("location: ../../views/pages/teacher_dashboard.php?form=homework&action=homeworks");
+  die();
+}
