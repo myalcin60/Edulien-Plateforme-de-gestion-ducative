@@ -21,7 +21,7 @@ function show_homeworks()
                     <th class='text-start'>Title</th>
                     <th class='text-start'>Description</th>
                     <th class='text-start'>File</th>
-                    <th class='text-start'>Delete</th>
+                    <th class='text-start'>Select</th>
                     
                 </tr>
             </thead>
@@ -89,8 +89,8 @@ function show_homeworks()
                 </td>
                 <td class='text-end w-25'>
                     <div class='form-check d-flex gap-2'>
-                        <label'> $a_sup </label>
-                        <input class='form-check-input' type='checkbox' name='studentIds[]' value='<?= $homework_id ?>'>               
+                       
+                        <input class='form-check-input' type='checkbox' name='homeworkIds[]' value=' $homework_id'>               
                     </div>
                 </td>
             </tr>

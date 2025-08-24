@@ -42,14 +42,13 @@ function get_homeworks_by_userId($userId)
         GROUP BY title';
             $query = $pdo->prepare($sql);
             $query->bindValue("teacherId", $userId);
-        }
-        else{
+        } else {
             $sql = 'Select * from homeworks
                      where studentId= :studentId';
             $query = $pdo->prepare($sql);
             $query->bindValue("studentId", $userId);
         }
-       
+
         $query->execute();
         return $query->fetchAll();
 
@@ -58,3 +57,37 @@ function get_homeworks_by_userId($userId)
         return false;
     }
 }
+
+// delete homework
+function delete_homework($homeworkIds)
+{
+    try {
+        $pdo = db_connection();
+
+        foreach ($homeworkIds as $hwId) {
+            // önce ilgili ödevin title/class/lesson ve filePath bilgilerini al
+            $sql = 'SELECT title, classId, lessonId, filePath FROM homeworks WHERE id = ?';
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([$hwId]);
+            $hw = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($hw) {
+                // sunucudaki dosyayı sil
+                if (!empty($hw['filePath']) && file_exists(__DIR__ . '/../' . $hw['filePath'])) {
+                    unlink(__DIR__ . '/../' . $hw['filePath']);
+                }
+
+                // aynı title, class ve lesson için tüm öğrencilerin ödevlerini sil
+                $delSql = 'DELETE FROM homeworks WHERE title = ? AND classId = ? AND lessonId = ?';
+                $delStmt = $pdo->prepare($delSql);
+                $delStmt->execute([$hw['title'], $hw['classId'], $hw['lessonId']]);
+            }
+        }
+
+        return true;
+    } catch (\Throwable $th) {
+        error_log("Homework could not be deleted: " . $th->getMessage());
+        return false;
+    }
+}
+
