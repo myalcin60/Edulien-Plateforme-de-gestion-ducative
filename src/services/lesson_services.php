@@ -1,6 +1,6 @@
 <?php
 
-include __DIR__ . '/../repositories/lesson_repository.php';
+include_once __DIR__ . '/../repositories/lesson_repository.php';
 
 // show lessons for teacher
 function show_lessons($classId)
@@ -52,15 +52,19 @@ function show_student_lessons()
         foreach ($lessons as $lesson) {
 
             $lesson_id = htmlspecialchars($lesson['lessonId']);
-            $lesson_name = htmlspecialchars($lesson['lessonName']);
+            $les= get_lesson_by_lessonId($lesson_id);
+
+            $lesson_name = htmlspecialchars($les[0]['lessonName']);
             $teacher_name = htmlspecialchars($lesson['first_name']);
             $teacher_lastName = htmlspecialchars($lesson['last_name']);
+            $className = htmlspecialchars($lesson['className']);
 
             $bgColor = random_color();
             $lesson_link = "#";
             $result .= " 
             <div class='card mb-4 mx-2'  style='width: 18rem; height:10rem; display:inline-block; vertical-align:top;background-color: $bgColor; color:white; padding: 2%;'>
                 <div lesson='card-body' >
+                    <h4>$className </h6>
                     <a href='$lesson_link' lesson='card-link'> <h5 lesson='card-title'>$lesson_name</h5></a>
                     <h6 style='color:white;'>$teacher_name  $teacher_lastName</h6>    
                 </div>

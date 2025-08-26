@@ -82,27 +82,25 @@ a:hover {
   border-radius: 10px;
 }
 
-@media (max-width:768px) {
+@media (width <= 768px) {
   body {
-    padding-top: 90px;
+    margin-top: 2%;
+    padding-top: 5%;
+ 
   }
-
-  table {
-    font-size: small
+h2{
+    font-size: medium;
   }
-
-  p {
+  table, p, h3, button, label, a, select {
     font-size: small;
   }
-
-  h3 {
-    font-size: small;
+  img{
+    width: 100px;
+    height: 100px;
   }
-
-  button {
-    font-size: x-small;
-  }
-
+.navbar{
+  --bs-navbar-padding-y: 0 !important;
+}
 }
 
 .toast-message {

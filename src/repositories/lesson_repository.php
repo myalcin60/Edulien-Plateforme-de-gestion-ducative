@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once __DIR__ . '/../config/connection.php';
 //craet lesson
 function creat_lesson($lessonName, $teacherId, $classId)
@@ -14,7 +14,6 @@ function creat_lesson($lessonName, $teacherId, $classId)
     } catch (Exception $ex) {
         echo 'Error: problème de create lesson';
     }
-
 }
 // get lessons with lesson id
 function get_lesson_by_lessonId($lessonId)
@@ -50,10 +49,12 @@ function get_student_lessons($studentId)
 {
     try {
         $pdo = db_connection();
-        $sql = 'SELECT l.lessonId, lessonName, us.first_name, us.last_name  FROM lessons as l
-        JOIN lesson_students as st on  l.lessonId=st.lessonId
-        Join users as us on  l.teacherId=us.id
-        where st.studentId = :studentId';
+        $sql = 'SELECT *FROM
+    lesson_students as l
+    JOIN classes as cl on l.classId = cl.`classId`
+    JOIN users as u on u.id = cl.`teacherId`
+WHERE
+    l.studentId =  :studentId';
 
         $query = $pdo->prepare($sql);
         $query->bindValue("studentId", $studentId);

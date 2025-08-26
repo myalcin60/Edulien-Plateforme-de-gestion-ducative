@@ -15,9 +15,9 @@ function show_homeworks()
         <table class='table table-striped table-hover align-middle'>
             <thead class='table-primary'>
                 <tr>
-                   
-                    <th class='text-start'>Class</th>
-                    <th class='text-start'>Lesson</th>
+                    <th class='text-start'>No</th>
+                    <th class='text-start'>Class Name</th>
+                    <th class='text-start'>Lesson Name</th>
                     <th class='text-start'>Title</th>
                     <th class='text-start'>Description</th>
                     <th class='text-start'>File</th>
@@ -26,18 +26,22 @@ function show_homeworks()
                 </tr>
             </thead>
             <tbody>";
-
+            $no=1;
+   
     foreach ($homeworks as $homework) {
 
         $homework_id = htmlspecialchars($homework['id']);
         $title = htmlspecialchars($homework['title']);
         $description = htmlspecialchars($homework['description']);
+
         $class = get_class_by_classId($homework['classId']);
-        $class_name = htmlspecialchars($class[0]['className']);
+
+        $class_name = htmlentities($class[0]['className']);
         $lesson = get_lesson_by_lessonId($homework['lessonId']);
         $lesson_name = htmlspecialchars($lesson[0]['lessonName']);
-        $filePath = htmlspecialchars($homework['filePath']);
-        $fileType = htmlspecialchars($homework['fileType']);
+        $filePath = htmlentities($homework['filePath'] ?? '');
+        $fileType = htmlentities($homework['filePath'] ?? '');
+         
 
         // $a_mod = "
         //     <a href='../../views/pages/update_title.php?id=$homework_id' class='btn btn-warning btn-sm'>
@@ -70,32 +74,38 @@ function show_homeworks()
             $fileLink = '-';
         }
 
+       
+        
+
         $liste .= "
             <tr>
-                <td class='text-start w-25'> 
+            <td class='text-start w-10'> 
+                  $no 
+                 </td>
+                <td class='text-start w-20'> 
                   $class_name 
                  </td>
-                <td class='text-start w-25'>
+                <td class='text-start w-20'>
                    $lesson_name
                 </td>
-                <td class='text-start w-25'>
+                <td class='text-start w-20'>
                    $title
                 </td>
-                <td class='text-start w-25'>
+                <td class='text-start w-30'>
                    $descHtml
                 </td>
                 <td>
                    $fileLink
                 </td>
-                <td class='text-end w-25'>
-                    <div class='form-check d-flex gap-2'>
-                       
+                <td class='text-end w-30'>
+                    <div class='form-check d-flex gap-3'>
                         <input class='form-check-input' type='checkbox' name='homeworkIds[]' value=' $homework_id'>               
                     </div>
                 </td>
             </tr>
-            
             ";
+            $no++;
+            
     }
 
     $liste .= "</tbody>

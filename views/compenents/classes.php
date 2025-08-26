@@ -6,7 +6,6 @@ $classes = show_classes();
 $student_lessons = show_student_lessons();
 
 
-
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +34,7 @@ $student_lessons = show_student_lessons();
             </div>
         <?php endif; ?>
     </div>
-    <?php if ($_SESSION['role'] == 'teacher'): ?>
+    <?php if ($_SESSION['id'][0] == 'T'): ?>
         <form action="../../src/controllers/class_controller.php" method="post">
             <h2 class="p-3 title">Classes</h2>
 

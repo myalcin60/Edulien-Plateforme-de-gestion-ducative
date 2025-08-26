@@ -41,6 +41,7 @@ if (
 
 
 
+
    if ($student['id'][0] != 'T') {
       if ($lessonId == $result['lessonId']) {
          $_SESSION['error'] = 'This student already exists !!';
@@ -57,4 +58,5 @@ if (
       header("location: ../../views/pages/lesson_page.php?id=$lessonId");
       die();
    }
+   
 }
