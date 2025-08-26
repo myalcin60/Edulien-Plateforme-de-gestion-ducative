@@ -50,22 +50,22 @@ $user = get_user_by_id($_SESSION['id']);
             <?php if (isset($user['id'])): ?>
                 <div>
                     <input type="hidden" name="id" value="<?= $user['id'] ?>">
-                    <p>ID : <?php echo htmlspecialchars ( $user['id']); ?> </p>
+                    <p>ID <?php echo htmlspecialchars ( $user['id']); ?> </p>
                 </div>
                 <div>
-                    <label for="email">Email : </label>
+                    <label for="email">Email  </label>
                     <input type="email" name="email" value="<?php echo htmlspecialchars($user['email']);?>">
                 </div>
                 <div>
-                    <label>Last Name : </label>
+                    <label>Last Name  </label>
                     <input type="text" name="last_name" value=" <?php echo htmlspecialchars($user['last_name']); ?>">
                 </div>
                 <div>
-                    <label>First Name : </label>
+                    <label>First Name  </label>
                     <input type="text" name="first_name" value=" <?php echo htmlspecialchars($user['first_name']); ?>">
                 </div>
                 <div>
-                    <p>Gender : </p>
+                    <p>Gender  </p>
                     <div class="flex gap-1">
                         <label> Male </label>
                         <input type="radio" name="gender" value="male"

@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-     <div class="left-menu box-shadow w-auto h-auto align-self-start">
+     <div class="left-menu box-shadow ">
                 <a class="menu" style="text-decoration: none;" href="./teacher_dashboard.php?form=profile">
                     <button class="left-menu-button"> <?= $profile ?></button>
                 </a>

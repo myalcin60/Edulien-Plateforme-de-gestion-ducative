@@ -1,6 +1,6 @@
 .left-menu {
-    padding: 3% 2% 0 2%;
-    min-height: 100vh;
+    padding: 3% 2% 2% 2%;
+
     background-color: var(--light);
     color: var(--light);
     font-weight: bold;
@@ -12,7 +12,7 @@
     width: 70%;
     background-color: var(--light);
     font-weight: bold;
-    padding: 2% 2% 0 2%;
+    padding: 2% 2% 2% 2%;
 
     .item {
         display: flex;
@@ -20,23 +20,20 @@
         gap: 10%;
     }
 
-    
+
 }
 
 @media(max-width:700px) {
     .right-menu {
         width: auto;
+        margin-top: 2%;
+
         .item {
             display: flex;
             justify-content: space-between;
         }
 
 
-    .left-menu {
-        min-height: auto;
-        margin-bottom: 1%;
-        padding: 0 2% 2% 2%;
-        margin-bottom: 5%;
-
+        
     }
-    }}
+}

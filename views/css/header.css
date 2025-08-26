@@ -1,32 +1,37 @@
-
-#navbarSupportedContent{ 
+#navbarSupportedContent {
     justify-content: space-between;
 }
-#navbar{
-    
+
+#navbar {
+
     background-color: white;
     color: var(--primary);
-    >div>a{
+
+    >div>a {
         color: var(--primary);
     }
- >div>img {
-    border-radius: 5px;
-    background-color: white;
-    width: 100px;
+
+    >div>img {
+        border-radius: 5px;
+        background-color: white;
+        width: 100px;
+    }
 }
-}
-.header{
+
+.header {
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 999;
-    background-color: white; /* şeffaflık sorununu önlemek için */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* isteğe bağlı görsel */
+    background-color: white;
+    /* şeffaflık sorununu önlemek için */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* isteğe bağlı görsel */
 }
 
-
-
-    
-
-
-
+.navbar-toggler {
+    width: auto !important;
+    border: none !important;
+    margin-right: 2%;
+    line-height:0 !important;
+}
