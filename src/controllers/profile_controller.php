@@ -9,6 +9,11 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "d
 
     update_user_profile($_POST['id'], $_POST['email'], $_POST['first_name'], $_POST['last_name'], $_POST['gender']);
    
+    if($_POST['id'][0]=='T'){
     header("location: ../../views/pages/teacher_dashboard.php?form=profile");
-    die();
+    die();}
+    else{
+      header("location: ../../views/pages/student_dashboard.php?form=profile");
+    die();  
+    }
 }

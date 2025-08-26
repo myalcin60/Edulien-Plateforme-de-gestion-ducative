@@ -31,32 +31,34 @@ if (
    } else {
       $student = get_student__from_users($email);
       if ($student['id'] == null) {
-         $_SESSION['error'] = 'This student is not exists !!';
+         $_SESSION['error'] = 'This student is not exists !';
          header("location: ../../views/pages/lesson_page.php?id=$lessonId");
          die();
       } else {
          $result = get_student__from_lesson_students($email, $lessonId);
       }
    }
+  
 
-
-
-
-   if ($student['id'][0] != 'T') {
-      if ($lessonId == $result['lessonId']) {
-         $_SESSION['error'] = 'This student already exists !!';
-         header("location: ../../views/pages/lesson_page.php?id=$lessonId");
-         die();
+}
+   
+      if ($student['id'][0] != 'T') {
+         if ($lessonId == $result['lessonId']) {
+            $_SESSION['error'] = 'This student already exists !';
+            header("location: ../../views/pages/lesson_page.php?id=$lessonId");
+            die();
+         } else {
+            add_student($lessonId, $student['id'], $student['first_name'], $student['email'], $classId);
+            $_SESSION['success'] = 'Student added successfully.';
+            header("location: ../../views/pages/lesson_page.php?id=$lessonId");
+            die();
+         }
       } else {
-         add_student($lessonId, $student['id'], $student['first_name'], $student['email'], $classId);
-         $_SESSION['success'] = 'Student added successfully.';
+         $_SESSION['error'] = 'This student is not exists !';
          header("location: ../../views/pages/lesson_page.php?id=$lessonId");
          die();
       }
-   } else {
-      $_SESSION['error'] = 'This student is not exists !!';
-      header("location: ../../views/pages/lesson_page.php?id=$lessonId");
-      die();
-   }
+
    
-}
+
+
