@@ -1,6 +1,22 @@
 <?php
 require_once __DIR__ . '/../config/connection.php';
 // get student in lesson
+function get_students_classId_by_email($email)
+{
+    try {
+        $pdo = db_connection();
+        $sql = "SELECT classId FROM lesson_students where studentEmail :studentEmail";
+
+        $query = $pdo->prepare($sql);
+        $query->bindParam(":studentEmail", $email);
+        $query->execute();
+
+        return $query->fetch(PDO::FETCH_ASSOC);
+
+    } catch (PDOException $ex) {
+        echo "\nErreur : problème de connexion avec la BD: " . $ex->getMessage();
+    }
+}
 function get_students_in_lesson($lessonId)
 {
     try {
