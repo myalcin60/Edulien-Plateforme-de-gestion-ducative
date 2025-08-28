@@ -94,7 +94,7 @@ WHERE
 SELECT * FROM homeworks;
 
 SELECT * from homeworks WHERE `teacherId` = 'T_70453' GROUP BY title;
-
+SELECT * from classes;
 SELECT * from classes where classId = 38;
 
 SELECT * FROM users;
@@ -220,6 +220,8 @@ where
     classId = 1
     and studentId = 'S_46929';
 
-SELECT * from students where studentEmail = 'student@gmail.com';
-
+SELECT * from lesson_students where studentEmail = 'eleve@gmail.com';
+use edu;
 SELECT * FROM lessons;
+SELECT * FROM classes;
+SELECT classId FROM lesson_students where studentEmail = 'eleve@gmail.com';

@@ -39,11 +39,12 @@ if (
          $result = get_student__from_lesson_students($email, $lessonId);
       }
    }
-  
 
-}
-      $cl_Id= get_students_classId_by_email($email);
-      
+   $cl_Id = get_students_classId_by_email($email);
+   $cl_IdInt = $cl_Id ? intval($cl_Id['classId']) : null;
+   $classIdInt = intval(trim($classId));
+
+   if (($cl_IdInt == null) || ($cl_IdInt == $classIdInt)) {
       if ($student['id'][0] != 'T') {
          if ($lessonId == $result['lessonId']) {
             $_SESSION['error'] = 'This student already exists !';
@@ -60,7 +61,9 @@ if (
          header("location: ../../views/pages/lesson_page.php?id=$lessonId");
          die();
       }
-
-   
-
-
+   } else {
+      $_SESSION['error'] = 'This student already exists in the differant class !';
+      header("location: ../../views/pages/lesson_page.php?id=$lessonId");
+      die();
+   }
+}

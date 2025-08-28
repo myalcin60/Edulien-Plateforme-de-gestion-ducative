@@ -5,10 +5,10 @@ function get_students_classId_by_email($email)
 {
     try {
         $pdo = db_connection();
-        $sql = "SELECT classId FROM lesson_students where studentEmail :studentEmail";
+        $sql = "SELECT classId FROM lesson_students where studentEmail= :email";
 
         $query = $pdo->prepare($sql);
-        $query->bindParam(":studentEmail", $email);
+        $query->bindValue(":email", $email, PDO::PARAM_STR);
         $query->execute();
 
         return $query->fetch(PDO::FETCH_ASSOC);
