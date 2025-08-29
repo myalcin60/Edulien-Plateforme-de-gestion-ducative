@@ -21,7 +21,7 @@ session_start();
             <div class="container-fluid" id="navbar">
 
                 <div class="d-flex gap-3 align-items-center">
-                    <img class="d-md-block d-none logo-img" src="\edu_php\views\assets\logo.jpg" alt="">
+                    <img class="d-md-block d-none logo-img" src="\edu_php\views\assets\logo.jpg" alt="logo">
 
                     <?php if (isset($_SESSION['id'][0]) == 'T'): ?>
                         <a class="navbar-brand" href="../pages/teacher_dashboard.php">EDULIEN</a>
@@ -56,11 +56,13 @@ session_start();
                                             <a class="navbar-brand" href="../pages/teacher_dashboard.php">
                                                 <i class="fa-solid fa-user"></i>
                                                 <?php echo $_SESSION['first_name']; ?>
+                                                <?php echo $_SESSION['last_name']; ?>
                                             </a>
                                         <?php elseif (($_SESSION['id'][0]) == 'S'): ?>
                                             <a class="navbar-brand" href="../pages/student_dashboard.php">
                                                 <i class="fa-solid fa-user"></i>
                                                 <?php echo $_SESSION['first_name']; ?>
+                                                <?php echo $_SESSION['last_name']; ?>
                                             </a>
                                         <?php else: ?>
                                         <?php endif; ?>
