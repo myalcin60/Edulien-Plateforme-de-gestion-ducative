@@ -1,4 +1,4 @@
--- Active: 1750235362805@@127.0.0.1@3306
+-- Active: 1754772058359@@127.0.0.1@3306@edu
 use edu;
 
 CREATE Table users (
