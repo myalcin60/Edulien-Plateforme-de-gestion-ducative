@@ -14,6 +14,7 @@ CREATE Table users (
 SELECT * FROM users;
 
 ALTER TABLE users ADD COLUMN profile_photo VARCHAR(255);
+ALTER TABLE users ADD COLUMN specialization VARCHAR(250);
 
 ALTER TABLE users ADD COLUMN gender VARCHAR(25);
 

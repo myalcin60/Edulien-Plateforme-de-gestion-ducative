@@ -20,7 +20,6 @@ function signup_user($id, $firstname, $lastname, $email, $password, $role)
         $query->bindValue(":role", $role);
 
         $query->execute();
-
     } catch (Exception $ex) {
         echo "\nErreur : problème de connexion avec la BD: " . $ex->getMessage();
     }
@@ -53,7 +52,6 @@ function get_user_by_email($email)
 
         $query->execute();
         return $query->fetch();
-
     } catch (Exception $ex) {
         echo "\nErreur : problème de connexion avec la BD: " . $ex->getMessage();
     }
@@ -99,16 +97,16 @@ function get_user_photo($userId)
         echo "Erreur : problème de connexion avec la BD: " . $ex->getMessage();
         return null;
     }
-
 }
 // update user profile
-function update_user_profile($id,$email, $first_name, $last_name, $gender, )
+function update_user_profile($id, $email, $first_name, $last_name, $gender, $specialization)
 {
     try {
         $pdo = db_connection();
-        $sql = "UPDATE users SET email = ?, first_name = ?, last_name = ?, gender = ? WHERE id = ?";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$email, $first_name, $last_name, $gender,$id]);
+        $sql = "UPDATE users SET email = ?, first_name = ?, last_name = ?, gender = ?, specialization = ? WHERE id = ?";
+        $query = $pdo->prepare($sql);
+        $query->execute([$email, $first_name, $last_name, $gender, $specialization, $id]);
+
     } catch (\Throwable $ex) {
         echo "Erreur : problème de connexion avec la BD: " . $ex->getMessage();
         return null;
