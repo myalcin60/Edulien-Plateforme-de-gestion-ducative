@@ -2,6 +2,6 @@
 *** Variables ***
 ${password_lct}   id=password
 ${submit_btn}     xpath = //button[@type='submit']
-${profile_text}   xpath = /html/body/div/main/div[2]/form/h2
-${login}          xpath=//*[@id="navbarSupportedContent"]/div[2]/div/a[1]
+${profile_text}   //h2[contains(text(), 'Welcome')]
+${login}          xpath=//a[text()=' Login']
 ${email_lct}      id=email

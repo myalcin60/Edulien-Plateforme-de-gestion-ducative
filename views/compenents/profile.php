@@ -68,10 +68,10 @@ $user = get_user_by_id($_SESSION['id']);
                 <div>
                     <?php if ($user['id'][0] == 'T') : ?>
                         <label for="specialization">Specialization </label>
-                        <input  type="text" name="specialization" value="<?php echo htmlspecialchars($user['specialization'] ?? ''); ?>">
+                        <input type="text" name="specialization" value="<?php echo htmlspecialchars($user['specialization'] ?? ''); ?>">
                     <?php else : ?>
                         <label for="specialization">Class </label>
-                        <input  type="text" name="specialization" value="<?php echo htmlspecialchars($user['specialization'] ?? ''); ?>">
+                        <input type="text" name="specialization" value="<?php echo htmlspecialchars($user['specialization'] ?? ''); ?>">
                     <?php endif; ?>
                 </div>
 
@@ -81,10 +81,10 @@ $user = get_user_by_id($_SESSION['id']);
                     <div class="flex gap-1">
                         <label> Male </label>
                         <input class="gender" type="radio" name="gender" value="male"
-                        <?php if ($user['gender'] === 'male') echo 'checked'; ?>>
-                        <label>Female  </label>
+                            <?php if ($user['gender'] === 'male') echo 'checked'; ?>>
+                        <label>Female </label>
                         <input class="gender" type="radio" name="gender" value="female"
-                         <?php if ($user['gender'] === 'female') echo 'checked'; ?>>
+                            <?php if ($user['gender'] === 'female') echo 'checked'; ?>>
                     </div>
                 </div>
             <?php else: ?>
@@ -95,8 +95,6 @@ $user = get_user_by_id($_SESSION['id']);
             <button class="profil-updt" type="submit">Update</button>
         </div>
     </form>
-
-
 
 </body>
 

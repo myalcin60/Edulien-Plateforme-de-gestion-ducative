@@ -3,7 +3,7 @@ include __DIR__ . '/../../src/services/class_services.php';
 include __DIR__ . '/../../src/services/student_service.php';
 include __DIR__ . '/../../src/repositories/lesson_repository.php';
 $lessonId = $_REQUEST['id'] ?? null;
-$lesson =get_lesson_by_lessonId($lessonId);
+$lesson = get_lesson_by_lessonId($lessonId);
 $class = get_class_by_classId($lesson[0]['classId'] ?? null);
 $students = show_students($lessonId);
 
@@ -58,7 +58,7 @@ $homework = 'Homework';
                 <form class="form-sm" action="../../src/controllers/student_controller.php" method="post">
                     <div>
                         <h2 class="p-3 title"> Class Name : <?= $class[0]['className'] ?? null ?> </h2>
-                        <input type="hidden" name="classId" value="<?=  $class[0]['classId'] ?> ">
+                        <input type="hidden" name="classId" value="<?= $class[0]['classId'] ?> ">
                     </div>
                     <div>
                         <h2 class="p-3 title"> Lesson Name : <?= $lesson[0][1] ?? null ?> </h2>
@@ -79,8 +79,8 @@ $homework = 'Homework';
                 <div class="box-shadow container-md mb-3">
                     <div class="d-flex gap-3 p-3 justify-content-between">
                         <h2>Students List</h2> <a style="text-decoration: none;"
-                        
-                            href="./class_page.php?classId=<?=$class[0]['classId'] ?>"> 
+
+                            href="./class_page.php?classId=<?= $class[0]['classId'] ?>">
                             <h2 style="color:black"> Lessons</h2>
                         </a>
                     </div>

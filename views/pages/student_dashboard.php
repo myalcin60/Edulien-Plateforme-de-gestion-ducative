@@ -32,6 +32,12 @@ $homework = 'Homework';
             <?php include '../compenents/left-menu.php'
             ?>
             <div class="right-menu box-shadow">
+                <?php if (isset($_SESSION['success'])): ?>
+                    <div class="alert alert-success">
+                        <?= $_SESSION['success'];
+                        unset($_SESSION['success']); ?>
+                    </div>
+                <?php endif; ?>
                 <?php
                 select_menu($menu);
                 ?>

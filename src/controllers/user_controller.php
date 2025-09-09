@@ -45,6 +45,7 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "m
 
    $user = get_user_by_email($email);
 
+
    if ($user && password_verify($password, $user['password'])) {
 
       $_SESSION['first_name'] = $user['first_name'];
@@ -53,30 +54,21 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "m
       $_SESSION['role'] = $user['role'];
       $_SESSION['id'] = $user['id'];
       $id = $user['id'];
-
-      $_SESSION['toast'] = [
-         'type' => 'success',
-         'message' => 'Login successful ! ' . $user['first_name']
-      ];
-
-      if ($id) {
+          
          if ($id[0] == 'T') {
             header("location: ../../views/pages/teacher_dashboard.php");
+            $_SESSION['success'] = 'Login successful ! ' . $user['first_name'];
             die();
          } else {
             header("location: ../../views/pages/student_dashboard.php");
+            $_SESSION['success'] = 'Login successful ! ' . $user['first_name'];
             die();
-         }
-      }
-   } else {
-      $_SESSION['toast'] = [
-         'type' => 'error',
-         'message' => 'Error email or password!'
-      ];
-      var_dump($_SESSION['toast']);
-
-
+         }      
+   } 
+   else {
       header("location: ../../views/pages/main.php?form=login");
+      $_SESSION['error'] = 'Email or password is incorrect';
+      die();
    }
 }
 
@@ -84,11 +76,7 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "m
 if (isset($_POST['action']) && $_POST['action'] === 'logout') {
    session_unset();
    session_destroy();
-
-   $_SESSION['toast'] = [
-      'type' => 'info',
-      'message' => 'Log out'
-   ];
+   $_SESSION['success'] = 'Logout successful ! ';
    header("location: ../../views/pages/main.php?form=login");
    die();
 
@@ -103,12 +91,11 @@ if (isset($_FILES['profile_photo']) && $_FILES['profile_photo']['error'] === UPL
    $userId = $_POST['userId'];
 
    uplad_user_photo($userId, $fileContent, $fileType);
-   echo "Photo uploaded successfully!";
-
+   $_SESSION['success'] =  "Photo uploaded successfully!";
    header("location: ../../views/pages/teacher_dashboard.php?form=profile");
    die();
 } else {
-   echo "Photo could not be uploaded!";
+   $_SESSION['error'] = "Photo could not be uploaded!";
    header("location: ../../views/pages/teacher_dashboard.php?form=profile");
    die();
 }

@@ -36,6 +36,7 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "c
 // delete class
 if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "teacher_dashboard.php?form=classes") and $_SERVER['REQUEST_METHOD'] == 'GET') {
    delete_class($_GET['id']);
+   $_SESSION['success'] = 'Class deleted successfully.';
    header("location: ../../views/pages/teacher_dashboard.php?form=classes");
    die();
 }
@@ -46,7 +47,7 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "u
    echo $_POST['class_name'];
 
    update_calss($_POST['id'], $_POST['class_name']);
-
+   $_SESSION['success'] = 'Class uptated successfully.';
    header("location: ../../views/pages/teacher_dashboard.php?form=classes");
    die();
 }
