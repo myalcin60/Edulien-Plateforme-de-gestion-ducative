@@ -9,7 +9,7 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "l
 
 
    delete_student_in_lesson_students($lessonId, $studentId);
-
+   $_SESSION['success'] = 'Student deleted successfully.';
    header("location: ../../views/pages/lesson_page.php?id=$lessonId");
    die();
 }

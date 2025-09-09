@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.3.2 (Python 3.11.9 on win32)" generated="2025-08-29T11:33:50.613024" rpa="false" schemaversion="5">
+<robot generator="Robot 7.3.2 (Python 3.11.9 on win32)" generated="2025-09-08T10:27:05.380177" rpa="false" schemaversion="5">
 <suite id="s1" name="Edu Php" source="C:\wamp64\www\edu_php">
 <suite id="s1-s1" name="Test" source="C:\wamp64\www\edu_php\test">
 <suite id="s1-s1-s1" name="Tests" source="C:\wamp64\www\edu_php\test\tests">
@@ -7,291 +7,164 @@
 <test id="s1-s1-s1-s1-t1" name="Login As Teacher" line="31">
 <kw name="Open Edulien" owner="common">
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2025-08-29T11:33:52.210316" level="INFO">Opening browser 'chrome' to base url 'http://localhost/edu_php/views/pages/main.php'.</msg>
-<msg time="2025-08-29T11:33:53.151030" level="WARN">The chromedriver version (138.0.7204.94) detected in PATH at C:\chromedriver-win64\chromedriver-win64\chromedriver.exe might not be compatible with the detected chrome version (139.0.7258.139); currently, chromedriver 139.0.7258.154 is recommended for chrome 139.*, so it is advised to delete the driver in PATH and retry</msg>
+<msg time="2025-09-08T10:27:05.643075" level="INFO">Opening browser 'chrome' to base url 'http://localhost/edu_php/views/pages/main.php'.</msg>
+<msg time="2025-09-08T10:27:05.732878" level="WARN">The chromedriver version (138.0.7204.94) detected in PATH at C:\chromedriver-win64\chromedriver-win64\chromedriver.exe might not be compatible with the detected chrome version (139.0.7258.155); currently, chromedriver 139.0.7258.154 is recommended for chrome 139.*, so it is advised to delete the driver in PATH and retry</msg>
 <arg>${url}</arg>
 <arg>${Browser}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2025-08-29T11:33:52.209419" elapsed="2.947591"/>
+<status status="PASS" start="2025-09-08T10:27:05.643075" elapsed="1.604314"/>
 </kw>
 <kw name="Maximize Browser Window" owner="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" start="2025-08-29T11:33:55.157010" elapsed="0.035298"/>
+<status status="PASS" start="2025-09-08T10:27:07.247389" elapsed="0.021289"/>
 </kw>
-<status status="PASS" start="2025-08-29T11:33:52.193801" elapsed="2.998507"/>
+<status status="PASS" start="2025-09-08T10:27:05.643075" elapsed="1.625603"/>
 </kw>
 <kw name="Login As Teacher with valid fields" owner="auth_keywords">
 <kw name="Wait Until Element Is Enabled" owner="SeleniumLibrary">
-<msg time="2025-08-29T11:34:00.513940" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-2.png"&gt;&lt;img src="selenium-screenshot-2.png" width="800px"&gt;&lt;/a&gt;</msg>
-<msg time="2025-08-29T11:34:00.514942" level="FAIL">Element with locator 'xpath=//*[@id="navbarSupportedContent"]/div[2]/div/a[1]' not found.</msg>
 <arg>${login}</arg>
 <doc>Waits until the element ``locator`` is enabled.</doc>
-<status status="FAIL" start="2025-08-29T11:33:55.192308" elapsed="5.364976">Element with locator 'xpath=//*[@id="navbarSupportedContent"]/div[2]/div/a[1]' not found.</status>
+<status status="PASS" start="2025-09-08T10:27:07.277083" elapsed="0.020402"/>
 </kw>
 <kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2025-09-08T10:27:07.297485" level="INFO">Clicking link 'xpath=//a[text()=' Login']'.</msg>
 <arg>${login}</arg>
 <doc>Clicks a link identified by ``locator``.</doc>
-<status status="NOT RUN" start="2025-08-29T11:34:00.558280" elapsed="0.000000"/>
+<status status="PASS" start="2025-09-08T10:27:07.297485" elapsed="0.108006"/>
 </kw>
 <kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-09-08T10:27:07.406488" level="INFO">Typing text 'teacher@gmail.com' into text field 'id=email'.</msg>
 <arg>${email_lct}</arg>
-<arg>teacher@yopmail.com</arg>
+<arg>teacher@gmail.com</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="NOT RUN" start="2025-08-29T11:34:00.558280" elapsed="0.000000"/>
+<status status="PASS" start="2025-09-08T10:27:07.405491" elapsed="0.082464"/>
 </kw>
 <kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2025-09-08T10:27:07.488952" level="INFO">Typing password into text field 'id=password'.</msg>
+<msg time="2025-09-08T10:27:07.510938" level="INFO">Temporally setting log level to: NONE</msg>
 <arg>${password_lct}</arg>
 <arg>1234</arg>
 <doc>Types the given password into the text field identified by ``locator``.</doc>
-<status status="NOT RUN" start="2025-08-29T11:34:00.558280" elapsed="0.001073"/>
+<status status="PASS" start="2025-09-08T10:27:07.487955" elapsed="0.057667"/>
 </kw>
 <kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-09-08T10:27:07.545622" level="INFO">Clicking button 'xpath = //button[@type='submit']'.</msg>
 <arg>${submit_btn}</arg>
 <doc>Clicks the button identified by ``locator``.</doc>
-<status status="NOT RUN" start="2025-08-29T11:34:00.559353" elapsed="0.000000"/>
+<status status="PASS" start="2025-09-08T10:27:07.545622" elapsed="0.149391"/>
 </kw>
 <kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
 <arg>${profile_text}</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="NOT RUN" start="2025-08-29T11:34:00.559353" elapsed="0.000000"/>
+<status status="PASS" start="2025-09-08T10:27:07.695013" elapsed="0.058222"/>
 </kw>
 <kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-09-08T10:27:07.767841" level="INFO">Element '//h2[contains(text(), 'Welcome')]' is displayed.</msg>
 <arg>${profile_text}</arg>
 <doc>Verifies that the element identified by ``locator`` is visible.</doc>
-<status status="NOT RUN" start="2025-08-29T11:34:00.559353" elapsed="0.000000"/>
+<status status="PASS" start="2025-09-08T10:27:07.753235" elapsed="0.014606"/>
 </kw>
-<status status="FAIL" start="2025-08-29T11:33:55.192308" elapsed="5.367045">Element with locator 'xpath=//*[@id="navbarSupportedContent"]/div[2]/div/a[1]' not found.</status>
+<status status="PASS" start="2025-09-08T10:27:07.276086" elapsed="0.491755"/>
 </kw>
 <kw name="Close Browser" owner="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="NOT RUN" start="2025-08-29T11:34:00.559353" elapsed="0.000000"/>
+<status status="PASS" start="2025-09-08T10:27:07.768840" elapsed="2.107477"/>
 </kw>
 <tag>smoke pozitif</tag>
-<status status="FAIL" start="2025-08-29T11:33:52.193801" elapsed="8.365552">Element with locator 'xpath=//*[@id="navbarSupportedContent"]/div[2]/div/a[1]' not found.</status>
+<status status="PASS" start="2025-09-08T10:27:05.643075" elapsed="4.235234"/>
 </test>
 <test id="s1-s1-s1-s1-t2" name="Login As Teacher" line="43">
 <kw name="Open Edulien" owner="common">
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2025-08-29T11:34:00.600514" level="INFO">Opening browser 'chrome' to base url 'http://localhost/edu_php/views/pages/main.php'.</msg>
-<msg time="2025-08-29T11:34:00.666245" level="WARN">The chromedriver version (138.0.7204.94) detected in PATH at C:\chromedriver-win64\chromedriver-win64\chromedriver.exe might not be compatible with the detected chrome version (139.0.7258.139); currently, chromedriver 139.0.7258.154 is recommended for chrome 139.*, so it is advised to delete the driver in PATH and retry</msg>
+<msg time="2025-09-08T10:27:09.922684" level="INFO">Opening browser 'chrome' to base url 'http://localhost/edu_php/views/pages/main.php'.</msg>
+<msg time="2025-09-08T10:27:10.001631" level="WARN">The chromedriver version (138.0.7204.94) detected in PATH at C:\chromedriver-win64\chromedriver-win64\chromedriver.exe might not be compatible with the detected chrome version (139.0.7258.155); currently, chromedriver 139.0.7258.154 is recommended for chrome 139.*, so it is advised to delete the driver in PATH and retry</msg>
 <arg>${url}</arg>
 <arg>${Browser}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2025-08-29T11:34:00.598731" elapsed="1.284491"/>
+<status status="PASS" start="2025-09-08T10:27:09.922684" elapsed="1.363920"/>
 </kw>
 <kw name="Maximize Browser Window" owner="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" start="2025-08-29T11:34:01.883222" elapsed="0.031923"/>
+<status status="PASS" start="2025-09-08T10:27:11.286604" elapsed="0.030175"/>
 </kw>
-<status status="PASS" start="2025-08-29T11:34:00.598731" elapsed="1.316414"/>
+<status status="PASS" start="2025-09-08T10:27:09.921474" elapsed="1.395305"/>
 </kw>
 <kw name="Login As Teacher with invalid email" owner="auth_keywords">
 <kw name="Wait Until Element Is Enabled" owner="SeleniumLibrary">
-<msg time="2025-08-29T11:34:06.815295" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidsessionidexception
-Stacktrace:
-	GetHandleVerifier [0x0x7ff7aaf46f75+76917]
-	GetHandleVerifier [0x0x7ff7aaf46fd0+77008]
-	(No symbol) [0x0x7ff7aacf9c1c]
-	(No symbol) [0x0x7ff7aad4055f]
-	(No symbol) [0x0x7ff7aad78332]
-	(No symbol) [0x0x7ff7aad72e53]
-	(No symbol) [0x0x7ff7aad71f19]
-	(No symbol) [0x0x7ff7aacc4b05]
-	GetHandleVerifier [0x0x7ff7ab21d2ad+3051437]
-	GetHandleVerifier [0x0x7ff7ab217903+3028483]
-	GetHandleVerifier [0x0x7ff7ab23589d+3151261]
-	GetHandleVerifier [0x0x7ff7aaf6183e+185662]
-	GetHandleVerifier [0x0x7ff7aaf696ff+218111]
-	(No symbol) [0x0x7ff7aacc3b00]
-	GetHandleVerifier [0x0x7ff7ab335f18+4201496]
-	BaseThreadInitThunk [0x0x7ff889597374+20]
-	RtlUserThreadStart [0x0x7ff88b47cc91+33]
-</msg>
-<msg time="2025-08-29T11:34:06.840222" level="FAIL">InvalidSessionIdException: Message: invalid session id: session deleted as the browser has closed the connection
-from disconnected: not connected to DevTools
-  (Session info: chrome=139.0.7258.139); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidsessionidexception
-Stacktrace:
-	GetHandleVerifier [0x0x7ff7aaf46f75+76917]
-	GetHandleVerifier [0x0x7ff7aaf46fd0+77008]
-	(No symbol) [0x0x7ff7aacf9dea]
-	(No symbol) [0x0x7ff7aace5f15]
-	(No symbol) [0x0x7ff7aad0abf4]
-	(No symbol) [0x0x7ff7aad7fa85]
-	(No symbol) [0x0x7ff7aad9ff72]
-	(No symbol) [0x0x7ff7aad78243]
-	(No symbol) [0x0x7ff7aad41431]
-	(No symbol) [0x0x7ff7aad421c3]
-	GetHandleVerifier [0x0x7ff7ab21d2ad+3051437]
-	GetHandleVerifier [0x0x7ff7ab217903+3028483]
-	GetHandleVerifier [0x0x7ff7ab23589d+3151261]
-	GetHandleVerifier [0x0x7ff7aaf6183e+185662]
-	GetHandleVerifier [0x0x7ff7aaf696ff+218111]
-	GetHandleVerifier [0x0x7ff7aaf4faf4+112628]
-	GetHandleVerifier [0x0x7ff7aaf4fca9+113065]
-	GetHandleVerifier [0x0x7ff7aaf36c78+10616]
-	BaseThreadInitThunk [0x0x7ff889597374+20]
-	RtlUserThreadStart [0x0x7ff88b47cc91+33]
-</msg>
 <arg>${login}</arg>
 <doc>Waits until the element ``locator`` is enabled.</doc>
-<status status="FAIL" start="2025-08-29T11:34:01.916920" elapsed="4.984198">InvalidSessionIdException: Message: invalid session id: session deleted as the browser has closed the connection
-from disconnected: not connected to DevTools
-  (Session info: chrome=139.0.7258.139); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidsessionidexception
-Stacktrace:
-	GetHandleVerifier [0x0x7ff7aaf46f75+76917]
-	GetHandleVerifier [0x0x7ff7aaf46fd0+77008]
-	(No symbol) [0x0x7ff7aacf9dea]
-	(No symbol) [0x0x7ff7aace5f15]
-	(No symbol) [0x0x7ff7aad0abf4]
-	(No symbol) [0x0x7ff7aad7fa85]
-	(No symbol) [0x0x7ff7aad9ff72]
-	(No symbol) [0x0x7ff7aad78243]
-	(No symbol) [0x0x7ff7aad41431]
-	(No symbol) [0x0x7ff7aad421c3]
-	GetHandleVerifier [0x0x7ff7ab21d2ad+3051437]
-	GetHandleVerifier [0x0x7ff7ab217903+3028483]
-	GetHandleVerifier [0x0x7ff7ab23589d+3151261]
-	GetHandleVerifier [0x0x7ff7aaf6183e+185662]
-	GetHandleVerifier [0x0x7ff7aaf696ff+218111]
-	GetHandleVerifier [0x0x7ff7aaf4faf4+112628]
-	GetHandleVerifier [0x0x7ff7aaf4fca9+113065]
-	GetHandleVerifier [0x0x7ff7aaf36c78+10616]
-	BaseThreadInitThunk [0x0x7ff889597374+20]
-	RtlUserThreadStart [0x0x7ff88b47cc91+33]
-</status>
+<status status="PASS" start="2025-09-08T10:27:11.317804" elapsed="0.021319"/>
 </kw>
 <kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2025-09-08T10:27:11.339123" level="INFO">Clicking link 'xpath=//a[text()=' Login']'.</msg>
 <arg>${login}</arg>
 <doc>Clicks a link identified by ``locator``.</doc>
-<status status="NOT RUN" start="2025-08-29T11:34:06.901118" elapsed="0.000000"/>
+<status status="PASS" start="2025-09-08T10:27:11.339123" elapsed="0.113153"/>
 </kw>
 <kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-09-08T10:27:11.453305" level="INFO">Typing text 'wrong@gmail.com' into text field 'id=email'.</msg>
 <arg>${email_lct}</arg>
 <arg>wrong@gmail.com</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="NOT RUN" start="2025-08-29T11:34:06.902146" elapsed="0.000000"/>
+<status status="PASS" start="2025-09-08T10:27:11.452276" elapsed="0.081887"/>
 </kw>
 <kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2025-09-08T10:27:11.535162" level="INFO">Typing password into text field 'id=password'.</msg>
+<msg time="2025-09-08T10:27:11.564042" level="INFO">Temporally setting log level to: NONE</msg>
 <arg>${password_lct}</arg>
 <arg>1234</arg>
 <doc>Types the given password into the text field identified by ``locator``.</doc>
-<status status="NOT RUN" start="2025-08-29T11:34:06.902146" elapsed="0.000000"/>
+<status status="PASS" start="2025-09-08T10:27:11.534163" elapsed="0.064523"/>
 </kw>
 <kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-09-08T10:27:11.598986" level="INFO">Clicking button 'xpath = //button[@type='submit']'.</msg>
 <arg>${submit_btn}</arg>
 <doc>Clicks the button identified by ``locator``.</doc>
-<status status="NOT RUN" start="2025-08-29T11:34:06.902146" elapsed="0.000000"/>
+<status status="PASS" start="2025-09-08T10:27:11.598986" elapsed="0.083042"/>
 </kw>
 <kw name="Element Should Not Be Visible" owner="SeleniumLibrary">
+<msg time="2025-09-08T10:27:11.754648" level="INFO">Element '//h2[contains(text(), 'Welcome')]' did not exist.</msg>
 <arg>${profile_text}</arg>
 <doc>Verifies that the element identified by ``locator`` is NOT visible.</doc>
-<status status="NOT RUN" start="2025-08-29T11:34:06.903144" elapsed="0.000000"/>
+<status status="PASS" start="2025-09-08T10:27:11.682028" elapsed="0.072620"/>
 </kw>
-<status status="FAIL" start="2025-08-29T11:34:01.916143" elapsed="4.987001">InvalidSessionIdException: Message: invalid session id: session deleted as the browser has closed the connection
-from disconnected: not connected to DevTools
-  (Session info: chrome=139.0.7258.139); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidsessionidexception
-Stacktrace:
-	GetHandleVerifier [0x0x7ff7aaf46f75+76917]
-	GetHandleVerifier [0x0x7ff7aaf46fd0+77008]
-	(No symbol) [0x0x7ff7aacf9dea]
-	(No symbol) [0x0x7ff7aace5f15]
-	(No symbol) [0x0x7ff7aad0abf4]
-	(No symbol) [0x0x7ff7aad7fa85]
-	(No symbol) [0x0x7ff7aad9ff72]
-	(No symbol) [0x0x7ff7aad78243]
-	(No symbol) [0x0x7ff7aad41431]
-	(No symbol) [0x0x7ff7aad421c3]
-	GetHandleVerifier [0x0x7ff7ab21d2ad+3051437]
-	GetHandleVerifier [0x0x7ff7ab217903+3028483]
-	GetHandleVerifier [0x0x7ff7ab23589d+3151261]
-	GetHandleVerifier [0x0x7ff7aaf6183e+185662]
-	GetHandleVerifier [0x0x7ff7aaf696ff+218111]
-	GetHandleVerifier [0x0x7ff7aaf4faf4+112628]
-	GetHandleVerifier [0x0x7ff7aaf4fca9+113065]
-	GetHandleVerifier [0x0x7ff7aaf36c78+10616]
-	BaseThreadInitThunk [0x0x7ff889597374+20]
-	RtlUserThreadStart [0x0x7ff88b47cc91+33]
-</status>
+<status status="PASS" start="2025-09-08T10:27:11.317804" elapsed="0.436844"/>
 </kw>
 <kw name="Close Browser" owner="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="NOT RUN" start="2025-08-29T11:34:06.903144" elapsed="0.000000"/>
+<status status="PASS" start="2025-09-08T10:27:11.754648" elapsed="2.112095"/>
 </kw>
 <tag>negatif</tag>
 <tag>smoke</tag>
-<status status="FAIL" start="2025-08-29T11:34:00.559353" elapsed="6.344756">InvalidSessionIdException: Message: invalid session id: session deleted as the browser has closed the connection
-from disconnected: not connected to DevTools
-  (Session info: chrome=139.0.7258.139); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidsessionidexception
-Stacktrace:
-	GetHandleVerifier [0x0x7ff7aaf46f75+76917]
-	GetHandleVerifier [0x0x7ff7aaf46fd0+77008]
-	(No symbol) [0x0x7ff7aacf9dea]
-	(No symbol) [0x0x7ff7aace5f15]
-	(No symbol) [0x0x7ff7aad0abf4]
-	(No symbol) [0x0x7ff7aad7fa85]
-	(No symbol) [0x0x7ff7aad9ff72]
-	(No symbol) [0x0x7ff7aad78243]
-	(No symbol) [0x0x7ff7aad41431]
-	(No symbol) [0x0x7ff7aad421c3]
-	GetHandleVerifier [0x0x7ff7ab21d2ad+3051437]
-	GetHandleVerifier [0x0x7ff7ab217903+3028483]
-	GetHandleVerifier [0x0x7ff7ab23589d+3151261]
-	GetHandleVerifier [0x0x7ff7aaf6183e+185662]
-	GetHandleVerifier [0x0x7ff7aaf696ff+218111]
-	GetHandleVerifier [0x0x7ff7aaf4faf4+112628]
-	GetHandleVerifier [0x0x7ff7aaf4fca9+113065]
-	GetHandleVerifier [0x0x7ff7aaf36c78+10616]
-	BaseThreadInitThunk [0x0x7ff889597374+20]
-	RtlUserThreadStart [0x0x7ff88b47cc91+33]
-</status>
+<status status="PASS" start="2025-09-08T10:27:09.891508" elapsed="3.977700"/>
 </test>
-<status status="FAIL" start="2025-08-29T11:33:50.758317" elapsed="16.154768"/>
+<status status="PASS" start="2025-09-08T10:27:05.437078" elapsed="8.445985"/>
 </suite>
-<status status="FAIL" start="2025-08-29T11:33:50.755326" elapsed="16.167105"/>
+<status status="PASS" start="2025-09-08T10:27:05.432818" elapsed="8.459664"/>
 </suite>
-<status status="FAIL" start="2025-08-29T11:33:50.731185" elapsed="16.194743"/>
+<status status="PASS" start="2025-09-08T10:27:05.411731" elapsed="8.487021"/>
 </suite>
-<status status="FAIL" start="2025-08-29T11:33:50.660251" elapsed="16.265677"/>
+<status status="PASS" start="2025-09-08T10:27:05.392026" elapsed="8.518009"/>
 </suite>
 <statistics>
 <total>
-<stat pass="0" fail="2" skip="0">All Tests</stat>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
-<stat pass="0" fail="1" skip="0">negatif</stat>
-<stat pass="0" fail="1" skip="0">smoke</stat>
-<stat pass="0" fail="1" skip="0">smoke pozitif</stat>
+<stat pass="1" fail="0" skip="0">negatif</stat>
+<stat pass="1" fail="0" skip="0">smoke</stat>
+<stat pass="1" fail="0" skip="0">smoke pozitif</stat>
 </tag>
 <suite>
-<stat name="Edu Php" id="s1" pass="0" fail="2" skip="0">Edu Php</stat>
-<stat name="Test" id="s1-s1" pass="0" fail="2" skip="0">Edu Php.Test</stat>
-<stat name="Tests" id="s1-s1-s1" pass="0" fail="2" skip="0">Edu Php.Test.Tests</stat>
-<stat name="Test Login" id="s1-s1-s1-s1" pass="0" fail="2" skip="0">Edu Php.Test.Tests.Test Login</stat>
+<stat name="Edu Php" id="s1" pass="2" fail="0" skip="0">Edu Php</stat>
+<stat name="Test" id="s1-s1" pass="2" fail="0" skip="0">Edu Php.Test</stat>
+<stat name="Tests" id="s1-s1-s1" pass="2" fail="0" skip="0">Edu Php.Test.Tests</stat>
+<stat name="Test Login" id="s1-s1-s1-s1" pass="2" fail="0" skip="0">Edu Php.Test.Tests.Test Login</stat>
 </suite>
 </statistics>
 <errors>
-<msg time="2025-08-29T11:33:53.151030" level="WARN">The chromedriver version (138.0.7204.94) detected in PATH at C:\chromedriver-win64\chromedriver-win64\chromedriver.exe might not be compatible with the detected chrome version (139.0.7258.139); currently, chromedriver 139.0.7258.154 is recommended for chrome 139.*, so it is advised to delete the driver in PATH and retry</msg>
-<msg time="2025-08-29T11:34:00.559353" level="WARN">Multiple tests with name 'Login As Teacher' executed in suite 'Edu Php.Test.Tests.Test Login'.</msg>
-<msg time="2025-08-29T11:34:00.666245" level="WARN">The chromedriver version (138.0.7204.94) detected in PATH at C:\chromedriver-win64\chromedriver-win64\chromedriver.exe might not be compatible with the detected chrome version (139.0.7258.139); currently, chromedriver 139.0.7258.154 is recommended for chrome 139.*, so it is advised to delete the driver in PATH and retry</msg>
-<msg time="2025-08-29T11:34:06.815295" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidsessionidexception
-Stacktrace:
-	GetHandleVerifier [0x0x7ff7aaf46f75+76917]
-	GetHandleVerifier [0x0x7ff7aaf46fd0+77008]
-	(No symbol) [0x0x7ff7aacf9c1c]
-	(No symbol) [0x0x7ff7aad4055f]
-	(No symbol) [0x0x7ff7aad78332]
-	(No symbol) [0x0x7ff7aad72e53]
-	(No symbol) [0x0x7ff7aad71f19]
-	(No symbol) [0x0x7ff7aacc4b05]
-	GetHandleVerifier [0x0x7ff7ab21d2ad+3051437]
-	GetHandleVerifier [0x0x7ff7ab217903+3028483]
-	GetHandleVerifier [0x0x7ff7ab23589d+3151261]
-	GetHandleVerifier [0x0x7ff7aaf6183e+185662]
-	GetHandleVerifier [0x0x7ff7aaf696ff+218111]
-	(No symbol) [0x0x7ff7aacc3b00]
-	GetHandleVerifier [0x0x7ff7ab335f18+4201496]
-	BaseThreadInitThunk [0x0x7ff889597374+20]
-	RtlUserThreadStart [0x0x7ff88b47cc91+33]
-</msg>
+<msg time="2025-09-08T10:27:05.732878" level="WARN">The chromedriver version (138.0.7204.94) detected in PATH at C:\chromedriver-win64\chromedriver-win64\chromedriver.exe might not be compatible with the detected chrome version (139.0.7258.155); currently, chromedriver 139.0.7258.154 is recommended for chrome 139.*, so it is advised to delete the driver in PATH and retry</msg>
+<msg time="2025-09-08T10:27:09.892501" level="WARN">Multiple tests with name 'Login As Teacher' executed in suite 'Edu Php.Test.Tests.Test Login'.</msg>
+<msg time="2025-09-08T10:27:10.001631" level="WARN">The chromedriver version (138.0.7204.94) detected in PATH at C:\chromedriver-win64\chromedriver-win64\chromedriver.exe might not be compatible with the detected chrome version (139.0.7258.155); currently, chromedriver 139.0.7258.154 is recommended for chrome 139.*, so it is advised to delete the driver in PATH and retry</msg>
 </errors>
 </robot>

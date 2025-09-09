@@ -20,8 +20,8 @@ Resource     ../resources/common.resource
 clicks login button 
     Click Link  ${login}   
 enters valide email and password
-    Input Text   ${email_lct}   ${email}
-    Input Password    ${password_lct}   ${password}
+    Input Text   ${email_lct}   teacher@gmail.com
+    Input Password    ${password_lct}   1234
 clicks submit button
     Click Button  ${submit_btn}
 confirms that the login was succesful

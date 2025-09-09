@@ -1,5 +1,7 @@
 <?php
+session_start();
 include_once __DIR__ . '/../repositories/homework_repository.php';
+
 // creat homwork 
 if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "teacher_dashboard.php") and $_SERVER['REQUEST_METHOD'] == 'POST') {
     $teacherId = $_POST['userId'];
@@ -12,7 +14,7 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "t
     $filePath = null;
     $fileType = null;
 
-    // 1) Dosya yükleme kontrolü
+    // control upload fichier
     if (isset($_FILES['file']) && $_FILES['file']['error'] == 0) {
         $uploadDir = __DIR__ . "/../uploads/homeworks/";
         if (!is_dir($uploadDir)) {
@@ -37,7 +39,7 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "t
     }
 
     create_homework($teacherId, $studentIds, $classId, $lessonId, $title, $homework, $filePath, $fileType);
-
+    $_SESSION['success'] = 'Homework created successfully!';
     header("location: ../../views/pages/teacher_dashboard.php?form=homework&classId=$classId&lessonId=$lessonId");
     die();
 }
@@ -48,6 +50,7 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "a
     if (!empty($_GET['homeworkIds'])) {
         delete_homework($_GET['homeworkIds']);
     }
+    $_SESSION['success'] = 'Homework deleted successfully!';
   header("location: ../../views/pages/teacher_dashboard.php?form=homework&action=homeworks");
   die();
 }
