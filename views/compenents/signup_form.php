@@ -51,7 +51,7 @@
         <!-- Gizli input burada -->
         <input type="hidden" name="source" value="main">
 
-        <button type="submit" class="btn btn-primary">Register</button>
+        <button type="submit" class="btn btn-primary" style="background-color:#3ABCF8; border-color:#3ABCF8;">Register</button>
     </form>
 </body>
 

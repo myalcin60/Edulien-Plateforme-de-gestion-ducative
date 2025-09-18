@@ -17,18 +17,18 @@ session_start();
 
 <body>
     <div class="header">
-        <nav class=" d-flex navbar navbar-expand-lg ">
-            <div class="container-fluid" id="navbar">
+        <nav class=" d-flex navbar navbar-expand-lg text-light">
+            <div class="container-fluid text-light" id="navbar">
 
-                <div class="d-flex gap-3 align-items-center">
+                <div class="d-flex gap-3 align-items-center text-light">
                     <img class="d-md-block d-none logo-img" src="\edu_php\views\assets\logo.jpg" alt="logo">
 
                     <?php if (isset($_SESSION['id'][0]) == 'T'): ?>
-                        <a class="navbar-brand" href="../pages/teacher_dashboard.php">EDULIEN</a>
+                        <a class="navbar-brand text-light" href="../pages/teacher_dashboard.php">EDULIEN</a>
                     <?php elseif (isset($_SESSION['id'][0]) == 'S'): ?>
-                        <a class="navbar-brand" href="../pages/student_dashboard.php">EDULIEN</a>
+                        <a class="navbar-brand text-light" href="../pages/student_dashboard.php">EDULIEN</a>
                     <?php else: ?>
-                        <a class="navbar-brand" href="../pages/main.php?form=login">EDULIEN</a>
+                        <a class="navbar-brand text-light" href="../pages/main.php?form=login">EDULIEN</a>
                     <?php endif; ?>
 
                 </div>
@@ -53,13 +53,13 @@ session_start();
                                     action="../../src/controllers/user_controller.php" method="post">
                                     <div>
                                         <?php if ($_SESSION['id'][0] == 'T'): ?>
-                                            <a class="navbar-brand" href="../pages/teacher_dashboard.php">
+                                            <a class="navbar-brand text-light" href="../pages/teacher_dashboard.php">
                                                 <i class="fa-solid fa-user"></i>
                                                 <?php echo $_SESSION['first_name']; ?>
                                                 <?php echo $_SESSION['last_name']; ?>
                                             </a>
                                         <?php elseif (($_SESSION['id'][0]) == 'S'): ?>
-                                            <a class="navbar-brand" href="../pages/student_dashboard.php">
+                                            <a class="navbar-brand text-light" href="../pages/student_dashboard.php">
                                                 <i class="fa-solid fa-user"></i>
                                                 <?php echo $_SESSION['first_name']; ?>
                                                 <?php echo $_SESSION['last_name']; ?>

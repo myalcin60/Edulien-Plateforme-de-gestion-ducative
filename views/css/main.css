@@ -11,7 +11,7 @@
   --danger-color: #dc3545;
   --font-family: 'Goblin One' Tahoma, Geneva, Verdana, sans-serif;
   --background-color: var(--gray);
-   --btn-color:#0d6efd;
+   --btn-color:#3ABCF8 ;
 
 }
 
@@ -125,4 +125,9 @@ h2{
 
 .toast-message.info {
   background-color: #17a2b8;
+}
+
+.my-5 {
+  margin-top: 1rem !important;
+  margin-bottom: 3rem !important;
 }
