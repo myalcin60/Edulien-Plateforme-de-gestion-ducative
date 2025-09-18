@@ -41,7 +41,7 @@ EDU_PROJECT/
 
 1. Cloner le dépôt :
    ```bash
-   git clone https://github.com/myalcin60/Edulien-Plateforme-de-gestion-ducative
+   git clone https://github.com/myalcin60/Edulien-Plateforme-de-gestion-ducative.git
 2. Importer edu.sql dans votre base de données MySQL.
 
 3. Modifier src/config/db.php avec vos informations de connexion à la base de données.
