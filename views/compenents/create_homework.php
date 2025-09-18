@@ -27,6 +27,19 @@ $studentIds = $_GET['studentIds'] ?? [];
 </head>
 
 <body>
+    <?php if (isset($_SESSION['error'])): ?>
+        <div class="alert alert-danger">
+            <?= $_SESSION['error'];
+            unset($_SESSION['error']); ?>
+        </div>
+    <?php endif; ?>
+
+    <?php if (isset($_SESSION['success'])): ?>
+        <div class="alert alert-success">
+            <?= $_SESSION['success'];
+            unset($_SESSION['success']); ?>
+        </div>
+    <?php endif; ?>
     <h3>CREATE HOMEWORK</h3>
     <?php if ($userId[0] == 'T'): ?>
         <div class="">
@@ -65,12 +78,12 @@ $studentIds = $_GET['studentIds'] ?? [];
         <div class="title">
             <label for="homework">Title</label>
             <input name="hm_title" id="hm_title" value="<?= htmlspecialchars($title ?? '') ?>" <?php if ($userId[0] == 'S')
-                    echo "readonly"; ?>>
+                                                                                                    echo "readonly"; ?>>
         </div>
         <div class="textarea">
             <label for="homework">Homework</label>
             <textarea name="homework" id="homework" <?php if ($userId[0] == 'S')
-                echo "readonly"; ?>><?= htmlspecialchars($homeworkText ?? '') ?></textarea>
+                                                        echo "readonly"; ?>><?= htmlspecialchars($homeworkText ?? '') ?></textarea>
         </div>
         <?php if ($userId[0] == 'S'): ?>
             <div class="textarea">

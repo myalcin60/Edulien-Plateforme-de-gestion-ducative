@@ -1,4 +1,5 @@
--- Active: 1754772058359@@127.0.0.1@3306@edu
+
+-- Active: 1757782397363@@127.0.0.1@3306@edu
 use edu;
 
 CREATE Table users (
@@ -59,7 +60,10 @@ CREATE TABLE lessons (
 );
 
 SELECT * FROM lessons;
+SELECT * FROM lessons WHERE teacherId='T_70453' and classId=42;
+SELECT * FROM lessons WHERE classId = 42;
 
+select * from users;
 CREATE TABLE lesson_students (
     id INT AUTO_INCREMENT PRIMARY KEY,
     lessonId INT NOT NULL,
@@ -118,6 +122,8 @@ CREATE TABLE homeworks (
     FOREIGN KEY (classId) REFERENCES classes (classId) ON DELETE CASCADE,
     FOREIGN KEY (lessonId) REFERENCES lessons (lessonId) ON DELETE CASCADE
 );
+use edu;
+SELECT * FROM homeworks;
 
 SELECT *
 FROM

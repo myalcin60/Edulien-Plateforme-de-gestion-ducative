@@ -20,7 +20,7 @@ SignUp As Teacher
 Login As Teacher with valid fields
     Wait Until Element Is Enabled  ${login}
     Click Link  ${login}  
-    Input Text  ${email_lct}  teacher@yopmail.com
+    Input Text  ${email_lct}  teacher@gmail.com
     Input Password  ${password_lct}  1234
     Click Button   ${submit_btn}
     Wait Until Element Is Visible  ${profile_text}

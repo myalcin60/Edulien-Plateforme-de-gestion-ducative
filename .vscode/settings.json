@@ -1,5 +1,5 @@
 {
-     "liveServer.settings.CustomBrowser": "chrome",
+    "liveServer.settings.CustomBrowser": "chrome",
     "editor.fontSize": 12,
     "screencastMode.fontSize": 50,
     "debug.console.fontSize": 12,
@@ -8,5 +8,9 @@
     "editor.minimap.sectionHeaderFontSize": 9,
     "chat.editor.fontSize": 12,
     "markdown.preview.fontSize": 12,
-    "markdown.preview.lineHeight": 1.4
+    "markdown.preview.lineHeight": 1.4,
+    "robot.runArguments": [
+        "--outputdir",
+        "results"
+    ]
 }
