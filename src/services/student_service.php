@@ -11,6 +11,7 @@ function show_students($lessonId)
         <table class='table table-striped table-hover align-middle'>
             <thead class='table-primary'>
                 <tr>
+                <th class='text-start'>No</th>
                     <th>ID</th>
                     <th>Name</th>
                     <th>Email</th>
@@ -18,6 +19,7 @@ function show_students($lessonId)
                 </tr>
             </thead>
             <tbody>";
+    $no = 1;
 
     foreach ($students as $student) {
         $student_id = htmlspecialchars($student['studentId']);
@@ -31,6 +33,9 @@ function show_students($lessonId)
             </a>";
         $liste .= "
             <tr>
+                <td class='text-start w-10'> 
+                  $no 
+                 </td>
                 <td>$student_id</td>
                 <td>$student_name</td>
                 <td>$student_email</td>
@@ -38,6 +43,7 @@ function show_students($lessonId)
                    $a_sup
                 </td>
             </tr>";
+            $no++;
     }
 
     $liste .= "
@@ -51,12 +57,12 @@ function show_students($lessonId)
 function show_student_list($lessonId)
 {
     $students = get_students_in_lesson($lessonId);
-  
+
     $liste = "<div class='table-responsive'>
         <table class='table table-striped table-hover align-middle'>
             <thead class='table-primary'>
                 <tr>
-                   
+                   <th class='text-start'>No</th>
                     <th class='text-start'>Name</th>
                     <th class='text-start'>Surname</th>
                     <th class='text-start'>Class</th>
@@ -65,6 +71,7 @@ function show_student_list($lessonId)
                 </tr>
             </thead>
             <tbody>";
+    $no = 1;
 
     foreach ($students as $student) {
         $classId = htmlspecialchars($student['classId']);
@@ -80,6 +87,9 @@ function show_student_list($lessonId)
 
         $liste .= "
             <tr>
+             <td class='text-start w-10'> 
+                  $no 
+                 </td>
                 <td class='text-start w-25'> 
                   $name
                  </td>
@@ -98,6 +108,8 @@ function show_student_list($lessonId)
             </tr>
             
             ";
+        $no++;
+
     }
 
     $liste .= "</tbody>
