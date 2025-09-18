@@ -39,7 +39,7 @@ function get_homeworks_by_userId($userId)
         if ($userId[0] == 'T') {
             $sql = 'Select * from homeworks
         where teacherId= :teacherId 
-        GROUP BY title';
+        GROUP BY title, lessonId';
             $query = $pdo->prepare($sql);
             $query->bindValue("teacherId", $userId);
         } else {

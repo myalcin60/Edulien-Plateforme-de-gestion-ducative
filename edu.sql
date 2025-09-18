@@ -1,5 +1,6 @@
 
 -- Active: 1757782397363@@127.0.0.1@3306@edu
+
 use edu;
 
 CREATE Table users (
@@ -98,7 +99,7 @@ WHERE
 
 SELECT * FROM homeworks;
 
-SELECT * from homeworks WHERE `teacherId` = 'T_70453' GROUP BY title;
+SELECT * from homeworks WHERE `teacherId` = 'T_61328' GROUP BY title, `lessonId`;
 SELECT * from classes;
 SELECT * from classes where classId = 38;
 

@@ -22,7 +22,7 @@ $url = (isset($_GET['form']) && $_GET['form'] === 'login') ? 'login' : 'signup';
     </header>
     <main >
         
-        <h2 class=" text-center text-primary my-5">Welcome to our education platform</h2>
+        <h2 class=" text-center text-primary my-5">Empowering Education Anytime, Anywhere</h2>
         <div class="d-flex gap-3 container-sm">
             <div class=" d-md-block d-none rounded-2" id="image">
                 <img  class="img-fluid d-md-block d-none mx-auto rounded-2" src="../assets/home_page.png" alt="image_main">

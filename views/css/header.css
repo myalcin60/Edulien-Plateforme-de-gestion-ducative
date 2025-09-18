@@ -4,7 +4,7 @@
 
 #navbar {
 
-    background-color: white;
+    background-color:#3ABCF8 !important;
     color: var(--primary);
 
     >div>a {
@@ -14,19 +14,21 @@
     >div>img {
         border-radius: 5px;
         background-color: white;
-        width: 100px;
+        width: 50px;
     }
 }
 
 .header {
+    background-color: #3ABCF8 !important;
+    height: 10px !important;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 999;
     background-color: white;
-    /* şeffaflık sorununu önlemek için */
+
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    /* isteğe bağlı görsel */
+
 }
 
 .navbar-toggler {
@@ -34,4 +36,10 @@
     border: none !important;
     margin-right: 2%;
     line-height:0 !important;
+}
+
+@media (width <= 768px) {
+  img {
+    height: auto !important;
+    }
 }
