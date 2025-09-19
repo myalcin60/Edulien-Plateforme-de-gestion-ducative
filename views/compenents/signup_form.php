@@ -52,6 +52,7 @@
         <input type="hidden" name="source" value="main">
 
         <button type="submit" class="btn btn-primary" style="background-color:#3ABCF8; border-color:#3ABCF8;">Register</button>
+        <a href="./main.php?form=login">I already have an account. Login</a>
     </form>
 </body>
 
