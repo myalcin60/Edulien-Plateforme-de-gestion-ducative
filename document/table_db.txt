@@ -32,18 +32,6 @@ SELECT * FROM classes;
 
 SELECT * FROM classes WHERE classId = 27;
 
-# bu kullanilmiyor
-CREATE TABLE students (
-     id INT AUTO_INCREMENT PRIMARY KEY,
-      classId INT NOT NULL,
-      studentId VARCHAR(20) NOT NULL,
-      studentName VARCHAR(100),
-      studentEmail VARCHAR(100),
-      addedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-      FOREIGN KEY (classId) REFERENCES classes(classId) ON DELETE CASCADE,
-      FOREIGN KEY (studentId) REFERENCES users(id) ON DELETE CASCADE
-);
-
 SELECT * FROM students;
 
 CREATE TABLE lessons (
