@@ -14,39 +14,37 @@ $url = (isset($_GET['form']) && $_GET['form'] === 'login') ? 'login' : 'signup';
 </head>
 
 <body>
- <div class="wrapper">
-  <header>
-        <?php
-        include '../compenents/header.php';
-        ?>
-    </header>
-    <main >
-        
-        <h2 class=" text-center text-primary my-5">Empowering Education Anytime, Anywhere</h2>
-        <div class="d-flex gap-3 container-sm">
-            <div class=" d-md-block d-none rounded-2" id="image">
-                <img  class="img-fluid d-md-block d-none mx-auto rounded-2" src="../assets/home_page.png" alt="image_main">
+    <div class="wrapper">
+        <header>
+            <?php
+            include '../compenents/header.php';
+            ?>
+        </header>
+        <main>
+            <div class="d-flex gap-3 container-sm">
+                <div class=" d-md-block d-none rounded-2" id="image">
+                    <img class="img-fluid d-md-block d-none mx-auto rounded-2" src="../assets/okul.png" alt="image_main">
+                </div>
+
+                <div style="max-width:350px;" class="bg-white box-shadow rounded-2 form container-sm border ">
+                    <?php
+                    if ($url === 'signup') {
+                        include '../compenents/signup_form.php';
+                    } else {
+                        include '../compenents/login_form.php';
+                    }
+
+                    ?>
+                </div>
             </div>
 
-            <div style="max-width:350px;" class="bg-white box-shadow rounded-2 form container-sm border ">
-                <?php
-                if ($url === 'signup') {
-                    include '../compenents/signup_form.php';
-                } else {
-                    include '../compenents/login_form.php';
-                }
+        </main>
+        <footer>
+            <?php include '../compenents/footer.php'  ?>
+        </footer>
+    </div>
 
-                ?>
-            </div>
-        </div>
 
-    </main>
-    <footer>
-        <?php include '../compenents/footer.php'  ?>
-    </footer>
- </div>
- 
-  
 </body>
 
 </html>
