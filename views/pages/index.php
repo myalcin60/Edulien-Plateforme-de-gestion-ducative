@@ -17,14 +17,14 @@
             ?>
         </header>
         <main>
-            <div class="d-flex container-sm section_1 ">
+            <div class="flex container-sm section_1 ">
                 <div>
                     <h1 class=" my-5">Meet EDULIEN, the Digital Face of Education</h1>
                     <p>Digital classrooms specially designed for teachers and students</p>
 
                     <div class='item_btn'>
                         <a href="./main.php?form=login" class="btn btn-primary">Login</a>
-                        <!-- <a href="./main.php?form=signup" class="btn btn-primary">SignUp</a> -->
+                       
                     </div>
 
 
@@ -37,7 +37,7 @@
             </div>
             <div class="specialties">
                 <h2>Specialties</h2>
-                <div class="flex">
+                <div class="flex section_2">
                     <div class="box-shadow ">
                         <img src="../assets/teacher.jpg" alt="teacher">
                         <h3>Teacher panel </h3>
@@ -60,7 +60,7 @@
 
             </div>
          
-            <div class="max-w-6xl mx-auto px-6 py-12 flex flex-col md:flex-row items-center gap-8">
+            <div class="section_3 max-w-6xl  px-6 py-12 flex flex-col md:flex-row items-center gap-8">
                 <div class="flex-1">
                     <h3 class="text-2xl font-semibold mt-5">Teaching is easier with Edulien</h3>
                     <p class="mt-3 text-gray-600">Eduline simplifies classroom management and accelerates teacher-student interaction. Set up your project today and leave the rest to rest.</p>

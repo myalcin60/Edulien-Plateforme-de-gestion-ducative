@@ -59,3 +59,21 @@ body {
     }
 
 }
+@media (width <= 768px) {
+.section_1 {
+
+ display: block !important;
+ >div>img{
+display: none !important;
+ }
+    
+   
+}
+.section_2{
+    display: block;
+}
+.section_3{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+}
