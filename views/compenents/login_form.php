@@ -33,7 +33,14 @@
         </div>
 
         <button type="submit" class="btn btn-primary" style="background-color:#3ABCF8; border-color:#3ABCF8;">Submit</button>
+
     </form>
+    <div class="mt-5 text-dark text-center">
+        <a href="./main.php?form=signup" class="text-dark">Create an account</a>
+    </div>
+
+
+
 </body>
 
 </html

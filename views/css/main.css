@@ -64,11 +64,11 @@ button:hover {
   background-color: var(--accent-secondary);
 }
 
-/* Links  marcher pas*/
+
 a {
   text-decoration: none;
-  color: inherit;
-  font-size: small;
+  color: white !important;
+ 
 }
 
 a:hover {
@@ -84,7 +84,7 @@ a:hover {
 
 @media (width <= 768px) {
   body {
-    margin-top: 2%;
+    margin-top: 12%;
     padding-top: 5%;
  
   }

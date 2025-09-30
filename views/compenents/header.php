@@ -28,7 +28,7 @@ session_start();
                     <?php elseif (isset($_SESSION['id'][0]) == 'S'): ?>
                         <a class="navbar-brand text-light" href="../pages/student_dashboard.php">EDULIEN</a>
                     <?php else: ?>
-                        <a class="navbar-brand text-light" href="../pages/main.php?form=login">EDULIEN</a>
+                        <a class="navbar-brand text-light" href="../pages/index.php">EDULIEN</a>
                     <?php endif; ?>
 
                 </div>
@@ -40,7 +40,7 @@ session_start();
 
                 <div class="flex collapse navbar-collapse gap-3" id="navbarSupportedContent">
                     <div class="d-flex gap-3">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="../pages/index.php">Home</a>
                         <a class="nav-link active" aria-current="page" href="#">About</a>
                         <a class="nav-link active" aria-current="page" href="#">Contact</a>
                     </div>
