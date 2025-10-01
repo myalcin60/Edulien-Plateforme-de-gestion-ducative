@@ -68,7 +68,7 @@ function show_homeworks()
             if (in_array($fileType, ['image/jpeg', 'image/png'])) {
                 $fileLink = "<img src='/edu_php/src/$filePath' style =width:150; >";
             } else {
-                $fileLink = "<a href='/edu_php/src/$filePath' target='_blank'>Show file</a>";
+                $fileLink = "<a style='color:black;' href='/edu_php/src/$filePath' target='_blank'>Show file</a>";
             }
         } else {
             $fileLink = '-';
@@ -94,7 +94,7 @@ function show_homeworks()
                 <td class='text-start w-30'>
                    $descHtml
                 </td>
-                <td>
+                <td >
                    $fileLink
                 </td>
                 <td class='text-end w-30'>
