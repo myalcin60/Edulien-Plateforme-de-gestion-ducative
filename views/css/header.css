@@ -37,12 +37,18 @@
     margin-right: 2%;
     line-height:0 !important;
 }
+.btn{
+    text-decoration: none;
+    box-shadow:none;
+}
 
 @media (width <= 768px) {
   img {
     height: auto !important;
     }
-
+.icon_prfl{
+    display: none;
+}
    
 }
 

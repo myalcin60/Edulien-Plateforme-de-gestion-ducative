@@ -95,10 +95,10 @@ h2{
     font-size: small;
     
   }
-  img{
+  /* img{
     width: 100px;
     height: 100px;
-  }
+  } */
 .navbar{
   --bs-navbar-padding-y: 0 !important;
 }

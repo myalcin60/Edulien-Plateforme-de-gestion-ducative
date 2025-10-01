@@ -71,6 +71,7 @@ display: none !important;
 }
 .section_2{
     display: block;
+   justify-items: center;
 }
 .section_3{
     margin-left: 10%;

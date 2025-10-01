@@ -30,14 +30,14 @@
 
                 </div>
 
-                <div style="max-width:350px;" class="bg-white box-shadow rounded-2 form container-sm border " id="image">
+                <div style="max-width:350px;" class="bg-white  rounded-2 form container-sm  " id="image">
                     <img class="img-fluid d-md-block d-none mx-auto rounded-2" src="../assets/imageHome.png" alt="image_main">
 
                 </div>
             </div>
-            <div class="specialties">
+            <div class="specialties ">
                 <h2>Specialties</h2>
-                <div class="flex section_2">
+                <div class="flex section_2 ">
                     <div class="box-shadow ">
                         <img src="../assets/teacher.jpg" alt="teacher">
                         <h3>Teacher panel </h3>

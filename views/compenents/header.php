@@ -59,7 +59,7 @@ session_start();
                                                 <?php echo $_SESSION['last_name']; ?>
                                             </a>
                                         <?php elseif (($_SESSION['id'][0]) == 'S'): ?>
-                                            <a class="navbar-brand text-light" href="../pages/student_dashboard.php">
+                                            <a class="icon_prfl navbar-brand text-light" href="../pages/student_dashboard.php">
                                                 <i class="ikon fa-solid fa-user"></i>
                                                 <?php echo $_SESSION['first_name']; ?>
                                                 <?php echo $_SESSION['last_name']; ?>
@@ -69,7 +69,7 @@ session_start();
 
                                     </div>
                                     <input type="hidden" name="action" value="logout">
-                                    <button style="background:white; color:var(--primary)" name="logout">Logout</button>
+                                    <button class="btn btn-link " style="background:var(--btn-color); color:white" name="logout">Logout</button>
                                 </form>
 
 
@@ -86,7 +86,7 @@ session_start();
                 </div>
             </div>
         </nav>
-        
+
     </div>
 
 </body>
