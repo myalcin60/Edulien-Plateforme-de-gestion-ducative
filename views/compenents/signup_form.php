@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,17 +9,19 @@
 </head>
 
 <body>
-  <?php  if (isset($_SESSION['error'])): ?>
-    <div class="alert alert-danger">
-        <?= $_SESSION['error']; unset($_SESSION['error']); ?>
-    </div>
-<?php endif; ?>
+    <?php if (isset($_SESSION['error'])): ?>
+        <div class="alert alert-danger">
+            <?= $_SESSION['error'];
+            unset($_SESSION['error']); ?>
+        </div>
+    <?php endif; ?>
 
-<?php if (isset($_SESSION['success'])): ?>
-    <div class="alert alert-success">
-        <?= $_SESSION['success']; unset($_SESSION['success']); ?>
-    </div>
-<?php endif; ?>
+    <?php if (isset($_SESSION['success'])): ?>
+        <div class="alert alert-success">
+            <?= $_SESSION['success'];
+            unset($_SESSION['success']); ?>
+        </div>
+    <?php endif; ?>
     <form action="../../src/controllers/user_controller.php" method="post">
         <h2>Sign Up</h2>
         <div class="mb-3">
@@ -51,8 +52,8 @@
         <!-- Gizli input burada -->
         <input type="hidden" name="source" value="main">
 
-        <button type="submit" class="btn btn-primary" style="background-color:#3ABCF8; border-color:#3ABCF8;">Register</button>
-        <a href="./main.php?form=login">I already have an account. Login</a>
+        <button type="submit" class="btn btn-primary mb-3" style="background-color:#3ABCF8; border-color:#3ABCF8;">Register</button>
+        <a style='color:var( --accent-secondary);' href="./main.php?form=login">I already have an account. Login</a>
     </form>
 </body>
 

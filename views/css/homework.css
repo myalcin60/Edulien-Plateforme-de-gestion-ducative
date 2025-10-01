@@ -11,6 +11,11 @@
     }
 
 }
+.hm-menu{
+    a{
+        color: black !important;
+    }
+}
 
 .title {
     display: flex;
