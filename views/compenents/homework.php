@@ -20,7 +20,8 @@ if ($_SESSION['id'][0] == 'S') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homevork</title>
+    <meta name="description" content="Edulien, Provides homework sharing and digital library for teachers and students.">
+    <title>Edulien - Digital Education Platform</title>
     <link rel="stylesheet" href="../css/main.css" />
     <link rel="stylesheet" href="../css/homework.css" />
 </head>
