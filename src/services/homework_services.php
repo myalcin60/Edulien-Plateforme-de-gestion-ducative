@@ -91,7 +91,7 @@ function show_homeworks()
                 <td class='text-start w-20'>
                    $title
                 </td>
-                <td class='text-start w-30'>
+              <td class='text-start w-30' style='word-wrap: break-word; white-space: normal; max-width: 200px;'>
                    $descHtml
                 </td>
                 <td >

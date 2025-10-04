@@ -11,6 +11,11 @@
     }
 
 }
+td.text-start {
+  word-wrap: break-word;     /* Uzun kelimeleri bölerek alt satıra geçirir */
+  white-space: normal;       /* Satır sonuna gelince alt satıra geçmesini sağlar */
+  max-width: 300px;          /* Hücre genişliğini sınırlandırır */
+}
 .hm-menu{
     a{
         color: black !important;

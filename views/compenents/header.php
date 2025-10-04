@@ -22,7 +22,7 @@ session_start();
             <div class="container-fluid text-light" id="navbar">
 
                 <div class="d-flex gap-3 align-items-center text-light">
-                    <img class="d-md-block d-none logo-img" src="\edu_php\views\assets\logo.jpg" alt="logo">
+                    <img class="d-md-block d-none logo-img" src="\views\assets\logo.jpg" alt="logo">
 
                     <?php if (isset($_SESSION['id'][0]) == 'T'): ?>
                         <a class="navbar-brand text-light" href="../pages/teacher_dashboard.php">EDULIEN</a>
@@ -54,7 +54,7 @@ session_start();
                                     action="../../src/controllers/user_controller.php" method="post">
                                     <div>
                                         <?php if ($_SESSION['id'][0] == 'T'): ?>
-                                            <a class="navbar-brand text-light" href="../pages/teacher_dashboard.php">
+                                            <a class="icon_prfl navbar-brand text-light" href="../pages/teacher_dashboard.php">
                                                 <i class="ikon fa-solid fa-user"></i>
                                                 <?php echo $_SESSION['first_name']; ?>
                                                 <?php echo $_SESSION['last_name']; ?>
