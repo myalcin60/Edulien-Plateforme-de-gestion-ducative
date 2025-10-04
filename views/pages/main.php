@@ -9,7 +9,8 @@ $url = (isset($_GET['form']) && $_GET['form'] === 'login') ? 'login' : 'signup';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main</title>
+    <meta name="description" content="Edulien, Provides homework sharing and digital library for teachers and students.">
+    <title>Edulien - Digital Education Platform</title>>
 
 </head>
 

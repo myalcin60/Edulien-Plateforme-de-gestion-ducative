@@ -50,7 +50,7 @@ function show_homeworks()
 
         if (strlen($description) > 100) {
             $shortDesc = substr($description, 0, 100) . "...";
-            $descHtml = $shortDesc . " <a href='../homework_detail.php?id=$homework_id'>Show more</a>";
+            $descHtml = $shortDesc . " <a class='text_dark' href='../homework_detail.php?id=$homework_id'>Show more</a>";
         } else {
             $descHtml = $description;
         }

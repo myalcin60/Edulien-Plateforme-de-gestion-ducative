@@ -13,7 +13,8 @@ $user = get_user_by_id($_SESSION['id']);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
+   <meta name="description" content="Edulien, Provides homework sharing and digital library for teachers and students.">
+    <title>Edulien - Digital Education Platform</title>
     <link rel="stylesheet" href="../css/main.css" />
     <link rel="stylesheet" href="../css/profile.css" />
 </head>
@@ -27,7 +28,7 @@ $user = get_user_by_id($_SESSION['id']);
                         <img src="<?php echo $photo; ?>" alt="Profile Photo" width="150" height="150"
                             style="border-radius:25%">
                     <?php else: ?>
-                        <img src="../assets/logo.jpg" alt="Avatar Profile" width="150" height="150"
+                        <img src="../assets/account.png" alt="Avatar Profile" width="150" height="150"
                             style="border-radius:25%">
                     <?php endif; ?>
                 </label>

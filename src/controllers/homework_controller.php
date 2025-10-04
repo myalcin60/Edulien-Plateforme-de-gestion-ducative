@@ -21,7 +21,8 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "t
             mkdir($uploadDir, 0777, true);
         }
 
-        $fileName = time() . "_" . basename($_FILES['file']['name']);
+        $cleanName = preg_replace("/[^a-zA-Z0-9\._-]/", "_", basename($_FILES['file']['name']));
+        $fileName = time() . "_" . $cleanName;
         $targetPath = $uploadDir . $fileName;
 
         if (move_uploaded_file($_FILES['file']['tmp_name'], $targetPath)) {
@@ -45,12 +46,12 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "t
 }
 // delete homework
 if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "action=homeworks") and $_SERVER['REQUEST_METHOD'] == 'GET') {
-     
-    
+
+
     if (!empty($_GET['homeworkIds'])) {
         delete_homework($_GET['homeworkIds']);
     }
     $_SESSION['success'] = 'Homework deleted successfully!';
-  header("location: ../../views/pages/teacher_dashboard.php?form=homework&action=homeworks");
-  die();
+    header("location: ../../views/pages/teacher_dashboard.php?form=homework&action=homeworks");
+    die();
 }
