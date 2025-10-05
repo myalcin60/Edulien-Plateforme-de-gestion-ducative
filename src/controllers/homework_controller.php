@@ -17,6 +17,7 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "t
     // control upload fichier
     if (isset($_FILES['file']) && $_FILES['file']['error'] == 0) {
         $uploadDir = __DIR__ . "/../uploads/homeworks/";
+        // $uploadDir = __DIR__ . "../../../uploads/homeworks/"; //--pour infinity
         if (!is_dir($uploadDir)) {
             mkdir($uploadDir, 0777, true);
         }

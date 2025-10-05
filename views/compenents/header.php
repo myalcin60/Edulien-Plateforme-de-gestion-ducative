@@ -75,8 +75,8 @@ session_start();
 
 
                             <?php else: ?>
-                                <a style="text-decoration: none;" href="./main.php?form=login"> Login</a>
-                                <a style="text-decoration: none;" href="./main.php?form=signup"> SignUp</a>
+                                <a style="text-decoration: none;color:white;" href="./main.php?form=login"> Login</a>
+                                <a style="text-decoration: none;color:white;" href="./main.php?form=signup"> SignUp</a>
 
                             <?php endif; ?>
 
