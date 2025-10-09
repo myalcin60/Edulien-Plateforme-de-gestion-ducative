@@ -20,7 +20,7 @@
 
 .header {
     background-color: #3ABCF8 !important;
-    height: 10px !important;
+    height: 80px !important;
     position: fixed;
     top: 0;
     width: 100%;
@@ -35,6 +35,7 @@
     width: auto !important;
     border: none !important;
     margin-right: 2%;
+    margin-top: 2%;
     line-height:0 !important;
 }
 .btn{

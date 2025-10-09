@@ -3,6 +3,7 @@ include __DIR__ . '/../../src/services/service.php';
 include __DIR__ . '/../../src/services/class_services.php';
 include __DIR__ . '/../../src/services/student_service.php';
 include __DIR__ . '/../../src/services/lesson_services.php';
+include __DIR__ . '/../partiel/auth.php';
 
 $lesson = update_lesson_name();
 

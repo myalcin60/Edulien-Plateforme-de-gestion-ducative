@@ -1,5 +1,6 @@
 <?php
 include __DIR__ . '/../../src/services/class_services.php';
+include __DIR__ . '/../partiel/auth.php';
 $class = update_class();
 
 $profile = 'Profile';

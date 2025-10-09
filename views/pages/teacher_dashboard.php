@@ -1,5 +1,6 @@
 <?php
 include __DIR__ . '/../../src/services/service.php';
+include __DIR__ . '/../partiel/auth.php';
 $menu = isset($_GET['form']) ? $_GET['form'] : null;
 
 $profile = 'Profile';

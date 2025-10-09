@@ -82,7 +82,7 @@ a:hover {
   border-radius: 10px;
 }
 
-@media (width <= 768px) {
+@media (max-width: 768px) {
   body {
     margin-top: 12%;
     padding-top: 5%;
@@ -99,6 +99,24 @@ h2{
     width: 100px;
     height: 100px;
   } */
+.navbar{
+  --bs-navbar-padding-y: 0 !important;
+}
+}
+@media (max-width: 500px) {
+  body {
+    margin-top: 25% !important;
+    padding-top: 5%;
+ 
+  }
+h2{
+    font-size: medium;
+  }
+  table, p, h3, button, label, a, select {
+    font-size: small;
+    
+  }
+  
 .navbar{
   --bs-navbar-padding-y: 0 !important;
 }

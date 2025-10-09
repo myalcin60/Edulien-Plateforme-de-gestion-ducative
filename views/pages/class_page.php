@@ -3,6 +3,7 @@ include __DIR__ . '/../../src/services/service.php';
 include __DIR__ . '/../../src/services/class_services.php';
 include __DIR__ . '/../../src/services/student_service.php';
 include __DIR__ . '/../../src/services/lesson_services.php';
+include __DIR__ . '/../partiel/auth.php';
 
 $classId = $_GET['classId'] ;
 $class = get_class_by_classId($classId);
