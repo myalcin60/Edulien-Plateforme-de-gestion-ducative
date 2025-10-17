@@ -7,11 +7,7 @@ include_once __DIR__ . '/../../views/partiel/toast.php';
 
 $id = '';
 // Signup 
-if (
-   $_SERVER['REQUEST_METHOD'] === 'POST' &&
-   isset($_POST['source']) &&
-   $_POST['source'] === 'main'
-) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['source']) && $_POST['source'] === 'main') {
 
    $role = $_POST['role'];
    $id = create_id($role);
@@ -99,3 +95,6 @@ if (isset($_FILES['profile_photo']) && $_FILES['profile_photo']['error'] === UPL
    header("location: ../../views/pages/teacher_dashboard.php?form=profile");
    die();
 }
+
+
+  

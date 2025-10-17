@@ -30,7 +30,11 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
 }
-
+.navbar-toggler:focus {
+    text-decoration: none;
+    outline: 0;
+     box-shadow: none !important; 
+}
 .navbar-toggler {
     width: auto !important;
     border: none !important;

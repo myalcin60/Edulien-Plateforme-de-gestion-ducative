@@ -18,6 +18,16 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "d
       header("location: ../../views/pages/student_dashboard.php?form=profile");
       die();
     }
-
   
+}
+// delete user
+if(isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "dashboard.php") and $_SERVER['REQUEST_METHOD'] === 'GET') {
+   echo "here";
+   $userId = $_SESSION['id'];
+   echo $userId;
+   delete_user($userId);
+   session_unset();
+   session_destroy();
+   header("location: ../../views/pages/index.php");
+   die();
 }

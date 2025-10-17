@@ -112,3 +112,17 @@ function update_user_profile($id, $email, $first_name, $last_name, $gender, $spe
         return null;
     }
 }
+
+// delete user
+function delete_user($userId)
+{
+    try {
+        $pdo = db_connection();
+        $sql = "DELETE FROM users WHERE id = :userId";
+        $query = $pdo->prepare($sql);
+        $query->bindValue(':userId', $userId);
+        $query->execute();
+    } catch (Exception $ex) {
+        echo "\nErreur : problème de connexion avec la BD: " . $ex->getMessage();
+    }
+}

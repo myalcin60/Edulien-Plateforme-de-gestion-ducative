@@ -17,7 +17,7 @@
             <div class="container-fluid text-light" id="navbar">
 
                 <div class="d-flex gap-3 align-items-center text-light">
-                    <img class="d-md-block d-none logo-img" src="\views\assets\logo.jpg" alt="logo">
+                    <img class="d-md-block d-none logo-img" src="../assets/logo.jpg" alt="logo">
 
                     <?php if (isset($_SESSION['id'][0]) == 'T'): ?>
                         <a class="navbar-brand text-light" href="../pages/teacher_dashboard.php">EDULIEN</a>

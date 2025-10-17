@@ -96,6 +96,11 @@ $user = get_user_by_id($_SESSION['id']);
             <button class="profil-updt" type="submit">Update</button>
         </div>
     </form>
+    <form action="../../src/controllers/profile_controller.php" method="GET">
+        <div>
+            <button class="profil-updt" type="submit">Delete</button>
+        </div>
+    </form>
 
 </body>
 
