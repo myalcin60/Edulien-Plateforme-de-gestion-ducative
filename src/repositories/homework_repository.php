@@ -1,11 +1,12 @@
 <?PHP
 include_once __DIR__ . '/../config/connection.php';
-
+include __DIR__. '/../models/homeworkModel.php';
 // create homework
 function create_homework($teacherId, $studentIds, $classId, $lessonId, $title, $description, $filePath, $fileType)
 {
     try {
         $pdo = db_connection();
+        createHomeworkTable();
 
         $sql = 'INSERT INTO homeworks 
             (teacherId, studentId, classId, lessonId, title, description, filePath, fileType) 

@@ -1,7 +1,4 @@
 <?php
-
-use Dom\Mysql;
-
 include __DIR__ . '/db.php';
 
 function db_connection()

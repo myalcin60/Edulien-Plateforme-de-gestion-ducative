@@ -21,7 +21,7 @@ ALTER TABLE users ADD COLUMN specialization VARCHAR(250);
 ALTER TABLE users ADD COLUMN gender VARCHAR(25);
 
 ALTER TABLE users MODIFY COLUMN profile_photo LONGBLOB;
-
+                                                                        
 ALTER TABLE users ADD COLUMN profile_photo_type VARCHAR(50);
 
 CREATE Table classes (

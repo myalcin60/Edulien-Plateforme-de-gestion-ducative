@@ -1,11 +1,13 @@
 <?php
 include_once __DIR__ . '/../config/connection.php';
+include __DIR__ . '/../models/classModels.php';
 
 // creaat class for teacher
 function create_class($userId, $className)
 {
     try {
         $pdo = db_connection();
+        createClassTable();
         $sql = 'INSERT INTO classes ( className, teacherId ) values ( :className, :teacherId)';
         $query = $pdo->prepare($sql);
         $query->bindValue("className", $className);

@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../config/connection.php';
+include_once __DIR__ . '/../models/lessonStudentModel.php';
 // get student in lesson
 function get_students_classId_by_email($email)
 {
@@ -93,6 +94,8 @@ function add_student($lessonId, $studentId,  $studentEmail, $studentName, $class
 
         try {
             $pdo = db_connection();
+            createLessonsStudentTable();
+
             $sql = 'INSERT INTO lesson_students ( lessonId, studentId, studentEmail, studentName,  classId ) values (:lessonId , :studentId, :studentName, :studentEmail, :classId)';
             $query = $pdo->prepare($sql);
             $query->bindValue("lessonId", $lessonId);

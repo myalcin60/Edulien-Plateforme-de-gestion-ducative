@@ -1,11 +1,15 @@
 <?php
 include __DIR__ . '/../config/connection.php';
+include __DIR__. '/../models/userModel.php';
 
 //sign up
 function signup_user($id, $firstname, $lastname, $email, $password, $role)
 {
     try {
         $pdo = db_connection();
+        createUserTable();
+
+        
 
         $sql = "INSERT INTO users (id, first_name, last_name, email, password, role)
                 VALUES (:id, :first_name, :last_name, :email, :password, :role)";
