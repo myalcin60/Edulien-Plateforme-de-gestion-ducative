@@ -26,7 +26,7 @@
                 <button class="left-menu-button"> <?= $profile ?></button>
             </a>
             <a style="text-decoration: none;" href="./student_dashboard.php?form=classes">
-                <button> <?= $classes ?></button>
+                <button class="left-menu-button"> <?= $classes ?></button>
             </a>
             <a style="text-decoration: none;" href="./student_dashboard.php?form=homework">
             <button class="left-menu-button"> <?= $homework ?></button>
