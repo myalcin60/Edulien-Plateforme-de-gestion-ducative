@@ -15,10 +15,9 @@
     <div class="header">
         <nav class=" d-flex navbar navbar-expand-lg text-light">
             <div class="container-fluid text-light" id="navbar">
-
+                <!-- Logo and site name -->
                 <div class="d-flex gap-3 align-items-center text-light">
                     <img class="d-md-block d-none logo-img" src="../assets/logo.jpg" alt="logo">
-
                     <?php if (isset($_SESSION['id'][0]) == 'T'): ?>
                         <a class="navbar-brand text-light" href="../pages/teacher_dashboard.php">EDULIEN</a>
                     <?php elseif (isset($_SESSION['id'][0]) == 'S'): ?>
@@ -26,21 +25,20 @@
                     <?php else: ?>
                         <a class="navbar-brand text-light" href="../pages/index.php">EDULIEN</a>
                     <?php endif; ?>
-
                 </div>
+                  <!-- Button of the Mobil menu  (burger menu) -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
+                        <!-- Menu links -->
                 <div class="flex collapse navbar-collapse gap-3" id="navbarSupportedContent">
                     <div class="d-flex gap-3">
                         <a class="nav-link active" aria-current="page" href="../pages/index.php">Home</a>
                         <a class="nav-link active" aria-current="page" href="#">About</a>
                         <a class="nav-link active" aria-current="page" href="#">Contact</a>
                     </div>
-
                     <div class="d-flex gap-3">
                         <div class="d-flex me-2 gap-3">
 
@@ -82,9 +80,7 @@
                 </div>
             </div>
         </nav>
-
     </div>
-
 </body>
 
 </html>

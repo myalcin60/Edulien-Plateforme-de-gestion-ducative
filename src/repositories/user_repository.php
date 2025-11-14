@@ -1,6 +1,11 @@
 <?php
 include __DIR__ . '/../config/connection.php';
 include __DIR__. '/../models/userModel.php';
+include __DIR__ . '/../models/classModels.php';
+include_once __DIR__ . '/../models/lessonModels.php';
+include_once __DIR__ . '/../models/lessonStudentModel.php';
+include __DIR__. '/../models/homeworkModel.php';
+
 
 //sign up
 function signup_user($id, $firstname, $lastname, $email, $password, $role)
@@ -8,8 +13,10 @@ function signup_user($id, $firstname, $lastname, $email, $password, $role)
     try {
         $pdo = db_connection();
         createUserTable();
-
-        
+        createClassTable();
+        createLessonTable();
+        createLessonsStudentTable();
+        createHomeworkTable();        
 
         $sql = "INSERT INTO users (id, first_name, last_name, email, password, role)
                 VALUES (:id, :first_name, :last_name, :email, :password, :role)";

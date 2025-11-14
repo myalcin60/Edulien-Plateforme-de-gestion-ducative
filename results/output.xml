@@ -1,335 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.3.2 (Python 3.13.7 on win32)" generated="2025-09-14T17:53:59.978487" rpa="false" schemaversion="5">
-<suite id="s1" name="Test Login" source="C:\wamp64\www\edu_php\test\tests\test_login.robot">
-<test id="s1-t1" name="Login As Teacher" line="31">
+<robot generator="Robot 7.3.2 (Python 3.13.7 on win32)" generated="2025-11-12T16:04:43.732178" rpa="false" schemaversion="5">
+<suite id="s1" name="Test" source="C:\wamp64\www\edu_php\Test">
+<suite id="s1-s1" name="Tests" source="C:\wamp64\www\edu_php\Test\tests">
+<suite id="s1-s1-s1" name="Test Login" source="C:\wamp64\www\edu_php\Test\tests\test_login.robot">
+<test id="s1-s1-s1-t1" name="Login As Teacher" line="43">
 <kw name="Open Edulien" owner="common">
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2025-09-14T17:54:00.216178" level="INFO">Opening browser 'chrome' to base url 'http://localhost/edu_php/views/pages/main.php'.</msg>
+<msg time="2025-11-12T16:04:43.991355" level="INFO">Opening browser 'chrome' to base url 'https://edulien.free.nf/views/pages/index.php'.</msg>
 <arg>${url}</arg>
 <arg>${Browser}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2025-09-14T17:54:00.215988" elapsed="1.661213"/>
+<status status="PASS" start="2025-11-12T16:04:43.991162" elapsed="2.583914"/>
 </kw>
 <kw name="Maximize Browser Window" owner="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" start="2025-09-14T17:54:01.877532" elapsed="0.030040"/>
+<status status="PASS" start="2025-11-12T16:04:46.575337" elapsed="11.117064"/>
 </kw>
-<status status="PASS" start="2025-09-14T17:54:00.215491" elapsed="1.692311"/>
-</kw>
-<kw name="Login As Teacher with valid fields" owner="auth_keywords">
-<kw name="Wait Until Element Is Enabled" owner="SeleniumLibrary">
-<arg>${login}</arg>
-<doc>Waits until the element ``locator`` is enabled.</doc>
-<status status="PASS" start="2025-09-14T17:54:01.908616" elapsed="0.044089"/>
-</kw>
-<kw name="Click Link" owner="SeleniumLibrary">
-<msg time="2025-09-14T17:54:01.953151" level="INFO">Clicking link 'xpath=//a[text()=' Login']'.</msg>
-<arg>${login}</arg>
-<doc>Clicks a link identified by ``locator``.</doc>
-<status status="PASS" start="2025-09-14T17:54:01.952944" elapsed="0.120674"/>
-</kw>
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-09-14T17:54:02.074890" level="INFO">Typing text 'teacher@gmail.com' into text field 'id=email'.</msg>
-<arg>${email_lct}</arg>
-<arg>teacher@gmail.com</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-09-14T17:54:02.074231" elapsed="0.144331"/>
-</kw>
-<kw name="Input Password" owner="SeleniumLibrary">
-<msg time="2025-09-14T17:54:02.219961" level="INFO">Typing password into text field 'id=password'.</msg>
-<msg time="2025-09-14T17:54:02.268651" level="INFO">Temporally setting log level to: NONE</msg>
-<arg>${password_lct}</arg>
-<arg>1234</arg>
-<doc>Types the given password into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-09-14T17:54:02.219612" elapsed="0.111128"/>
-</kw>
-<kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2025-09-14T17:54:02.331217" level="INFO">Clicking button 'xpath = //button[@type='submit']'.</msg>
-<arg>${submit_btn}</arg>
-<doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2025-09-14T17:54:02.330914" elapsed="0.132098"/>
-</kw>
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${profile_text}</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-09-14T17:54:02.463298" elapsed="0.029014"/>
-</kw>
-<kw name="Element Should Be Visible" owner="SeleniumLibrary">
-<msg time="2025-09-14T17:54:02.509660" level="INFO">Element '//h2[contains(text(), 'Welcome')]' is displayed.</msg>
-<arg>${profile_text}</arg>
-<doc>Verifies that the element identified by ``locator`` is visible.</doc>
-<status status="PASS" start="2025-09-14T17:54:02.492603" elapsed="0.017187"/>
-</kw>
-<status status="PASS" start="2025-09-14T17:54:01.908342" elapsed="0.601582"/>
-</kw>
-<kw name="Close Browser" owner="SeleniumLibrary">
-<doc>Closes the current browser.</doc>
-<status status="PASS" start="2025-09-14T17:54:02.510405" elapsed="2.336797"/>
-</kw>
-<tag>smoke pozitif</tag>
-<status status="PASS" start="2025-09-14T17:54:00.214929" elapsed="4.634615"/>
-</test>
-<test id="s1-t2" name="Login as Student" line="37">
-<kw name="Open Edulien" owner="common">
-<kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2025-09-14T17:54:04.853749" level="INFO">Opening browser 'chrome' to base url 'http://localhost/edu_php/views/pages/main.php'.</msg>
-<arg>${url}</arg>
-<arg>${Browser}</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2025-09-14T17:54:04.853319" elapsed="1.565288"/>
-</kw>
-<kw name="Maximize Browser Window" owner="SeleniumLibrary">
-<doc>Maximizes current browser window.</doc>
-<status status="PASS" start="2025-09-14T17:54:06.418900" elapsed="0.033799"/>
-</kw>
-<status status="PASS" start="2025-09-14T17:54:04.852778" elapsed="1.600017"/>
-</kw>
-<kw name="Login As Student with valid fields" owner="auth_keywords">
-<kw name="Wait Until Element Is Enabled" owner="SeleniumLibrary">
-<arg>${login}</arg>
-<doc>Waits until the element ``locator`` is enabled.</doc>
-<status status="PASS" start="2025-09-14T17:54:06.453823" elapsed="0.048811"/>
-</kw>
-<kw name="Click Link" owner="SeleniumLibrary">
-<msg time="2025-09-14T17:54:06.502981" level="INFO">Clicking link 'xpath=//a[text()=' Login']'.</msg>
-<arg>${login}</arg>
-<doc>Clicks a link identified by ``locator``.</doc>
-<status status="PASS" start="2025-09-14T17:54:06.502791" elapsed="0.152914"/>
-</kw>
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-09-14T17:54:06.656085" level="INFO">Typing text 'student@gmail.com' into text field 'id=email'.</msg>
-<arg>${email_lct}</arg>
-<arg>${s_email}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-09-14T17:54:06.655872" elapsed="0.125397"/>
-</kw>
-<kw name="Input Password" owner="SeleniumLibrary">
-<msg time="2025-09-14T17:54:06.781670" level="INFO">Typing password into text field 'id=password'.</msg>
-<msg time="2025-09-14T17:54:06.820901" level="INFO">Temporally setting log level to: NONE</msg>
-<arg>${password_lct}</arg>
-<arg>${s_password}</arg>
-<doc>Types the given password into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-09-14T17:54:06.781455" elapsed="0.090529"/>
-</kw>
-<kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2025-09-14T17:54:06.872316" level="INFO">Clicking button 'xpath = //button[@type='submit']'.</msg>
-<arg>${submit_btn}</arg>
-<doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2025-09-14T17:54:06.872142" elapsed="0.077992"/>
-</kw>
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${profile_text}</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-09-14T17:54:06.950399" elapsed="0.224706"/>
-</kw>
-<kw name="Element Should Be Visible" owner="SeleniumLibrary">
-<msg time="2025-09-14T17:54:07.191960" level="INFO">Element '//h2[contains(text(), 'Welcome')]' is displayed.</msg>
-<arg>${profile_text}</arg>
-<doc>Verifies that the element identified by ``locator`` is visible.</doc>
-<status status="PASS" start="2025-09-14T17:54:07.175292" elapsed="0.016787"/>
-</kw>
-<status status="PASS" start="2025-09-14T17:54:06.453615" elapsed="0.738579"/>
-</kw>
-<kw name="Close Browser" owner="SeleniumLibrary">
-<doc>Closes the current browser.</doc>
-<status status="PASS" start="2025-09-14T17:54:07.192609" elapsed="2.219398"/>
-</kw>
-<tag>smoke pozitif</tag>
-<status status="PASS" start="2025-09-14T17:54:04.851941" elapsed="4.560973"/>
-</test>
-<test id="s1-t3" name="Login As Teacher" line="43">
-<kw name="Open Edulien" owner="common">
-<kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2025-09-14T17:54:09.417828" level="INFO">Opening browser 'chrome' to base url 'http://localhost/edu_php/views/pages/main.php'.</msg>
-<arg>${url}</arg>
-<arg>${Browser}</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2025-09-14T17:54:09.417411" elapsed="1.693361"/>
-</kw>
-<kw name="Maximize Browser Window" owner="SeleniumLibrary">
-<doc>Maximizes current browser window.</doc>
-<status status="PASS" start="2025-09-14T17:54:11.110939" elapsed="0.048558"/>
-</kw>
-<status status="PASS" start="2025-09-14T17:54:09.416888" elapsed="1.742759"/>
+<status status="PASS" start="2025-11-12T16:04:43.990676" elapsed="13.701858"/>
 </kw>
 <kw name="Login As Teacher with invalid email" owner="auth_keywords">
 <kw name="Wait Until Element Is Enabled" owner="SeleniumLibrary">
 <arg>${login}</arg>
 <doc>Waits until the element ``locator`` is enabled.</doc>
-<status status="PASS" start="2025-09-14T17:54:11.160637" elapsed="0.035401"/>
+<status status="PASS" start="2025-11-12T16:04:57.694477" elapsed="0.043274"/>
 </kw>
 <kw name="Click Link" owner="SeleniumLibrary">
-<msg time="2025-09-14T17:54:11.196420" level="INFO">Clicking link 'xpath=//a[text()=' Login']'.</msg>
+<msg time="2025-11-12T16:04:57.738260" level="INFO">Clicking link 'xpath=//a[text()=' Login']'.</msg>
 <arg>${login}</arg>
 <doc>Clicks a link identified by ``locator``.</doc>
-<status status="PASS" start="2025-09-14T17:54:11.196213" elapsed="0.115425"/>
+<status status="PASS" start="2025-11-12T16:04:57.737913" elapsed="4.174928"/>
 </kw>
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-09-14T17:54:11.315338" level="INFO">Typing text 'wrong@gmail.com' into text field 'id=email'.</msg>
+<msg time="2025-11-12T16:05:01.913467" level="INFO">Typing text 'wrong@gmail.com' into text field 'id=email'.</msg>
 <arg>${email_lct}</arg>
 <arg>wrong@gmail.com</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-09-14T17:54:11.311845" elapsed="0.120927"/>
+<status status="PASS" start="2025-11-12T16:05:01.913114" elapsed="0.213504"/>
 </kw>
 <kw name="Input Password" owner="SeleniumLibrary">
-<msg time="2025-09-14T17:54:11.433180" level="INFO">Typing password into text field 'id=password'.</msg>
-<msg time="2025-09-14T17:54:11.477789" level="INFO">Temporally setting log level to: NONE</msg>
+<msg time="2025-11-12T16:05:02.126970" level="INFO">Typing password into text field 'id=password'.</msg>
+<msg time="2025-11-12T16:05:02.228646" level="INFO">Temporally setting log level to: NONE</msg>
 <arg>${password_lct}</arg>
 <arg>1234</arg>
 <doc>Types the given password into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-09-14T17:54:11.432965" elapsed="0.100204"/>
+<status status="PASS" start="2025-11-12T16:05:02.126780" elapsed="0.163095"/>
 </kw>
 <kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2025-09-14T17:54:11.533675" level="INFO">Clicking button 'xpath = //button[@type='submit']'.</msg>
+<msg time="2025-11-12T16:05:02.290291" level="INFO">Clicking button 'xpath = //button[@type='submit']'.</msg>
 <arg>${submit_btn}</arg>
 <doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2025-09-14T17:54:11.533375" elapsed="0.090296"/>
+<status status="PASS" start="2025-11-12T16:05:02.290074" elapsed="0.124580"/>
 </kw>
 <kw name="Element Should Not Be Visible" owner="SeleniumLibrary">
-<msg time="2025-09-14T17:54:11.871379" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
-<msg time="2025-09-14T17:54:11.871546" level="FAIL">StaleElementReferenceException: Message: stale element reference: stale element not found
-  (Session info: chrome=140.0.7339.128); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#staleelementreferenceexception
-Stacktrace:
-	GetHandleVerifier [0x0x7ff6299afc95+79861]
-	GetHandleVerifier [0x0x7ff6299afcf0+79952]
-	(No symbol) [0x0x7ff62972cada]
-	(No symbol) [0x0x7ff629743295]
-	(No symbol) [0x0x7ff629741d83]
-	(No symbol) [0x0x7ff629735377]
-	(No symbol) [0x0x7ff6297354f1]
-	(No symbol) [0x0x7ff629733230]
-	(No symbol) [0x0x7ff629737a51]
-	(No symbol) [0x0x7ff6297d630b]
-	(No symbol) [0x0x7ff6297acada]
-	(No symbol) [0x0x7ff6297d4f8b]
-	(No symbol) [0x0x7ff6297ac8b3]
-	(No symbol) [0x0x7ff629775272]
-	(No symbol) [0x0x7ff629776043]
-	GetHandleVerifier [0x0x7ff629c6b9cd+2946349]
-	GetHandleVerifier [0x0x7ff629c65c4a+2922410]
-	GetHandleVerifier [0x0x7ff629c859d7+3052855]
-	GetHandleVerifier [0x0x7ff6299caa7e+189918]
-	GetHandleVerifier [0x0x7ff6299d2a1f+222591]
-	GetHandleVerifier [0x0x7ff6299b8ab4+116244]
-	GetHandleVerifier [0x0x7ff6299b8c69+116681]
-	GetHandleVerifier [0x0x7ff62999f048+11176]
-	BaseThreadInitThunk [0x0x7ff9ebbc259d+29]
-	RtlUserThreadStart [0x0x7ff9ed5caf78+40]
-</msg>
+<msg time="2025-11-12T16:05:02.653816" level="INFO">Element '//h2[contains(text(), 'Welcome')]' did not exist.</msg>
 <arg>${profile_text}</arg>
 <doc>Verifies that the element identified by ``locator`` is NOT visible.</doc>
-<status status="FAIL" start="2025-09-14T17:54:11.623928" elapsed="0.249809">StaleElementReferenceException: Message: stale element reference: stale element not found
-  (Session info: chrome=140.0.7339.128); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#staleelementreferenceexception
-Stacktrace:
-	GetHandleVerifier [0x0x7ff6299afc95+79861]
-	GetHandleVerifier [0x0x7ff6299afcf0+79952]
-	(No symbol) [0x0x7ff62972cada]
-	(No symbol) [0x0x7ff629743295]
-	(No symbol) [0x0x7ff629741d83]
-	(No symbol) [0x0x7ff629735377]
-	(No symbol) [0x0x7ff6297354f1]
-	(No symbol) [0x0x7ff629733230]
-	(No symbol) [0x0x7ff629737a51]
-	(No symbol) [0x0x7ff6297d630b]
-	(No symbol) [0x0x7ff6297acada]
-	(No symbol) [0x0x7ff6297d4f8b]
-	(No symbol) [0x0x7ff6297ac8b3]
-	(No symbol) [0x0x7ff629775272]
-	(No symbol) [0x0x7ff629776043]
-	GetHandleVerifier [0x0x7ff629c6b9cd+2946349]
-	GetHandleVerifier [0x0x7ff629c65c4a+2922410]
-	GetHandleVerifier [0x0x7ff629c859d7+3052855]
-	GetHandleVerifier [0x0x7ff6299caa7e+189918]
-	GetHandleVerifier [0x0x7ff6299d2a1f+222591]
-	GetHandleVerifier [0x0x7ff6299b8ab4+116244]
-	GetHandleVerifier [0x0x7ff6299b8c69+116681]
-	GetHandleVerifier [0x0x7ff62999f048+11176]
-	BaseThreadInitThunk [0x0x7ff9ebbc259d+29]
-	RtlUserThreadStart [0x0x7ff9ed5caf78+40]
-</status>
+<status status="PASS" start="2025-11-12T16:05:02.415223" elapsed="0.238724"/>
 </kw>
-<status status="FAIL" start="2025-09-14T17:54:11.160053" elapsed="0.713835">StaleElementReferenceException: Message: stale element reference: stale element not found
-  (Session info: chrome=140.0.7339.128); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#staleelementreferenceexception
-Stacktrace:
-	GetHandleVerifier [0x0x7ff6299afc95+79861]
-	GetHandleVerifier [0x0x7ff6299afcf0+79952]
-	(No symbol) [0x0x7ff62972cada]
-	(No symbol) [0x0x7ff629743295]
-	(No symbol) [0x0x7ff629741d83]
-	(No symbol) [0x0x7ff629735377]
-	(No symbol) [0x0x7ff6297354f1]
-	(No symbol) [0x0x7ff629733230]
-	(No symbol) [0x0x7ff629737a51]
-	(No symbol) [0x0x7ff6297d630b]
-	(No symbol) [0x0x7ff6297acada]
-	(No symbol) [0x0x7ff6297d4f8b]
-	(No symbol) [0x0x7ff6297ac8b3]
-	(No symbol) [0x0x7ff629775272]
-	(No symbol) [0x0x7ff629776043]
-	GetHandleVerifier [0x0x7ff629c6b9cd+2946349]
-	GetHandleVerifier [0x0x7ff629c65c4a+2922410]
-	GetHandleVerifier [0x0x7ff629c859d7+3052855]
-	GetHandleVerifier [0x0x7ff6299caa7e+189918]
-	GetHandleVerifier [0x0x7ff6299d2a1f+222591]
-	GetHandleVerifier [0x0x7ff6299b8ab4+116244]
-	GetHandleVerifier [0x0x7ff6299b8c69+116681]
-	GetHandleVerifier [0x0x7ff62999f048+11176]
-	BaseThreadInitThunk [0x0x7ff9ebbc259d+29]
-	RtlUserThreadStart [0x0x7ff9ed5caf78+40]
-</status>
+<status status="PASS" start="2025-11-12T16:04:57.694221" elapsed="4.959873"/>
 </kw>
 <kw name="Close Browser" owner="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="NOT RUN" start="2025-09-14T17:54:11.874378" elapsed="0.000052"/>
+<status status="PASS" start="2025-11-12T16:05:02.654705" elapsed="2.450738"/>
 </kw>
 <tag>negatif</tag>
 <tag>smoke</tag>
-<status status="FAIL" start="2025-09-14T17:54:09.415187" elapsed="2.466332">StaleElementReferenceException: Message: stale element reference: stale element not found
-  (Session info: chrome=140.0.7339.128); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#staleelementreferenceexception
-Stacktrace:
-	GetHandleVerifier [0x0x7ff6299afc95+79861]
-	GetHandleVerifier [0x0x7ff6299afcf0+79952]
-	(No symbol) [0x0x7ff62972cada]
-	(No symbol) [0x0x7ff629743295]
-	(No symbol) [0x0x7ff629741d83]
-	(No symbol) [0x0x7ff629735377]
-	(No symbol) [0x0x7ff6297354f1]
-	(No symbol) [0x0x7ff629733230]
-	(No symbol) [0x0x7ff629737a51]
-	(No symbol) [0x0x7ff6297d630b]
-	(No symbol) [0x0x7ff6297acada]
-	(No symbol) [0x0x7ff6297d4f8b]
-	(No symbol) [0x0x7ff6297ac8b3]
-	(No symbol) [0x0x7ff629775272]
-	(No symbol) [0x0x7ff629776043]
-	GetHandleVerifier [0x0x7ff629c6b9cd+2946349]
-	GetHandleVerifier [0x0x7ff629c65c4a+2922410]
-	GetHandleVerifier [0x0x7ff629c859d7+3052855]
-	GetHandleVerifier [0x0x7ff6299caa7e+189918]
-	GetHandleVerifier [0x0x7ff6299d2a1f+222591]
-	GetHandleVerifier [0x0x7ff6299b8ab4+116244]
-	GetHandleVerifier [0x0x7ff6299b8c69+116681]
-	GetHandleVerifier [0x0x7ff62999f048+11176]
-	BaseThreadInitThunk [0x0x7ff9ebbc259d+29]
-	RtlUserThreadStart [0x0x7ff9ed5caf78+40]
-</status>
+<status status="PASS" start="2025-11-12T16:04:43.989747" elapsed="21.116464"/>
 </test>
-<status status="FAIL" start="2025-09-14T17:53:59.981246" elapsed="11.901223"/>
+<status status="PASS" start="2025-11-12T16:04:43.755357" elapsed="21.351963"/>
+</suite>
+<status status="PASS" start="2025-11-12T16:04:43.754421" elapsed="21.354147"/>
+</suite>
+<status status="PASS" start="2025-11-12T16:04:43.734706" elapsed="21.374761"/>
 </suite>
 <statistics>
 <total>
-<stat pass="2" fail="1" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
-<stat pass="0" fail="1" skip="0">negatif</stat>
-<stat pass="0" fail="1" skip="0">smoke</stat>
-<stat pass="2" fail="0" skip="0">smoke pozitif</stat>
+<stat pass="1" fail="0" skip="0">negatif</stat>
+<stat pass="1" fail="0" skip="0">smoke</stat>
 </tag>
 <suite>
-<stat name="Test Login" id="s1" pass="2" fail="1" skip="0">Test Login</stat>
+<stat name="Test" id="s1" pass="1" fail="0" skip="0">Test</stat>
+<stat name="Tests" id="s1-s1" pass="1" fail="0" skip="0">Test.Tests</stat>
+<stat name="Test Login" id="s1-s1-s1" pass="1" fail="0" skip="0">Test.Tests.Test Login</stat>
 </suite>
 </statistics>
 <errors>
-<msg time="2025-09-14T17:54:09.415487" level="WARN">Multiple tests with name 'Login As Teacher' executed in suite 'Test Login'.</msg>
 </errors>
 </robot>

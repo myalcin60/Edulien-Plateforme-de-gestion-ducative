@@ -14,6 +14,7 @@ Resource     ../resources/common.resource
 4. User clicks submit button
 5. User confirms that the login was succesful
 
+# robot --include Smoke --outputdir Results Test
 
 *** Keywords ***
  

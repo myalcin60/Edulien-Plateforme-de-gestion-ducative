@@ -5,7 +5,7 @@ function createHomeworkTable()
         $pdo = db_connection();
         $sql = "
         
-       CREATE TABLE IF NOT EXISTS homeworks (
+    CREATE TABLE IF NOT EXISTS homeworks (
     id INT AUTO_INCREMENT PRIMARY KEY,
     teacherId VARCHAR(20) NOT NULL,
     studentId VARCHAR(20) NOT NULL,

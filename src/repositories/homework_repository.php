@@ -58,6 +58,27 @@ function get_homeworks_by_userId($userId)
         return false;
     }
 }
+// get homework with homework id
+function get_homework($Id)
+{
+    try {
+        $pdo = db_connection();
+
+            $sql = 'Select * from homeworks
+        where id= :id 
+        GROUP BY title, lessonId';
+            $query = $pdo->prepare($sql);
+            $query->bindValue("id", $Id);
+       
+
+        $query->execute();
+        return $query->fetch();
+
+    } catch (\Throwable $th) {
+        error_log("Homeworks Get Error: " . $th->getMessage());
+        return false;
+    }
+}
 
 // delete homework
 function delete_homework($homeworkIds)

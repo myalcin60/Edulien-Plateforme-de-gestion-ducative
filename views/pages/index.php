@@ -11,7 +11,6 @@
 </head>
 
 <body>
-
     <header>
         <?php
         include '../compenents/header.php';
@@ -74,8 +73,6 @@
     <footer>
         <?php include '../compenents/footer.php'  ?>
     </footer>
-
-
 </body>
 
 </html>

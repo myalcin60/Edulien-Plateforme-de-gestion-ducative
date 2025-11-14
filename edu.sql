@@ -77,7 +77,7 @@ CREATE TABLE lesson_students (
     FOREIGN KEY (studentId) REFERENCES users (id) ON DELETE CASCADE,
     FOREIGN KEY (classId) REFERENCES classes (classId) ON DELETE CASCADE
 );
-
+SELECT * FROM lesson_students;
 SELECT classId FROM lesson_students where studentEmail='student@gmail.com';
 
 SELECT l.lessonId, lessonName, us.first_name, us.last_name

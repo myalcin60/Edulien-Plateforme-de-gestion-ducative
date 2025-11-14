@@ -5,16 +5,13 @@ function createLessonTable()
         $pdo = db_connection();
         $sql = "
         
-      CREATE TABLE  IF NOT EXISTS lesson_students (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    lessonId INT NOT NULL,
-    studentId VARCHAR(20) NOT NULL,
-    studentName VARCHAR(100),
-    studentEmail VARCHAR(100),
+      CREATE TABLE  IF NOT EXISTS lessons (
+    lessonId INT AUTO_INCREMENT PRIMARY KEY,
+    lessonName VARCHAR(100),
+    teacherId VARCHAR(250) NOT NULL,
     classId INT not NULL,
     addedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (lessonId) REFERENCES lessons (lessonId) ON DELETE CASCADE,
-    FOREIGN KEY (studentId) REFERENCES users (id) ON DELETE CASCADE,
+    FOREIGN KEY (teacherId) REFERENCES users (id) ON DELETE CASCADE,
     FOREIGN KEY (classId) REFERENCES classes (classId) ON DELETE CASCADE
 )";
         $pdo->exec($sql);

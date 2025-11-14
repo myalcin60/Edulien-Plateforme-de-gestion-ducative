@@ -1,8 +1,8 @@
 <?php
 include_once __DIR__ . '/../../src/services/homework_services.php';
-
 $homeworks = show_homeworks();
 $userid= $_SESSION['id'];
+echo $_SESSION['id'];
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +22,7 @@ $userid= $_SESSION['id'];
         <?php if($userid[0]=='T') : ?>
         <button type="submit">Delete</button>
         <?php else :?>
+          <!-- <a href='../../views/pages/answer_hm.php?id=$homework_id' class='btn btn-warning btn-sm'> Add to Answer </a>  -->
         <?php endif; ?>
     </form>
 
