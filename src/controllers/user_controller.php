@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['source']) && $_POST['
 
    $role = $_POST['role'];
    $id = create_id($role);
-   $firstname = $_POST['firstname'];
+  $firstname = ucfirst(strtolower($_POST['firstname']));
    $lastname = strtoupper($_POST['lastname']);
    $email = $_POST['email'];
 

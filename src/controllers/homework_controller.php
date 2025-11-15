@@ -56,3 +56,44 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "a
     header("location: ../../views/pages/teacher_dashboard.php?form=homework&action=homeworks");
     die();
 }
+
+
+// answer homework
+if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "answer_hm.php") and $_SERVER['REQUEST_METHOD'] == 'POST') {
+    $studentId = $_SESSION['id'];
+    $homeworkId = $_POST['homeworkId'];
+    $answerText = $_POST['homework'];
+    $filePath = null;
+    $fileType = null;
+
+    // control upload fichier
+    if (isset($_FILES['file']) && $_FILES['file']['error'] == 0) {
+        $uploadDir = __DIR__ . "/../uploads/answers/";
+        // $uploadDir = __DIR__ . "../../../uploads/answers/"; //--pour infinity
+        if (!is_dir($uploadDir)) {
+            mkdir($uploadDir, 0777, true);
+        }
+
+        $cleanName = preg_replace("/[^a-zA-Z0-9\._-]/", "_", basename($_FILES['file']['name']));
+        $fileName = time() . "_" . $cleanName;
+        $targetPath = $uploadDir . $fileName;
+
+        if (move_uploaded_file($_FILES['file']['tmp_name'], $targetPath)) {
+            $filePath = "uploads/answers/" . $fileName;
+
+            $ext = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+            if (in_array($ext, ['jpg', 'jpeg', 'png'])) {
+                $fileType = 'image';
+            } elseif ($ext === 'pdf') {
+                $fileType = 'pdf';
+            } else {
+                $fileType = 'text';
+            }
+        }
+    }
+
+    answer_homework($homeworkId, $studentId, $answerText, $filePath,  $fileType);
+    $_SESSION['success'] = 'Homework answered successfully!';
+    header("location: ../../views/pages/answer_hm.php?id=$homeworkId");
+    die();
+}

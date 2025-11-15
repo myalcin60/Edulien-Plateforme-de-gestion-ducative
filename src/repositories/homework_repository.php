@@ -1,19 +1,21 @@
 <?PHP
 include_once __DIR__ . '/../config/connection.php';
-include __DIR__. '/../models/homeworkModel.php';
+include __DIR__ . '/../models/homeworkModel.php';
 // create homework
 function create_homework($teacherId, $studentIds, $classId, $lessonId, $title, $description, $filePath, $fileType)
 {
     try {
         $pdo = db_connection();
         createHomeworkTable();
+        $homeworkId = 'HW-' . time() . '-' . rand(1000, 9999);
 
         $sql = 'INSERT INTO homeworks 
-            (teacherId, studentId, classId, lessonId, title, description, filePath, fileType) 
-            VALUES  (:teacherId, :studentId, :classId, :lessonId, :title, :description, :filePath, :fileType) ';
+            (homeworkId, teacherId, studentId, classId, lessonId, title, description, filePath, fileType) 
+            VALUES  (:homeworkId, :teacherId, :studentId, :classId, :lessonId, :title, :description, :filePath, :fileType) ';
         $query = $pdo->prepare($sql);
 
         foreach ($studentIds as $studentId) {
+            $query->bindValue("homeworkId", $homeworkId);
             $query->bindValue("teacherId", $teacherId);
             $query->bindValue("studentId", $studentId);
             $query->bindValue("classId", $classId);
@@ -52,7 +54,6 @@ function get_homeworks_by_userId($userId)
 
         $query->execute();
         return $query->fetchAll();
-
     } catch (\Throwable $th) {
         error_log("Homeworks Get Error: " . $th->getMessage());
         return false;
@@ -64,16 +65,15 @@ function get_homework($Id)
     try {
         $pdo = db_connection();
 
-            $sql = 'Select * from homeworks
+        $sql = 'Select * from homeworks
         where id= :id 
         GROUP BY title, lessonId';
-            $query = $pdo->prepare($sql);
-            $query->bindValue("id", $Id);
-       
+        $query = $pdo->prepare($sql);
+        $query->bindValue("id", $Id);
+
 
         $query->execute();
         return $query->fetch();
-
     } catch (\Throwable $th) {
         error_log("Homeworks Get Error: " . $th->getMessage());
         return false;
@@ -113,3 +113,90 @@ function delete_homework($homeworkIds)
     }
 }
 
+// add answer homework
+function answer_homework($homeworkId, $studentId,  $description, $filePath, $fileType)
+{
+    try {
+        $pdo = db_connection();
+        // createHomeworkAnswerTable();
+
+        $sql = 'INSERT INTO hm_answer 
+            (homeworkId, studentId, description, filePath, fileType) 
+            VALUES  (:homeworkId, :studentId, :description, :filePath, :fileType) ';
+        $query = $pdo->prepare($sql);
+
+        $query->bindValue("homeworkId", $homeworkId);
+        $query->bindValue("studentId", $studentId);
+        $query->bindValue("description", $description);
+        $query->bindValue("filePath", $filePath);
+        $query->bindValue("fileType", $fileType);
+        $query->execute();
+
+        return true;
+    } catch (PDOException $th) {
+        error_log("Homework Answer Insert Error: " . $th->getMessage());
+        return false;
+    }
+}
+
+// get answers by homeworkId and studentId
+function get_homework_answers($homeworkId, $studentId)
+{
+    try {
+        $pdo = db_connection();
+
+        $sql = 'Select * from hm_answer
+        where homeworkId= :homeworkId AND studentId= :studentId';
+        $query = $pdo->prepare($sql);
+        $query->bindValue("homeworkId", $homeworkId);
+        $query->bindValue("studentId", $studentId);
+
+        $query->execute();
+        return $query->fetchAll();
+    } catch (\Throwable $th) {
+        error_log("Homework Answers Get Error: " . $th->getMessage());
+        return false;
+    }
+}
+
+// get answers by homeworkId and teacherId
+function get_answers($homeworkId, $teacherId)
+{
+    try {
+        $pdo = db_connection();
+
+        $sql = 'Select a.*, u.first_name, u.last_name
+                FROM hm_answer as a
+                INNER JOIN homeworks as h ON a.homeworkId = h.id
+                INNER JOIN users as u ON a.studentId = u.id
+                WHERE h.homeworkId = :homeworkId      
+                AND h.teacherId = :teacherId';
+
+        $query = $pdo->prepare($sql);
+        $query->bindValue("homeworkId", $homeworkId);
+        $query->bindValue("teacherId",$teacherId);
+        $query->execute();
+        return $query->fetchAll();
+        } catch (\Throwable $th) {
+        error_log("Homework Answers Get Error: " . $th->getMessage());
+        return false;
+    }
+}
+
+// get homeworkId by id
+function get_homeworkId_by_id($id){
+    try {
+        $pdo = db_connection();
+
+        $sql = 'Select homeworkId from homeworks
+        where id= :id ';
+        $query = $pdo->prepare($sql);
+        $query->bindValue("id", $id);   
+        $query->execute();
+        return $query->fetchColumn();   
+        }
+    catch (\Throwable $th) {
+        error_log("Homework Get Error: " . $th->getMessage());
+        return false;
+    }
+}

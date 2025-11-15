@@ -12,8 +12,9 @@ $homework = 'Homework';
 
 $id = isset($_GET['id']) ? $_GET['id'] : null;
 $hm = show_homework($id);
-$userid = $_SESSION['id'];
-
+$userId = $_SESSION['id'];
+$answersStudent = show_homework_answers($id, $userId) ;
+$answer = show_answer($id, $userId) ;
 ?>
 
 <!DOCTYPE html>
@@ -40,25 +41,47 @@ $userid = $_SESSION['id'];
         <main class="d-sm-flex justify-content-center gap-5 my-5">
             <?php include '../compenents/left-menu.php'
             ?>
-
             <div class="right-menu box-shadow ">
-                <h3>Homework</h3>
+                <div>
 
-                <?= $hm ?>
-                <form action="../../src/controllers/homework_controller.php" method="POST" enctype="multipart/form-data">
-                    <div class="textarea">
-                        <label for="homework">Answer</label>
-                        <textarea name="homework" id="homework"><?= htmlspecialchars($homeworkText ?? '') ?></textarea>
+                    <div class="hm-menu d-flex w-auto h-auto align-self-start gap-5 mb-5">
+                        <a style="text-decoration: none; font-size:large;"
+                            href="./teacher_dashboard.php?form=homework&action=homeworks">
+                            Homeworks
+                        </a>
                     </div>
 
-                    <div>
-                        <label>Upload File (Image / PDF)</label>
-                        <input type="file" name="file" accept=".jpg,.jpeg,.png,.pdf">
-                    </div>
+                    <?= $hm ?>
+                    <?php if ($userId[0] == 'S') : ?>
+                    <form action="../../src/controllers/homework_controller.php" method="POST" enctype="multipart/form-data">
+                        <div class="textarea">
+                            <label for="homework">Answer</label>
+                            <input type="hidden" name="homeworkId" value="<?= $id ?>">
+                            <textarea name="homework" id="homework"><?= htmlspecialchars($homeworkText ?? '') ?></textarea>
+                        </div>
 
-                    <button type="submit">Send</button>
+                        <div>
+                            <label>Upload File (Image / PDF)</label>
+                            <input type="file" name="file" accept=".jpg,.jpeg,.png,.pdf">
+                        </div>
+
+                        <button type="submit">Send</button>
+                    </form>
+                    <?php endif; ?>
+                </div>
+                <div class="mt-5">
+                    <h4 class="bold">Answers</h4>
+                    <?php if ($userId[0] == 'T') : ?>
+                        <?= $answer ?>
+                    <?php else : ?>
+                        <?= $answersStudent ?>
+                    <?php endif; ?>
+
+                </div>
+            </div>
+
+
         </main>
-        </form>
     </div>
     <footer>
         <?php include '../compenents/footer.php' ?>

@@ -21,9 +21,17 @@ function show_homeworks()
                     <th class='text-start'>Title</th>
                     <th class='text-start'>Description</th>
                     <th class='text-start'>File</th>
-                    <th class='text-start'>Select</th>
-                    
+                    <th class='text-start'>Answer</th>";
+
+    if ($userId[0] == 'T') {
+        $liste .= "
+                    <th class='text-start'>Select</th>";
+    }
+
+
+    $liste .= "
                 </tr>
+                
             </thead>
             <tbody>";
     $no = 1;
@@ -43,6 +51,7 @@ function show_homeworks()
         $fileType = htmlentities($homework['filePath'] ?? '');
 
         $answerLink = " <a href='../../views/pages/answer_hm.php?id=$homework_id' class='btn btn-warning btn-sm'> Answer </a>";
+
         // $a_mod = "
         //     <a href='../../views/pages/update_title.php?id=$homework_id' class='btn btn-warning btn-sm'>
         //         Update
@@ -94,15 +103,13 @@ function show_homeworks()
         </td>
         <td>
             $fileLink
-        </td>";
-
-        if ($userId[0] == 'S') {
-            $liste .= "
+        </td>
         <td>
             $answerLink
         </td>";
-        } else {
+        if ($userId[0] == 'T') {
             $liste .= "
+         
         <td class='text-end w-30'>
             <div class='form-check d-flex gap-3'>
                 <input class='form-check-input' type='checkbox' name='homeworkIds[]' value='$homework_id'>               
@@ -127,35 +134,35 @@ function show_homeworks()
 function show_homework($id)
 {
     $homework = get_homework($id);
- $homework_id = htmlspecialchars($homework['id']);
-        $title = htmlspecialchars($homework['title']);
-        $description = htmlspecialchars($homework['description']);
+    $homework_id = htmlspecialchars($homework['id']);
+    $title = htmlspecialchars($homework['title']);
+    $description = htmlspecialchars($homework['description']);
 
-        $class = get_class_by_classId($homework['classId']);
+    $class = get_class_by_classId($homework['classId']);
 
-        $class_name = htmlentities($class[0]['className']);
-        $lesson = get_lesson_by_lessonId($homework['lessonId']);
-        $lesson_name = htmlspecialchars($lesson[0]['lessonName']);
-        $filePath = htmlentities($homework['filePath'] ?? '');
-        $fileType = htmlentities($homework['filePath'] ?? '');
+    $class_name = htmlentities($class[0]['className']);
+    $lesson = get_lesson_by_lessonId($homework['lessonId']);
+    $lesson_name = htmlspecialchars($lesson[0]['lessonName']);
+    $filePath = htmlentities($homework['filePath'] ?? '');
+    $fileType = htmlentities($homework['filePath'] ?? '');
 
-         if (strlen($description) > 100) {
-            $shortDesc = substr($description, 0, 100) . "...";
-            $descHtml = $shortDesc . " <a class='text_dark' style='color:blue' href='../homework_detail.php?id=$homework_id'>Show more</a>";
+    if (strlen($description) > 100) {
+        $shortDesc = substr($description, 0, 100) . "...";
+        $descHtml = $shortDesc . " <a class='text_dark' style='color:blue' href='../homework_detail.php?id=$homework_id'>Show more</a>";
+    } else {
+        $descHtml = $description;
+    }
+    if (!empty($filePath)) {
+        if (in_array($fileType, ['image/jpeg', 'image/png'])) {
+            $fileLink = "<img src='/edu_php/src/$filePath' style =width:150; >";
         } else {
-            $descHtml = $description;
+            $fileLink = "<a style='color:black;' href='/edu_php/src/$filePath' target='_blank'>Show file</a>";
         }
-           if (!empty($filePath)) {
-            if (in_array($fileType, ['image/jpeg', 'image/png'])) {
-                $fileLink = "<img src='/edu_php/src/$filePath' style =width:150; >";
-            } else {
-                $fileLink = "<a style='color:black;' href='/edu_php/src/$filePath' target='_blank'>Show file</a>";
-            }
-        } else {
-            $fileLink = '-';
-        }
+    } else {
+        $fileLink = '-';
+    }
 
-    $liste= "<div class='table-responsive'>
+    $liste = "<div class='table-responsive'>
         <table class='table table-striped table-hover align-middle'>
             <thead class='table-primary'>
                 <tr>
@@ -197,5 +204,138 @@ function show_homework($id)
         </table>
     </div>   
             ";
-            return $liste;
+    return $liste;
+}
+
+// show answers for homework
+function show_homework_answers($homeworkId, $studentId)
+{
+    $answers = get_homework_answers($homeworkId, $studentId);
+
+    $liste = "<div class='table-responsive'>
+        <table class='table table-striped table-hover align-middle'>
+            <thead class='table-primary'>
+                <tr>
+                    <th class='text-start'>No</th>
+                    <th class='text-start'>Description</th>
+                    <th class='text-start'>File</th>
+                    <th class='text-start'>Created At</th>
+                </tr> 
+            </thead>
+            <tbody>";
+
+    $no = 1;
+    foreach ($answers as $answer) {
+
+        $description = htmlspecialchars($answer['description']);
+        $filePath = htmlentities($answer['filePath'] ?? '');
+        $fileType = htmlentities($answer['fileType'] ?? '');
+        $date = new DateTime($answer['created_at']);
+        $created_at = $date->format('d-m-Y');
+
+        if (!empty($filePath)) {
+            if (in_array($fileType, ['image/jpeg', 'image/png'])) {
+                $fileLink = "<img src='/edu_php/src/$filePath' style =width:150; >";
+            } else {
+                $fileLink = "<a style='color:black;' href='/edu_php/src/$filePath' target='_blank'>Show file</a>";
+            }
+        } else {
+            $fileLink = '-';
+        }
+
+        $liste .= " 
+    <tr></tr>
+        <td class='text-start w-10'> 
+            $no 
+        </td>
+        <td class='text-start w-50'>
+            $description    
+        </td>
+        <td>
+            $fileLink   
+        </td>
+        <td class='text-start w-20'>
+            $created_at
+        </td>
+    </tr>
+                ";
+
+        $no++;
+    }
+    $liste .= "</tbody>
+        </table>
+    </div>";
+    return $liste;
+}
+// show all naswers for homework
+
+function show_answer($id, $teacherId)
+{
+    $homeworkId =  get_homeworkId_by_id($id);
+
+    $answers = get_answers($homeworkId, $teacherId);
+
+
+
+    $liste = "<div class='table-responsive'>
+        <table class='table table-striped table-hover align-middle'>
+            <thead class='table-primary'>
+                <tr>
+                    <th class='text-start'>No</th>
+                    <th class='text-start'>Name</th>
+                    <th class='text-start'>Description</th>
+                    <th class='text-start'>File</th>
+                    <th class='text-start'>Created At</th>
+                </tr> 
+            </thead>
+            <tbody>";
+
+    $no = 1;
+    foreach ($answers as $answer) {
+        $name = htmlspecialchars($answer['first_name']);
+        $lastname = htmlspecialchars($answer['last_name']);
+        $description = htmlspecialchars($answer['description']);
+        $filePath = htmlentities($answer['filePath'] ?? '');
+        $fileType = htmlentities($answer['fileType'] ?? '');
+
+        $date = new DateTime($answer['created_at']);
+        $created_at = $date->format('d-m-Y');
+
+
+        if (!empty($filePath)) {
+            if (in_array($fileType, ['image/jpeg', 'image/png'])) {
+                $fileLink = "<img src='/edu_php/src/$filePath' style =width:150; >";
+            } else {
+                $fileLink = "<a style='color:black;' href='/edu_php/src/$filePath' target='_blank'>Show file</a>";
+            }
+        } else {
+            $fileLink = '-';
+        }
+
+        $liste .= " 
+    <tr></tr>
+        <td class='text-start w-10'> 
+            $no 
+        </td>
+       <td class='text-start w-10'>
+    $name   $lastname 
+    </td>
+        <td class='text-start w-50'>
+            $description    
+        </td>
+        <td>
+            $fileLink   
+        </td>
+        <td class='text-start w-20'>
+            $created_at
+        </td>
+    </tr>
+                ";
+
+        $no++;
+    }
+    $liste .= "</tbody>
+        </table>
+    </div>";
+    return $liste;
 }

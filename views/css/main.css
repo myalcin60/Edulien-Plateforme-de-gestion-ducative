@@ -11,12 +11,13 @@
   --danger-color: #dc3545;
   --font-family: 'Goblin One' Tahoma, Geneva, Verdana, sans-serif;
   --background-color: var(--gray);
-   --btn-color:#3ABCF8 ;
+  --btn-color: #3ABCF8;
 
 }
 
 body {
-  padding-top: 150px; /* header yüksekliğine göre ayarla */
+  padding-top: 150px;
+  /* header yüksekliğine göre ayarla */
   margin: 0;
   font-family: Arial, sans-serif;
   background-color: var(--gray);
@@ -66,9 +67,9 @@ button:hover {
 
 
 a {
-  text-decoration: none;
-  color:white;
- 
+  text-decoration: none !important;
+  color: white;
+
 }
 
 a:hover {
@@ -86,40 +87,58 @@ a:hover {
   body {
     margin-top: 12%;
     padding-top: 5%;
- 
+
   }
-h2{
+
+  h2 {
     font-size: medium;
   }
-  table, p, h3, button, label, a, select {
+
+  table,
+  p,
+  h3,
+  button,
+  label,
+  a,
+  select {
     font-size: small;
-    
+
   }
+
   /* img{
     width: 100px;
     height: 100px;
   } */
-.navbar{
-  --bs-navbar-padding-y: 0 !important;
+  .navbar {
+    --bs-navbar-padding-y: 0 !important;
+  }
 }
-}
+
 @media (max-width: 500px) {
   body {
     margin-top: 25% !important;
     padding-top: 5%;
- 
+
   }
-h2{
+
+  h2 {
     font-size: medium;
   }
-  table, p, h3, button, label, a, select {
+
+  table,
+  p,
+  h3,
+  button,
+  label,
+  a,
+  select {
     font-size: small;
-    
+
   }
-  
-.navbar{
-  --bs-navbar-padding-y: 0 !important;
-}
+
+  .navbar {
+    --bs-navbar-padding-y: 0 !important;
+  }
 }
 
 .toast-message {
