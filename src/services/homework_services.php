@@ -76,9 +76,9 @@ function show_homeworks()
 
         if (!empty($filePath)) {
             if (in_array($fileType, ['image/jpeg', 'image/png'])) {
-                $fileLink = "<img src='/edu_php/src/$filePath' style =width:150; >";
+                $fileLink = "<img src='/edu_php/$filePath' style =width:150; >";
             } else {
-                $fileLink = "<a style='color:black;' href='/edu_php/src/$filePath' target='_blank'>Show file</a>";
+                $fileLink = "<a style='color:black;' href='/edu_php/$filePath' target='_blank'>Show file</a>";
             }
         } else {
             $fileLink = '-';
@@ -154,9 +154,9 @@ function show_homework($id)
     }
     if (!empty($filePath)) {
         if (in_array($fileType, ['image/jpeg', 'image/png'])) {
-            $fileLink = "<img src='/edu_php/src/$filePath' style =width:150; >";
+            $fileLink = "<img src='/edu_php/$filePath' style =width:150; >";
         } else {
-            $fileLink = "<a style='color:black;' href='/edu_php/src/$filePath' target='_blank'>Show file</a>";
+            $fileLink = "<a style='color:black;' href='/edu_php/$filePath' target='_blank'>Show file</a>";
         }
     } else {
         $fileLink = '-';
@@ -235,9 +235,9 @@ function show_homework_answers($homeworkId, $studentId)
 
         if (!empty($filePath)) {
             if (in_array($fileType, ['image/jpeg', 'image/png'])) {
-                $fileLink = "<img src='/edu_php/src/$filePath' style =width:150; >";
+                $fileLink = "<img src='/edu_php/$filePath' style =width:150; >";
             } else {
-                $fileLink = "<a style='color:black;' href='/edu_php/src/$filePath' target='_blank'>Show file</a>";
+                $fileLink = "<a style='color:black;' href='/edu_php/$filePath' target='_blank'>Show file</a>";
             }
         } else {
             $fileLink = '-';
@@ -304,9 +304,9 @@ function show_answer($id, $teacherId)
 
         if (!empty($filePath)) {
             if (in_array($fileType, ['image/jpeg', 'image/png'])) {
-                $fileLink = "<img src='/edu_php/src/$filePath' style =width:150; >";
+                $fileLink = "<img src='/edu_php/$filePath' style =width:150; >";
             } else {
-                $fileLink = "<a style='color:black;' href='/edu_php/src/$filePath' target='_blank'>Show file</a>";
+                $fileLink = "<a style='color:black;' href='/edu_php/$filePath' target='_blank'>Show file</a>";
             }
         } else {
             $fileLink = '-';

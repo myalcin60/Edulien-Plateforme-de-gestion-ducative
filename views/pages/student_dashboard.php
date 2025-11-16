@@ -30,7 +30,7 @@ $homework = 'Homework';
             ?>
         </header>
 
-        <main class="d-sm-flex justify-content-center gap-5 my-5">
+        <main class="d-flex justify-content-center gap-5 my-5">
             <?php include '../compenents/left-menu.php'
             ?>
             <div class="right-menu box-shadow">
