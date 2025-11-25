@@ -11,14 +11,20 @@
     }
 
 }
+
 td.text-start {
-  word-wrap: break-word;     /* Uzun kelimeleri bölerek alt satıra geçirir */
-  white-space: normal;       /* Satır sonuna gelince alt satıra geçmesini sağlar */
-  max-width: 300px;          /* Hücre genişliğini sınırlandırır */
+    word-wrap: break-word;
+    /* Uzun kelimeleri bölerek alt satıra geçirir */
+    white-space: normal;
+    /* Satır sonuna gelince alt satıra geçmesini sağlar */
+    max-width: 300px;
+    /* Hücre genişliğini sınırlandırır */
 }
-.hm-menu{
-    a{
-        color: black !important;
+
+.hm-menu {
+    a {
+        color: var(--success-color);
+        
     }
 }
 
@@ -52,7 +58,7 @@ td.text-start {
 }
 
 .student-list {
-   
+
     input {
         width: auto;
         padding: 5px;
@@ -61,9 +67,19 @@ td.text-start {
         box-sizing: none;
         box-shadow: none;
     }
-    li{
+
+    li {
         display: flex;
-        justify-content:space-between;
+        justify-content: space-between;
         gap: 25%;
+    }
+}
+
+@media (max-width: 768px) {
+    .hm-menu {
+        a {
+            color: rgb(65, 122, 8) !important;       
+            margin-right: 2% !important;
+    }
     }
 }

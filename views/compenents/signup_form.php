@@ -53,7 +53,7 @@
         <!-- Gizli input burada -->
         <input type="hidden" name="source" value="main">
 
-        <button type="submit" class="btn btn-primary mb-3" style="background-color:#3ABCF8; border-color:#3ABCF8;">Register</button>
+        <button type="submit" class="btn btn-primary mb-3" >Register</button>
         <a style='color:var( --accent-secondary);' href="./main.php?form=login">I already have an account. Login</a>
     </form>
 </body>

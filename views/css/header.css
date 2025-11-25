@@ -4,7 +4,7 @@
 
 #navbar {
 
-    background-color:#3ABCF8 !important;
+    background-color: var(--secondary) !important;
     color: var(--primary);
 
     >div>a {
@@ -19,7 +19,7 @@
 }
 
 .header {
-    background-color: #3ABCF8 !important;
+    background-color: var(--secondary) !important;
     height: 80px !important;
     position: fixed;
     top: 0;

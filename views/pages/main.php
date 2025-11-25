@@ -22,7 +22,7 @@ $url = (isset($_GET['form']) && $_GET['form'] === 'login') ? 'login' : 'signup';
             ?>
         </header>
         <main>
-            <div class="d-flex gap-3 container-sm">
+            <div class="d-sm-flex gap-3 container-sm">
                 <div class=" d-md-block d-none rounded-2" id="image">
                     <img class="img-fluid d-md-block d-none mx-auto rounded-2" src="../assets/okul.png" alt="image_main">
                 </div>

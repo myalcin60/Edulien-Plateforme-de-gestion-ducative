@@ -33,11 +33,11 @@
             <input type="password" class="form-control" id="password" name="password">
         </div>
 
-        <button type="submit" class="btn btn-primary" style="background-color:#3ABCF8; border-color:#3ABCF8;">Submit</button>
+        <button type="submit" class="btn btn-primary" style="background-color:#067BB1; border-color:#067BB1;">Submit</button>
 
     </form>
-    <div class="mt-5 text-dark text-center">
-        <a href="./main.php?form=signup" class="text-dark">Create an account</a>
+    <div class="mt-5 ms-3 ">
+        <a style='color:var( --accent-secondary);'  href="./main.php?form=signup">Create an account</a>
     </div>
 
 

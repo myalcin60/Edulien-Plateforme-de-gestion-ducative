@@ -1,23 +1,22 @@
 :root {
   --primary: #0d6efd;
-  --secondary: #63d4ff;
+  --secondary: #067BB1;
   --accent: #FFCC00;
-  --accent-secondary: #ff7e67;
+  --accent-secondary: #E62200;
   --light: #FFFFFF;
   --dark: #505a69;
   --gray: #F4F6F9;
   --text: #505a69;
-  --success-color: #28a745;
+  --success-color: #218739;
   --danger-color: #dc3545;
   --font-family: 'Goblin One' Tahoma, Geneva, Verdana, sans-serif;
   --background-color: var(--gray);
-  --btn-color: #3ABCF8;
+   --btn-color:#067BB1 ;
 
 }
 
 body {
-  padding-top: 150px;
-  /* header yüksekliğine göre ayarla */
+  padding-top: 150px; /* header yüksekliğine göre ayarla */
   margin: 0;
   font-family: Arial, sans-serif;
   background-color: var(--gray);
@@ -52,7 +51,7 @@ button {
   border: none;
   border-radius: 4px !important;
   cursor: pointer;
-  background-color: var(--btn-color);
+  background-color: var(--btn-color) !important;
   color: white;
   transition: 0.3s;
   font-size: small;
@@ -68,8 +67,8 @@ button:hover {
 
 a {
   text-decoration: none !important;
-  color: white;
-
+  color:white;
+ 
 }
 
 a:hover {
@@ -83,75 +82,60 @@ a:hover {
   border-radius: 10px;
 }
 
+.d-sm-flex {
+        margin-left: 5%;
+        margin-right: 5%;
+}
 @media (max-width: 768px) {
-  .d-flex {
-    display: block !important;
-  }
-
-
-
-
-  .right-menu {
-    margin-top: 20px !important;
-  }
-
+    .d-sm-flex{
+        display:block !important;
+        margin-left: 20px !important;
+    margin-right: 20px !important;
+    }
+       .right-menu{
+      margin-top: 20px !important;
+    }
   body {
     margin-top: 12%;
     padding-top: 5%;
-
+ 
   }
-
-  h2 {
+h2{
     font-size: medium;
   }
-
-  table,
-  p,
-  h3,
-  button,
-  label,
-  a,
-  select {
+  table, p, h3, button, label, a, select {
     font-size: small;
-
+    
   }
-
   /* img{
     width: 100px;
     height: 100px;
   } */
-  .navbar {
-    --bs-navbar-padding-y: 0 !important;
-  }
+.navbar{
+  --bs-navbar-padding-y: 0 !important;
 }
-
+}
 @media (max-width: 500px) {
   body {
-    margin-top: 25% !important;
+    margin-top: 20% !important;
     padding-top: 5%;
-
+ 
   }
-
-  h2 {
+h2{
     font-size: medium;
   }
-
-  table,
-  p,
-  h3,
-  button,
-  label,
-  a,
-  select {
+  table, p, h3, button, label, a, select {
     font-size: small;
-
+    
   }
-
-  .navbar {
-    --bs-navbar-padding-y: 0 !important;
-  }
+  /* img{
+    width: 100px;
+    height: 100px;
+  } */
+.navbar{
+  --bs-navbar-padding-y: 0 !important;
 }
-
+}
 .toast-message {
   position: fixed;
   top: 20px;

@@ -29,6 +29,7 @@ $answer = show_answer($id, $userId) ;
     <link rel="stylesheet" href="../css/class_page.css">
     <link rel="stylesheet" href="../css/homework.css" />
     <link rel="stylesheet" href="../css/teacher_dashboard.css" />
+    <link rel="stylesheet" href="../css/answer_hm.css" />
 </head>
 
 <body>
@@ -38,7 +39,7 @@ $answer = show_answer($id, $userId) ;
             include '../compenents/header.php';
             ?>
         </header>
-        <main class="d-flex justify-content-center gap-5 my-5">
+        <main class=" answer-box  justify-content-center gap-5 my-5">
             <?php include '../compenents/left-menu.php'
             ?>
             <div class="right-menu box-shadow ">
@@ -70,7 +71,7 @@ $answer = show_answer($id, $userId) ;
                     <?php endif; ?>
                 </div>
                 <div class="mt-5">
-                    <h4 class="bold">Answers</h4>
+                    <h4 class="bold" style="color: var(--danger-color); ">Answers</h4>
                     <?php if ($userId[0] == 'T') : ?>
                         <?= $answer ?>
                     <?php else : ?>
