@@ -14,7 +14,7 @@ Resource     ../resources/common.resource
 4. User clicks submit button
 5. User confirms that the login was succesful
 
-# robot --include Smoke --outputdir Results Test
+# robot --include smoke --outputdir Results Test
 
 *** Keywords ***
  
@@ -27,22 +27,24 @@ clicks submit button
     Click Button  ${submit_btn}
 confirms that the login was succesful
    Element Should Be Visible  ${profile_text}
-
 *** Test Cases ***
-Login As Teacher   [Tags]  smoke pozitif
+Login As Teacher
+    [Tags]    smoke    pozitif
     Open Edulien
     Login As Teacher with valid fields
     Close Browser
-    [Teardown]   
-    
-Login as Student   [Tags]  smoke pozitif
+    [Teardown]    Close Browser
+
+Login as Student
+    [Tags]    smoke    pozitif
     Open Edulien
     Login As Student with valid fields
     Close Browser
-    [Teardown]
+    [Teardown]    Close Browser
 
-Login As Teacher   [Tags]  smoke  negatif
+Login As Teacher With invalid email
+    [Tags]    smoke    negatif
     Open Edulien
     Login As Teacher with invalid email
     Close Browser
-    [Teardown]   
+    [Teardown]    Close Browser

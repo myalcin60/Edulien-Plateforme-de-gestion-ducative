@@ -2,7 +2,7 @@
 include __DIR__ . '/../../src/services/class_services.php';
 include __DIR__ . '/../../src/services/student_service.php';
 include __DIR__ . '/../../src/repositories/lesson_repository.php';
-include __DIR__ . '/../partiel/auth.php';
+include __DIR__ . '/../partiel/auth_guard.php';
 $lessonId = $_REQUEST['id'] ?? null;
 $lesson = get_lesson_by_lessonId($lessonId);
 $class = get_class_by_classId($lesson[0]['classId'] ?? null);
@@ -29,6 +29,9 @@ $homework = 'Homework';
     <link rel="stylesheet" href="../css/main.css" />
     <link rel="stylesheet" href="../css/teacher_dashboard.css" />
     <link rel="stylesheet" href="../css/class_page.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/header.css" />
+    <?php include '../partiel/dependencies.php' ?>
 
 </head>
 

@@ -2,7 +2,7 @@
 
 include_once __DIR__ . '/../../src/services/homework_services.php';
 include __DIR__ . '/../../src/services/service.php';
-include __DIR__ . '/../partiel/auth.php';
+include __DIR__ . '/../partiel/auth_guard.php';
 
 $menu = isset($_GET['form']) ? $_GET['form'] : null;
 
@@ -30,6 +30,9 @@ $answer = show_answer($id, $userId) ;
     <link rel="stylesheet" href="../css/homework.css" />
     <link rel="stylesheet" href="../css/teacher_dashboard.css" />
     <link rel="stylesheet" href="../css/answer_hm.css" />
+    <link rel="stylesheet" href="../css/footer.css">
+     <link rel="stylesheet" href="../css/header.css" />
+    <?php include '../partiel/dependencies.php' ?>
 </head>
 
 <body>

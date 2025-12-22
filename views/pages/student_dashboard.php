@@ -1,6 +1,6 @@
 <?php
 include __DIR__ . '/../../src/services/service.php';
-include __DIR__ . '/../partiel/auth.php';
+include __DIR__ . '/../partiel/auth_guard.php';
 $menu = isset($_GET['form']) ? $_GET['form'] : null;
 
 $profile = 'Profile';
@@ -19,6 +19,11 @@ $homework = 'Homework';
     <title>Edulien - Digital Education Platform</title>
     <link rel="stylesheet" href="../css/main.css" />
     <link rel="stylesheet" href="../css/teacher_dashboard.css" />
+    <link rel="stylesheet" href="../css/profile.css" />
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/homework.css" />
+    <link rel="stylesheet" href="../css/header.css" />
+    <?php include '../partiel/dependencies.php' ?>
 
 </head>
 
@@ -30,7 +35,7 @@ $homework = 'Homework';
             ?>
         </header>
 
-        <main class="d-sm-flex justify-content-center gap-5 my-5">
+        <main class="d-sm-flex justify-content-center gap-5 my-5 mt-5">
             <?php include '../compenents/left-menu.php'
             ?>
             <div class="right-menu box-shadow">

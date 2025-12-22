@@ -3,18 +3,27 @@ Library     SeleniumLibrary
 Resource    ../locators/login_locators.resource
 Resource    ../locators/singup_locators.resource
 Resource    ../variables/users.resource
+Library    FakerLibrary
 
+*** Variables ***
+${Login text}      xpath =//h2[text()='Login']
 *** Keywords ***
 
 SignUp As Teacher
-    Click Link   SignUp  
+ 
+    ${t_first_name}    FakerLibrary.First Name
+    ${t_last_name}     FakerLibrary.Last Name
+    ${t_email}         FakerLibrary.Email
+    ${t_password}      FakerLibrary.Password    length=10    special_chars=True    digits=True
     Input Text   ${lct_fistName}     ${t_first_name}
     Input Text   ${lct_lastName}     ${t_last_name}
     Input Text   ${lct_email}        ${t_email} 
     Input Text   ${lct_password}    ${t_password}
-    Select From List By Value  ${selct_role}   ${t_role}
+    Select From List By Value  ${selct_role}   teacher
     Scroll Element Into View  ${btn_register}
-    Scroll Element Into View  ${btn_register}
+    Click Button   ${btn_register}
+    Wait Until Element Is Visible  ${Login text}
+   
     
 
 Login As Teacher with valid fields

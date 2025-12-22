@@ -4,45 +4,30 @@ include_once __DIR__ . '/../../src/services/service.php';
 if ($_SESSION['id'][0] == 'S') {
     $homeworks = 'Homeworks';
     $create_homework = '';
+    $link = './student_dashboard.php?form=homework&action=homeworks';
 
 } else {
     $menu = $_GET['action'] ?? 'create_homework';
     $create_homework = 'Create Homework';
     $homeworks = 'Homeworks';
+    $link = './teacher_dashboard.php?form=homework&action=homeworks';
 }
 
-
-
 ?>
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Edulien, Provides homework sharing and digital library for teachers and students.">
-    <title>Edulien - Digital Education Platform</title>
-    <link rel="stylesheet" href="../css/main.css" />
-    <link rel="stylesheet" href="../css/homework.css" />
-</head>
-
-<body>
+<div>
     <div class="hm-menu d-flex w-auto h-auto align-self-start gap-5 mb-5">
-          <a style="text-decoration: none; font-size:large;"
-            href="./teacher_dashboard.php?form=homework&action=homeworks">
+          <a style="text-decoration: none; font-size:large; color:var(--success-color);"
+            href="<?= $link ?>">
             <?= $homeworks ?>
         </a>
-        <a  style="text-decoration: none; font-size:large;"
+        <a  style="text-decoration: none; font-size:large; color:var(--success-color);"
             href="./teacher_dashboard.php?form=homework&action=create_homework">
             <?= $create_homework ?>
-        </a>
-
-      
+        </a>   
     </div>
     <?php
     select_homework_menu($menu);
     ?>
 
-</body>
-
-</html>
+</div>

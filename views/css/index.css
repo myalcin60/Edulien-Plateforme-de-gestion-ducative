@@ -19,7 +19,6 @@ body {
                 border-color: var(--secondary) !important;
                 width: 200px;
             }
-
             margin: 2%;
             display: flex;
             justify-content: space-between;

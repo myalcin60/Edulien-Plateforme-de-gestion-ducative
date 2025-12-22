@@ -1,6 +1,6 @@
 <?php
 include __DIR__ . '/../../src/services/class_services.php';
-include __DIR__ . '/../partiel/auth.php';
+include __DIR__ . '/../partiel/auth_guard.php';
 $class = update_class();
 
 $profile = 'Profile';
@@ -20,6 +20,10 @@ $homework = 'Homework';
     <link rel="stylesheet" href="../css/main.css" />
     <link rel="stylesheet" href="../css/teacher_dashboard.css" />
     <link rel="stylesheet" href="../css/class_page.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/header.css" />
+    <?php include '../partiel/dependencies.php' ?>
+
 </head>
 
 <body>
@@ -30,8 +34,8 @@ $homework = 'Homework';
             ?>
         </header>
         <main class="d-sm-flex justify-content-center gap-5 my-5">
-             <?php include '../compenents/left-menu.php'
-                        ?>
+            <?php include '../compenents/left-menu.php'
+            ?>
             <div class="right-menu box-shadow ">
                 <div class="container-sm">
                     <?php if (isset($_SESSION['error'])): ?>
@@ -48,22 +52,22 @@ $homework = 'Homework';
                         </div>
                     <?php endif; ?>
                 </div>
-                <div class="container-sm">                   
+                <div class="container-sm">
                     <form action="../../src/controllers/class_controller.php" method="post">
-                        <h2 class="p-3">Classes</h2>
+                        <p class="p-3">Please enter the class name.</p>
 
                         <div class="container mb-4">
-                            <div class="row align-items-end">
+                            <div class="item">
                                 <input type="hidden" name="id" value="<?= $class[0][0] ?>">
 
-                                <div class="col-md-9 ">
+                                <div class="item col-md-9 ">
 
                                     <label for="class_name" class="form-label"> ClassName</label>
                                     <input type="text" id="class_name" name="class_name" class="form-control"
                                         placeholder="Enter class name" value="<?= $class[0]['className'] ?>">
                                 </div>
-                                <div class="col-md-3 d-flex w-25 ">
-                                    <button type="submit" class="btn btn-primary ms-3 ">Save</button>
+                                <div class=" d-flex w-25">
+                                    <button type="submit">Save</button>
                                 </div>
                             </div>
                         </div>

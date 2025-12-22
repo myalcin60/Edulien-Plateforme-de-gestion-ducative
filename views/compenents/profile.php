@@ -7,19 +7,7 @@ $user = get_user_by_id($_SESSION['id']);
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta name="description" content="Edulien, Provides homework sharing and digital library for teachers and students.">
-    <title>Edulien - Digital Education Platform</title>
-    <link rel="stylesheet" href="../css/main.css" />
-    <link rel="stylesheet" href="../css/profile.css" />
-</head>
-
-<body>
+<div>
     <form action="../../src/controllers/user_controller.php" method="post" enctype="multipart/form-data">
         <div class="profile box-shadow" style="text-align:center">
             <div>
@@ -32,7 +20,6 @@ $user = get_user_by_id($_SESSION['id']);
                             style="border-radius:25%">
                     <?php endif; ?>
                 </label>
-                <!-- hidden file input -->
                 <input type="file" name="profile_photo" accept="image/*" id="fileInput" style="display:none">
                 <button type="submit">Save</button>
             </div>
@@ -75,8 +62,6 @@ $user = get_user_by_id($_SESSION['id']);
                         <input type="text" name="specialization" value="<?php echo htmlspecialchars($user['specialization'] ?? ''); ?>">
                     <?php endif; ?>
                 </div>
-
-
                 <div>
                     <p>Gender </p>
                     <div class="flex gap-1">
@@ -101,7 +86,4 @@ $user = get_user_by_id($_SESSION['id']);
             <button class="profil-updt" type="submit">Delete</button>
         </div>
     </form>
-
-</body>
-
-</html>
+</div>

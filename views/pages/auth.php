@@ -11,6 +11,12 @@ $url = (isset($_GET['form']) && $_GET['form'] === 'login') ? 'login' : 'signup';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Edulien, Provides homework sharing and digital library for teachers and students.">
     <title>Edulien - Digital Education Platform</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="../css//footer.css">
+    <link rel="stylesheet" href="../css/header.css" />
+    <?php include '../partiel/dependencies.php' ?>
+
 
 </head>
 
@@ -22,7 +28,7 @@ $url = (isset($_GET['form']) && $_GET['form'] === 'login') ? 'login' : 'signup';
             ?>
         </header>
         <main>
-            <div class="d-sm-flex gap-3 container-sm">
+            <div class="d-sm-flex gap-3 container-sm mt-5">
                 <div class=" d-md-block d-none rounded-2" id="image">
                     <img class="img-fluid d-md-block d-none mx-auto rounded-2" src="../assets/okul.png" alt="image_main">
                 </div>
@@ -34,7 +40,6 @@ $url = (isset($_GET['form']) && $_GET['form'] === 'login') ? 'login' : 'signup';
                     } else {
                         include '../compenents/login_form.php';
                     }
-
                     ?>
                 </div>
             </div>

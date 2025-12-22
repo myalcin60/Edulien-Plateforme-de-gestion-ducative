@@ -3,7 +3,7 @@
 }
 
 #navbar {
-
+    
     background-color: var(--secondary) !important;
     color: var(--primary);
 
@@ -26,7 +26,6 @@
     width: 100%;
     z-index: 999;
     background-color: white;
-
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
 }
@@ -43,7 +42,7 @@
     line-height:0 !important;
 }
 .btn{
-    text-decoration: none;
+    text-decoration: none !important;
     box-shadow:none;
 }
 

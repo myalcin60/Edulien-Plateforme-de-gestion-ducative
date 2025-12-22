@@ -1,17 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Edulien, Provides homework sharing and digital library for teachers and students.">
-    <title>Edulien - Digital Education Platform</title>
-    <?php include '../partiel/dependencies.php' ?>
-    <link rel="stylesheet" href="../css/header.css" />
-
-</head>
-
-<body>
+<div>
     <div class="header">
         <nav class=" d-flex navbar navbar-expand-lg text-light">
             <div class="container-fluid text-light" id="navbar">
@@ -26,13 +13,13 @@
                         <a class="navbar-brand text-light" href="../pages/index.php">EDULIEN</a>
                     <?php endif; ?>
                 </div>
-                  <!-- Button of the Mobil menu  (burger menu) -->
+                <!-- Button of the Mobil menu  (burger menu) -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                        <!-- Menu links -->
+                <!-- Menu links -->
                 <div class="flex collapse navbar-collapse gap-3" id="navbarSupportedContent">
                     <div class="d-flex gap-3">
                         <a class="nav-link active" aria-current="page" href="../pages/index.php">Home</a>
@@ -41,11 +28,10 @@
                     </div>
                     <div class="d-flex gap-3">
                         <div class="d-flex me-2 gap-3">
-
                             <?php if (isset($_SESSION['id'])): ?>
                                 <form class="d-flex gap-3 align-items-end content-items-end"
                                     action="../../src/controllers/user_controller.php" method="post">
-                                    <div>
+                                 
                                         <?php if ($_SESSION['id'][0] == 'T'): ?>
                                             <a class="icon_prfl navbar-brand text-light" href="../pages/teacher_dashboard.php">
                                                 <i class="ikon fa-solid fa-user"></i>
@@ -60,27 +46,20 @@
                                             </a>
                                         <?php else: ?>
                                         <?php endif; ?>
-
-                                    </div>
-                                    <input type="hidden" name="action" value="logout">
-                                    <button class="btn btn-link " style="background:var(--btn-color); color:white" name="logout">Logout</button>
+                               
+                                 
+                                        <input type="hidden" name="action" value="logout">
+                                        <button class="btn btn-link " style="background:var(--btn-color); color:white; " name="logout">Logout</button>
+                                    
                                 </form>
-
-
                             <?php else: ?>
-                                <a style="text-decoration: none;color:white;" href="./main.php?form=login"> Login</a>
-                                <a style="text-decoration: none;color:white;" href="./main.php?form=signup"> SignUp</a>
-
+                                <a style="text-decoration: none;color:white;" href="./auth.php?form=login"> Login</a>
+                                <a style="text-decoration: none;color:white;" href="./auth.php?form=signup"> SignUp</a>
                             <?php endif; ?>
-
-
                         </div>
-
                     </div>
                 </div>
             </div>
         </nav>
     </div>
-</body>
-
-</html>
+</div>

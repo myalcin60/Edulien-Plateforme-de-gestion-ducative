@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Edulien, Provides homework sharing and digital library for teachers and students.">
-    <title>Edulien - Digital Education Platform</title>
-    <link rel="stylesheet" href="../css/main.css" />
-</head>
-
-<body>
+<div class="container mt-5">
     <?php if (isset($_SESSION['error'])): ?>
         <div class="alert alert-danger">
             <?= $_SESSION['error'];
@@ -32,16 +21,14 @@
             <label for="password" class="form-label">Password</label>
             <input type="password" class="form-control" id="password" name="password">
         </div>
-
-        <button type="submit" class="btn btn-primary" style="background-color:#067BB1; border-color:#067BB1;">Submit</button>
-
+        <div class="mb-3" style='color:var( --accent-secondary);'>
+            <p>I forgot my password</p>
+        </div>
+        <button type="submit" class="btn btn-primary mb-3" style="background-color:#067BB1; border-color:#067BB1;">Submit</button>
+      
+        <a style='color:var( --accent-secondary);' href="./auth.php?form=signup">Create an account</a>
+    
     </form>
-    <div class="mt-5 ms-3 ">
-        <a style='color:var( --accent-secondary);'  href="./main.php?form=signup">Create an account</a>
-    </div>
 
 
-
-</body>
-
-</html
+</div>

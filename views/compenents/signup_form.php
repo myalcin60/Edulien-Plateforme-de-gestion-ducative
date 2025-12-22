@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Edulien, Provides homework sharing and digital library for teachers and students.">
-    <title>Edulien - Digital Education Platform</title>
-    <link rel="stylesheet" href="../css/main.css" />
-</head>
-
-<body>
+<div class="container mt-5">
     <?php if (isset($_SESSION['error'])): ?>
         <div class="alert alert-danger">
             <?= $_SESSION['error'];
@@ -48,14 +37,10 @@
                 <option value="teacher">Teacher</option>
 
             </select>
-        </div>
-
-        <!-- Gizli input burada -->
-        <input type="hidden" name="source" value="main">
-
+        </div> 
+        <input type="hidden" name="source" value="auth">
         <button type="submit" class="btn btn-primary mb-3" >Register</button>
-        <a style='color:var( --accent-secondary);' href="./main.php?form=login">I already have an account. Login</a>
+        <a style='color:var( --accent-secondary);' href="./auth.php?form=login">I already have an account. Login</a>
     </form>
-</body>
+</div>
 
-</html>

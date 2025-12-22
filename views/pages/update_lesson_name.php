@@ -3,7 +3,7 @@ include __DIR__ . '/../../src/services/service.php';
 include __DIR__ . '/../../src/services/class_services.php';
 include __DIR__ . '/../../src/services/student_service.php';
 include __DIR__ . '/../../src/services/lesson_services.php';
-include __DIR__ . '/../partiel/auth.php';
+include __DIR__ . '/../partiel/auth_guard.php';
 
 $lesson = update_lesson_name();
 
@@ -28,6 +28,10 @@ $homework = 'Homework';
     <link rel="stylesheet" href="../css/main.css" />
     <link rel="stylesheet" href="../css/teacher_dashboard.css" />
     <link rel="stylesheet" href="../css/class_page.css">
+    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/header.css" />
+    <?php include '../partiel/dependencies.php' ?>
 
 </head>
 
@@ -41,7 +45,7 @@ $homework = 'Homework';
         </header>
         <main class="d-sm-flex justify-content-center gap-5 my-5">
             <?php include '../compenents/left-menu.php'
-                ?>
+            ?>
             <div class="right-menu box-shadow ">
                 <div class="container-sm ">
                     <?php if (isset($_SESSION['error'])): ?>

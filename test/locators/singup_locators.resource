@@ -1,6 +1,6 @@
 *** Variables ***
 ${selct_role}       xpath= //select[@class="form-select"]  
-${btn_register}     xpath = /html/body/main/div/div[2]/form/button
+${btn_register}     xpath = //button[text()='Register']
 ${titre}            /html/body/main/h2
 ${lct_fistName}     id=firstname     
 ${lct_lastName}     id=lastname    

@@ -11,7 +11,9 @@ Resource    ../resources/common.resource
 3 user confirms that the signup was successful
 
 *** Test Cases ***
-signup  [Tags]  smoke
+Sign Up as teacher
+    [Tags]    smoke  pozitif
     Open Edulien
+    Click Link    SignUp
     SignUp As Teacher
     Close Session

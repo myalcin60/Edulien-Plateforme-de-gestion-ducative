@@ -14,20 +14,7 @@ $students = show_student_list($lessonId);
 $studentIds = $_GET['studentIds'] ?? [];
 
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Edulien, Provides homework sharing and digital library for teachers and students.">
-    <title>Edulien - Digital Education Platform</title>
-    <link rel="stylesheet" href="../css/main.css" />
-    <link rel="stylesheet" href="../css/homework.css" />
-</head>
-
-<body>
+<div>
     <?php if (isset($_SESSION['error'])): ?>
         <div class="alert alert-danger">
             <?= $_SESSION['error'];
@@ -46,22 +33,22 @@ $studentIds = $_GET['studentIds'] ?? [];
         <div class="">
             <form method="GET">
                 <div class="select-menu">
-                    <h3>Select Class</h3>
+                    <h4>Select Class</h4>
                     <input type="hidden" name="form" value="homework">
                     <?= $classes ?>
-                    <button type="submit">Select</button>
+                    <button  type="submit">Select</button>
                 </div>
             </form>
             <form method="GET">
                 <div class="select-menu">
-                    <h3>Select Lesson</h3>
+                    <h4>Select Lesson</h4>
                     <input type="hidden" name="form" value="homework">
                     <input type="hidden" name="classId" value="<?= $classId ?>">
                     <?= $lessons ?>
                     <button type="submit">Select</button>
                 </div>
             </form>
-            <h3>Student List</h3>
+            <h4>Student List</h4>
             <div class="student-list ">
                 <form method="GET">
                     <input type="hidden" name="form" value="homework">
@@ -106,6 +93,4 @@ $studentIds = $_GET['studentIds'] ?? [];
 
         <button type="submit">Send</button>
     </form>
-</body>
-
-</html>
+</div>
