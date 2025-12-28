@@ -16,9 +16,7 @@ function select_menu($menu)
     try {
         $profile = 'profile';
         $classes = 'classes';
-        $homework = 'homework';
-       
-
+        $homework = 'homework'; 
         switch ($menu) {
             case $profile:
                 include '../../views/compenents/profile.php';

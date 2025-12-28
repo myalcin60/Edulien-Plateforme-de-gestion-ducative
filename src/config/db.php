@@ -6,5 +6,4 @@ const MYSQL = [
     'dbname' => 'edu',
     'port' => 3306,
     'host' => 'localhost'
-
 ];

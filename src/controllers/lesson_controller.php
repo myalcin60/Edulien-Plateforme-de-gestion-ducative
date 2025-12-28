@@ -3,9 +3,7 @@ session_start();
 include __DIR__ . '/../repositories/lesson_repository.php';
 include_once __DIR__ . '/../../src/services/lesson_services.php';
 
-
 // creat lesson
-
 if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "class_page") and $_SERVER['REQUEST_METHOD'] == 'POST') {
    $lessonName = $_POST['lesson'];
    $classId = $_POST['classId'];
@@ -28,10 +26,7 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "c
       header("location: ../../views/pages/class_page.php?classId=$classId");
       die();
    }
-
 }
-
-
 
 // delete lesson
 if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "class_page") and $_SERVER['REQUEST_METHOD'] == 'GET') {

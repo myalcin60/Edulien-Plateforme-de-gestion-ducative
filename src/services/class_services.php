@@ -49,8 +49,6 @@ function show_classes()
 function show_classes_in_select($selectedClassId = null)
 {
     $classes = get_classes($_SESSION['id']);
-
-    // "SELECT CLASS" yalnızca hiçbir class seçilmemişse selected
     $selectOptionSelected = ($selectedClassId === null) ? "selected" : "";
 
     $liste = "<select name='classId'>
@@ -66,4 +64,3 @@ function show_classes_in_select($selectedClassId = null)
     $liste .= "</select>";
     return $liste;
 }
-

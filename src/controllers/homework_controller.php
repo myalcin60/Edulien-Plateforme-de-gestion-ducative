@@ -17,11 +17,10 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "t
     // control upload fichier
     if (isset($_FILES['file']) && $_FILES['file']['error'] == 0) {
         $uploadDir = __DIR__ . "/uploads/homeworks/";
-        // $uploadDir = __DIR__ . "../../../uploads/homeworks/"; //--pour infinity
+        // $uploadDir = __DIR__ . "../../../uploads/homeworks/"; //---> for infinity
         if (!is_dir($uploadDir)) {
             mkdir($uploadDir, 0777, true);
         }
-
         $cleanName = preg_replace("/[^a-zA-Z0-9\._-]/", "_", basename($_FILES['file']['name']));
         $fileName = time() . "_" . $cleanName;
         $targetPath = $uploadDir . $fileName;
@@ -56,8 +55,6 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "a
     header("location: ../../views/pages/teacher_dashboard.php?form=homework&action=homeworks");
     die();
 }
-
-
 // answer homework
 if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "answer_hm.php") and $_SERVER['REQUEST_METHOD'] == 'POST') {
     $studentId = $_SESSION['id'];
@@ -69,7 +66,7 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "a
     // control upload fichier
     if (isset($_FILES['file']) && $_FILES['file']['error'] == 0) {
         $uploadDir = __DIR__ . "/uploads/answers/";
-        // $uploadDir = __DIR__ . "../../../uploads/answers/"; //--pour infinity
+        // $uploadDir = __DIR__ . "../../../uploads/answers/"; //---> for infinity
         if (!is_dir($uploadDir)) {
             mkdir($uploadDir, 0777, true);
         }
@@ -91,7 +88,6 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "a
             }
         }
     }
-
     answer_homework($homeworkId, $studentId, $answerText, $filePath,  $fileType);
     $_SESSION['success'] = 'Homework answered successfully!';
     header("location: ../../views/pages/answer_hm.php?id=$homeworkId");

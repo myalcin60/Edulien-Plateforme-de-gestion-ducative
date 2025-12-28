@@ -27,8 +27,6 @@ function show_homeworks()
         $liste .= "
                     <th class='text-start'>Select</th>";
     }
-
-
     $liste .= "
                 </tr>
                 
@@ -77,8 +75,10 @@ function show_homeworks()
         if (!empty($filePath)) {
             if (in_array($fileType, ['image/jpeg', 'image/png'])) {
                 $fileLink = "<img src='/edu_php/$filePath' style =width:150; >";
+                // $fileLink = "<img src='/$filePath' style =width:150; >"; ---> for deployment
             } else {
                 $fileLink = "<a style='color:black;' href='/edu_php/$filePath' target='_blank'>Show file</a>";
+                // $fileLink = "<a style='color:black;' href='/$filePath' target='_blank'>Show file</a>"; ---> for deployment
             }
         } else {
             $fileLink = '-';
@@ -154,10 +154,12 @@ function show_homework($id)
     }
     if (!empty($filePath)) {
         if (in_array($fileType, ['image/jpeg', 'image/png'])) {
-            $fileLink = "<img src='/edu_php/$filePath' style =width:150; >";
-        } else {
-            $fileLink = "<a style='color:black;' href='/edu_php/$filePath' target='_blank'>Show file</a>";
-        }
+                $fileLink = "<img src='/edu_php/$filePath' style =width:150; >";
+                // $fileLink = "<img src='/$filePath' style =width:150; >"; ---> for deployment
+            } else {
+                $fileLink = "<a style='color:black;' href='/edu_php/$filePath' target='_blank'>Show file</a>";
+                // $fileLink = "<a style='color:black;' href='/$filePath' target='_blank'>Show file</a>"; ---> for deployment
+            }
     } else {
         $fileLink = '-';
     }
@@ -165,20 +167,17 @@ function show_homework($id)
     $liste = "<div class='table-responsive'>
         <table class='table table-striped table-hover align-middle'>
             <thead class='table-primary'>
-                <tr>
-                   
+                <tr>                   
                     <th class='text-start'>Class Name</th>
                     <th class='text-start'>Lesson Name</th>
                     <th class='text-start'>Title</th>
                     <th class='text-start'>Description</th>
                     <th class='text-start'>File</th>
-                    <th class='text-start'>Select</th>
-                    
+                    <th class='text-start'>Select</th>                   
                 </tr>
             </thead>
             <tbody>
-            <tr>
-        
+            <tr>        
         <td class='text-start w-20'> 
             $class_name 
         </td>
@@ -198,8 +197,7 @@ function show_homework($id)
             <div class='form-check d-flex gap-3'>
                 <input type='hidden' name='homeworkIds[]' value='$homework_id'>               
             </div>
-        </td>
-            
+        </td>            
             </tbody>
         </table>
     </div>   
@@ -234,10 +232,12 @@ function show_homework_answers($homeworkId, $studentId)
         $created_at = $date->format('d-m-Y');
 
         if (!empty($filePath)) {
-            if (in_array($fileType, ['image/jpeg', 'image/png'])) {
+           if (in_array($fileType, ['image/jpeg', 'image/png'])) {
                 $fileLink = "<img src='/edu_php/$filePath' style =width:150; >";
+                // $fileLink = "<img src='/$filePath' style =width:150; >"; ---> for deployment
             } else {
                 $fileLink = "<a style='color:black;' href='/edu_php/$filePath' target='_blank'>Show file</a>";
+                // $fileLink = "<a style='color:black;' href='/$filePath' target='_blank'>Show file</a>"; ---> for deployment
             }
         } else {
             $fileLink = '-';
@@ -275,8 +275,6 @@ function show_answer($id, $teacherId)
 
     $answers = get_answers($homeworkId, $teacherId);
 
-
-
     $liste = "<div class='table-responsive'>
         <table class='table table-striped table-hover align-middle'>
             <thead class='table-primary'>
@@ -289,7 +287,6 @@ function show_answer($id, $teacherId)
                 </tr> 
             </thead>
             <tbody>";
-
     $no = 1;
     foreach ($answers as $answer) {
         $name = htmlspecialchars($answer['first_name']);
@@ -303,10 +300,12 @@ function show_answer($id, $teacherId)
 
 
         if (!empty($filePath)) {
-            if (in_array($fileType, ['image/jpeg', 'image/png'])) {
+           if (in_array($fileType, ['image/jpeg', 'image/png'])) {
                 $fileLink = "<img src='/edu_php/$filePath' style =width:150; >";
+                // $fileLink = "<img src='/$filePath' style =width:150; >"; ---> for deployment
             } else {
                 $fileLink = "<a style='color:black;' href='/edu_php/$filePath' target='_blank'>Show file</a>";
+                // $fileLink = "<a style='color:black;' href='/$filePath' target='_blank'>Show file</a>"; ---> for deployment
             }
         } else {
             $fileLink = '-';

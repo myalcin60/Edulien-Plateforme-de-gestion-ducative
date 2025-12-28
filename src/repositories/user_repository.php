@@ -6,7 +6,6 @@ include_once __DIR__ . '/../models/lessonModels.php';
 include_once __DIR__ . '/../models/lessonStudentModel.php';
 include __DIR__. '/../models/homeworkModel.php';
 
-
 //sign up
 function signup_user($id, $firstname, $lastname, $email, $password, $role)
 {
@@ -20,9 +19,7 @@ function signup_user($id, $firstname, $lastname, $email, $password, $role)
 
         $sql = "INSERT INTO users (id, first_name, last_name, email, password, role)
                 VALUES (:id, :first_name, :last_name, :email, :password, :role)";
-
         $query = $pdo->prepare($sql);
-
         $query->bindValue(":id", $id);
         $query->bindValue(":first_name", $firstname);
         $query->bindValue(":last_name", $lastname);

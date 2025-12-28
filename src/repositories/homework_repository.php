@@ -98,14 +98,12 @@ function delete_homework($homeworkIds)
                 if (!empty($hw['filePath']) && file_exists(__DIR__ . '/../' . $hw['filePath'])) {
                     unlink(__DIR__ . '/../' . $hw['filePath']);
                 }
-
                 // aynı title, class ve lesson için tüm öğrencilerin ödevlerini sil
                 $delSql = 'DELETE FROM homeworks WHERE title = ? AND classId = ? AND lessonId = ?';
                 $delStmt = $pdo->prepare($delSql);
                 $delStmt->execute([$hw['title'], $hw['classId'], $hw['lessonId']]);
             }
         }
-
         return true;
     } catch (\Throwable $th) {
         error_log("Homework could not be deleted: " . $th->getMessage());
@@ -124,21 +122,18 @@ function answer_homework($homeworkId, $studentId,  $description, $filePath, $fil
             (homeworkId, studentId, description, filePath, fileType) 
             VALUES  (:homeworkId, :studentId, :description, :filePath, :fileType) ';
         $query = $pdo->prepare($sql);
-
         $query->bindValue("homeworkId", $homeworkId);
         $query->bindValue("studentId", $studentId);
         $query->bindValue("description", $description);
         $query->bindValue("filePath", $filePath);
         $query->bindValue("fileType", $fileType);
         $query->execute();
-
         return true;
     } catch (PDOException $th) {
         error_log("Homework Answer Insert Error: " . $th->getMessage());
         return false;
     }
 }
-
 // get answers by homeworkId and studentId
 function get_homework_answers($homeworkId, $studentId)
 {

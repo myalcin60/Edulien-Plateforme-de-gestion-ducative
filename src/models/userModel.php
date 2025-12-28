@@ -39,7 +39,6 @@ function createUserTable()
         }
 
         echo "<br> Table structure verified successfully.";
-
     } catch (Throwable $e) {
         echo "Connection or table creation error: " . $e->getMessage();
     }

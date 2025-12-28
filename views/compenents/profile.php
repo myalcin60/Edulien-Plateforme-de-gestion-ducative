@@ -4,11 +4,10 @@ include_once __DIR__ . '/../../src/repositories/user_repository.php';
 $photo = show_user_photo($_SESSION['id']);
 $user = get_user_by_id($_SESSION['id']);
 
-
 ?>
 
 <div>
-    <form action="../../src/controllers/user_controller.php" method="post" enctype="multipart/form-data">
+    <form action="../../src/controllers/profile_controller.php" method="post" enctype="multipart/form-data">
         <div class="profile box-shadow" style="text-align:center">
             <div>
                 <label for="fileInput" style="cursor:pointer; display:inline-block;">
@@ -21,6 +20,7 @@ $user = get_user_by_id($_SESSION['id']);
                     <?php endif; ?>
                 </label>
                 <input type="file" name="profile_photo" accept="image/*" id="fileInput" style="display:none">
+                <input type="hidden" name="action" value="update_photo">
                 <button type="submit">Save</button>
             </div>
             <input type="hidden" name="userId" value="<?= $user['id'] ?>">
@@ -78,11 +78,13 @@ $user = get_user_by_id($_SESSION['id']);
             <?php endif; ?>
         </div>
         <div>
+            <input type="hidden" name="action" value="update_profile">
             <button class="profil-updt" type="submit">Update</button>
         </div>
     </form>
-    <form action="../../src/controllers/profile_controller.php" method="GET">
+    <form action="../../src/controllers/profile_controller.php" method="post">
         <div>
+            <input type="hidden" name="action" value="delete_profile">
             <button class="profil-updt" type="submit">Delete</button>
         </div>
     </form>

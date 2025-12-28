@@ -26,7 +26,6 @@ function show_students($lessonId)
         $student_name = htmlspecialchars($student['studentName']);
         $student_email = htmlspecialchars($student['studentEmail']);
 
-
         $a_sup = "
             <a href='../../src/controllers/student_controller.php?studentId=$student_id&lessonId=$lessonId'' class='btn btn-danger btn-sm me-2'>
                  Delete 
@@ -78,7 +77,6 @@ function show_student_list($lessonId)
 
         $class = get_class_by_classId($classId);
         $st = get_student__from_users($student['studentEmail']);
-
         $id = htmlspecialchars($student['studentId']);
         $name = htmlspecialchars($student['studentName']);
         $surname = htmlspecialchars($st['last_name']);
@@ -109,7 +107,6 @@ function show_student_list($lessonId)
             
             ";
         $no++;
-
     }
 
     $liste .= "</tbody>

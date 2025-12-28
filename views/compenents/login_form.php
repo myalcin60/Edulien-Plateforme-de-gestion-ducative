@@ -11,7 +11,7 @@
             unset($_SESSION['success']); ?>
         </div>
     <?php endif; ?>
-    <form action="../../src/controllers/user_controller.php" method="get">
+    <form action="../../src/controllers/user_controller.php" method="post">
         <h2>Login</h2>
         <div class="mb-3">
             <label for="email" class="form-label">Email address</label>
@@ -24,11 +24,8 @@
         <div class="mb-3" style='color:var( --accent-secondary);'>
             <p>I forgot my password</p>
         </div>
+        <input type="hidden" name="action" value="login">
         <button type="submit" class="btn btn-primary mb-3" style="background-color:#067BB1; border-color:#067BB1;">Submit</button>
-      
         <a style='color:var( --accent-secondary);' href="./auth.php?form=signup">Create an account</a>
-    
     </form>
-
-
 </div>

@@ -9,6 +9,9 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Edulien, Provides homework sharing and digital library for teachers and students.">
     <title>Edulien - Digital Education Platform</title>
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
     <link rel="stylesheet" href="../css/header.css" />
     <link rel="stylesheet" href="../css/main.css" />
@@ -16,7 +19,15 @@ session_start();
     <link rel="stylesheet" href="../css//footer.css">
     <link rel="stylesheet" href="../css/header.css" />
     <?php include '../partiel/dependencies.php' ?>
-
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Edulien",
+            "url": "https://edulien.free.nf",
+            "logo": "https://edulien.free.nf/logo.jpg"
+        }
+    </script>
 
 
 </head>

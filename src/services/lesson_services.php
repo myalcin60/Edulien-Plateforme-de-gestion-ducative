@@ -47,8 +47,6 @@ function show_student_lessons()
         $lessons = get_student_lessons($_SESSION['id']);
 
         $result = '';
-
-
         foreach ($lessons as $lesson) {
 
             $lesson_id = htmlspecialchars($lesson['lessonId']);
@@ -107,7 +105,6 @@ function show_lesons_in_select($classId, $selectedLessonId = null)
         $selected = ($lesson_id == $selectedLessonId) ? "selected" : "";
         $liste .= " <option value='$lesson_id' $selected>$lesson_name</option> ";
     }
-
     $liste .= "</select>";
     return $liste;
 }

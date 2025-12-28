@@ -7,7 +7,6 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "f
    $className = $_POST['class_name'];
    $userid = $_SESSION['id'];
    $classes = get_classes($userid);
-
    $list = [];
    foreach ($classes as $class) {
       $list[] = $class[1];
@@ -25,14 +24,12 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "f
       die();
    }
 }
-
 //get class 
 if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "class_page") and $_SERVER['REQUEST_METHOD'] === 'GET') {
    get_classes_for_student($_SESSION['id']);
    header("location: ../../views/pages/student_dashboard.php?form=classes");
    die();
 }
-
 // delete class
 if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "teacher_dashboard.php?form=classes") and $_SERVER['REQUEST_METHOD'] == 'GET') {
    delete_class($_GET['id']);
@@ -42,10 +39,8 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "t
 }
 // update class name
 if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "update_class_name.php") and $_SERVER['REQUEST_METHOD'] == 'POST') {
-
    echo $_POST['id'];
    echo $_POST['class_name'];
-
    update_calss($_POST['id'], $_POST['class_name']);
    $_SESSION['success'] = 'Class uptated successfully.';
    header("location: ../../views/pages/teacher_dashboard.php?form=classes");

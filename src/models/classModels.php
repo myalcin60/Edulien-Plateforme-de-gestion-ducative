@@ -5,7 +5,7 @@ function createClassTable()
         $pdo = db_connection();
         $sql = "
         
-      CREATE Table IF NOT EXISTS classes (
+    CREATE Table IF NOT EXISTS classes (
     classId INT AUTO_INCREMENT PRIMARY KEY,
     className VARCHAR(100) NOT NULL,
     teacherId VARCHAR(20) NOT NULL,

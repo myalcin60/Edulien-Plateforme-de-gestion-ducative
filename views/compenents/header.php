@@ -30,8 +30,7 @@
                         <div class="d-flex me-2 gap-3">
                             <?php if (isset($_SESSION['id'])): ?>
                                 <form class="d-flex gap-3 align-items-end content-items-end"
-                                    action="../../src/controllers/user_controller.php" method="post">
-                                 
+                                    action="../../src/controllers/user_controller.php" method="post">                                
                                         <?php if ($_SESSION['id'][0] == 'T'): ?>
                                             <a class="icon_prfl navbar-brand text-light" href="../pages/teacher_dashboard.php">
                                                 <i class="ikon fa-solid fa-user"></i>
@@ -46,11 +45,8 @@
                                             </a>
                                         <?php else: ?>
                                         <?php endif; ?>
-                               
-                                 
                                         <input type="hidden" name="action" value="logout">
-                                        <button class="btn btn-link " style="background:var(--btn-color); color:white; " name="logout">Logout</button>
-                                    
+                                        <button class="btn btn-link " style="background:var(--btn-color); color:white; " name="logout">Logout</button>                                    
                                 </form>
                             <?php else: ?>
                                 <a style="text-decoration: none;color:white;" href="./auth.php?form=login"> Login</a>

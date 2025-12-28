@@ -35,10 +35,9 @@
             <select class="form-select" aria-label="Student" name="role">
                 <option value="student">Student</option>
                 <option value="teacher">Teacher</option>
-
             </select>
         </div> 
-        <input type="hidden" name="source" value="auth">
+        <input type="hidden" name="action" value="signup">
         <button type="submit" class="btn btn-primary mb-3" >Register</button>
         <a style='color:var( --accent-secondary);' href="./auth.php?form=login">I already have an account. Login</a>
     </form>

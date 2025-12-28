@@ -25,7 +25,6 @@ function get_students_in_lesson($lessonId)
         $sql = "SELECT * FROM lesson_students AS ls
                 JOIN lessons AS l ON ls.lessonId = l.lessonId
                 WHERE l.lessonId = :lessonId";
-
         $query = $pdo->prepare($sql);
         $query->bindParam(":lessonId", $lessonId);
         $query->execute();
@@ -109,6 +108,4 @@ function add_student($lessonId, $studentId,  $studentEmail, $studentName, $class
             echo "\nErreur : problème de connexion avec la BD: " . $ex->getMessage();
         }
     }
-
-
 }

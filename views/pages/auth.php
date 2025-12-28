@@ -19,7 +19,6 @@ $url = (isset($_GET['form']) && $_GET['form'] === 'login') ? 'login' : 'signup';
 
 
 </head>
-
 <body>
     <div class="wrapper">
         <header>
@@ -32,7 +31,6 @@ $url = (isset($_GET['form']) && $_GET['form'] === 'login') ? 'login' : 'signup';
                 <div class=" d-md-block d-none rounded-2" id="image">
                     <img class="img-fluid d-md-block d-none mx-auto rounded-2" src="../assets/okul.png" alt="image_main">
                 </div>
-
                 <div style="max-width:350px;" class="bg-white box-shadow rounded-2 form container-sm border ">
                     <?php
                     if ($url === 'signup') {
@@ -43,14 +41,10 @@ $url = (isset($_GET['form']) && $_GET['form'] === 'login') ? 'login' : 'signup';
                     ?>
                 </div>
             </div>
-
         </main>
         <footer>
             <?php include '../compenents/footer.php'  ?>
         </footer>
     </div>
-
-
 </body>
-
 </html>

@@ -7,7 +7,6 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "l
    $lessonId = $_GET['lessonId'];
    $studentId = $_GET['studentId'];
 
-
    delete_student_in_lesson_students($lessonId, $studentId);
    $_SESSION['success'] = 'Student deleted successfully.';
    header("location: ../../views/pages/lesson_page.php?id=$lessonId");
@@ -23,7 +22,6 @@ if (
    $lessonId = $_POST['lessonId'] ?? null;
    $classId = $_POST['classId'] ?? null;
    $email = $_POST['email'] ?? null;
-
 
    if ($email == '') {
       $_SESSION['error'] = 'Please enter an email address';
@@ -44,7 +42,6 @@ if (
    $cl_IdInt = $cl_Id ? intval($cl_Id['classId']) : null;
    $classIdInt = intval(trim($classId));
 
-   
       if ($student['id'][0] != 'T') {
          if ($lessonId == $result['lessonId']) {
             $_SESSION['error'] = 'This student already exists !';
