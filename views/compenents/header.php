@@ -23,8 +23,8 @@
                 <div class="flex collapse navbar-collapse gap-3" id="navbarSupportedContent">
                     <div class="d-flex gap-3">
                         <a class="nav-link active" aria-current="page" href="../pages/index.php">Home</a>
-                        <a class="nav-link active" aria-current="page" href="#">About</a>
-                        <a class="nav-link active" aria-current="page" href="#">Contact</a>
+                        <a class="nav-link active" aria-current="page" href="../pages/about.php">About</a>
+                        <a class="nav-link active" aria-current="page" href="../pages/contact.php">Contact</a>
                     </div>
                     <div class="d-flex gap-3">
                         <div class="d-flex me-2 gap-3">

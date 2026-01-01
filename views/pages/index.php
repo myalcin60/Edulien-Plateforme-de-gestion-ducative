@@ -16,7 +16,7 @@ session_start();
     <link rel="stylesheet" href="../css/header.css" />
     <link rel="stylesheet" href="../css/main.css" />
     <link rel="stylesheet" href="../css/index.css" />
-    <link rel="stylesheet" href="../css//footer.css">
+    <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/header.css" />
     <?php include '../partiel/dependencies.php' ?>
     <script type="application/ld+json">
@@ -28,8 +28,6 @@ session_start();
             "logo": "https://edulien.free.nf/logo.jpg"
         }
     </script>
-
-
 </head>
 
 <body>
