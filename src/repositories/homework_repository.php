@@ -195,3 +195,30 @@ function get_homeworkId_by_id($id){
         return false;
     }
 }
+// delete answer homework
+function delete_answer_homework($answerId){
+    try {
+        $pdo = db_connection();
+
+        // take filepath of answer
+        $sql = 'SELECT filePath FROM hm_answer WHERE id = ?';
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$answerId]);
+        $answer = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($answer) {
+            // delete file from server
+            if (!empty($answer['filePath']) && file_exists(__DIR__ . '/../' . $answer['filePath'])) {
+                unlink(__DIR__ . '/../' . $answer['filePath']);
+            }
+            // delete answer from database
+            $delSql = 'DELETE FROM hm_answer WHERE id = ?';
+            $delStmt = $pdo->prepare($delSql);
+            $delStmt->execute([$answerId]);
+        }
+        return true;
+    } catch (\Throwable $th) {
+        error_log("Answer could not be deleted: " . $th->getMessage());
+        return false;
+    }
+}

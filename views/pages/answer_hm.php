@@ -78,7 +78,9 @@ $answer = show_answer($id, $userId) ;
                     <?php if ($userId[0] == 'T') : ?>
                         <?= $answer ?>
                     <?php else : ?>
+                        <form action="../../src/controllers/homework_controller.php" method="GET">
                         <?= $answersStudent ?>
+                        </form>
                     <?php endif; ?>
 
                 </div>

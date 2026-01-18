@@ -5,6 +5,7 @@ include __DIR__ . '/../models/classModels.php';
 include_once __DIR__ . '/../models/lessonModels.php';
 include_once __DIR__ . '/../models/lessonStudentModel.php';
 include __DIR__. '/../models/homeworkModel.php';
+include __DIR__. '/../models/answerHmModels.php';
 
 //sign up
 function signup_user($id, $firstname, $lastname, $email, $password, $role)
@@ -15,7 +16,8 @@ function signup_user($id, $firstname, $lastname, $email, $password, $role)
         createClassTable();
         createLessonTable();
         createLessonsStudentTable();
-        createHomeworkTable();        
+        createHomeworkTable();  
+        createHomeworkAnswerTable();      
 
         $sql = "INSERT INTO users (id, first_name, last_name, email, password, role)
                 VALUES (:id, :first_name, :last_name, :email, :password, :role)";

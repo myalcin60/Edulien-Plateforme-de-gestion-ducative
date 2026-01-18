@@ -14,10 +14,16 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "t
     $filePath = null;
     $fileType = null;
 
+    if (empty($studentIds)) {
+        $_SESSION['error'] = 'Please select at least one student.';
+        header("location: ../../views/pages/teacher_dashboard.php?form=homework&classId=$classId&lessonId=$lessonId");
+        die();
+    }
+
     // control upload fichier
     if (isset($_FILES['file']) && $_FILES['file']['error'] == 0) {
-        $uploadDir = __DIR__ . "/uploads/homeworks/";
-        // $uploadDir = __DIR__ . "../../../uploads/homeworks/"; //---> for infinity
+        // $uploadDir = __DIR__ . "/uploads/homeworks/"; //---> for infinity
+         $uploadDir = __DIR__ . "../../../uploads/homeworks/"; 
         if (!is_dir($uploadDir)) {
             mkdir($uploadDir, 0777, true);
         }
@@ -46,8 +52,6 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "t
 }
 // delete homework
 if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "action=homeworks") and $_SERVER['REQUEST_METHOD'] == 'GET') {
-
-
     if (!empty($_GET['homeworkIds'])) {
         delete_homework($_GET['homeworkIds']);
     }
@@ -55,7 +59,7 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "a
     header("location: ../../views/pages/teacher_dashboard.php?form=homework&action=homeworks");
     die();
 }
-// answer homework
+// create answer homework
 if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "answer_hm.php") and $_SERVER['REQUEST_METHOD'] == 'POST') {
     $studentId = $_SESSION['id'];
     $homeworkId = $_POST['homeworkId'];
@@ -65,8 +69,8 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "a
 
     // control upload fichier
     if (isset($_FILES['file']) && $_FILES['file']['error'] == 0) {
-        $uploadDir = __DIR__ . "/uploads/answers/";
-        // $uploadDir = __DIR__ . "../../../uploads/answers/"; //---> for infinity
+        //$uploadDir = __DIR__ . "/uploads/answers/"; //---> for infinity
+         $uploadDir = __DIR__ . "../../../uploads/answers/"; 
         if (!is_dir($uploadDir)) {
             mkdir($uploadDir, 0777, true);
         }
@@ -91,5 +95,14 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "a
     answer_homework($homeworkId, $studentId, $answerText, $filePath,  $fileType);
     $_SESSION['success'] = 'Homework answered successfully!';
     header("location: ../../views/pages/answer_hm.php?id=$homeworkId");
+    die();
+}
+
+// delete answer homework
+if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "answer_hm") and $_SERVER['REQUEST_METHOD'] == 'GET') {
+    $answerId = $_GET['id'];
+    delete_answer_homework($answerId);
+    $_SESSION['success'] = 'Answer deleted successfully!';
+    header("location: ../../views/pages/student_dashboard.php?form=homework");
     die();
 }

@@ -41,7 +41,6 @@ $student_lessons = show_student_lessons();
         </form>
         <div>    
             <form action="../../src/controllers/class_controller.php" method="get">
-
                 <div class="gap-3 p-3 ">
                     <h2> Clasess</h2>
                     <?= $classes ?>

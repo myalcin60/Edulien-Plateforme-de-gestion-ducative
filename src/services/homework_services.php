@@ -193,9 +193,9 @@ function show_homework($id)
         <td>
             $fileLink
         </td>
-         <td class='text-end w-30'>
+         <td class='text-end w-0'>
             <div class='form-check d-flex gap-3'>
-                <input type='hidden' name='homeworkIds[]' value='$homework_id'>               
+                <input class='form-check-input' type='checkbox' name='homeworkIds[]' value='$homework_id'>               
             </div>
         </td>            
             </tbody>
@@ -205,7 +205,7 @@ function show_homework($id)
     return $liste;
 }
 
-// show answers for homework
+// show answers for homework by student
 function show_homework_answers($homeworkId, $studentId)
 {
     $answers = get_homework_answers($homeworkId, $studentId);
@@ -218,6 +218,7 @@ function show_homework_answers($homeworkId, $studentId)
                     <th class='text-start'>Description</th>
                     <th class='text-start'>File</th>
                     <th class='text-start'>Created At</th>
+                    <th class='text-start'>Action</th>
                 </tr> 
             </thead>
             <tbody>";
@@ -230,6 +231,7 @@ function show_homework_answers($homeworkId, $studentId)
         $fileType = htmlentities($answer['fileType'] ?? '');
         $date = new DateTime($answer['created_at']);
         $created_at = $date->format('d-m-Y');
+        $answer_Id = htmlspecialchars($answer['id']);
 
         if (!empty($filePath)) {
            if (in_array($fileType, ['image/jpeg', 'image/png'])) {
@@ -242,6 +244,11 @@ function show_homework_answers($homeworkId, $studentId)
         } else {
             $fileLink = '-';
         }
+
+          $a_sup = "
+            <a href='../../src/controllers/homework_controller.php?id=$answer_Id' class='btn btn-danger btn-sm me-2'>
+                Delete
+            </a>";
 
         $liste .= " 
     <tr></tr>
@@ -257,6 +264,9 @@ function show_homework_answers($homeworkId, $studentId)
         <td class='text-start w-20'>
             $created_at
         </td>
+         <td class='text-start w-20'>
+            $a_sup
+        </td>
     </tr>
                 ";
 
@@ -267,7 +277,7 @@ function show_homework_answers($homeworkId, $studentId)
     </div>";
     return $liste;
 }
-// show all naswers for homework
+// show all aswers for homework by teacher
 
 function show_answer($id, $teacherId)
 {
@@ -284,6 +294,8 @@ function show_answer($id, $teacherId)
                     <th class='text-start'>Description</th>
                     <th class='text-start'>File</th>
                     <th class='text-start'>Created At</th>
+                    <th class='text-start'>Select</th>
+                    
                 </tr> 
             </thead>
             <tbody>";
@@ -310,6 +322,7 @@ function show_answer($id, $teacherId)
         } else {
             $fileLink = '-';
         }
+         
 
         $liste .= " 
     <tr></tr>
@@ -327,6 +340,11 @@ function show_answer($id, $teacherId)
         </td>
         <td class='text-start w-20'>
             $created_at
+        </td>
+         <td class='text-start w-20'>  
+            <div class='form-check d-flex gap-3'>
+                <input class='form-check-input' type='checkbox' name='homeworkIds[]' value=''>              
+            </div>
         </td>
     </tr>
                 ";
