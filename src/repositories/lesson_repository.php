@@ -2,13 +2,14 @@
 require_once __DIR__ . '/../config/connection.php';
 include_once __DIR__ . '/../models/lessonModels.php';
 //craet lesson
-function creat_lesson($lessonName, $teacherId, $classId)
+function creat_lesson($lessonId, $lessonName, $teacherId, $classId)
 {
     try {
         $pdo = db_connection();
         createLessonTable();
-        $sql = 'INSERT INTO lessons ( lessonName, teacherId, classId ) values ( :lessonName, :teacherId, :classId)';
+        $sql = 'INSERT INTO lessons (lessonId, lessonName, teacherId, classId ) values (:lessonId, :lessonName, :teacherId, :classId)';
         $query = $pdo->prepare($sql);
+        $query->bindValue("lessonId", $lessonId);
         $query->bindValue("lessonName", $lessonName);
         $query->bindValue("teacherId", $teacherId);
         $query->bindValue("classId", $classId);
@@ -82,7 +83,7 @@ function delete_lesson($lessonId)
         echo "Lesson deletion failed" . $ex->getMessage();
     }
 }
-
+// update lesson name
 function update_lesson($lessonId, $lessonName)
 {
     try {

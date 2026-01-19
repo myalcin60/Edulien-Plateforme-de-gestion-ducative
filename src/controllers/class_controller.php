@@ -1,16 +1,22 @@
 <?php
 session_start();
 include __DIR__ . '/../repositories/class_repository.php';
+include __DIR__ . '/../services/service.php';
 
 // creat class
 if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "form=classes") and $_SERVER['REQUEST_METHOD'] === 'POST') {
-   $className = $_POST['class_name'];
+   $className = ucfirst(strtolower(trim($_POST['class_name'])));
    $userid = $_SESSION['id'];
    $classes = get_classes($userid);
+   $classId=uuid();
+   if($className == ""){
+      $_SESSION['error'] = 'Class name is required !!';
+      header("location: ../../views/pages/teacher_dashboard.php?form=classes");
+      die();
+   }
    $list = [];
    foreach ($classes as $class) {
       $list[] = $class[1];
-
    }
    if (in_array(strtolower($className), array_map('strtolower', $list))) {
 
@@ -18,7 +24,7 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "f
       header("location: ../../views/pages/teacher_dashboard.php?form=classes");
       die();
    } else {
-      create_class($userid, $className);
+      create_class($classId,$userid, $className);
       $_SESSION['success'] = 'Class created successfully.';
       header("location: ../../views/pages/teacher_dashboard.php?form=classes");
       die();
@@ -39,9 +45,13 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "t
 }
 // update class name
 if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "update_class_name.php") and $_SERVER['REQUEST_METHOD'] == 'POST') {
-   echo $_POST['id'];
-   echo $_POST['class_name'];
-   update_calss($_POST['id'], $_POST['class_name']);
+  $className = ucfirst(strtolower(trim($_POST['class_name'])));
+  if($className == ""){
+      $_SESSION['error'] = 'Class name is required !!';
+      header("location: ../../views/pages/teacher_dashboard.php?form=classes");
+      die();
+   }
+   update_calss($_POST['id'],$className);
    $_SESSION['success'] = 'Class uptated successfully.';
    header("location: ../../views/pages/teacher_dashboard.php?form=classes");
    die();

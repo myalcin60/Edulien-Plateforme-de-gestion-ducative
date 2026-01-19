@@ -3,13 +3,14 @@ include_once __DIR__ . '/../config/connection.php';
 include __DIR__ . '/../models/classModels.php';
 
 // creaat class for teacher
-function create_class($userId, $className)
+function create_class($classId, $userId, $className)
 {
     try {
         $pdo = db_connection();
         createClassTable();
-        $sql = 'INSERT INTO classes ( className, teacherId ) values ( :className, :teacherId)';
+        $sql = 'INSERT INTO classes (classId, className, teacherId ) values (:classId, :className, :teacherId)';
         $query = $pdo->prepare($sql);
+        $query->bindValue("classId", $classId);
         $query->bindValue("className", $className);
         $query->bindValue("teacherId", $userId);
         $query->execute();
@@ -28,9 +29,9 @@ function get_classes($teacherId)
     where teacherId = :teacherId';
         $query = $pdo->prepare($sql);
         $query->bindValue('teacherId', $teacherId);
-
         $query->execute();
         return $query->fetchAll();
+        
     } catch (Exception $ex) {
         echo "\nErreur : problème de connexion avec la BD: " . $ex->getMessage();
     }

@@ -6,7 +6,7 @@ function createClassTable()
         $sql = "
         
     CREATE Table IF NOT EXISTS classes (
-    classId INT AUTO_INCREMENT PRIMARY KEY,
+    classId CHAR(36) NOT NULL UNIQUE PRIMARY KEY,
     className VARCHAR(100) NOT NULL,
     teacherId VARCHAR(20) NOT NULL,
     createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

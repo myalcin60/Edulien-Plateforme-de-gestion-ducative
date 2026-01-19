@@ -1,6 +1,7 @@
 <?php
 session_start();
 include_once __DIR__ . '/../repositories/homework_repository.php';
+include __DIR__ . '/../services/service.php';
 
 // creat homwork 
 if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "teacher_dashboard.php") and $_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -10,6 +11,7 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "t
     $classId = $_POST['classId'];
     $lessonId = $_POST['lessonId'];
     $studentIds = $_POST['studentIds'] ?? [];
+    $id = uuid();
     var_dump($studentIds);
     $filePath = null;
     $fileType = null;
@@ -45,7 +47,7 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "t
         }
     }
 
-    create_homework($teacherId, $studentIds, $classId, $lessonId, $title, $homework, $filePath, $fileType);
+    create_homework($id, $teacherId, $studentIds, $classId, $lessonId, $title, $homework, $filePath, $fileType);
     $_SESSION['success'] = 'Homework created successfully!';
     header("location: ../../views/pages/teacher_dashboard.php?form=homework&classId=$classId&lessonId=$lessonId");
     die();
@@ -64,6 +66,7 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "a
     $studentId = $_SESSION['id'];
     $homeworkId = $_POST['homeworkId'];
     $answerText = $_POST['homework'];
+    $id= uuid();
     $filePath = null;
     $fileType = null;
 
@@ -92,7 +95,7 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "a
             }
         }
     }
-    answer_homework($homeworkId, $studentId, $answerText, $filePath,  $fileType);
+    answer_homework($id, $homeworkId, $studentId, $answerText, $filePath,  $fileType);
     $_SESSION['success'] = 'Homework answered successfully!';
     header("location: ../../views/pages/answer_hm.php?id=$homeworkId");
     die();

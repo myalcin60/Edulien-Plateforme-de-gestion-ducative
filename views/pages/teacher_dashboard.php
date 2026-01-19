@@ -44,6 +44,11 @@ $homework = 'Homework';
                         <?= $_SESSION['success'];
                         unset($_SESSION['success']); ?>
                     </div>
+                <?php elseif (isset($_SESSION['error'])): ?>
+                    <div class="alert alert-danger">
+                        <?= $_SESSION['error'];
+                        unset($_SESSION['error']); ?>
+                    </div>
                 <?php endif; ?>
                 <?php
                 select_menu($menu);

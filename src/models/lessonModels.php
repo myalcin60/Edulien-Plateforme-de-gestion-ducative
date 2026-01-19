@@ -5,11 +5,11 @@ function createLessonTable()
         $pdo = db_connection();
         $sql = "
         
-      CREATE TABLE  IF NOT EXISTS lessons (
-    lessonId INT AUTO_INCREMENT PRIMARY KEY,
+    CREATE TABLE  IF NOT EXISTS lessons (
+    lessonId CHAR(36) NOT NULL UNIQUE PRIMARY KEY,
     lessonName VARCHAR(100),
     teacherId VARCHAR(250) NOT NULL,
-    classId INT not NULL,
+    classId CHAR(36) not NULL,
     addedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (teacherId) REFERENCES users (id) ON DELETE CASCADE,
     FOREIGN KEY (classId) REFERENCES classes (classId) ON DELETE CASCADE

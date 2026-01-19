@@ -6,8 +6,8 @@ function createHomeworkAnswerTable()
         $sql = "
         
     CREATE TABLE IF NOT EXISTS hm_answer (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    homeworkId INT NOT NULL,
+    id CHAR(36) NOT NULL UNIQUE PRIMARY KEY,
+    homeworkId CHAR(36) NOT NULL,
     studentId VARCHAR(20) NOT NULL,
     description TEXT NULL,
     filePath VARCHAR(255) NULL,

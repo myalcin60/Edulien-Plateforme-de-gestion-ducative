@@ -6,11 +6,11 @@ function createLessonsStudentTable()
         $sql = "
     CREATE TABLE IF NOT EXISTS lesson_students (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    lessonId INT NOT NULL,
+    lessonId CHAR(36) NOT NULL,
     studentId VARCHAR(20) NOT NULL,
     studentName VARCHAR(100),
     studentEmail VARCHAR(100),
-    classId INT not NULL,
+    classId CHAR(36) not NULL,
     addedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (lessonId) REFERENCES lessons (lessonId) ON DELETE CASCADE,
     FOREIGN KEY (studentId) REFERENCES users (id) ON DELETE CASCADE,

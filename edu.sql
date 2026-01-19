@@ -2,6 +2,28 @@
 -- Active: 1757782397363@@127.0.0.1@3306-- Active: 1757782397363@@127.0.0.1@3306@edu
 
 use edu;
+SELECT * FROM users;
+SELECT * FROM classes;
+SELECT * FROM lessons;
+SELECT * FROM lesson_students; 
+SELECT * FROM homeworks;
+SELECT * FROM hm_answer;
+
+Delete FROM hm_answer;
+
+CREATE Table IF NOT EXISTS classes (
+    classId CHAR(36) NOT NULL UNIQUE PRIMARY KEY,
+    className VARCHAR(100) NOT NULL,
+    teacherId VARCHAR(20) NOT NULL,
+    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (teacherId) REFERENCES users (id) ON DELETE CASCADE);
+
+    Update lessons
+                 SET lessonName = 'Mathematic'
+                 WHERE lessonId = '82b53848-01e3-4c1e-8812-fa219faf0eb6'; 
+
+NSERT INTO classes (classId, className, teacherId ) values (!classId, :className, :teacherId);
+INSERT INTO lessons (lessonId, lessonName, teacherId, classId ) values (:lessonId :lessonName, :teacherId, :classId)
 
 CREATE Table users (
     id VARCHAR(250) PRIMARY KEY NOT NULL,
@@ -12,8 +34,6 @@ CREATE Table users (
     role VARCHAR(255) NOT NULL,
     createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-
-SELECT * FROM users;
 
 ALTER TABLE users ADD COLUMN profile_photo VARCHAR(255);
 ALTER TABLE users ADD COLUMN specialization VARCHAR(250);
@@ -36,19 +56,7 @@ SELECT * FROM classes;
 
 SELECT * FROM classes WHERE classId = 42;
 
-# bu kullanilmiyor
-CREATE TABLE students (
-     id INT AUTO_INCREMENT PRIMARY KEY,
-      classId INT NOT NULL,
-      studentId VARCHAR(20) NOT NULL,
-      studentName VARCHAR(100),
-      studentEmail VARCHAR(100),
-      addedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-      FOREIGN KEY (classId) REFERENCES classes(classId) ON DELETE CASCADE,
-      FOREIGN KEY (studentId) REFERENCES users(id) ON DELETE CASCADE
-);
 
-SELECT * FROM students;
 
 CREATE TABLE lessons (
     lessonId INT AUTO_INCREMENT PRIMARY KEY,

@@ -16,17 +16,45 @@ if (isset($_SERVER['HTTP_REFERER']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
         $userId = $_POST['userId'];
 
         uplad_user_photo($userId, $fileContent, $fileType);
-        $_SESSION['success'] =  "Photo uploaded successfully!";
-        header("location: ../../views/pages/teacher_dashboard.php?form=profile");
-        die();
+        if ($_POST['userId'][0] == 'T') {
+          $_SESSION['success'] =  "Photo uploaded successfully!";
+          header("location: ../../views/pages/teacher_dashboard.php?form=profile");
+          die();
+        } else {
+          $_SESSION['success'] =  "Photo uploaded successfully!";
+          header("location: ../../views/pages/student_dashboard.php?form=profile");
+          die();
+        }
+    
       } else {
+        if ($_POST['userId'][0] == 'T') {
+          $_SESSION['error'] = "Photo could not be uploaded!";
+          header("location: ../../views/pages/teacher_dashboard.php?form=profile");
+          die();
+        }
         $_SESSION['error'] = "Photo could not be uploaded!";
-        header("location: ../../views/pages/teacher_dashboard.php?form=profile");
+        header("location: ../../views/pages/student_dashboard.php?form=profile");
         die();
       }
       break;
     case 'update_profile':
-      update_user_profile($_POST['id'], $_POST['email'], trim($_POST['first_name']), trim($_POST['last_name']), $_POST['gender'], trim($_POST['specialization']));
+        $firstname = ucfirst(strtolower(trim($_POST['first_name'])));
+         $lastname  = strtoupper(trim($_POST['last_name']));
+         $email     = trim($_POST['email']);
+         $specialization = ucfirst(strtolower(trim($_POST['specialization'])));
+         
+      if ($firstname == "" || $lastname == "" || $email == "" || $specialization == "") { 
+        if ($_POST['id'][0] == 'T') {
+          $_SESSION['error'] = 'All fields are required';
+          header("location: ../../views/pages/teacher_dashboard.php?form=profile");
+          die();
+        } else {
+           $_SESSION['error'] = "All fields are required!";
+          header("location: ../../views/pages/student_dashboard.php?form=profile");
+          die();
+        }
+      }
+      update_user_profile($_POST['id'], $email, $firstname, $lastname, $_POST['gender'], $specialization);
       if ($_POST['id'][0] == 'T') {
         $_SESSION['success'] =  "Profile uploaded successfully!";
         header("location: ../../views/pages/teacher_dashboard.php?form=profile");

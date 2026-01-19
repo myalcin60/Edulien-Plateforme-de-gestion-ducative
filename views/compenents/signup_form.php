@@ -1,3 +1,7 @@
+<?php 
+session_start(); 
+?>
+
 <div class="container mt-5">
     <?php if (isset($_SESSION['error'])): ?>
         <div class="alert alert-danger">

@@ -49,6 +49,9 @@ $student_lessons = show_student_lessons();
         </div>
     <?php else: ?>
         <div class="d-flex flex-wrap justify-content-start">
+            <?php if (empty($student_lessons)): ?>
+            <p class="p-3 title">You are not enrolled in any lessons yet.</p>
+            <?php endif; ?>
             <?= $student_lessons ?>
         </div>
     <?php endif; ?>

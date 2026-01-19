@@ -18,6 +18,11 @@ if (isset($_SERVER['HTTP_REFERER']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
          $lastname  = strtoupper($_POST['lastname']);
          $email     = $_POST['email'];
          $password  = password_hash($_POST['password'], PASSWORD_DEFAULT);
+         if($firstname == "" || $lastname == "" || $email == "" || $password == ""){
+            $_SESSION['error'] = 'All fields are required';
+            header("location: ../../views/pages/auth.php");
+            exit;
+         }
          $user = get_user_by_email($email);
          if ($user) {
             $_SESSION['error'] = 'This email already exists';
@@ -33,13 +38,17 @@ if (isset($_SERVER['HTTP_REFERER']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
          $email    = $_POST['email'];
          $password = $_POST['password'];
          $user = get_user_by_email($email);
+         if(!$user){
+            $_SESSION['error'] = 'Email is incorrect';
+            header("location: ../../views/pages/auth.php?form=login");
+            exit;
+         }
          if ($user && password_verify($password, $user['password'])) {
             $_SESSION['first_name'] = $user['first_name'];
             $_SESSION['last_name']  = $user['last_name'];
             $_SESSION['email']      = $user['email'];
             $_SESSION['role']       = $user['role'];
             $_SESSION['id']         = $user['id'];
-
             if ($user['role'] === 'teacher') {
                $_SESSION['success'] = 'Login successful! ' . $user['first_name'];
                header("location: ../../views/pages/teacher_dashboard.php");

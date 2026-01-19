@@ -6,12 +6,12 @@ function createHomeworkTable()
         $sql = "
         
     CREATE TABLE IF NOT EXISTS homeworks (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id CHAR(36) NOT NULL UNIQUE PRIMARY KEY,
     homeworkId VARCHAR(30) NOT NULL,
     teacherId VARCHAR(20) NOT NULL,
     studentId VARCHAR(20) NOT NULL,
-    classId INT NOT NULL,
-    lessonId INT NOT NULL,
+    classId CHAR(36) NOT NULL,
+    lessonId CHAR(36) NOT NULL,
     title VARCHAR(255) NOT NULL,
     description TEXT NULL,
     filePath VARCHAR(255) NULL,

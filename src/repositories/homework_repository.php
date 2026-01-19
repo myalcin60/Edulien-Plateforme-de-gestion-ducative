@@ -2,7 +2,7 @@
 include_once __DIR__ . '/../config/connection.php';
 include __DIR__ . '/../models/homeworkModel.php';
 // create homework
-function create_homework($teacherId, $studentIds, $classId, $lessonId, $title, $description, $filePath, $fileType)
+function create_homework($id, $teacherId, $studentIds, $classId, $lessonId, $title, $description, $filePath, $fileType)
 {
     try {
         $pdo = db_connection();
@@ -10,11 +10,12 @@ function create_homework($teacherId, $studentIds, $classId, $lessonId, $title, $
         $homeworkId = 'HW-' . time() . '-' . rand(1000, 9999);
 
         $sql = 'INSERT INTO homeworks 
-            (homeworkId, teacherId, studentId, classId, lessonId, title, description, filePath, fileType) 
-            VALUES  (:homeworkId, :teacherId, :studentId, :classId, :lessonId, :title, :description, :filePath, :fileType) ';
+            (id, homeworkId, teacherId, studentId, classId, lessonId, title, description, filePath, fileType) 
+            VALUES  (:id, :homeworkId, :teacherId, :studentId, :classId, :lessonId, :title, :description, :filePath, :fileType) ';
         $query = $pdo->prepare($sql);
 
         foreach ($studentIds as $studentId) {
+            $query->bindValue("id", $id);
             $query->bindValue("homeworkId", $homeworkId);
             $query->bindValue("teacherId", $teacherId);
             $query->bindValue("studentId", $studentId);
@@ -112,16 +113,17 @@ function delete_homework($homeworkIds)
 }
 
 // add answer homework
-function answer_homework($homeworkId, $studentId,  $description, $filePath, $fileType)
+function answer_homework($id, $homeworkId, $studentId,  $description, $filePath, $fileType)
 {
     try {
         $pdo = db_connection();
         // createHomeworkAnswerTable();
 
         $sql = 'INSERT INTO hm_answer 
-            (homeworkId, studentId, description, filePath, fileType) 
-            VALUES  (:homeworkId, :studentId, :description, :filePath, :fileType) ';
+            (id, homeworkId, studentId, description, filePath, fileType) 
+            VALUES  (:id, :homeworkId, :studentId, :description, :filePath, :fileType) ';
         $query = $pdo->prepare($sql);
+        $query->bindValue("id", $id);
         $query->bindValue("homeworkId", $homeworkId);
         $query->bindValue("studentId", $studentId);
         $query->bindValue("description", $description);

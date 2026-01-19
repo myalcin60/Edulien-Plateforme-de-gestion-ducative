@@ -9,7 +9,7 @@ function show_homeworks()
 {
     $userId = $_SESSION['id'];
 
-    $homeworks = get_homeworks_by_userId($userId);
+    $homeworks = get_homeworks_by_userId($userId) ?? [];
 
     $liste = "<div class='table-responsive'>
         <table class='table table-striped table-hover align-middle'>
