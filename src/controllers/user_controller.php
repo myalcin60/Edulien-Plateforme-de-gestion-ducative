@@ -82,8 +82,43 @@ if (isset($_SERVER['HTTP_REFERER']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
          $_SESSION['success'] = 'Logout successful ! ';
          header("location: ../../views/pages/auth.php?form=login");
          die();
+      // reset password   
+      case 'reset_password':
+         $email = $_POST['email'];
+         $user = get_user_by_email($email);
+        
+         if (!$user) {
+            $_SESSION['error'] = 'Email does not exist';
+            header("location: ../../views/pages/update_password.php");
+            exit;
+         }
 
-         // DEFAULT 
+         $_SESSION['email'] = $email;
+         $token = bin2hex(random_bytes(32));
+         MailService::sendResetPasswordEmail($email, $token);
+         $_SESSION['success'] = 'A password reset link has been sent to your email address.';
+         header("location: ../../views/pages/auth.php?form=login");  
+         exit;
+      case 'new_password':
+         if ($_POST['password'] !== $_POST['password_confirm']) {
+            $_SESSION['error'] = 'Passwords do not match';
+            header("location: ../../views/pages/new_password.php");
+            exit;
+         }
+         if (strlen($_POST['password']) < 4) {
+            $_SESSION['error'] = 'Password must be at least 6 characters long';
+            header("location: ../../views/pages/new_password.php");
+            exit;
+         }
+         $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+         $email = $_SESSION['email'];
+         update_user_password($email, $password);
+         unset($_SESSION['email']);
+         $_SESSION['success'] = 'Password updated successfully! You can now log in with your new password.';
+         header("location: ../../views/pages/auth.php?form=login");
+         exit;
+
+      // DEFAULT 
       default:
          $_SESSION['error'] = 'Invalid action';
          header("location: ../../views/pages/auth.php");

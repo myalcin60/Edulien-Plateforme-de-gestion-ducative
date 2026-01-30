@@ -66,6 +66,20 @@ function get_user_by_email($email)
         echo "\nErreur : problème de connexion avec la BD: " . $ex->getMessage();
     }
 }
+//update user password
+function update_user_password($email, $newPassword)
+{
+    try {
+        $pdo = db_connection();
+        $sql = "UPDATE users SET password = :password WHERE email = :email";
+        $query = $pdo->prepare($sql);
+        $query->bindValue(':password', $newPassword);
+        $query->bindValue(':email', $email);
+        $query->execute();
+    } catch (Exception $ex) {
+        echo "\nErreur : problème de connexion avec la BD: " . $ex->getMessage();
+    }
+}
 // upload  user photo
 function uplad_user_photo($userId, $fileContent, $fileType)
 {

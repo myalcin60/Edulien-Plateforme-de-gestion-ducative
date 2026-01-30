@@ -4,13 +4,7 @@ require_once __DIR__ . '/../repositories/token_repository.php';
 require_once __DIR__ . '/../services/mail_services.php';
 
 if (isset($_GET['token'])) {
-    // $_SESSION['error'] = 'Verification link expired or token is missing.';
-    // header("Location: ../../views/pages/auth.php");
-    // exit;
-
-    // $token = $_GET['token'];
-    // verify_email_token($token);
-
+    
     $token = $_GET['token'];
 
     $user = get_user_with_token($token);

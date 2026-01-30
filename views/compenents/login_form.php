@@ -24,10 +24,11 @@
             <input type="password" class="form-control" id="password" name="password">
         </div>
         <div class="mb-3" style='color:var( --accent-secondary);'>
-            <p>I forgot my password</p>
+             <a style='color:var( --accent-secondary);' href="../pages/update_password.php">I forget my password</a>
         </div>
         <input type="hidden" name="action" value="login">
         <button type="submit" class="btn btn-primary mb-3" style="background-color:#067BB1; border-color:#067BB1;">Submit</button>
         <a style='color:var( --accent-secondary);' href="./auth.php?form=signup">Create an account</a>
     </form>
+
 </div>
