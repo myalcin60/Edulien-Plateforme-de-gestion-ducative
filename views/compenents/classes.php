@@ -15,7 +15,6 @@ $student_lessons = show_student_lessons();
                 unset($_SESSION['error']); ?>
             </div>
         <?php endif; ?>
-
         <?php if (isset($_SESSION['success'])): ?>
             <div class="alert alert-success">
                 <?= $_SESSION['success'];
@@ -26,7 +25,6 @@ $student_lessons = show_student_lessons();
     <?php if ($_SESSION['id'][0] == 'T'): ?>
         <form action="../../src/controllers/class_controller.php" method="post">
             <p class="p-3 title">Please enter the class name.</p>
-
             <div class="container mb-4">
                 <div class="item">
                     <div class=" item  col-md-9 ">

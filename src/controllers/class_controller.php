@@ -19,7 +19,6 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "f
       $list[] = $class[1];
    }
    if (in_array(strtolower($className), array_map('strtolower', $list))) {
-
       $_SESSION['error'] = 'This class already exists !!';
       header("location: ../../views/pages/teacher_dashboard.php?form=classes");
       die();

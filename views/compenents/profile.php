@@ -12,16 +12,14 @@ $user = get_user_by_id($_SESSION['id']);
             <div>
                 <label for="fileInput" style="cursor:pointer; display:inline-block;">
                     <?php if ($photo): ?>
-                        <img src="<?php echo $photo; ?>" alt="Profile Photo" width="150" height="150"
-                            style="border-radius:25%">
+                        <img src="<?php echo $photo; ?>" alt="Profile Photo" width="150" height="150">
                     <?php else: ?>
-                        <img src="../assets/account.png" alt="Avatar Profile" width="150" height="150"
-                            style="border-radius:25%">
+                        <img src="../assets/account.png" alt="Avatar Profile" width="150" height="150">
                     <?php endif; ?>
                 </label>
                 <input type="file" name="profile_photo" accept="image/*" id="fileInput" style="display:none">
                 <input type="hidden" name="action" value="update_photo">
-                <button type="submit">Save</button>
+                <button class="profil-updt" type="submit">Save</button>
             </div>
             <input type="hidden" name="userId" value="<?= $user['id'] ?>">
             <?php if ($user['gender'] == 'male') : ?>
@@ -77,13 +75,13 @@ $user = get_user_by_id($_SESSION['id']);
                 <p>Not found user.</p>
             <?php endif; ?>
         </div>
-        <div>
+        <div class="d-flex justify-content-center justify-content-md-start">
             <input type="hidden" name="action" value="update_profile">
             <button class="profil-updt" type="submit">Update</button>
         </div>
     </form>
     <form action="../../src/controllers/profile_controller.php" method="post">
-        <div>
+       <div class="d-flex justify-content-center justify-content-md-start">
             <input type="hidden" name="action" value="delete_profile">
             <button class="profil-updt" type="submit">Delete</button>
         </div>

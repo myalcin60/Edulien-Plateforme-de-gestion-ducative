@@ -3,7 +3,7 @@ session_start();
 include __DIR__ . '/../repositories/user_repository.php';
 include __DIR__ . '/../services/service.php';
 include_once __DIR__ . '/../../views/partiel/toast.php';
-
+include_once __DIR__ . '/../services/mail_services.php';
 
 $id = '';
 if (isset($_SERVER['HTTP_REFERER']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -18,7 +18,9 @@ if (isset($_SERVER['HTTP_REFERER']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
          $lastname  = strtoupper($_POST['lastname']);
          $email     = $_POST['email'];
          $password  = password_hash($_POST['password'], PASSWORD_DEFAULT);
-         if($firstname == "" || $lastname == "" || $email == "" || $password == ""){
+
+
+         if ($firstname == "" || $lastname == "" || $email == "" || $password == "") {
             $_SESSION['error'] = 'All fields are required';
             header("location: ../../views/pages/auth.php");
             exit;
@@ -29,8 +31,14 @@ if (isset($_SERVER['HTTP_REFERER']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
             header("location: ../../views/pages/auth.php");
             exit;
          }
-         signup_user($id, $firstname, $lastname, $email, $password, $role);
-         $_SESSION['success'] = 'Registration successful! You can log in.';
+
+         $token = bin2hex(random_bytes(32));
+
+         signup_user($id, $firstname, $lastname, $email, $password, $role, $token);
+
+         MailService::sendVerificationEmail($email, $token);
+
+         $_SESSION['success'] = 'Registration successful! Please verify your email address to log in..';
          header("location: ../../views/pages/auth.php?form=login");
          exit;
          // LOGIN
@@ -38,12 +46,18 @@ if (isset($_SERVER['HTTP_REFERER']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
          $email    = $_POST['email'];
          $password = $_POST['password'];
          $user = get_user_by_email($email);
-         if(!$user){
+         if (!$user) {
             $_SESSION['error'] = 'Email is incorrect';
             header("location: ../../views/pages/auth.php?form=login");
             exit;
          }
          if ($user && password_verify($password, $user['password'])) {
+
+            if ($user['email_verified'] == 0) {
+               $_SESSION['error'] = 'You need to verify your email address. Please check your inbox.';
+               header("Location: ../../views/pages/auth.php");
+               exit;
+            }
             $_SESSION['first_name'] = $user['first_name'];
             $_SESSION['last_name']  = $user['last_name'];
             $_SESSION['email']      = $user['email'];
@@ -61,7 +75,7 @@ if (isset($_SERVER['HTTP_REFERER']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
          $_SESSION['error'] = 'Email or password is incorrect';
          header("location: ../../views/pages/auth.php?form=login");
          exit;
-      // logout
+         // logout
       case 'logout':
          session_unset();
          session_destroy();
@@ -75,8 +89,7 @@ if (isset($_SERVER['HTTP_REFERER']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
          header("location: ../../views/pages/auth.php");
          exit;
    }
-}
-else {
+} else {
    $_SESSION['error'] = 'Invalid request';
    header("location: ../../views/pages/auth.php");
    exit;

@@ -36,8 +36,7 @@ $homework = 'Homework';
         </header>
 
         <main class="d-sm-flex justify-content-center gap-5 my-5 mt-5">
-            <?php include '../compenents/left-menu.php'
-            ?>
+            <?php include '../compenents/left-menu.php'?>
             <div class="right-menu box-shadow">
                 <?php if (isset($_SESSION['success'])): ?>
                     <div class="alert alert-success">

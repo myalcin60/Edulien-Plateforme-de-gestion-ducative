@@ -7,7 +7,6 @@ function create_class($classId, $userId, $className)
 {
     try {
         $pdo = db_connection();
-        createClassTable();
         $sql = 'INSERT INTO classes (classId, className, teacherId ) values (:classId, :className, :teacherId)';
         $query = $pdo->prepare($sql);
         $query->bindValue("classId", $classId);

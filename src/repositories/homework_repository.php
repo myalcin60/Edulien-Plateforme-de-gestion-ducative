@@ -40,7 +40,7 @@ function get_homeworks_by_userId($userId)
     try {
         $pdo = db_connection();
 
-        if ($userId[0] == 'T') {
+        if (trim($userId[0]) == 'T') {
             $sql = 'Select * from homeworks
         where teacherId= :teacherId 
         GROUP BY title, lessonId';

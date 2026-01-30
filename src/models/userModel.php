@@ -12,7 +12,7 @@ function createUserTable()
                 password VARCHAR(255) NOT NULL,
                 role VARCHAR(255) NOT NULL,
                 createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-            )
+            )ENGINE=InnoDB
         ";
         $pdo->exec($sql);
         echo " 'users' table created or already exists.<br>";
@@ -23,6 +23,7 @@ function createUserTable()
             "ALTER TABLE users ADD COLUMN gender VARCHAR(25)",
             "ALTER TABLE users MODIFY COLUMN profile_photo LONGBLOB",
             "ALTER TABLE users ADD COLUMN profile_photo_type VARCHAR(50)"
+           
         ];
 
         foreach ($alterations as $alter) {

@@ -3,14 +3,20 @@
 
 use edu;
 SELECT * FROM users;
+ ALTER TABLE users ADD email_verified TINYINT(1) DEFAULT 0, ADD email_verify_token VARCHAR(255) NULL;
+ ALTER TABLE users 
+ADD email_verify_created_at DATETIME NULL;
+
 SELECT * FROM classes;
 SELECT * FROM lessons;
 SELECT * FROM lesson_students; 
 SELECT * FROM homeworks;
 SELECT * FROM hm_answer;
+DELETE  FROM users WHERE id='S_45734';
 
 Delete FROM hm_answer;
-
+SHOW CREATE TABLE users;
+show CREATE TABLE lessons;
 CREATE Table IF NOT EXISTS classes (
     classId CHAR(36) NOT NULL UNIQUE PRIMARY KEY,
     className VARCHAR(100) NOT NULL,
@@ -22,8 +28,8 @@ CREATE Table IF NOT EXISTS classes (
                  SET lessonName = 'Mathematic'
                  WHERE lessonId = '82b53848-01e3-4c1e-8812-fa219faf0eb6'; 
 
-NSERT INTO classes (classId, className, teacherId ) values (!classId, :className, :teacherId);
-INSERT INTO lessons (lessonId, lessonName, teacherId, classId ) values (:lessonId :lessonName, :teacherId, :classId)
+NSERT INTO classes (classId, className, teacherId ) values (:classId, :className, :teacherId);
+INSERT INTO lessons (lessonId, lessonName, teacherId, classId ) values ('922a5c49-9ba7-45b0-95c8-491eb84a48c6', 'Math', 'T_88981','7bea5ef8-dc14-4a93-8818-2ac6abbcaf86');
 
 CREATE Table users (
     id VARCHAR(250) PRIMARY KEY NOT NULL,

@@ -1,7 +1,7 @@
 <?php
 include_once __DIR__ . '/../../src/services/homework_services.php';
 $homeworks = show_homeworks();
-$userid= $_SESSION['id'];
+$userid= trim($_SESSION['id']);
 
 ?>
 

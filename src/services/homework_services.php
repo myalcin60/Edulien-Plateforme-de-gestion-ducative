@@ -7,8 +7,7 @@ include_once __DIR__ . '/../repositories/lesson_repository.php';
 // show homeworks
 function show_homeworks()
 {
-    $userId = $_SESSION['id'];
-
+    $userId = trim($_SESSION['id']);
     $homeworks = get_homeworks_by_userId($userId) ?? [];
 
     $liste = "<div class='table-responsive'>
@@ -23,7 +22,7 @@ function show_homeworks()
                     <th class='text-start'>File</th>
                     <th class='text-start'>Answer</th>";
 
-    if ($userId[0] == 'T') {
+    if (trim($userId[0]) == 'T') {
         $liste .= "
                     <th class='text-start'>Select</th>";
     }
@@ -36,11 +35,11 @@ function show_homeworks()
 
     foreach ($homeworks as $homework) {
 
-        $homework_id = htmlspecialchars($homework['id']);
-        $title = htmlspecialchars($homework['title']);
-        $description = htmlspecialchars($homework['description']);
+        $homework_id = htmlspecialchars(trim($homework['id']));
+        $title = htmlspecialchars(trim($homework['title']));
+        $description = htmlspecialchars(trim($homework['description']));
 
-        $class = get_class_by_classId($homework['classId']);
+        $class = get_class_by_classId(trim($homework['classId']));
 
         $class_name = htmlentities($class[0]['className']);
         $lesson = get_lesson_by_lessonId($homework['lessonId']);
@@ -107,9 +106,8 @@ function show_homeworks()
         <td>
             $answerLink
         </td>";
-        if ($userId[0] == 'T') {
+        if (trim($userId[0]) == 'T') {
             $liste .= "
-         
         <td class='text-end w-30'>
             <div class='form-check d-flex gap-3'>
                 <input class='form-check-input' type='checkbox' name='homeworkIds[]' value='$homework_id'>               

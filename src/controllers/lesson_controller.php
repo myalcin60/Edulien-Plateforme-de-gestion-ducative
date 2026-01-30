@@ -8,7 +8,7 @@ include __DIR__ . '/../services/service.php';
 if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "class_page") and $_SERVER['REQUEST_METHOD'] == 'POST') {
    $lessonName = ucfirst(strtolower(trim($_POST['lesson'])));
    $classId = $_POST['classId'];
-   $teacherId = $_POST['teacherId'];
+   $teacherId =trim( $_POST['teacherId']);
    $lessonId = uuid();
 
    $lessons= get_lessons_with_classId($classId);

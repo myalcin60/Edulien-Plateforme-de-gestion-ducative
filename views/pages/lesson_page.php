@@ -52,7 +52,6 @@ $homework = 'Homework';
                             unset($_SESSION['error']); ?>
                         </div>
                     <?php endif; ?>
-
                     <?php if (isset($_SESSION['success'])): ?>
                         <div class="alert alert-success">
                             <?= $_SESSION['success'];
@@ -79,17 +78,13 @@ $homework = 'Homework';
                         </div>
                     </div>
                 </form>
-
-
                 <div class="box-shadow container-md mb-3">
                     <div class="d-flex gap-3 p-3 justify-content-between">
                         <h2>Students List</h2> <a style="text-decoration: none;"
-
                             href="./class_page.php?classId=<?= $class[0]['classId'] ?>">
                             <h2 style="color:black"> Lessons</h2>
                         </a>
                     </div>
-
                     <div class="gap-3 p-3">
                         <?= $students ?>
                     </div>

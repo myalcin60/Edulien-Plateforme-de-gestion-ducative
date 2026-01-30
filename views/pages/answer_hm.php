@@ -13,8 +13,8 @@ $homework = 'Homework';
 $id = isset($_GET['id']) ? $_GET['id'] : null;
 $hm = show_homework($id);
 $userId = $_SESSION['id'];
-$answersStudent = show_homework_answers($id, $userId) ;
-$answer = show_answer($id, $userId) ;
+$answersStudent = show_homework_answers($id, $userId);
+$answer = show_answer($id, $userId);
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +31,7 @@ $answer = show_answer($id, $userId) ;
     <link rel="stylesheet" href="../css/teacher_dashboard.css" />
     <link rel="stylesheet" href="../css/answer_hm.css" />
     <link rel="stylesheet" href="../css/footer.css">
-     <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="../css/header.css" />
     <?php include '../partiel/dependencies.php' ?>
 </head>
 
@@ -47,7 +47,19 @@ $answer = show_answer($id, $userId) ;
             ?>
             <div class="right-menu box-shadow ">
                 <div>
+                    <?php if (isset($_SESSION['error'])): ?>
+                        <div class="alert alert-danger">
+                            <?= $_SESSION['error'];
+                            unset($_SESSION['error']); ?>
+                        </div>
+                    <?php endif; ?>
 
+                    <?php if (isset($_SESSION['success'])): ?>
+                        <div class="alert alert-success">
+                            <?= $_SESSION['success'];
+                            unset($_SESSION['success']); ?>
+                        </div>
+                    <?php endif; ?>
                     <div class="hm-menu d-flex w-auto h-auto align-self-start gap-5 mb-5">
                         <a style="text-decoration: none; font-size:large;"
                             href="./teacher_dashboard.php?form=homework&action=homeworks">
@@ -57,20 +69,20 @@ $answer = show_answer($id, $userId) ;
 
                     <?= $hm ?>
                     <?php if ($userId[0] == 'S') : ?>
-                    <form action="../../src/controllers/homework_controller.php" method="POST" enctype="multipart/form-data">
-                        <div class="textarea">
-                            <label for="homework">Answer</label>
-                            <input type="hidden" name="homeworkId" value="<?= $id ?>">
-                            <textarea name="homework" id="homework"><?= htmlspecialchars($homeworkText ?? '') ?></textarea>
-                        </div>
+                        <form action="../../src/controllers/homework_controller.php" method="POST" enctype="multipart/form-data">
+                            <div class="textarea">
+                                <label for="homework">Answer</label>
+                                <input type="hidden" name="homeworkId" value="<?= $id ?>">
+                                <textarea name="homework" id="homework"><?= htmlspecialchars($homeworkText ?? '') ?></textarea>
+                            </div>
 
-                        <div>
-                            <label>Upload File (Image / PDF)</label>
-                            <input type="file" name="file" accept=".jpg,.jpeg,.png,.pdf">
-                        </div>
+                            <div>
+                                <label>Upload File (Image / PDF)</label>
+                                <input type="file" name="file" accept=".jpg,.jpeg,.png,.pdf">
+                            </div>
 
-                        <button type="submit">Send</button>
-                    </form>
+                            <button type="submit">Send</button>
+                        </form>
                     <?php endif; ?>
                 </div>
                 <div class="mt-5">
@@ -79,7 +91,7 @@ $answer = show_answer($id, $userId) ;
                         <?= $answer ?>
                     <?php else : ?>
                         <form action="../../src/controllers/homework_controller.php" method="GET">
-                        <?= $answersStudent ?>
+                            <?= $answersStudent ?>
                         </form>
                     <?php endif; ?>
 

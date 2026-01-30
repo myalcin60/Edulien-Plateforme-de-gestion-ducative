@@ -85,7 +85,6 @@ function random_color()
 function update_lesson_name()
 {
     $lesson = get_lesson_by_lessonId(htmlspecialchars($_GET['id']));
-
     return $lesson;
 }
 

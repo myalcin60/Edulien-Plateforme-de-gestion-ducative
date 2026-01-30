@@ -4,18 +4,17 @@ include_once __DIR__ . '/../models/lessonModels.php';
 //craet lesson
 function creat_lesson($lessonId, $lessonName, $teacherId, $classId)
 {
-    try {
+      try {
         $pdo = db_connection();
-        createLessonTable();
         $sql = 'INSERT INTO lessons (lessonId, lessonName, teacherId, classId ) values (:lessonId, :lessonName, :teacherId, :classId)';
-        $query = $pdo->prepare($sql);
-        $query->bindValue("lessonId", $lessonId);
-        $query->bindValue("lessonName", $lessonName);
-        $query->bindValue("teacherId", $teacherId);
-        $query->bindValue("classId", $classId);
+         $query = $pdo->prepare($sql);
+        $query->bindValue(":lessonId", $lessonId);
+        $query->bindValue(":lessonName", $lessonName);
+        $query->bindValue(":teacherId", $teacherId);
+        $query->bindValue(":classId", $classId);
         $query->execute();
-    } catch (Exception $ex) {
-        echo 'Error: problème de create lesson';
+     } catch (Exception $ex) {
+        echo 'Error: ' . $ex->getMessage();
     }
 }
 // get lessons with lesson id

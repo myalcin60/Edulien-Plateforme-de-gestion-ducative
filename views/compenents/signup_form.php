@@ -1,5 +1,9 @@
-<?php 
-session_start(); 
+<?php
+session_start();
+$message_error = $_SESSION['error'] ?? null;
+$success_message = $_SESSION['success'] ?? null; 
+$email_for_resend =$_SESSION['email'] ?? null; 
+
 ?>
 
 <div class="container mt-5">
@@ -8,6 +12,15 @@ session_start();
             <?= $_SESSION['error'];
             unset($_SESSION['error']); ?>
         </div>
+       <!-- Token expired için yeniden mail iste butonu -->
+        <?php if (isset($message_error) && str_contains($message_error, 'Verification link expired')):?>
+            <form action="../../src/controllers/token_controller.php" method="post" class="mt-2">
+                <input type="hidden" name="email" value="<?= htmlspecialchars($email_for_resend); ?>">
+                <input type="hidden" name="action" value="resend_token">
+                <button type="submit" class="btn btn-warning">Resend Verification Email</button>
+            </form>
+        <?php endif; ?>
+
     <?php endif; ?>
 
     <?php if (isset($_SESSION['success'])): ?>
@@ -40,10 +53,9 @@ session_start();
                 <option value="student">Student</option>
                 <option value="teacher">Teacher</option>
             </select>
-        </div> 
+        </div>
         <input type="hidden" name="action" value="signup">
-        <button type="submit" class="btn btn-primary mb-3" >Register</button>
+        <button type="submit" class="btn btn-primary mb-3">Register</button>
         <a style='color:var( --accent-secondary);' href="./auth.php?form=login">I already have an account. Login</a>
     </form>
 </div>
-

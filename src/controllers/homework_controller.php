@@ -6,8 +6,8 @@ include __DIR__ . '/../services/service.php';
 // creat homwork 
 if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "teacher_dashboard.php") and $_SERVER['REQUEST_METHOD'] == 'POST') {
     $teacherId = $_POST['userId'];
-    $title = $_POST['hm_title'];
-    $homework = $_POST['homework'];
+    $title = trim($_POST['hm_title']);
+    $homework = trim($_POST['homework']);
     $classId = $_POST['classId'];
     $lessonId = $_POST['lessonId'];
     $studentIds = $_POST['studentIds'] ?? [];
@@ -15,6 +15,12 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "t
     var_dump($studentIds);
     $filePath = null;
     $fileType = null;
+
+    if($title=='' || $homework==''){
+        $_SESSION['error'] = 'Title and Homework text are required.';
+        header("location: ../../views/pages/teacher_dashboard.php?form=homework&classId=$classId&lessonId=$lessonId");
+        die();
+    }
 
     if (empty($studentIds)) {
         $_SESSION['error'] = 'Please select at least one student.';
@@ -69,7 +75,11 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "a
     $id= uuid();
     $filePath = null;
     $fileType = null;
-
+    if($answerText==''){
+        $_SESSION['error'] = 'Answer text is required.';
+        header("location: ../../views/pages/answer_hm.php?id=$homeworkId");
+        die();
+    }
     // control upload fichier
     if (isset($_FILES['file']) && $_FILES['file']['error'] == 0) {
         //$uploadDir = __DIR__ . "/uploads/answers/"; //---> for infinity
@@ -103,7 +113,7 @@ if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "a
 
 // delete answer homework
 if (isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], "answer_hm") and $_SERVER['REQUEST_METHOD'] == 'GET') {
-    $answerId = $_GET['id'];
+    $answerId = $_GET['id'];  
     delete_answer_homework($answerId);
     $_SESSION['success'] = 'Answer deleted successfully!';
     header("location: ../../views/pages/student_dashboard.php?form=homework");

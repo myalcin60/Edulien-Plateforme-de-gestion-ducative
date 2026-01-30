@@ -65,8 +65,13 @@ $studentIds = $_GET['studentIds'] ?? [];
 
         <div class="title">
             <label for="homework">Title</label>
-            <input name="hm_title" id="hm_title" value="<?= htmlspecialchars($title ?? '') ?>" <?php if ($userId[0] == 'S')
-                                                                                                    echo "readonly"; ?>>
+           <input name="hm_title"
+       id="hm_title"
+       value="<?= htmlspecialchars($title ?? '') ?>"
+       required
+       pattern=".*\S.*"
+       <?php if ($userId[0] == 'S') echo "readonly"; ?>>
+
         </div>
         <div class="textarea">
             <label for="homework">Homework</label>

@@ -76,8 +76,7 @@ $homework = 'Homework';
                             <button type="submit">Save</button>
                         </div>
                     </div>
-                </form>
-                        
+                </form>                       
                 <div class="box-shadow container-md mb-3">
                     <div class="d-flex gap-3 p-3 justify-content-between">
                         <h2>Lesson List</h2> <a style="text-decoration: none;"
@@ -85,21 +84,16 @@ $homework = 'Homework';
                             <h2 style="color:black"> Classes</h2>
                         </a>
                     </div>
-
                     <div class="gap-3 p-3">
                         <?= $lessons ?>
                     </div>
-                </div>
-
-               
+                </div>               
             </div>
         </main>
         <footer>
             <?php include '../compenents/footer.php' ?>
         </footer>
     </div>
-
-
 </body>
 
 </html>

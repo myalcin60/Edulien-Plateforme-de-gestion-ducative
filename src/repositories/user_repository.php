@@ -8,7 +8,7 @@ include __DIR__. '/../models/homeworkModel.php';
 include __DIR__. '/../models/answerHmModels.php';
 
 //sign up
-function signup_user($id, $firstname, $lastname, $email, $password, $role)
+function signup_user($id, $firstname, $lastname, $email, $password, $role, $token)
 {
     try {
         $pdo = db_connection();
@@ -19,8 +19,8 @@ function signup_user($id, $firstname, $lastname, $email, $password, $role)
         createHomeworkTable();  
         createHomeworkAnswerTable();      
 
-        $sql = "INSERT INTO users (id, first_name, last_name, email, password, role)
-                VALUES (:id, :first_name, :last_name, :email, :password, :role)";
+        $sql = "INSERT INTO users (id, first_name, last_name, email, password, role, email_verify_token, email_verify_created_at)
+                VALUES (:id, :first_name, :last_name, :email, :password, :role, :email_verify_token, NOW())";
         $query = $pdo->prepare($sql);
         $query->bindValue(":id", $id);
         $query->bindValue(":first_name", $firstname);
@@ -28,6 +28,7 @@ function signup_user($id, $firstname, $lastname, $email, $password, $role)
         $query->bindValue(":email", $email);
         $query->bindValue(":password", $password);
         $query->bindValue(":role", $role);
+        $query->bindValue(":email_verify_token", $token);
 
         $query->execute();
     } catch (Exception $ex) {
@@ -42,7 +43,6 @@ function get_user_by_id($id)
         $sql = "SELECT * from users  WHERE id= :id";
         $query = $pdo->prepare($sql);
         $query->bindValue(":id", $id);
-
         $query->execute();
 
         return $query->fetch(PDO::FETCH_ASSOC);
