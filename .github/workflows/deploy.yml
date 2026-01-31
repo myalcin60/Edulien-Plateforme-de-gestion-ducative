@@ -21,6 +21,7 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: ${{ secrets.FTP_PATH }}/
           local-dir: ./        # deploy edilecek local dizin
+          cleanRemote: false
           exclude: |
             src/uploads/**
             src/uploads/answers/**
