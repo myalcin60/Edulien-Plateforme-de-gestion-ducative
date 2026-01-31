@@ -7,7 +7,13 @@ class MailService
 {
     public static function sendVerificationEmail(string $email, string $token)
     {
-        $verifyLink = "http://localhost/edu_php/src/controllers/token_controller.php?token=" . $token;
+        if (isset($_SERVER['HTTP_HOST']) && $_SERVER['HTTP_HOST'] === 'localhost') {
+            return $verifyLink = "https://edulien.free.nf/src/controllers/token_controller.php?token=" . $token;;
+        } else {
+            return $verifyLink = "http://localhost/edu_php/src/controllers/token_controller.php?token=" . $token;
+;
+        }
+   
 
         $mail = new PHPMailer\PHPMailer\PHPMailer(true);
 
@@ -45,7 +51,13 @@ class MailService
 
     public static function sendResetPasswordEmail(string $email, string $token)
     {
-        $verifyLink = "http://localhost/edu_php/views/pages/new_password?&token=" . $token;
+          if (isset($_SERVER['HTTP_HOST']) && $_SERVER['HTTP_HOST'] === 'localhost') {
+            return $verifyLink = "https://edulien.free.nf/views/pages/new_password?&token=" . $token;
+        } else {
+            return $verifyLink = "http://localhost/edu_php/views/pages/new_password?&token=" . $token;
+;
+        }
+      
 
         $mail = new PHPMailer\PHPMailer\PHPMailer(true);
 
