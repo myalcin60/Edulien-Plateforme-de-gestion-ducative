@@ -3,12 +3,11 @@ name: Deploy to InfinityFree
 on:
   push:
     branches:
-      - main  # Eğer ana branch'in master ise 'main' yerine 'master' yaz
+      - main
 
 jobs:
   ftp-deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -20,7 +19,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: ${{ secrets.FTP_PATH }}/
-          local-dir: ./        # deploy edilecek local dizin
+          local-dir: ./
           cleanRemote: false
           exclude: |
             src/uploads/**
@@ -28,4 +27,6 @@ jobs:
             src/uploads/homeworks/**
             src/config/db.php
             results/**
+            lips/**
+            views/**
           dry-run: false
