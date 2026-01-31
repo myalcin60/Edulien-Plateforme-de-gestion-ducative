@@ -33,6 +33,8 @@ function show_homeworks()
             <tbody>";
     $no = 1;
 
+    $path = basePath();
+
     foreach ($homeworks as $homework) {
 
         $homework_id = htmlspecialchars(trim($homework['id']));
@@ -46,6 +48,7 @@ function show_homeworks()
         $lesson_name = htmlspecialchars($lesson[0]['lessonName']);
         $filePath = htmlentities($homework['filePath'] ?? '');
         $fileType = htmlentities($homework['filePath'] ?? '');
+       
 
         $answerLink = " <a href='../../views/pages/answer_hm.php?id=$homework_id' class='btn btn-warning btn-sm'> Answer </a>";
 
@@ -73,10 +76,10 @@ function show_homeworks()
 
         if (!empty($filePath)) {
             if (in_array($fileType, ['image/jpeg', 'image/png'])) {
-                $fileLink = "<img src='/edu_php/$filePath' style =width:150; >";
+                $fileLink = "<img src='$path/$filePath' style =width:150; >";
                 // $fileLink = "<img src='/$filePath' style =width:150; >"; //---> for deployment
             } else {
-                $fileLink = "<a style='color:black;' href='/edu_php/$filePath' target='_blank'>Show file</a>";
+                $fileLink = "<a style='color:black;' href='$path/$filePath' target='_blank'>Show file</a>";
                 // $fileLink = "<a style='color:black;' href='/$filePath' target='_blank'>Show file</a>"; // ---> for deployment
             }
         } else {

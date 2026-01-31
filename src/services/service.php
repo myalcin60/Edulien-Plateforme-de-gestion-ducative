@@ -1,5 +1,16 @@
 <?php
 
+if (!function_exists('basePath')) {
+    function basePath() {
+        if (isset($_SERVER['HTTP_HOST']) && $_SERVER['HTTP_HOST'] === 'localhost') {
+            return '/edu_php';
+        } else {
+            return '';
+        }
+    }
+}
+
+
 function create_id($role)
 {
     $id = '';
@@ -11,14 +22,18 @@ function create_id($role)
     return $id;
 }
 
-function uuid() {
+function uuid()
+{
     return sprintf(
         '%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
-        mt_rand(0, 0xffff), mt_rand(0, 0xffff),
+        mt_rand(0, 0xffff),
+        mt_rand(0, 0xffff),
         mt_rand(0, 0xffff),
         mt_rand(0, 0x0fff) | 0x4000,
         mt_rand(0, 0x3fff) | 0x8000,
-        mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff)
+        mt_rand(0, 0xffff),
+        mt_rand(0, 0xffff),
+        mt_rand(0, 0xffff)
     );
 }
 
@@ -27,7 +42,7 @@ function select_menu($menu)
     try {
         $profile = 'profile';
         $classes = 'classes';
-        $homework = 'homework'; 
+        $homework = 'homework';
         switch ($menu) {
             case $profile:
                 include '../../views/compenents/profile.php';
@@ -50,11 +65,11 @@ function select_menu($menu)
 function select_homework_menu($menu)
 {
     try {
-               switch ($menu) {
-                case 'homeworks':
+        switch ($menu) {
+            case 'homeworks':
                 include '../../views/compenents/homeworks.php';
                 break;
-                case 'create_homework':
+            case 'create_homework':
                 include '../../views/compenents/create_homework.php';
                 break;
             default:
@@ -65,4 +80,3 @@ function select_homework_menu($menu)
         echo 'error' . $ex;
     }
 }
-
