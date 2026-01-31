@@ -5,4 +5,5 @@ src/config/db.php
 results/
 
 # kullanıcı yüklemeleri
-src/uploads/
+uploads/
+

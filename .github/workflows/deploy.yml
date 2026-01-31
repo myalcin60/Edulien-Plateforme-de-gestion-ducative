@@ -3,7 +3,7 @@ name: Deploy to InfinityFree
 on:
   push:
     branches:
-      - main
+      - main  # Eğer ana branch'in master ise 'main' yerine 'master' yaz
 
 jobs:
   ftp-deploy:
@@ -20,3 +20,11 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: ${{ secrets.FTP_PATH }}/
+          local-dir: ./        # deploy edilecek local dizin
+          exclude: |
+            src/uploads/**
+            src/uploads/answers/**
+            src/uploads/homeworks/**
+            src/config/db.php
+            results/**
+          dry-run: false
