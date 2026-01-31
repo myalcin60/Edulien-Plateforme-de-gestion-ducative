@@ -46,9 +46,8 @@ if (isset($_SERVER['HTTP_REFERER']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
          $email    = $_POST['email'];
          $password = $_POST['password'];
          $user = get_user_by_email($email);
-         echo $user;
-         die();
-         
+        
+
          if (!$user) {
             $_SESSION['error'] = 'Email is incorrect';
             header("location: ../../views/pages/auth.php?form=login");
