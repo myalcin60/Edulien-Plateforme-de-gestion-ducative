@@ -1,3 +1,8 @@
+# DB config (local/prod farkı)
 src/config/db.php
-results
-src/uploads
+
+# sonuç / çıktı klasörü (eğer dosya ise)
+results/
+
+# kullanıcı yüklemeleri
+src/uploads/
