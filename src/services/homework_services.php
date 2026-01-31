@@ -76,11 +76,9 @@ function show_homeworks()
 
         if (!empty($filePath)) {
             if (in_array($fileType, ['image/jpeg', 'image/png'])) {
-                $fileLink = "<img src='$path/$filePath' style =width:150; >";
-                // $fileLink = "<img src='/$filePath' style =width:150; >"; //---> for deployment
+                $fileLink = "<img src='$path/$filePath' style =width:150; >";                
             } else {
                 $fileLink = "<a style='color:black;' href='$path/$filePath' target='_blank'>Show file</a>";
-                // $fileLink = "<a style='color:black;' href='/$filePath' target='_blank'>Show file</a>"; // ---> for deployment
             }
         } else {
             $fileLink = '-';
@@ -146,6 +144,7 @@ function show_homework($id)
     $lesson_name = htmlspecialchars($lesson[0]['lessonName']);
     $filePath = htmlentities($homework['filePath'] ?? '');
     $fileType = htmlentities($homework['filePath'] ?? '');
+    $path = basePath();
 
     if (strlen($description) > 100) {
         $shortDesc = substr($description, 0, 100) . "...";
@@ -155,11 +154,9 @@ function show_homework($id)
     }
     if (!empty($filePath)) {
         if (in_array($fileType, ['image/jpeg', 'image/png'])) {
-                $fileLink = "<img src='/edu_php/$filePath' style =width:150; >";
-                // $fileLink = "<img src='/$filePath' style =width:150; >"; //---> for deployment
+                $fileLink = "<img src='$path/$filePath' style =width:150; >";                
             } else {
-                $fileLink = "<a style='color:black;' href='/edu_php/$filePath' target='_blank'>Show file</a>";
-                // $fileLink = "<a style='color:black;' href='/$filePath' target='_blank'>Show file</a>"; //---> for deployment
+                $fileLink = "<a style='color:black;' href='$path/$filePath' target='_blank'>Show file</a>";
             }
     } else {
         $fileLink = '-';
@@ -233,14 +230,13 @@ function show_homework_answers($homeworkId, $studentId)
         $date = new DateTime($answer['created_at']);
         $created_at = $date->format('d-m-Y');
         $answer_Id = htmlspecialchars($answer['id']);
+        $path = basePath();
 
         if (!empty($filePath)) {
-           if (in_array($fileType, ['image/jpeg', 'image/png'])) {
-                $fileLink = "<img src='/edu_php/$filePath' style =width:150; >";
-                // $fileLink = "<img src='/$filePath' style =width:150; >"; //---> for deployment
+            if (in_array($fileType, ['image/jpeg', 'image/png'])) {
+                $fileLink = "<img src='$path/$filePath' style =width:150; >";                
             } else {
-                $fileLink = "<a style='color:black;' href='/edu_php/$filePath' target='_blank'>Show file</a>";
-                // $fileLink = "<a style='color:black;' href='/$filePath' target='_blank'>Show file</a>"; //---> for deployment
+                $fileLink = "<a style='color:black;' href='$path/$filePath' target='_blank'>Show file</a>";
             }
         } else {
             $fileLink = '-';
@@ -310,15 +306,13 @@ function show_answer($id, $teacherId)
 
         $date = new DateTime($answer['created_at']);
         $created_at = $date->format('d-m-Y');
-
+        $path = basePath();
 
         if (!empty($filePath)) {
-           if (in_array($fileType, ['image/jpeg', 'image/png'])) {
-                $fileLink = "<img src='/edu_php/$filePath' style =width:150; >";
-                // $fileLink = "<img src='/$filePath' style =width:150; >"; //---> for deployment
+             if (in_array($fileType, ['image/jpeg', 'image/png'])) {
+                $fileLink = "<img src='$path/$filePath' style =width:150; >";                
             } else {
-                $fileLink = "<a style='color:black;' href='/edu_php/$filePath' target='_blank'>Show file</a>";
-                // $fileLink = "<a style='color:black;' href='/$filePath' target='_blank'>Show file</a>"; //---> for deployment
+                $fileLink = "<a style='color:black;' href='$path/$filePath' target='_blank'>Show file</a>";
             }
         } else {
             $fileLink = '-';
