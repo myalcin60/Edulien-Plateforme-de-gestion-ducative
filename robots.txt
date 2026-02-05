@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://edulien.free.nf/sitemap.xml
